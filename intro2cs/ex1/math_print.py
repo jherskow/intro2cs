@@ -22,7 +22,7 @@ def e():
     print(math.e)
 
 
-#todo squares thingy
+#todo squares thingy desktop
 
 golden_ratio()
 square_five()
