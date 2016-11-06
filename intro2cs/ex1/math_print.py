@@ -22,7 +22,7 @@ def e():
     print(math.e)
 
 
-#todo squares thingy test 2
+#todo squares test 3
 
 golden_ratio()
 square_five()
