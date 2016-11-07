@@ -11,7 +11,7 @@ def intro_test():
     print ("hello")
 
 def draw_petal():
-    """draws one petal of a flower, returning turtle to starting point"""
+    """draws one petal of a flower, returning to starting point"""
     turtle.forward(30)
     turtle.left(45)
     turtle.forward(30)
