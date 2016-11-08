@@ -37,7 +37,7 @@ def draw_flower():
     turtle.right(90)
     draw_petal()
     turtle.right(135)
-    turtle.forward(150)
+    turtle.forward(150) # draws the stem
 
 
 def draw_flower_advanced():
