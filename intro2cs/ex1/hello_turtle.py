@@ -3,7 +3,7 @@
 # WRITER : Josuha Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex0 2016-2017
 # DESCRIPTION: A set of functions that use turtle graphics to draw
-# petals, stems, and preconfigured combinations of them (flowers).
+# petals, stems, and pre-configured combinations of them (flowers).
 ##########################################################################
 import turtle
 
