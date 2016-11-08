@@ -21,11 +21,7 @@ def pi():
 def e():
     print(math.e)
 
+def squares_area():
+    print(math.pow(1, 2), math.pow(2, 2), math.pow(3, 2), math.pow(4, 2), math.pow(5, 2), math.pow(6, 2),
+          math.pow(7, 2), math.pow(8, 2), math.pow(9, 2), math.pow(10, 2))
 
-#todo squares test 3
-
-golden_ratio()
-square_five()
-hypotenuse()
-pi()
-e()
