@@ -55,3 +55,5 @@ def draw_flower_bed():
     turtle.down()
     for x in range(3):
         draw_flower_advanced()
+
+#todo add comprehensive comments!
