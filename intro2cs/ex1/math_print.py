@@ -1,8 +1,8 @@
 ##########################################################################
 # FILE : math_print.py
 # WRITER : Josuha Herskowitz , jherskow , 321658379
-# EXERCISE : intro2cs ex0 2016-2017
-# DESCRIPTION: Functions that print values using the math module.
+# EXERCISE : intro2cs ex1 2016-2017
+# DESCRIPTION: Functions that print values using Python's math module.
 ##########################################################################
 import math
 
