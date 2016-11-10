@@ -54,6 +54,8 @@ def draw_flower_advanced():
 
 
 def draw_flower_bed():
+    """moves turtle from initial location to the bottom left, and draws 3
+                    equally spaced flowers"""
     turtle.up()
     turtle.left(180)
     turtle.forward(200)
@@ -62,4 +64,3 @@ def draw_flower_bed():
     for x in range(3):
         draw_flower_advanced()
 
-#todo add comprehensive comments!
