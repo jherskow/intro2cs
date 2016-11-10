@@ -44,8 +44,8 @@ def draw_flower_advanced():
     """draws a flower, and then moves turtle from the bottom of the steam
                     to a point 150 to the right of the flower's centre"""
     draw_flower()
-    turtle.left(90)
     turtle.up()
+    turtle.left(90)
     turtle.forward(150)  # reaches base of new flower
     turtle.left(90)      # travels up stem to centre of new flower
     turtle.forward(150)
