@@ -2,13 +2,16 @@
 # FILE : hello_turtle.py
 # WRITER : Josuha Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex0 2016-2017
-# DESCRIPTION:
+# DESCRIPTION: A set of functions that use turtle graphics to draw
+# petals, stems, and pre-configured combinations of them (flowers).
 ##########################################################################
 import turtle
 
+
 def intro_test():
     """This is only a test method for printing hello"""
-    print ("hello")
+    print("hello")
+
 
 def draw_petal():
     """draws one petal of a flower, returning to starting point"""
@@ -20,6 +23,7 @@ def draw_petal():
     turtle.left(45)
     turtle.forward(30)
     turtle.left(135)
+
 
 def draw_flower():
     """draws a flower by rotating the turtle between petals and then
@@ -33,7 +37,8 @@ def draw_flower():
     turtle.right(90)
     draw_petal()
     turtle.right(135)
-    turtle.forward(150)
+    turtle.forward(150) # draws the stem
+
 
 def draw_flower_advanced():
     """draws a flower, and then moves turtle from the bottom of the steam
@@ -47,6 +52,7 @@ def draw_flower_advanced():
     turtle.right(90)
     turtle.down()
 
+
 def draw_flower_bed():
     turtle.up()
     turtle.left(180)
@@ -56,5 +62,4 @@ def draw_flower_bed():
     for x in range(3):
         draw_flower_advanced()
 
-draw_flower_bed()
-turtle.done()
+#todo add comprehensive comments!
