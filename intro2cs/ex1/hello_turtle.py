@@ -46,10 +46,10 @@ def draw_flower_advanced():
     draw_flower()
     turtle.left(90)
     turtle.up()
+    turtle.forward(150)  # reaches base of new flower
+    turtle.left(90)      # travels up stem to centre of new flower
     turtle.forward(150)
-    turtle.left(90)
-    turtle.forward(150)
-    turtle.right(90)
+    turtle.right(90)     # turns turtle back to initial orientation
     turtle.down()
 
 
