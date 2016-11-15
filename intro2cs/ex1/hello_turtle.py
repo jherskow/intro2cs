@@ -27,7 +27,7 @@ def draw_petal():
 
 def draw_flower():
     """draws a flower by rotating the turtle between petals and then
-                                    draws a stem"""
+                draws a stem"""
     turtle.right(45)
     draw_petal()
     turtle.right(90)
@@ -41,19 +41,21 @@ def draw_flower():
 
 
 def draw_flower_advanced():
-    """draws a flower, and then moves turtle from the bottom of the steam
-                    to a point 150 to the right of the flower's centre"""
+    """draws a flower, and then moves turtle from the bottom of the stem
+                to a point 150 to the right of the flower's centre"""
     draw_flower()
     turtle.left(90)
-    turtle.up()
+    turtle.up()        #Raise pen for movement
     turtle.forward(150)
     turtle.left(90)
     turtle.forward(150)
     turtle.right(90)
-    turtle.down()
+    turtle.down()      #lower pen for drawing
 
 
 def draw_flower_bed():
+    """Draws 3 equally spaced flowers, first moving turtle to screen left to
+                center the image."""
     turtle.up()
     turtle.left(180)
     turtle.forward(200)
@@ -62,4 +64,3 @@ def draw_flower_bed():
     for x in range(3):
         draw_flower_advanced()
 
-#todo add comprehensive comments!
