@@ -2,7 +2,7 @@
 # FILE : calculate_mathematical_expression
 # WRITER : Josuha Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex2 2016-2017
-# DESCRIPTION: functions that parse and solve Basic math expressions.
+# DESCRIPTION: Functions that parse and solve Basic math expressions.
 ##########################################################################
 
 def calculate_mathematical_expression(num1,num2,operator):
