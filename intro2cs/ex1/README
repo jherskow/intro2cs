@@ -9,7 +9,8 @@ Joshua Herskowitz
 ==============================
 =        Description:        =
 ==============================
-
+Functions familiarizing students with the math library
+and with turtle graphics.
 
 ==============================
 =      Special Comments      =
@@ -19,4 +20,8 @@ Joshua Herskowitz
 ==============================
 =  Colleagues and Resources  =
 ==============================
-https://www.tutorialspoint.com/python/python_if_else.htm
+https://docs.python.org/3/library/math.html
+https://docs.python.org/3.5/library/turtle.html
+
+
+I discussed this assignment with Sharon Bash.
