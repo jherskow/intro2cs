@@ -32,14 +32,16 @@ def quadratic_equation_user_input():
 
     coefficients = input("Insert coefficients a, b, and c: ")
     parsed = coefficients.split(' ')  # parses coefficients to list
-    a = parsed[0]
-    b = parsed[1]
-    c = parsed[2]
+    a = float(parsed[0])
+    b = float(parsed[1])
+    c = float(parsed[2])
     x = quadratic_equation(a,b,c)
     solutions = 0
     if x[1] != None:
-        print("The equation has 2 solutions: " + x[0] + "and" + x[1])
-    elif x[0] != None
-        print("The equation has 1 solution: " + x[0])
+        print("The equation has 2 solutions: ",x[0],"and",x[1])
+    elif x[0] != None:
+        print("The equation has 1 solution: ",x[0])
     else:
         print("The equation has no solutions")
+
+quadratic_equation_user_input()
