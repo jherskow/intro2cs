@@ -7,18 +7,18 @@
 
 def calculate_mathematical_expression(num1,num2,operator):
     """performs requested basic math operation on two numbers"""
-    global result = 0
-    if operator == "+":
-        result = num1 + num2
-    else if operator == "-":
-        result = num1 - num2
-    else if operator == "/":
-        if num2 == 0:
+
+    if operator == "+":      #series of IF/ELIF checks to determine operator
+        result = num1 + num2 #do requested operation in requested order
+    elif operator == "-":    #as before
+        result = num1 - num2 #as before
+    elif operator == "/":
+        if num2 == 0:   #prevents division by zero
             return None
         result = num1 / num2
-    else if operator == "*":
+    elif operator == "*":
         result = num1 * num2
-    else
+    else:               # operator given is not one of 4 basic operations
         return None
     return result
 
