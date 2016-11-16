@@ -38,10 +38,8 @@ def quadratic_equation_user_input():
     x = quadratic_equation(a,b,c)
     solutions = 0
     if x[1] != None:
-        print("The equation has 2 solutions: ",x[0],"and",x[1])
+        print("The equation has 2 solutions:",x[0],"and",x[1])
     elif x[0] != None:
-        print("The equation has 1 solution: ",x[0])
+        print("The equation has 1 solution:",x[0])
     else:
         print("The equation has no solutions")
-
-quadratic_equation_user_input()

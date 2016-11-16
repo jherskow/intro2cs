@@ -37,5 +37,3 @@ def calculate_from_string(expression): # ("num1 operator num2") (spaces incl)
     # passing the parsed expression to the calculate function
     result = calculate_mathematical_expression(num1,num2,operator)
     return result
-
-

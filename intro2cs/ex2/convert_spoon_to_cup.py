@@ -9,4 +9,3 @@ def convert_spoon_to_cup(spoons):
     """converts spoons to cups"""
     cups = spoons/3.5
     return cups
-
