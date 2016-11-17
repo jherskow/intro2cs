@@ -11,7 +11,7 @@ def shape_area():
     Calculates and returns the area of different shapes.
     The shape and its measurements are given by user input.
     """
-    area = none
+    area = None
     shape_choice = input("Choose shape ""((1=circle, 2=rectangle, "
                          "3=trapezoid): ")
     shape_choice = int(shape_choice)

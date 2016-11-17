@@ -22,7 +22,7 @@ def quadratic_equation(a, b, c):
         if discriminant != 0:
             x[1]= (-b - discriminant**(1/2) ) / (2*a) #second
     #if discriminant is negative, x will be empty.
-    return x
+    return x[0],x[1]
 
 def quadratic_equation_user_input():
     """
