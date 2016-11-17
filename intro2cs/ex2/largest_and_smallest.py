@@ -29,5 +29,3 @@ def largest_and_smallest(num1, num2, num3):
             big = num3
             small = num1
     return big, small
-
-print(largest_and_smallest(1,1,4))
