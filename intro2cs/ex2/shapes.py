@@ -12,8 +12,8 @@ def shape_area():
     The shape and its measurements are given by user input.
     """
     area = None
-    shape_choice = input("Choose shape ""((1=circle, 2=rectangle, "
-                         "3=trapezoid): ")
+    shape_choice = input("Choose shape (1=circle, 2=rectangle,"
+                         " 3=trapezoid): ")
     shape_choice = int(shape_choice)
     if shape_choice == 1:       #circle
         radius = float(input())
