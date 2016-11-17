@@ -5,7 +5,7 @@
 # DESCRIPTION: Functions that parse and solve Basic math expressions.
 ##########################################################################
 
-def calculate_mathematical_expression(num1,num2,operator):
+def calculate_mathematical_expression(num1, num2, operator):
     """
     performs requested basic math operation on the two given numbers, and
     returns the result.

@@ -5,7 +5,7 @@
 # DESCRIPTION: A few quadratic solvers.
 ##########################################################################
 
-def quadratic_equation(a,b,c):
+def quadratic_equation(a, b, c):
     """
     Returns list all x solutions for ax^2 +bx +c. = 0
     a,b,c are all given as inputs.

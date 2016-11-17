@@ -5,3 +5,5 @@
 # DESCRIPTION: Returns the largest and smallest of 3 numbers.
 # It's easier than trying to find a ruler.
 ##########################################################################
+
+def largest_and_smallest(num1, num2)
