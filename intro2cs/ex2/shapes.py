@@ -8,8 +8,8 @@ import math
 
 def shape_area():
     """
-    Returns list all x solutions for ax^2 +bx +c. = 0
-    a,b,c are all given as inputs.
+    Calculates and returns the area of different shapes.
+    The shape and its measurements are given by user input.
     """
     shape_choice = input("Choose shape ""((1=circle, 2=rectangle, "
                          "3=trapezoid): ")
