@@ -42,5 +42,3 @@ def shape_area():
         area = trapeziod_area(float(input()),
                               float(input()), float(input()))
     return area
-
-print(shape_area())
