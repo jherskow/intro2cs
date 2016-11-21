@@ -5,7 +5,8 @@
 # DESCRIPTION: A non-biased solution to "Do i look fat?"
 ##########################################################################
 
-def is_normal_bmi(weight,height):
+
+def is_normal_bmi(weight, height):
     """
     Returns true if weight(kg)/height(m) is between 18.5 and 24.9.
     Otherwise returns false.
@@ -13,7 +14,7 @@ def is_normal_bmi(weight,height):
     weight = float(weight)
     height = float(height)
     bmi = float(weight/(height**2))
-    if bmi <= 24.9 and bmi >= 18.5:
+    if 18.5 <= bmi <= 24.9:
         return True
     else:
         return False

@@ -6,6 +6,25 @@
 ##########################################################################
 import math
 
+
+def circle_area(radius):
+    """Returns float area of circle with given radius"""
+    area = radius ** 2 * (math.pi)
+    return area
+
+
+def rectangle_area(width, length):
+    """Returns float area of square with given sides"""
+    area = width * length
+    return area
+
+
+def trapeziod_area(top, bottom, height):
+    """Returns float area of rectangle with specified properties"""
+    area = ((top+bottom)/2) * height
+    return area
+
+
 def shape_area():
     """
     Calculates and returns the area of different shapes.
@@ -16,15 +35,12 @@ def shape_area():
                          " 3=trapezoid): ")
     shape_choice = int(shape_choice)
     if shape_choice == 1:       #circle
-        radius = float(input())
-        area = radius**2*(math.pi)
+        circle_area(float(input()))
     elif shape_choice == 2:     #rectangle
-        width = float(input())
-        length = float(input())
-        area = width*length
+        area = rectangle_area(float(input()), float(input()))
     elif shape_choice == 3:     #trapeziod
-        top = float(input())
-        bottom = float(input())
-        height = float(input())
-        area = ( (top + bottom)/2 ) * height
+        area = trapeziod_area(float(input()),
+                              float(input()), float(input()))
     return area
+
+print(shape_area())

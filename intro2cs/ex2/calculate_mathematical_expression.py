@@ -5,31 +5,36 @@
 # DESCRIPTION: Functions that parse and solve Basic math expressions.
 ##########################################################################
 
+
 def calculate_mathematical_expression(num1, num2, operator):
     """
     performs requested basic math operation on the two given numbers, and
     returns the result.
     """
-    if operator == "+":      #series of IF/ELIF checks to determine operator
-        result = num1 + num2 #do requested operation in requested order
+    # series of IF/ELIF checks to determine operator
+    if operator == "+":
+        result = num1 + num2 # given operation in given order
     elif operator == "-":
         result = num1 - num2
     elif operator == "/":
-        if num2 == 0:   #prevents division by zero
+        # prevent division by zero
+        if num2 == 0:
             return None
         result = num1 / num2
     elif operator == "*":
         result = num1 * num2
-    else:               # if operator given is not one of 4 basic operations
+    else:           # if operator given is not one of 4 basic operations
         return None
     return result
 
-def calculate_from_string(expression): # ("num1 operator num2") (spaces incl)
+
+def calculate_from_string(expression):
     """
     parses a string 'num1 operator num2' into a math expression,
     and then returns the result
     """
-    parse = expression.split(' ')  #parses expression to list
+    # parse expression to list
+    parse = expression.split(' ')
     # extract expression from list, casting numbers to float
     num1 = float(parse[0])
     operator = parse[1]
