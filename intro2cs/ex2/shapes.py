@@ -35,7 +35,7 @@ def shape_area():
                          " 3=trapezoid): ")
     shape_choice = int(shape_choice)
     if shape_choice == 1:       # circle
-        circle_area(float(input()))
+        area = circle_area(float(input()))
     elif shape_choice == 2:     # rectangle
         area = rectangle_area(float(input()), float(input()))
     elif shape_choice == 3:     # trapezoid
