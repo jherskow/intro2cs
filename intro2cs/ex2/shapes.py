@@ -43,4 +43,3 @@ def shape_area():
                               float(input()), float(input()))
     return area
 
-print(shape_area())
