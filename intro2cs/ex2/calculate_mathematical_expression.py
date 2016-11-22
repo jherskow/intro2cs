@@ -13,7 +13,7 @@ def calculate_mathematical_expression(num1, num2, operator):
     """
     # series of IF/ELIF checks to determine operator
     if operator == "+":
-        result = num1 + num2 # given operation in given order
+        result = num1 + num2  # given operation in given order
     elif operator == "-":
         result = num1 - num2
     elif operator == "/":
@@ -34,11 +34,11 @@ def calculate_from_string(expression):
     and then returns the result
     """
     # parse expression to list
-    parse = expression.split(' ')
-    # extract expression from list, casting numbers to float
-    num1 = float(parse[0])
-    operator = parse[1]
-    num2 = float(parse[2])
+    parsed = expression.split(' ')
+    # extract expression from list, casting numbers to type float
+    num1 = float(parsed[0])
+    operator = parsed[1]
+    num2 = float(parsed[2])
     # passing the parsed expression to the calculate function
-    result = calculate_mathematical_expression(num1,num2,operator)
+    result = calculate_mathematical_expression(num1, num2, operator)
     return result
