@@ -8,7 +8,7 @@
 
 def is_normal_bmi(weight, height):
     """
-    Returns true if weight(kg)/height(m) is between 18.5 and 24.9.
+    Returns true if weight(kg)/height(m)^2 is between 18.5 and 24.9.
     Otherwise returns false.
     """
     weight = float(weight)
