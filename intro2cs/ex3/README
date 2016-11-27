@@ -1,0 +1,43 @@
+jherskow
+321658379
+Joshua Herskowitz
+
+====================================
+= README for ex3:      Loops       =
+====================================
+
+==============================
+=        Description:        =
+==============================
+
+
+==============================
+=      Special Comments      =
+==============================
+
+===Answers to ex3 questions===
+
+1. Since 'abcd' and 'bcda' are both strings,
+and not lists, the function should crash due to incorrect
+parameter types.
+
+2. Since n is given as 3 , a histogram will be created only
+for values between 0 and n-1 (2) .
+Return value should look like this:
+[0,1,1]
+for 0, 1 and 2 respectively.
+
+3. Since range is unable to create a range(2,0) the result
+will be the same as prime_factors(1):
+The function will never enter the loop, and the rturn value
+will be: []
+
+4. The return value will be correct, i.e. all pars will sum to 2.
+But since numbers appear more than once, so will pairs.
+For example, [1,0] and [1,0], which are both unique valid pairs,
+will each appear twice, instead of once each.
+
+==============================
+=  Colleagues and Resources  =
+==============================
+
