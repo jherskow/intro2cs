@@ -9,7 +9,7 @@
 def create_list():
     """
     saves user string inputs to a list, until "" is entered
-    :return: list of inputs in dircet order
+    :return: list of inputs in direct order
     """
     list_of_inputs = []
     input_counter = 0
@@ -26,7 +26,7 @@ def concat_list(str_lst):
     """
     concatenates a list of strings into a continuous string, without spaces
     :param str_lst: list of strings
-    :return: continous string
+    :return: continuous string
     """
     concat_str = ""
     for string in str_lst:
@@ -87,10 +87,10 @@ def histogram(n, num_list):
     :return: a list where [0] corresponds to the 0-count and so on.
     """
     histogram_list = []
-    for i in range(n):
+    for num_index in range(n):
         num_count = 0
         for num in num_list:
-            if float(num) == i:
+            if float(num) == num_index:
                 num_count += 1
         histogram_list.append(num_count)
     return histogram_list
@@ -105,13 +105,16 @@ def prime_factors(n):
     :return: list of prime factors, from least to greatest
     """
     factors = []
-    for x in range(2, n):
+    FIRST_PRIME = 2
+    # Since any non-prime number is a multiple of some prime, it is sufficient to check divisibility by all numbers
+    # going up. For example, if x is divisible by 4, it will first be divisible by 2.
+    for x in range(FIRST_PRIME, n):
         while n%x == 0 :
             factors.append(x)
             n = n/x
     return factors
-# debug
-# print(prime_factors(int(input())))
+
+print(prime_factors(int(input())))
 
 
 def cartesian(lst1, lst2):
@@ -131,11 +134,14 @@ def cartesian(lst1, lst2):
 
 def pairs(n, num_list):
     """
-
+    This Function
     :param n:
     :param num_list:
     :return:
     """
+    # The ex3 pdf explicitly states that the order is not  significant for the pairs,
+    # But the pdf also states that the program must return *all* pairs.
+    # So the program will return both permutations of a pair, in accordance with a binary relation.
     sum_pairs = []
     permutations = cartesian(num_list, num_list)
     print(permutations)
