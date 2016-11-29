@@ -10,6 +10,31 @@ Joshua Herskowitz
 =        Description:        =
 ==============================
 
+create_list
+    saves user string inputs to a list, until "" is entered
+
+concat_list
+    concatenates a list of strings into a continuous string, without spaces
+
+average
+    calculates the float average of a list of floats/ints
+
+cyclic
+    Evaluates whether 2 same-length lists are cyclic permutations of each
+     other.
+
+histogram
+    creates 0-indexed histogram of all numbers between 0 and n-1 in a list
+
+prime_factors(n):
+    Returns list of the prime factors of a positive integer
+
+cartesian
+    Returns the cartesian product of two sets
+
+pairs(n, num_list):
+    returns all pairs in a list whose sum is n
+
 
 ==============================
 =      Special Comments      =
@@ -29,13 +54,20 @@ for 0, 1 and 2 respectively.
 
 3. Since range is unable to create a range(2,0) the result
 will be the same as prime_factors(1):
-The function will never enter the loop, and the rturn value
+The function will never enter the loop, and the return value
 will be: []
 
 4. The return value will be correct, i.e. all pars will sum to 2.
 But since numbers appear more than once, so will pairs.
-For example, [1,0] and [1,0], which are both unique valid pairs,
-will each appear twice, instead of once each.
+For example, [2,0] will appear several times.
+This is because the function iterates over the remainder of the list
+for every number in the list. so for the first 0, it will match with the
+first 2, and then the second two, and likewise for the second 0.
+The first one will match with the second, but the second will not match
+with the first.
+the final output will be:
+[[0, 2], [0, 2], [0, 2], [0, 2], [1, 1]]
+
 
 ==============================
 =  Colleagues and Resources  =

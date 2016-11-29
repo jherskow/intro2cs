@@ -75,8 +75,6 @@ def cyclic(lst1, lst2):
         if same is True:
             return True
     return False
-#DEBUG
-# print(cyclic(create_list(),create_list()))
 
 
 def histogram(n, num_list):
@@ -94,27 +92,27 @@ def histogram(n, num_list):
                 num_count += 1
         histogram_list.append(num_count)
     return histogram_list
-#DEBUG
-# x = create_list()
-# print(histogram(4, x))
+
+
+FIRST_PRIME = 2  # constant for prime_factors
+
 
 def prime_factors(n):
     """
-    Displays the prime factors of a positive integer
+    Returns a list of all the prime factors of a positive integer
     :param n: any positive integer
     :return: list of prime factors, from least to greatest
     """
     factors = []
-    FIRST_PRIME = 2
-    # Since any non-prime number is a multiple of some prime, it is sufficient to check divisibility by all numbers
-    # going up. For example, if x is divisible by 4, it will first be divisible by 2.
+    # Since any non-prime number is a multiple of some prime,
+    # it is sufficient to check divisibility by all numbers
+    # going up. For example, if x is divisible by 4,
+    # it will first be divisible by 2.
     for x in range(FIRST_PRIME, n):
         while n%x == 0 :
             factors.append(x)
             n = n/x
     return factors
-
-print(prime_factors(int(input())))
 
 
 def cartesian(lst1, lst2):
@@ -129,26 +127,18 @@ def cartesian(lst1, lst2):
         for y in lst2:
             product.append([x,y])
     return product
-# DEBUG
-# print(cartesian(create_list(),create_list()))
+
 
 def pairs(n, num_list):
     """
-    This Function
-    :param n:
-    :param num_list:
-    :return:
+    This Function returns all pairs in a list whose sum is n
+    :param n: some number
+    :param num_list: list of different numbers
+    :return: list of pairs
     """
-    # The ex3 pdf explicitly states that the order is not  significant for the pairs,
-    # But the pdf also states that the program must return *all* pairs.
-    # So the program will return both permutations of a pair, in accordance with a binary relation.
     sum_pairs = []
-    permutations = cartesian(num_list, num_list)
-    # print(permutations) #debug
-    for pair in permutations:
-        if int(pair[0]) + int(pair[1]) == n:
-            sum_pairs.append(pair)
+    for i in range(len(num_list)):
+        for j in range(i+1, len(num_list)):
+            if num_list[i] + num_list[j] == n:
+                sum_pairs.append([num_list[i], num_list[j]])
     return sum_pairs
-# DEBUG
-# print(pairs(6, create_list()))
-
