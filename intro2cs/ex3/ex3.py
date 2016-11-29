@@ -144,7 +144,7 @@ def pairs(n, num_list):
     # So the program will return both permutations of a pair, in accordance with a binary relation.
     sum_pairs = []
     permutations = cartesian(num_list, num_list)
-    print(permutations)
+    # print(permutations) #debug
     for pair in permutations:
         if int(pair[0]) + int(pair[1]) == n:
             sum_pairs.append(pair)
