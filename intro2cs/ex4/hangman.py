@@ -2,14 +2,26 @@
 # FILE : hangman.py
 # WRITER : Josuha Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex4 2016-2017
-# DESCRIPTION:
+# DESCRIPTION: #todo
 ##########################################################################
 import hangman_helper
 
+ASCII_LOWER_A= 97
+ALPHABET_LEN = 25
 
-def update_word_pattern(word, pattern, letter):
+def letter_to_index(letter):
+    """ returns 0-indexed i of lowercase letter """
+    return ord(letter) - ASCII_LOWER_A
+
+
+def index_to_index(number):
+    """ returns lowercase letter of 0-indexed i """
+    return chr(number + ASCII_LOWER_A)
+
+
+def update_word_pattern(word, pattern, letter): #todo docstring
     """
-
+    This function
     :param word:
     :param pattern:
     :param letter:
@@ -26,28 +38,32 @@ def update_word_pattern(word, pattern, letter):
     return new_pattern
 
 
-def run_single_game(words_list):
+def run_single_game(words_list): #todo
     """
 
     :param words_list:
     :return:
     """
-    # get random word (helper)
-    # init pattern, leterrs, bad guesses
-    print(DEFAULT_MESSAGE)
+    word = hangman_helper.get_random_word() #todo
 
-    end = False
-    while not end:
+    #def update_data(self, pattern, err_cnt, wrong_guess_lst, msg,
+                    #ask_play):
+    # init pattern, leterrs, bad guesses
+   # hangman_helper.update_data(self, pattern, 0, wrong_guess_lst, msg,
+                   # ask_play)
+
+    game_over = False
+    while not game_over:
         """""
         display state (helper)
-        get input of guess
-        if input is guess:
-            if not valid (single lowercase letter)
-                NON_VALID_MSG
-            else if already chose
+        input = get_input()
+        if not valid
+            NON_VALID_MSG
+        if ASCII_LOWER_A <= letter_to_index(input) <= ALPHABET_LEN
+            if already chose
                 ALREADY_CHOSE_MSG
-            else if in word
-                update word update_word_pattern
+            else if in word_list
+                update_word_pattern(word, pattern, letter)
                 DEFAULT_MSG
             else
                 update bad guess
@@ -56,17 +72,21 @@ def run_single_game(words_list):
 
     display_state()
     LOSS_MSG or WIN_MSG
-    (add the word itslef)
+    (add the word itself)
     ask_play=TRUE
         """
-def main():
+
+
+def main(): #todo
     """
 
     :return:
     """
-    """
-    loads words
+    hangman_helper.load_words()
 
-    runs single game
-    ask play again
-    """
+    if __name__ == "__main__":
+        hangman_helper.start_gui_and_call_main(main)
+        hangman_helper.close_gui()
+
+    #ask play again #todo
+
