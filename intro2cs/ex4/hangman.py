@@ -6,9 +6,8 @@
 ##########################################################################
 import hangman_helper
 
-ASCII_LOWER_A= 97
+ASCII_LOWER_A = 97
 ALPHABET_LEN = 25
-
 
 def letter_to_index(letter):
     """ returns 0-indexed i of lowercase letter """
@@ -45,16 +44,23 @@ def run_single_game(words_list): #todo
     :param words_list:
     :return:
     """
-    word = hangman_helper.get_random_word() #todo
+    # Initialise game
+    word = hangman_helper.get_random_word(words_list)
+    pattern = ""
+    word_letters = list(word)
+    for letter in word_letters:
+        pattern += "_"
+    # hangman_helper.display_state(pattern, error_count, wrong_guess_lst,
+    #                             msg,)
 
-    #def update_data(self, pattern, err_cnt, wrong_guess_lst, msg,
-                    #ask_play):
     # init pattern, leterrs, bad guesses
-   # hangman_helper.update_data(self, pattern, 0, wrong_guess_lst, msg,
-                   # ask_play)
+    # (self, pattern, 0, wrong_guess_lst, msg,ask_play(false))
 
+    # The Game is ON!!!
     game_over = False
     while not game_over:
+        # check for win or lose conditions
+
         """""
         display state (helper)
         input = get_input()
