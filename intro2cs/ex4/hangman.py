@@ -9,6 +9,7 @@ import hangman_helper
 ASCII_LOWER_A= 97
 ALPHABET_LEN = 25
 
+
 def letter_to_index(letter):
     """ returns 0-indexed i of lowercase letter """
     return ord(letter) - ASCII_LOWER_A
