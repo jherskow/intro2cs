@@ -7,7 +7,9 @@
 import hangman_helper as h
 
 ASCII_LOWER_A = 97
-ALPHABET_LEN = 25
+INDEX_A = 0
+INDEX_Z = 25
+
 
 def letter_to_index(letter):
     """ returns 0-indexed i of lowercase letter """
@@ -38,7 +40,7 @@ def update_word_pattern(word, pattern, letter): #todo docstring
     return new_pattern
 
 
-def run_single_game(words_list): #todo
+def run_single_game(words_list):  #todo
     """
 
     :param words_list:
@@ -53,39 +55,60 @@ def run_single_game(words_list): #todo
     for letter in word_letters:
         pattern += "_"
     h.display_state(pattern, error_count, wrong_guess_lst,
-                                 h.DEFAULT_MSG)
+                    h.DEFAULT_MSG)
+    # get first input
+    user_input = list(h.get_input())
 
     # The Game is ON!!!
     game_over = False
-    while not game_over:
+    while True:
         h.display_state(pattern, error_count, wrong_guess_lst, h.DEFAULT_MSG)
+        # refresh the list of letters currently in the pattern
         pattern_list = list(pattern)
-        user_input = h.get_input()
-        input_index = letter_to_index(user_input)
-        if user_input.isalpha() and len(user_input) == 1 \
-                                and input_index <= ALPHABET_LEN:
-            if user_input in wrong_guess_lst or user_input in pattern_list:
-                h.display_state(pattern, error_count,
-                                wrong_guess_lst,
-                                h.ALREADY_CHOSEN_MSG + user_input)
-            elif user_input in word_letters:
-                update_word_pattern(word, pattern, user_input)
+        if user_input[0] == h.LETTER and len(user_input[1]) == 1 :
+            input_letter = user_input[1]
+            # check if input is in lowercase
+            if INDEX_A <= letter_to_index(input_letter) <= INDEX_Z:
+                # check if letter was guessed before
+                if input_letter in wrong_guess_lst \
+                                            or input_letter in pattern_list:
+                    h.display_state(pattern, error_count,
+                                    wrong_guess_lst,
+                                    h.ALREADY_CHOSEN_MSG + input_letter)
+                elif input_letter in word_letters:
+                    pattern = update_word_pattern(word, pattern, input_letter)
+                    h.display_state(pattern, error_count, wrong_guess_lst,
+                                    h.DEFAULT_MSG)
+                else:
+                    wrong_guess_lst.append(input_letter)
+                    error_count += 1
+                    h.display_state(pattern, error_count, wrong_guess_lst,
+                                    h.DEFAULT_MSG)
             else:
-                wrong_guess_lst += 1
-        else:
-            h.display_state(pattern, error_count, wrong_guess_lst,
-                            h.NON_VALID_MSG)
-        if wrong_guess_lst > h.MAX_ERRORS:
-            game_over = True
+                h.display_state(pattern, error_count, wrong_guess_lst,
+                                h.NON_VALID_MSG)
+        if error_count == h.MAX_ERRORS:
             won = False
+            break
         elif pattern == word:
-            game_over = True
             won = True
-    if won == True:
-        h.display_state(pattern, error_count, wrong_guess_lst, h.WIN_MSG, True)
-    else:
-        h.display_state(pattern, error_count, wrong_guess_lst, h.LOSS_MSG, True)
+            break
+        # wait for next input
+        user_input = list(h.get_input())
 
+    if won == True:
+        # We've got a WINNER!
+        h.display_state(pattern, error_count, wrong_guess_lst,
+                        h.WIN_MSG, True)
+    else:
+        # Another man done gone, another maaaaan done gone, another man done...
+        h.display_state(pattern, error_count, wrong_guess_lst,
+                        h.LOSS_MSG + word, True)
+    user_input = list(h.get_input())
+    while user_input[0] != h.PLAY_AGAIN:
+        user_input = list(h.get_input())
+    if user_input[1] == True:
+        run_single_game(words_list)
 
 
 def main(): #todo
