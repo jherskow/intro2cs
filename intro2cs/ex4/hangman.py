@@ -4,7 +4,7 @@
 # EXERCISE : intro2cs ex4 2016-2017
 # DESCRIPTION: #todo
 ##########################################################################
-import hangman_helper
+import hangman_helper as h
 
 ASCII_LOWER_A = 97
 ALPHABET_LEN = 25
@@ -45,43 +45,47 @@ def run_single_game(words_list): #todo
     :return:
     """
     # Initialise game
-    word = hangman_helper.get_random_word(words_list)
+    word = h.get_random_word(words_list)
     pattern = ""
     word_letters = list(word)
+    error_count = 0
+    wrong_guess_lst = []
     for letter in word_letters:
         pattern += "_"
-    # hangman_helper.display_state(pattern, error_count, wrong_guess_lst,
-    #                             msg,)
-
-    # init pattern, leterrs, bad guesses
-    # (self, pattern, 0, wrong_guess_lst, msg,ask_play(false))
+    h.display_state(pattern, error_count, wrong_guess_lst,
+                                 h.DEFAULT_MSG)
 
     # The Game is ON!!!
     game_over = False
     while not game_over:
-        # check for win or lose conditions
+        h.display_state(pattern, error_count, wrong_guess_lst, h.DEFAULT_MSG)
+        pattern_list = list(pattern)
+        user_input = h.get_input()
+        input_index = letter_to_index(user_input)
+        if user_input.isalpha() and len(user_input) == 1 \
+                                and input_index <= ALPHABET_LEN:
+            if user_input in wrong_guess_lst or user_input in pattern_list:
+                h.display_state(pattern, error_count,
+                                wrong_guess_lst,
+                                h.ALREADY_CHOSEN_MSG + user_input)
+            elif user_input in word_letters:
+                update_word_pattern(word, pattern, user_input)
+            else:
+                wrong_guess_lst += 1
+        else:
+            h.display_state(pattern, error_count, wrong_guess_lst,
+                            h.NON_VALID_MSG)
+        if wrong_guess_lst > h.MAX_ERRORS:
+            game_over = True
+            won = False
+        elif pattern == word:
+            game_over = True
+            won = True
+    if won == True:
+        h.display_state(pattern, error_count, wrong_guess_lst, h.WIN_MSG, True)
+    else:
+        h.display_state(pattern, error_count, wrong_guess_lst, h.LOSS_MSG, True)
 
-        """""
-        display state (helper)
-        input = get_input()
-        if not valid
-            NON_VALID_MSG
-        if ASCII_LOWER_A <= letter_to_index(input) <= ALPHABET_LEN
-            if already chose
-                ALREADY_CHOSE_MSG
-            else if in word_list
-                update_word_pattern(word, pattern, letter)
-                DEFAULT_MSG
-            else
-                update bad guess
-                DEFAULT_MSG
-
-
-    display_state()
-    LOSS_MSG or WIN_MSG
-    (add the word itself)
-    ask_play=TRUE
-        """
 
 
 def main(): #todo
@@ -89,11 +93,11 @@ def main(): #todo
 
     :return:
     """
-    hangman_helper.load_words()
+    words_list = h.load_words()
+    run_single_game(words_list)
 
-    if __name__ == "__main__":
-        hangman_helper.start_gui_and_call_main(main)
-        hangman_helper.close_gui()
 
-    #ask play again #todo
+if __name__ == "__main__":
+    h.start_gui_and_call_main(main)
+    h.close_gui()
 
