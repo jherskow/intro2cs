@@ -16,9 +16,60 @@ def letter_to_index(letter):
     return ord(letter) - ASCII_LOWER_A
 
 
-def index_to_index(number):
+def index_to_letter(number):
     """ returns lowercase letter of 0-indexed i """
     return chr(number + ASCII_LOWER_A)
+
+
+def filter_words_list(words, pattern, wrong_guess_lst):
+    """
+
+    :param words:
+    :param pattern:
+    :param wrong_guess_lst:
+    :return:
+    """
+    filtered_list = []
+    pattern_list = list(pattern)
+    for word in words:
+        match = True
+        word_letters = list(word)
+        if len(word_letters) == len (pattern):
+            for (i, letter) in enumerate(pattern_list):
+                if word_letters[i] in wrong_guess_lst:
+                    break
+                if word_letters[i] == pattern_list[i]:
+                    for letter in word_letters:
+                        if letter == word_letters[i] \
+                                and letter != pattern_list[i]:
+                            match = False
+                            break
+                if match == False:
+                    break
+        filtered_list.append(word)
+
+
+def choose_letter(words, pattern):
+    """
+
+    :param words:
+    :param pattern:
+    :return:
+    """
+    histogram = []
+    for i in range(INDEX_A, INDEX_Z):
+        histogram[i] = [0]
+    for word in words:
+        word_letters = list(word)
+        for i in range(INDEX_A, INDEX_Z):
+            for letter in word_letters:
+                if letter_to_index(letter) == i:
+                    histogram[i] +=1
+    max_letter = max(histogram)
+    for i in range(INDEX_A, INDEX_Z):
+        if histogram[i] == max_letter:
+            return index_to_letter(i)
+    return None
 
 
 def update_word_pattern(word, pattern, letter): #todo docstring
@@ -64,6 +115,12 @@ def run_single_game(words_list):  #todo
         h.display_state(pattern, error_count, wrong_guess_lst, h.DEFAULT_MSG)
         # refresh the list of letters currently in the pattern
         pattern_list = list(pattern)
+        if user_input[0] == h.HINT:
+            filtered_list = filter_words_list(words_list, pattern,
+                                              wrong_guess_lst)
+            hint = choose_letter(filtered_list, pattern)
+            h.display_state(pattern, error_count, wrong_guess_lst,
+                            h.HINT_MSG + hint)
         if user_input[0] == h.LETTER and len(user_input[1]) == 1 :
             input_letter = user_input[1]
             # check if input is in lowercase
@@ -74,15 +131,18 @@ def run_single_game(words_list):  #todo
                     h.display_state(pattern, error_count,
                                     wrong_guess_lst,
                                     h.ALREADY_CHOSEN_MSG + input_letter)
+                # if correct guess of letter in word
                 elif input_letter in word_letters:
                     pattern = update_word_pattern(word, pattern, input_letter)
                     h.display_state(pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
+                # wrong guess
                 else:
                     wrong_guess_lst.append(input_letter)
                     error_count += 1
                     h.display_state(pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
+            # human error
             else:
                 h.display_state(pattern, error_count, wrong_guess_lst,
                                 h.NON_VALID_MSG)
@@ -123,42 +183,4 @@ def main(): #todo
 if __name__ == "__main__":
     h.start_gui_and_call_main(main)
     h.close_gui()
-
-def filter_words_list(words, pattern, wrong_guess_lst):
-    filtered_list = []
-    pattern_list = list(pattern)
-    for word in words:
-        word_letters = list(word)
-        if len(word_letters) == len (pattern):
-            for (i, letter) in enumerate(pattern_list):
-                if word_letters[i] in wrong_guess_lst:
-                    break
-                if word_letters[i] == pattern_list[i]:
-                    for letter in word_letters:
-                        if letter == word_letters[i] \
-                                and letter != pattern_list[i]:
-                            match = False
-                            break
-                if match == False:
-                    break
-        filtered_list.append(word)
-
-
-def choose_letter(words, pattern):
-    histogram = []
-    for i in range(INDEX_A, INDEX_Z):
-        histogram[i] = [0]
-    for word in words:
-        word_letters = list(word)
-        for i in range(INDEX_A, INDEX_Z):
-            for letter in word_letters:
-                if letter_to_index(letter) == i:
-                    histogram[i] +=1
-    max_letter = max(histogram)
-    for i in range(INDEX_A, INDEX_Z):
-        if histogram[i] == max_letter:
-            return histogram[i]
-    return None
-
-
 
