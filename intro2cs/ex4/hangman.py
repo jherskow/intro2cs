@@ -31,22 +31,24 @@ def filter_words_list(words, pattern, wrong_guess_lst):
     """
     filtered_list = []
     pattern_list = list(pattern)
-    for word in words:
+    for word in words:         #todo needs work!!!
         match = True
         word_letters = list(word)
         if len(word_letters) == len (pattern):
             for (i, letter) in enumerate(pattern_list):
                 if word_letters[i] in wrong_guess_lst:
+                    match == False
                     break
                 if word_letters[i] == pattern_list[i]:
                     for letter in word_letters:
                         if letter == word_letters[i] \
-                                and letter != pattern_list[i]:
+                                and letter in pattern_list[i]:
                             match = False
                             break
                 if match == False:
                     break
         filtered_list.append(word)
+    return filtered_list
 
 
 def choose_letter(words, pattern):
@@ -58,7 +60,7 @@ def choose_letter(words, pattern):
     """
     histogram = []
     for i in range(INDEX_A, INDEX_Z):
-        histogram[i] = [0]
+        histogram.append(0)
     for word in words:
         word_letters = list(word)
         for i in range(INDEX_A, INDEX_Z):
@@ -115,12 +117,14 @@ def run_single_game(words_list):  #todo
         h.display_state(pattern, error_count, wrong_guess_lst, h.DEFAULT_MSG)
         # refresh the list of letters currently in the pattern
         pattern_list = list(pattern)
+        # player wants a hint
         if user_input[0] == h.HINT:
             filtered_list = filter_words_list(words_list, pattern,
                                               wrong_guess_lst)
             hint = choose_letter(filtered_list, pattern)
             h.display_state(pattern, error_count, wrong_guess_lst,
                             h.HINT_MSG + hint)
+        # player hazards a guess
         if user_input[0] == h.LETTER and len(user_input[1]) == 1 :
             input_letter = user_input[1]
             # check if input is in lowercase
