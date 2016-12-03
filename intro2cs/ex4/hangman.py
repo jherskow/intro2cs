@@ -60,7 +60,6 @@ def run_single_game(words_list):  #todo
     user_input = list(h.get_input())
 
     # The Game is ON!!!
-    game_over = False
     while True:
         h.display_state(pattern, error_count, wrong_guess_lst, h.DEFAULT_MSG)
         # refresh the list of letters currently in the pattern
@@ -87,6 +86,7 @@ def run_single_game(words_list):  #todo
             else:
                 h.display_state(pattern, error_count, wrong_guess_lst,
                                 h.NON_VALID_MSG)
+        # check for win\loss conditions
         if error_count == h.MAX_ERRORS:
             won = False
             break
@@ -123,4 +123,42 @@ def main(): #todo
 if __name__ == "__main__":
     h.start_gui_and_call_main(main)
     h.close_gui()
+
+def filter_words_list(words, pattern, wrong_guess_lst):
+    filtered_list = []
+    pattern_list = list(pattern)
+    for word in words:
+        word_letters = list(word)
+        if len(word_letters) == len (pattern):
+            for (i, letter) in enumerate(pattern_list):
+                if word_letters[i] in wrong_guess_lst:
+                    break
+                if word_letters[i] == pattern_list[i]:
+                    for letter in word_letters:
+                        if letter == word_letters[i] \
+                                and letter != pattern_list[i]:
+                            match = False
+                            break
+                if match == False:
+                    break
+        filtered_list.append(word)
+
+
+def choose_letter(words, pattern):
+    histogram = []
+    for i in range(INDEX_A, INDEX_Z):
+        histogram[i] = [0]
+    for word in words:
+        word_letters = list(word)
+        for i in range(INDEX_A, INDEX_Z):
+            for letter in word_letters:
+                if letter_to_index(letter) == i:
+                    histogram[i] +=1
+    max_letter = max(histogram)
+    for i in range(INDEX_A, INDEX_Z):
+        if histogram[i] == max_letter:
+            return histogram[i]
+    return None
+
+
 
