@@ -25,15 +25,16 @@ def index_to_letter(number):
 
 def filter_words_list(words, pattern, wrong_guess_lst):
     """
-
-    :param words:
-    :param pattern:
-    :param wrong_guess_lst:
-    :return:
+    This takes a list of words, and returns a the sub-list of words in the
+    list that are:
+    The same length as pattern.
+    Include no letters from wrong_guess_list.
+    If word shares a letter with pattern, it must share all of that letter
+    in the same spaces.
     """
     filtered_list = []
     # create list of pattern
-    for word in words:       # todo not filtering words with wrong guess!!
+    for word in words:
         # set default flag
         match = True
         # create list of letters in word
@@ -54,13 +55,11 @@ def filter_words_list(words, pattern, wrong_guess_lst):
 
 def choose_letter(words, pattern):
     """
-
-    :param words:
-    :param pattern:
-    :return:
+    This function returns the most frequent letter from a list of words,
+    which is not in the pattern.
     """
     histogram = {}
-    for index in range (INDEX_A, ALPHABET_LENGTH):
+    for index in range(INDEX_A, ALPHABET_LENGTH):
         histogram[index_to_letter(index)] = 0
     for word in words:
             for letter in word:
@@ -75,13 +74,10 @@ def choose_letter(words, pattern):
     return max_letter[1]
 
 
-def update_word_pattern(word, pattern, letter): #todo docstring
+def update_word_pattern(word, pattern, letter):
     """
-    This function
-    :param word:
-    :param pattern:
-    :param letter:
-    :return:
+    This function takes a word, a hangman pattern, and a letter
+    and adds those letters to the pater if and only if they exist in word.
     """
     pattern_list = list(pattern)
     for (i, space) in enumerate(pattern_list):
@@ -95,9 +91,7 @@ def update_word_pattern(word, pattern, letter): #todo docstring
 
 def run_single_game(words_list):  #todo
     """
-
-    :param words_list:
-    :return:
+    This function runs the game, choosing a word from words_list
     """
     # Initialise game
     word = h.get_random_word(words_list)
@@ -120,7 +114,7 @@ def run_single_game(words_list):  #todo
                                  pattern, wrong_guess_lst), pattern)
             h.display_state(pattern, error_count, wrong_guess_lst,
                             h.HINT_MSG + hint)
-        # player hazards a guess # todo consider making "guess" function
+        # player hazards a guess
         if user_input[0] == h.LETTER and len(user_input[1]) == 1 :
             input_letter = user_input[1]
             # check if input is in lowercase
@@ -173,7 +167,7 @@ def run_single_game(words_list):  #todo
 
 def main():
     """
-    :return:
+    Loads words, and runs game
     """
     words_list = h.load_words()
     run_single_game(words_list)
