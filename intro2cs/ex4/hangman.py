@@ -107,7 +107,8 @@ def run_single_game(words_list):  #todo
 
     # The Game is ON!!!
     while True:
-        h.display_state(pattern, error_count, wrong_guess_lst, h.DEFAULT_MSG)
+        h.display_state(pattern, error_count, wrong_guess_lst,
+                        h.DEFAULT_MSG)
         # player wants a hint
         if user_input[0] == h.HINT:
             hint = choose_letter(filter_words_list(words_list,
@@ -127,7 +128,8 @@ def run_single_game(words_list):  #todo
                                     h.ALREADY_CHOSEN_MSG + input_letter)
                 # if correct guess of letter in word
                 elif input_letter in word:
-                    pattern = update_word_pattern(word, pattern, input_letter)
+                    pattern = update_word_pattern(word, pattern,
+                                                  input_letter)
                     h.display_state(pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
                 # wrong guess
@@ -159,6 +161,7 @@ def run_single_game(words_list):  #todo
         h.display_state(pattern, error_count, wrong_guess_lst,
                         h.LOSS_MSG + word, True)
     user_input = list(h.get_input())
+    # loop until the user makes up their damn mind
     while user_input[0] != h.PLAY_AGAIN:
         user_input = list(h.get_input())
     if user_input[1] == True:
@@ -177,5 +180,4 @@ if __name__ == "__main__":
     h.start_gui_and_call_main(main)
     h.close_gui()
 
-# todo comprehensive commenting, docstrings, and description in header
-# todo remove all list-making of strings!!!
+
