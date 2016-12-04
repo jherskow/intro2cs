@@ -3,7 +3,7 @@ jherskow
 Joshua Herskowitz
 
 ====================================
-= README for ex4:      -----       =
+= README for ex4:    Hangman       =
 ====================================
 
 ==============================
@@ -20,3 +20,5 @@ Joshua Herskowitz
 =  Colleagues and Resources  =
 ==============================
 https://docs.python.org/3/library/functions.html#ord
+http://stackoverflow.com/questions/268272/getting-key-with-maximum-value-in-dictionary
+https://www.tutorialspoint.com/python/python_dictionary.htm

@@ -9,6 +9,7 @@ import hangman_helper as h
 ASCII_LOWER_A = 97
 INDEX_A = 0
 INDEX_Z = 25
+ALPHABET_LENGTH = 26
 
 
 def letter_to_index(letter):
@@ -30,23 +31,26 @@ def filter_words_list(words, pattern, wrong_guess_lst):
     :return:
     """
     filtered_list = []
-    pattern_list = list(pattern)
-    for word in words:         #todo needs work!!!
+    # create list of pattern
+    for word in words:       # todo not filtering words with wrong guess!!
+        # set default flag
         match = True
-        word_letters = list(word)
-        if len(word_letters) == len (pattern):
-            for (i, letter) in enumerate(pattern_list):
-                if word_letters[i] in wrong_guess_lst:
-                    match == False
+        # create list of letters in word
+        if len(word) == len(pattern):
+            for (i, letter) in enumerate(pattern):
+                if word[i] in wrong_guess_lst:
+                    match = False
                     break
-                if word_letters[i] == pattern_list[i]:
-                    for letter in word_letters:
-                        if letter == word_letters[i] \
-                                and letter in pattern_list[i]:
+                if word[i] == pattern[i]:
+                    # ensure letter exists in all spaces
+                    for letter in word:
+                        if letter == word[i] \
+                                and letter in pattern[i]:
+                            # invalidate and skip to next word
                             match = False
                             break
-                if match == False:
-                    break
+        if not match:
+            break
         filtered_list.append(word)
     return filtered_list
 
@@ -58,20 +62,20 @@ def choose_letter(words, pattern):
     :param pattern:
     :return:
     """
-    histogram = []
-    for i in range(INDEX_A, INDEX_Z):
-        histogram.append(0)
+    histogram = {}
+    for index in range (INDEX_A, ALPHABET_LENGTH):
+        histogram[index_to_letter(index)] = 0
     for word in words:
-        word_letters = list(word)
-        for i in range(INDEX_A, INDEX_Z):
-            for letter in word_letters:
-                if letter_to_index(letter) == i:
-                    histogram[i] +=1
-    max_letter = max(histogram)
-    for i in range(INDEX_A, INDEX_Z):
-        if histogram[i] == max_letter:
-            return index_to_letter(i)
-    return None
+            for letter in word:
+                    histogram[letter] += 1
+    max_letter = [0,""]
+    for key in histogram:
+        if key in pattern:
+            # eliminate this letter as a suggestion
+            histogram[key] = 0
+        if histogram[key] > max_letter[0]:
+            max_letter = [histogram[key], key]
+    return max_letter[1]
 
 
 def update_word_pattern(word, pattern, letter): #todo docstring
@@ -119,12 +123,11 @@ def run_single_game(words_list):  #todo
         pattern_list = list(pattern)
         # player wants a hint
         if user_input[0] == h.HINT:
-            filtered_list = filter_words_list(words_list, pattern,
-                                              wrong_guess_lst)
-            hint = choose_letter(filtered_list, pattern)
+            hint = choose_letter(filter_words_list(words_list,
+                                 pattern, wrong_guess_lst), pattern)
             h.display_state(pattern, error_count, wrong_guess_lst,
                             h.HINT_MSG + hint)
-        # player hazards a guess
+        # player hazards a guess # todo consider making "guess" function
         if user_input[0] == h.LETTER and len(user_input[1]) == 1 :
             input_letter = user_input[1]
             # check if input is in lowercase
@@ -175,7 +178,7 @@ def run_single_game(words_list):  #todo
         run_single_game(words_list)
 
 
-def main(): #todo
+def main():
     """
 
     :return:
@@ -188,3 +191,6 @@ if __name__ == "__main__":
     h.start_gui_and_call_main(main)
     h.close_gui()
 
+# todo comprehensive commenting, docstrings, and description in header
+# todo fix hint issue
+# todo remove all list-making of strings!!!
