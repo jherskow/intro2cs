@@ -10,6 +10,7 @@ ASCII_LOWER_A = 97
 INDEX_A = 0
 INDEX_Z = 25
 ALPHABET_LENGTH = 26
+ZERO_INDEX_DIFF = 1
 
 
 def letter_to_index(letter):
@@ -41,17 +42,13 @@ def filter_words_list(words, pattern, wrong_guess_lst):
                 if word[i] in wrong_guess_lst:
                     match = False
                     break
-                if word[i] == pattern[i]:
-                    # ensure letter exists in all spaces
-                    for letter in word:
-                        if letter == word[i] \
-                                and letter in pattern[i]:
-                            # invalidate and skip to next word
-                            match = False
-                            break
-        if not match:
-            break
-        filtered_list.append(word)
+                # ensure letter exists in all spaces
+                if pattern[i] in word and pattern[i] != word[i]:
+                    match = False
+                    break
+                if match and i == len(word) - ZERO_INDEX_DIFF:
+                    filtered_list.append(word)
+                    break
     return filtered_list
 
 
@@ -86,10 +83,9 @@ def update_word_pattern(word, pattern, letter): #todo docstring
     :param letter:
     :return:
     """
-    word_list = list(word)
     pattern_list = list(pattern)
     for (i, space) in enumerate(pattern_list):
-        if pattern_list[i] == "_" and word_list[i] == letter:
+        if pattern_list[i] == "_" and word[i] == letter:
             pattern_list[i] = letter
     new_pattern = ""
     for (i, space) in enumerate(pattern_list):
@@ -106,10 +102,9 @@ def run_single_game(words_list):  #todo
     # Initialise game
     word = h.get_random_word(words_list)
     pattern = ""
-    word_letters = list(word)
     error_count = 0
     wrong_guess_lst = []
-    for letter in word_letters:
+    for letter in word:
         pattern += "_"
     h.display_state(pattern, error_count, wrong_guess_lst,
                     h.DEFAULT_MSG)
@@ -119,8 +114,6 @@ def run_single_game(words_list):  #todo
     # The Game is ON!!!
     while True:
         h.display_state(pattern, error_count, wrong_guess_lst, h.DEFAULT_MSG)
-        # refresh the list of letters currently in the pattern
-        pattern_list = list(pattern)
         # player wants a hint
         if user_input[0] == h.HINT:
             hint = choose_letter(filter_words_list(words_list,
@@ -134,12 +127,12 @@ def run_single_game(words_list):  #todo
             if INDEX_A <= letter_to_index(input_letter) <= INDEX_Z:
                 # check if letter was guessed before
                 if input_letter in wrong_guess_lst \
-                                            or input_letter in pattern_list:
+                                            or input_letter in pattern:
                     h.display_state(pattern, error_count,
                                     wrong_guess_lst,
                                     h.ALREADY_CHOSEN_MSG + input_letter)
                 # if correct guess of letter in word
-                elif input_letter in word_letters:
+                elif input_letter in word:
                     pattern = update_word_pattern(word, pattern, input_letter)
                     h.display_state(pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
@@ -168,7 +161,7 @@ def run_single_game(words_list):  #todo
         h.display_state(pattern, error_count, wrong_guess_lst,
                         h.WIN_MSG, True)
     else:
-        # Another man done gone, another maaaaan done gone, another man done...
+        # Pa! They done gone and haaaaanged that man!!
         h.display_state(pattern, error_count, wrong_guess_lst,
                         h.LOSS_MSG + word, True)
     user_input = list(h.get_input())
@@ -180,7 +173,6 @@ def run_single_game(words_list):  #todo
 
 def main():
     """
-
     :return:
     """
     words_list = h.load_words()
@@ -192,5 +184,4 @@ if __name__ == "__main__":
     h.close_gui()
 
 # todo comprehensive commenting, docstrings, and description in header
-# todo fix hint issue
 # todo remove all list-making of strings!!!
