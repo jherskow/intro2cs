@@ -69,6 +69,7 @@ def choose_letter(words, pattern):
     for word in words:
             for letter in word:
                     histogram[letter] += 1
+    # create empty list to store the letter and its occurrence number
     max_letter = [0,""]
     for key in histogram:
         if key in pattern:
@@ -103,6 +104,7 @@ def run_single_game(words_list):
     pattern = ""
     error_count = 0
     wrong_guess_lst = []
+    won = False
     for letter in word:
         pattern += "_"
     h.display_state(pattern, error_count, wrong_guess_lst,
@@ -133,6 +135,9 @@ def run_single_game(words_list):
                 elif input_letter in word:
                     pattern = update_word_pattern(word, pattern,
                                                   input_letter)
+                    if pattern == word:
+                        won = True
+                        break
                     h.display_state(pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
                 # wrong guess
@@ -147,15 +152,13 @@ def run_single_game(words_list):
                                 h.NON_VALID_MSG)
         # check for win\loss conditions
         if error_count == h.MAX_ERRORS:
-            won = False
             break
-        elif pattern == word:
-            won = True
+        elif won is True:
             break
         # wait for next input
         user_input = list(h.get_input())
 
-    if won == True:
+    if won is True:
         # We've got a WINNER!
         h.display_state(pattern, error_count, wrong_guess_lst,
                         h.WIN_MSG, True)
@@ -164,10 +167,11 @@ def run_single_game(words_list):
         h.display_state(pattern, error_count, wrong_guess_lst,
                         h.LOSS_MSG + word, True)
     user_input = list(h.get_input())
-    # loop until the user makes up their damn mind
+    # loop until the user makes up their darn mind
     while user_input[0] != h.PLAY_AGAIN:
         user_input = list(h.get_input())
-    if user_input[1] == True:
+    # run new game if requested, otherwise end.
+    if user_input[1] is True:
         run_single_game(words_list)
 
 
