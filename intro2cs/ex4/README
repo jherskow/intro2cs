@@ -9,53 +9,40 @@ Joshua Herskowitz
 ==============================
 =        Description:        =
 ==============================
-##########################################################################
-# FILE : hangman.py
-# WRITER : Joshua Herskowitz , jherskow , 321658379
-# EXERCISE : intro2cs ex4 2016-2017
-# DESCRIPTION: #todo
-##########################################################################
-import hangman_helper as h
+#todo
 
-ASCII_LOWER_A = 97
-INDEX_A = 0
-INDEX_Z = 25
-ALPHABET_LENGTH = 26
-ZERO_INDEX_DIFF = 1
+=========Functions============
 
+# letter_to_index
+    Exactly what it says on the tin
 
-letter_to_index
-    what it says on the tin
+# index_to_letter
+    Exactly what it says on the tin
 
-index_to_letter
-    what it says on the tin
-
-filter_words_list
-    This takes a list of words, and returns a the sub-list of words in the
-    list that are:
+# filter_words_list
+    Returns a the sub-list of words given list that are:
     The same length as pattern.
     Include no letters from wrong_guess_list.
     If word shares a letter with pattern, it must share all of that letter
     in the same spaces.
 
-choose_letter
-    This function returns the most frequent letter from a list of words,
+# choose_letter
+    Returns the most frequent letter from a list of words,
     which is not in the pattern.
 
 
-update_word_pattern
-    This function takes a word, a hangman pattern, and a letter
+# update_word_pattern
+    Takes a word, a hangman pattern, and a letter
     and adds those letters to the pattern if and only if they exist in word.
 
 
-run_single_game
-    This function runs the game, with any word from the given words_list
+# run_single_game
+    Runs the game, with any word from the given list
 
-
-
-main():
+# main():
     Loads words, and runs game
 
+==============================
 
 ==============================
 =      Special Comments      =
@@ -68,3 +55,10 @@ main():
 https://docs.python.org/3/library/functions.html#ord
 http://stackoverflow.com/questions/268272/getting-key-with-maximum-value-in-dictionary
 https://www.tutorialspoint.com/python/python_dictionary.htm
+
+ __________   ___  _  _
+|   ____\  \ /  / | || |
+|  |__   \  V  /  | || |_
+|   __|   >   <   |__   _|
+|  |____ /  .  \     | |
+|_______/__/ \__\    |_|
