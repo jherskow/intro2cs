@@ -2,7 +2,12 @@
 # FILE : hangman.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex4 2016-2017
-# DESCRIPTION: #todo
+# DESCRIPTION:
+# A program designed to evaluate how well the humans can spell when human
+# lives, umm... , hang.... in the balance.
+# (All human lives are of course simulated, but in order to preserve the
+# authenticity of the result, this information is never explicitly
+# disclosed to the user.
 ##########################################################################
 import hangman_helper as h
 

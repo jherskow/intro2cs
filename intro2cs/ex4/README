@@ -9,7 +9,9 @@ Joshua Herskowitz
 ==============================
 =        Description:        =
 ==============================
-#todo
+A Spell checking game, with a logically correct hint functionality
+whose lack of efficacy is mostly the fault of the english
+language.
 
 =========Functions============
 
@@ -23,8 +25,8 @@ Joshua Herskowitz
     Returns a the sub-list of words given list that are:
     The same length as pattern.
     Include no letters from wrong_guess_list.
-    If word shares a letter with pattern, it must share all of that letter
-    in the same spaces.
+    If word shares a letter with pattern,
+    it must share all of that letter in the same spaces.
 
 # choose_letter
     Returns the most frequent letter from a list of words,
@@ -33,7 +35,7 @@ Joshua Herskowitz
 
 # update_word_pattern
     Takes a word, a hangman pattern, and a letter
-    and adds those letters to the pattern if and only if they exist in word.
+    and adds those letters to the pattern ehre they exist in word.
 
 
 # run_single_game
@@ -43,8 +45,6 @@ Joshua Herskowitz
     Loads words, and runs game
 
 ==============================
-
-==============================
 =      Special Comments      =
 ==============================
 
@@ -52,13 +52,8 @@ Joshua Herskowitz
 ==============================
 =  Colleagues and Resources  =
 ==============================
+https://www.youtube.com/watch?v=oHg5SJYRHA0
 https://docs.python.org/3/library/functions.html#ord
-http://stackoverflow.com/questions/268272/getting-key-with-maximum-value-in-dictionary
+http://stackoverflow.com/questions/268272
+/getting-key-with-maximum-value-in-dictionary
 https://www.tutorialspoint.com/python/python_dictionary.htm
-
- __________   ___  _  _
-|   ____\  \ /  / | || |
-|  |__   \  V  /  | || |_
-|   __|   >   <   |__   _|
-|  |____ /  .  \     | |
-|_______/__/ \__\    |_|
