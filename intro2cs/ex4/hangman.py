@@ -43,8 +43,13 @@ def filter_words_list(words, pattern, wrong_guess_lst):
                 if word[i] in wrong_guess_lst:
                     match = False
                     break
-                # ensure letter exists in all spaces
+                # ensure letter exists in word wherever it is in pattern
                 if pattern[i] in word and pattern[i] != word[i]:
+                    match = False
+                    break
+                # if true - ensure letter appears same number of times
+                elif pattern[i] != "_" and word.count(pattern[i]) \
+                        != pattern.count(pattern[i]):
                     match = False
                     break
                 if match and i == len(word) - ZERO_INDEX_DIFF:
@@ -89,9 +94,9 @@ def update_word_pattern(word, pattern, letter):
     return new_pattern
 
 
-def run_single_game(words_list):  #todo
+def run_single_game(words_list):
     """
-    This function runs the game, choosing a word from words_list
+    This function runs the game, with any word from the given words_list
     """
     # Initialise game
     word = h.get_random_word(words_list)
@@ -107,8 +112,6 @@ def run_single_game(words_list):  #todo
 
     # The Game is ON!!!
     while True:
-        h.display_state(pattern, error_count, wrong_guess_lst,
-                        h.DEFAULT_MSG)
         # player wants a hint
         if user_input[0] == h.HINT:
             hint = choose_letter(filter_words_list(words_list,
