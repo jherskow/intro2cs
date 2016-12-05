@@ -1,6 +1,6 @@
 ##########################################################################
 # FILE : hangman.py
-# WRITER : Josuha Herskowitz , jherskow , 321658379
+# WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex4 2016-2017
 # DESCRIPTION: #todo
 ##########################################################################
@@ -70,7 +70,7 @@ def choose_letter(words, pattern):
             for letter in word:
                     histogram[letter] += 1
     # create empty list to store the letter and its occurrence number
-    max_letter = [0,""]
+    max_letter = [0, ""]
     for key in histogram:
         if key in pattern:
             # eliminate this letter as a suggestion
@@ -105,6 +105,7 @@ def run_single_game(words_list):
     error_count = 0
     wrong_guess_lst = []
     won = False
+    game_over = False
     for letter in word:
         pattern += "_"
     h.display_state(pattern, error_count, wrong_guess_lst,
@@ -121,7 +122,7 @@ def run_single_game(words_list):
             h.display_state(pattern, error_count, wrong_guess_lst,
                             h.HINT_MSG + hint)
         # player hazards a guess
-        if user_input[0] == h.LETTER and len(user_input[1]) == 1 :
+        if user_input[0] == h.LETTER and len(user_input[1]) == 1:
             input_letter = user_input[1]
             # check if input is in lowercase
             if INDEX_A <= letter_to_index(input_letter) <= INDEX_Z:
@@ -137,6 +138,7 @@ def run_single_game(words_list):
                                                   input_letter)
                     if pattern == word:
                         won = True
+                        game_over = True
                         break
                     h.display_state(pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
@@ -144,16 +146,16 @@ def run_single_game(words_list):
                 else:
                     wrong_guess_lst.append(input_letter)
                     error_count += 1
+                    if error_count == h.MAX_ERRORS:
+                        game_over = True
+                        break
                     h.display_state(pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
             # human error
             else:
                 h.display_state(pattern, error_count, wrong_guess_lst,
                                 h.NON_VALID_MSG)
-        # check for win\loss conditions
-        if error_count == h.MAX_ERRORS:
-            break
-        elif won is True:
+        elif game_over is True:
             break
         # wait for next input
         user_input = list(h.get_input())
@@ -186,5 +188,3 @@ def main():
 if __name__ == "__main__":
     h.start_gui_and_call_main(main)
     h.close_gui()
-
-
