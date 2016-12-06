@@ -29,7 +29,7 @@ def index_to_letter(number):
 
 
 def display(data):
-    """Calls display_state with a dictionary, for readability"""
+    """Calls display_state by passing a dict, for readability"""
     h.display_state(data["pattern"], data["error_count"],
                     data["wrong_guess_lst"] , data["msg"],
                     data["ask_play"])
@@ -48,26 +48,20 @@ def filter_words_list(words, pattern, wrong_guess_lst):
     filtered_list = []
     # create list of pattern
     for word in words:
-        # set default flag
-        match = True
         # create list of letters in word
         if len(word) == len(pattern):
             for (i, letter) in enumerate(pattern):
                 if word[i] in wrong_guess_lst:
-                    match = False
                     break
                 # ensure letter exists in word wherever it is in pattern
                 if pattern[i] in word and pattern[i] != word[i]:
-                    match = False
                     break
                 # if true - ensure letter appears same number of times
                 elif pattern[i] != "_" and word.count(pattern[i]) \
                         != pattern.count(pattern[i]):
-                    match = False
                     break
-                if match and i == len(word) - ZERO_INDEX_DIFF:
+                if i == len(word) - ZERO_INDEX_DIFF:
                     filtered_list.append(word)
-                    break
     return filtered_list
 
 
@@ -113,7 +107,7 @@ def update_word_pattern(word, pattern, letter):
 def init_game(words_list):
     """Initialises all game variables into dictionary"""
     # Initialise game
-    data = {"word": h.get_random_word(words_list) }
+    data = {"word": h.get_random_word(words_list)}
     data["words_list"] = words_list
     data["pattern"] = ""
     data["word_letters"] = list(data["word"])
@@ -175,7 +169,7 @@ def guess(data):
             data["error_count"] += 1
             if data["error_count"] == h.MAX_ERRORS:
                 data["game_over"] = True
-    else: # invalid input
+    else:  # invalid input
         data["msg"] = h.NON_VALID_MSG
     return data
 
