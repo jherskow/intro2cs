@@ -119,7 +119,8 @@ def init_game(words_list):
     return data
 
 
-def guess(data):
+def guess(data): # todo fix this up, configure whole loop in function. replace display states with msg assignments
+    # todo fix all variable names, and create subfuctions where applicable
     """
 
     :param data:
