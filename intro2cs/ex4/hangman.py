@@ -111,7 +111,7 @@ def update_word_pattern(word, pattern, letter):
 
 
 def init_game(words_list):
-    """ DOES"""
+    """Initialises all game variables into dictionary"""
     # Initialise game
     data = {"word": h.get_random_word(words_list) }
     data["words_list"] = words_list
@@ -129,7 +129,7 @@ def init_game(words_list):
 
 
 def game_loop(data):
-    """ DOES"""
+    """repeats game process for every input until game is over"""
     while not data["game_over"]:
         display(data)
         data["msg"] = h.DEFAULT_MSG
@@ -147,7 +147,7 @@ def game_loop(data):
 
 
 def hint(data):
-    """ DOES"""
+    """provides a hint using the previous hint functions"""
     hint_list = filter_words_list(data["words_list"], data["pattern"],
                                   data["wrong_guess_lst"])
     suggestion = choose_letter(hint_list, data["pattern"])
@@ -156,7 +156,7 @@ def hint(data):
 
 
 def guess(data):
-    """ DOES"""
+    """checks and evaluates user's guess"""
     input_letter = data["user_input"][1]
     # check if input is in lowercase
     if INDEX_A <= letter_to_index(input_letter) <= INDEX_Z:
@@ -181,11 +181,7 @@ def guess(data):
 
 
 def endgame(data):
-    """
-
-    :param data:
-    :return:
-    """
+    """Displays game result and prompts for rematch"""
     data["ask_play"] = True
     if data["won"] is True:
         # We've got a WINNER!
@@ -200,9 +196,7 @@ def endgame(data):
 
 
 def run_single_game(words_list):
-    """
-    This function runs the game, with any word from the given words_list
-    """
+    """runs the game, with any word from the given words_list"""
     data = init_game(words_list)  # setup game
     data = game_loop(data)  # The Game is ON!!!
     endgame(data)  # endgame
@@ -217,12 +211,9 @@ def run_single_game(words_list):
 
 
 def main():
-    """
-    Loads words, and runs game
-    """
+    """Loads words from list, and runs game"""
     words_list = h.load_words()
     run_single_game(words_list)
-
 
 if __name__ == "__main__":
     h.start_gui_and_call_main(main)

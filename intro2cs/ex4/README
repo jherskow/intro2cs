@@ -32,11 +32,28 @@ language.
     Returns the most frequent letter from a list of words,
     which is not in the pattern.
 
-
 # update_word_pattern
     Takes a word, a hangman pattern, and a letter
     and adds those letters to the pattern ehre they exist in word.
+    
+# display
+    a helping function to simplify the calls to display state
 
+# init_game
+    Initialises all game variables into a dictionary
+    This allows for simple calls to the game loop subfunctions
+
+# game_loop
+    main loop of ongoing game
+
+# hint
+   sub-function to return hint
+
+# guess
+   sub-function to check guess
+
+# endgame
+    Displays game result and prompts for rematch
 
 # run_single_game
     Runs the game, with any word from the given list
@@ -47,7 +64,12 @@ language.
 ==============================
 =      Special Comments      =
 ==============================
+In init_game, i use a dictionary in order to increase the readability of the
+code, and reduce the length of the game functions and sub-functions.
+mosst function calls are then passed the dictionary instead of 5 parameters.
 
+I still feel as if this might be an unorthodox approach, i can imagine it
+is likely to affect memory use and runtime.
 
 ==============================
 =  Colleagues and Resources  =
