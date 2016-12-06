@@ -100,22 +100,32 @@ def update_word_pattern(word, pattern, letter):
     return new_pattern
 
 
+def init_game(words_list):
+    """
+
+    :param words_list:
+    :return:
+    """
+    # Initialise game
+    data = {"word":h.get_random_word(words_list) }
+    data["pattern"] = ""
+    data["word_letters"] = list(data["word"])
+    data["error_count"] = 0
+    data["wrong_guess_lst"] = []
+    for letter in data["word_letters"]:
+        data["pattern"] += "_"
+    h.display_state(data["pattern"], data["error_count"], ["wrong_guess_lst"],
+                    h.DEFAULT_MSG)
+    return data
+
+
 def run_single_game(words_list):
     """
     This function runs the game, with any word from the given words_list
     """
 
-    # Initialise game
-    word = h.get_random_word(words_list)
-    pattern = ""
-    error_count = 0
-    wrong_guess_lst = []
-    won = False
-    game_over = False
-    for letter in word:
-        pattern += "_"
-    h.display_state(pattern, error_count, wrong_guess_lst,
-                    h.DEFAULT_MSG)
+    data = init_game(words_list)
+
     # get first input
     user_input = list(h.get_input())
 
@@ -134,19 +144,25 @@ def run_single_game(words_list):
             if INDEX_A <= letter_to_index(input_letter) <= INDEX_Z:
                 # check if letter was guessed before
                 if input_letter in wrong_guess_lst \
-                                            or input_letter in pattern:
-                    h.display_state(pattern, error_count,
+                                            or input_letter in
+                                 pattern:
+                    h.display_state(
+                                 pattern, error_count,
                                     wrong_guess_lst,
                                     h.ALREADY_CHOSEN_MSG + input_letter)
                 # if correct guess of letter in word
                 elif input_letter in word:
-                    pattern = update_word_pattern(word, pattern,
+
+                                 pattern = update_word_pattern(word,
+                                 pattern,
                                                   input_letter)
-                    if pattern == word:
+                    if
+                                 pattern == word:
                         won = True
                         game_over = True
                         break
-                    h.display_state(pattern, error_count, wrong_guess_lst,
+                    h.display_state(
+                                 pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
                 # wrong guess
                 else:
@@ -155,11 +171,13 @@ def run_single_game(words_list):
                     if error_count == h.MAX_ERRORS:
                         game_over = True
                         break
-                    h.display_state(pattern, error_count, wrong_guess_lst,
+                    h.display_state(
+                                 pattern, error_count, wrong_guess_lst,
                                     h.DEFAULT_MSG)
             # human error
             else:
-                h.display_state(pattern, error_count, wrong_guess_lst,
+                h.display_state(
+                                 pattern, error_count, wrong_guess_lst,
                                 h.NON_VALID_MSG)
         elif game_over is True:
             break
@@ -168,11 +186,13 @@ def run_single_game(words_list):
 
     if won is True:
         # We've got a WINNER!
-        h.display_state(pattern, error_count, wrong_guess_lst,
+        h.display_state(
+                                 pattern, error_count, wrong_guess_lst,
                         h.WIN_MSG, True)
     else:
         # Pa! They done gone and haaaaanged that man!!
-        h.display_state(pattern, error_count, wrong_guess_lst,
+        h.display_state(
+                                 pattern, error_count, wrong_guess_lst,
                         h.LOSS_MSG + word, True)
     user_input = list(h.get_input())
     # loop until the user makes up their darn mind
