@@ -175,6 +175,8 @@ def guess(data):
             data["error_count"] += 1
             if data["error_count"] == h.MAX_ERRORS:
                 data["game_over"] = True
+    else: # invalid input
+        data["msg"] = h.NON_VALID_MSG
     return data
 
 
