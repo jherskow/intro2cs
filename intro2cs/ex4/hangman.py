@@ -17,6 +17,8 @@ INDEX_Z = 25
 ALPHABET_LENGTH = 26
 ZERO_INDEX_DIFF = 1
 
+# ======================= HELPER FUNCTIONS ================================
+
 
 def letter_to_index(letter):
     """ returns 0-indexed i of lowercase letter """
@@ -31,9 +33,11 @@ def index_to_letter(number):
 def display(data):
     """Calls display_state by passing a dict, for readability"""
     h.display_state(data["pattern"], data["error_count"],
-                    data["wrong_guess_lst"] , data["msg"],
+                    data["wrong_guess_lst"], data["msg"],
                     data["ask_play"])
     return None
+
+# ===================== GAME SUB-FUNCTIONS ================================
 
 
 def filter_words_list(words, pattern, wrong_guess_lst):
@@ -100,8 +104,6 @@ def update_word_pattern(word, pattern, letter):
     for (i, space) in enumerate(pattern_list):
         new_pattern += pattern_list[i]
     return new_pattern
-
-# ===================== GAME SUB-FUNCTIONS ================================
 
 
 def init_game(words_list):
@@ -181,7 +183,7 @@ def endgame(data):
         # We've got a WINNER!
         data["msg"] = h.WIN_MSG
     else:
-        # Pa! They done gone and haaaaanged that man!!
+        # String him up
         data["msg"] = h.LOSS_MSG + data["word"]
     display(data)
     return None
@@ -196,7 +198,7 @@ def run_single_game(words_list):
     endgame(data)  # endgame
     # Play again? - insert coin: 10...9...8...
     user_input = list(h.get_input())
-    # loop until the user makes up their damn mind
+    # loop until the user makes up their mind
     while user_input[0] != h.PLAY_AGAIN:
         user_input = list(h.get_input())
     # run new game if requested, otherwise end.
