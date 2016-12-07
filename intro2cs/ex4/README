@@ -5,6 +5,22 @@ Joshua Herskowitz
 ====================================
 = README for ex4:    Hangman       =
 ====================================
+==============================
+=      Question from ex4     =
+==============================
+In order to play the game in hebrew,
+setting aside issues of AASCII comparability,
+the main difference would be the indexing of the alphabet to 22,
+the number of letters in the hebrew alphabet.
+
+(right-to-left functionality would be the domain of the helper file)
+
+It would then be possible to play in hebrew provided we took
+22 english letters and mapped each to a hebrew letter
+
+(additional work would be necessary for comparability with hebrew
+end word letter forms ("sofi") , and the program would have to be modified
+so that guesses and hints would also see the sofi letters as equivalent)
 
 ==============================
 =        Description:        =
@@ -74,7 +90,6 @@ is likely to affect memory use and runtime.
 ==============================
 =  Colleagues and Resources  =
 ==============================
-https://www.youtube.com/watch?v=oHg5SJYRHA0
 https://docs.python.org/3/library/functions.html#ord
 http://stackoverflow.com/questions/268272
 /getting-key-with-maximum-value-in-dictionary
