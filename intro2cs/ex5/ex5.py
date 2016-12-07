@@ -11,7 +11,6 @@ def get_attribute(store_db, ItemCode, tag):
     """
     Returns the attribute (tag) 
     of an Item with code: Itemcode in the given store
-
     """
     pass
 
@@ -20,7 +19,6 @@ def string_item(item):
     """
     Textual representation of an item in a store.
     Returns a string in the format of '[ItemCode] (ItemName)'
-
     """
     pass
   
@@ -66,7 +64,6 @@ def create_basket_from_txt(basket_txt):
     Receives text representation of few items (and maybe some garbage 
       at the edges)
     Returns a basket- list of ItemCodes that were included in basket_txt
-
     """
     pass
 
@@ -79,7 +76,6 @@ def get_basket_prices(store_db, basket):
       that describes the prices of store items
     In case one of the items is not part of the store, 
       its price will be None.
-
     """
     pass
 
@@ -101,7 +97,6 @@ def basket_item_name(stores_db_list, ItemCode):
     Find the first store in the list that contains the item and return its
     string representation (as in string_item())
     If the item is not avaiable in any of the stores return only [ItemCode]
-
     """
     pass
 
@@ -109,7 +104,7 @@ def basket_item_name(stores_db_list, ItemCode):
 def save_basket(basket, filename):
     """ 
     Save the basket into a file
-    The basket reresentation in the file will be in the following format:
+    The basket representation in the file will be in the following format:
     [ItemCode1] 
     [ItemCode2] 
     ...
