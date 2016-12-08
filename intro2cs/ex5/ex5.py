@@ -48,14 +48,29 @@ def read_prices_file(filename):
     """
     Read a file of item prices into a dictionary.  The file is assumed to
     be in the standard XML format of "misrad haclcala".
-    Returns a tuple: store_id and a store_db, 
+    Returns a tuple: store_id and a store_db,
     where the first variable is the store name
-    and the second is a dictionary describing the store. 
+    and the second is a dictionary describing the store.
     The keys in this db will be ItemCodes of the different items and the
     values smaller  dictionaries mapping attribute names to their values.
     Important attributes include 'ItemCode', 'ItemName', and 'ItemPrice'
     """
-    pass
+    tree = ET.parse(filename)
+    root = tree.getroot()
+    store_name = EMPTY_STRING
+    store_db = {}
+    for child in root:
+        if child.tag == 'StoreId':
+            store_name = child.text
+    for item in root.find('Items').findall('Item'):
+        item_code = item.find('ItemCode').text
+        item_dic = {}
+        for child in item:
+            proprety_tag = child.tag
+            proprety_value = child.text
+            item_dic[proprety_tag] = proprety_value
+        store_db[item_code] = item_dic
+    return (store_name, store_db)
 
 
 def filter_store(store_db, filter_txt):  
@@ -145,3 +160,7 @@ def best_basket(list_of_price_list):
 
     """ 
     pass
+
+# ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++++
+x = read_prices_file('/cs/usr/jherskow/safe/intro2cs/ex5/Store_1.xml')
+print(string_store_items(x[1]))
