@@ -6,8 +6,11 @@
 # DESCRIPTION:
 ##########################################################################
 import xml.etree.ElementTree as ET
+import copy as c
 
 EMPTY_STRING = ""
+# We did NOT use a constant for empty dictionary because doing so
+# interacted unexpectedly with the xml library. Sorry.
 
 
 def get_attribute(store_db, item_code, tag):
@@ -82,7 +85,11 @@ def filter_store(store_db, filter_txt):
     store_db: a dictionary of dictionaries as created in read_prices_file.
     filter_txt: the filter text as given by the user.
     """
-    pass
+    filtered_store = {}
+    for item_code in store_db:
+        if filter_txt in store_db[item_code]['ItemName']:
+            filtered_store[item_code] = store_db[item_code]
+    return filtered_store
 
 
 def create_basket_from_txt(basket_txt): 
@@ -161,6 +168,7 @@ def best_basket(list_of_price_list):
     """ 
     pass
 
-# ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++++
+''' ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++
 x = read_prices_file('/cs/usr/jherskow/safe/intro2cs/ex5/Store_1.xml')
 print(string_store_items(x[1]))
+'''
