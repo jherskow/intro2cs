@@ -5,8 +5,7 @@
 # EXERCISE : intro2cs ex5 2016-2017
 # DESCRIPTION:
 ##########################################################################
-import xml.etree.ElementTree as ET
-import copy as c
+import xml.etree.ElementTree as et
 
 EMPTY_STRING = ""
 # We did NOT use a constant for empty dictionary because doing so
@@ -58,7 +57,7 @@ def read_prices_file(filename):
     values smaller  dictionaries mapping attribute names to their values.
     Important attributes include 'ItemCode', 'ItemName', and 'ItemPrice'
     """
-    tree = ET.parse(filename)
+    tree = et.parse(filename)
     root = tree.getroot()
     store_name = EMPTY_STRING
     store_db = {}
@@ -69,11 +68,11 @@ def read_prices_file(filename):
         item_code = item.find('ItemCode').text
         item_dic = {}
         for child in item:
-            proprety_tag = child.tag
-            proprety_value = child.text
-            item_dic[proprety_tag] = proprety_value
+            property_tag = child.tag
+            property_value = child.text
+            item_dic[property_tag] = property_value
         store_db[item_code] = item_dic
-    return (store_name, store_db)
+    return store_name, store_db
 
 
 def filter_store(store_db, filter_txt):  
@@ -123,7 +122,7 @@ def sum_basket(price_list):
     pass 
 
  
-def basket_item_name(stores_db_list, ItemCode): 
+def basket_item_name(stores_db_list, item_code):
     """ 
     stores_db_list is a list of stores (list of dictionaries of 
       dictionaries)
