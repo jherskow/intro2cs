@@ -1,18 +1,22 @@
 ##########################################################################
 # FILE : h
+# WRITER : Avraham Sagal, avisa, 302931613
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex5 2016-2017
 # DESCRIPTION:
 ##########################################################################
 import xml.etree.ElementTree as ET
 
+EMPTY_STRING = ""
 
-def get_attribute(store_db, ItemCode, tag):
+
+def get_attribute(store_db, item_code, tag):
     """
     Returns the attribute (tag) 
     of an Item with code: Itemcode in the given store
     """
-    pass
+    tag_value = store_db[item_code][tag]
+    return tag_value
 
 
 def string_item(item):
@@ -20,7 +24,9 @@ def string_item(item):
     Textual representation of an item in a store.
     Returns a string in the format of '[ItemCode] (ItemName)'
     """
-    pass
+    item_code = item["ItemCode"]
+    item_name = item["ItemName"]
+    return "[" + item_code + "]\t{" + item_name + "}"
   
 
 def string_store_items(store_db):
@@ -30,7 +36,12 @@ def string_store_items(store_db):
     string representation of item1
     string representation of item2
     """
-    pass
+    inventory = EMPTY_STRING
+    for item in store_db:
+        # since item is only the key in store_db, de need to specify
+        # in order to pass the entire dictionary of the item
+        inventory += string_item(store_db[item]) + "\n"
+    return inventory
 
 
 def read_prices_file(filename):
