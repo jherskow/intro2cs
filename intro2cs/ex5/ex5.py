@@ -1,11 +1,11 @@
 ##########################################################################
-# FILE : h
+# FILE : ex5.py
 # WRITER : Avraham Sagal, avisa, 302931613
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex5 2016-2017
 # DESCRIPTION:
 ##########################################################################
-import xml.etree.ElementTree as et
+import xml.etree.ElementTree as Et
 
 EMPTY_STRING = ""
 # We did NOT use a constant for empty dictionary because doing so
@@ -57,7 +57,7 @@ def read_prices_file(filename):
     values smaller  dictionaries mapping attribute names to their values.
     Important attributes include 'ItemCode', 'ItemName', and 'ItemPrice'
     """
-    tree = et.parse(filename)
+    tree = Et.parse(filename)
     root = tree.getroot()
     store_name = EMPTY_STRING
     store_db = {}
