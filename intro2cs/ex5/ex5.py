@@ -12,12 +12,12 @@ EMPTY_STRING = ""
 # interacted unexpectedly with the xml library. Sorry.
 
 
-def get_attribute(store_db, item_code, tag):
+def get_attribute(store_db, ItemCode, tag):
     """
     Returns the attribute (tag) 
     of an Item with code: Itemcode in the given store
     """
-    tag_value = store_db[item_code][tag]
+    tag_value = store_db[ItemCode][tag]
     return tag_value
 
 
@@ -91,16 +91,29 @@ def filter_store(store_db, filter_txt):
     return filtered_store
 
 
-def create_basket_from_txt(basket_txt): 
+def create_basket_from_txt(basket_txt):
     """
-    Receives text representation of few items (and maybe some garbage 
+    Receives text representation of few items (and maybe some garbage
       at the edges)
     Returns a basket- list of ItemCodes that were included in basket_txt
     """
-    pass
+    between_delimiters = False
+    basket = []
+    word = EMPTY_STRING
+    for letter in basket_txt:
+        if letter == "[":
+            between_delimiters = True
+        elif letter == "]":
+            if between_delimiters:
+                basket.append(word)
+                between_delimiters = False
+                word = EMPTY_STRING
+        elif between_delimiters:
+            word += letter
+    return basket
 
 
-def get_basket_prices(store_db, basket):
+def get_basket_prices(store_db, basket):  # todo WTF
     """
     Arguments: a store - dictionary of dictionaries and a basket - 
        a list of ItemCodes
@@ -109,7 +122,12 @@ def get_basket_prices(store_db, basket):
     In case one of the items is not part of the store, 
       its price will be None.
     """
-    pass
+    price_list = []
+    for i, item_code in enumerate(basket):
+        price = store_db[item_code]['ItemPrice']
+        price = float(price)
+        price_list.append(price)
+    return price_list
 
 
 def sum_basket(price_list):
@@ -122,7 +140,7 @@ def sum_basket(price_list):
     pass 
 
  
-def basket_item_name(stores_db_list, item_code):
+def basket_item_name(stores_db_list, ItemCode):
     """ 
     stores_db_list is a list of stores (list of dictionaries of 
       dictionaries)
@@ -170,4 +188,19 @@ def best_basket(list_of_price_list):
 ''' ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++
 x = read_prices_file('/cs/usr/jherskow/safe/intro2cs/ex5/Store_1.xml')
 print(string_store_items(x[1]))
+create_basket_from_txt(basket_txt):
+
+basket_txt = "[66196] {לירג ילסיב} [30794] {היוס הקשמ} [556"
+x= create_basket_from_txt(basket_txt)
+print(x)
+
+
+
+b = '907]	{תיתחפשמ הציפ}[66196]	{לירג ילסיב}[84316]	'
+c = '96]	{לירג ילסיב}[84316]	{רטיל 5.1 קובקב הלוק הקוק}[59907]	{תיתחפשמ הציפ}[13520]	{סקלפנרוק קילק}'
+
+print(create_basket_from_txt(b))
+print(create_basket_from_txt(c))
+
+
 '''
