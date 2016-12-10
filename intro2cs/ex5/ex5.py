@@ -113,13 +113,50 @@ def create_basket_from_txt(basket_txt):
     return basket
 
 
+def sum_basket(price_list):
+    """
+    Receives a list of prices
+    Returns a tuple - the sum of the list (when ignoring Nones)
+      and the number of missing items (Number of Nones)
+
+    """
+    """
+    iterate over price_list
+        if none
+            nun_counter ++ #add one to the nunnery
+        else
+            sum += the price
+    return sum, nun_counter
+    """
+    pass
+
+
+def basket_item_name(stores_db_list, ItemCode):
+    """
+    stores_db_list is a list of stores (list of dictionaries of
+      dictionaries)
+    Find the first store in the list that contains the item and return its
+    string representation (as in string_item())
+    If the item is not avaiable in any of the stores return only [ItemCode]
+    """
+    """
+    iterate over stores in list
+        look for item
+        if found
+            return string like prev function
+        else
+            return string itemcode
+    """
+    pass
+
+
 def get_basket_prices(store_db, basket):  # todo WTF
     """
-    Arguments: a store - dictionary of dictionaries and a basket - 
+    Arguments: a store - dictionary of dictionaries and a basket -
        a list of ItemCodes
-    Go over all the items in the basket and create a new list 
+    Go over all the items in the basket and create a new list
       that describes the prices of store items
-    In case one of the items is not part of the store, 
+    In case one of the items is not part of the store,
       its price will be None.
     """
     price_list = []
@@ -130,27 +167,6 @@ def get_basket_prices(store_db, basket):  # todo WTF
     return price_list
 
 
-def sum_basket(price_list):
-    """
-    Receives a list of prices
-    Returns a tuple - the sum of the list (when ignoring Nones) 
-      and the number of missing items (Number of Nones)
-
-    """
-    pass 
-
- 
-def basket_item_name(stores_db_list, ItemCode):
-    """ 
-    stores_db_list is a list of stores (list of dictionaries of 
-      dictionaries)
-    Find the first store in the list that contains the item and return its
-    string representation (as in string_item())
-    If the item is not avaiable in any of the stores return only [ItemCode]
-    """
-    pass
-
-
 def save_basket(basket, filename):
     """ 
     Save the basket into a file
@@ -159,6 +175,12 @@ def save_basket(basket, filename):
     [ItemCode2] 
     ...
     [ItemCodeN]
+    """
+    """
+    open file
+    for every string in list
+    print the string, and newline
+    close file
     """
     pass
 
@@ -172,6 +194,12 @@ def load_basket(filename):
     ...
     [ItemCodeN]
     """
+    """
+    open file
+    for every string in list
+    create basket from string (using function? use on whole file?)
+    close file
+    """
     pass
  
 
@@ -182,7 +210,10 @@ def best_basket(list_of_price_list):
     Returns the cheapest store (index of the cheapest list) given that a 
     missing item has a price of its maximal price in the other stores *1.25
 
-    """ 
+    """
+    """
+    What is this
+    """
     pass
 
 ''' ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++
