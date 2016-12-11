@@ -195,7 +195,22 @@ def load_basket(filename):
         file_string = file.read()
         basket = create_basket_from_txt(file_string)
     return basket
- 
+
+
+def nun_to_zero(list_of_price_list):
+    for i, store in enumerate(list_of_price_list):
+        for j, item in enumerate(list_of_price_list[i]):
+            if list_of_price_list[i][j] == None:
+                list_of_price_list[i][j] = 0
+    return list_of_price_list
+
+def price_compare_list(list_of_price_list):
+    list = EMPTY_LIST
+    for i, item in enumerate(list_of_price_list[0]):
+        list.append(EMPTY_LIST)
+        for j, store in enumerate(list_of_price_list[i]):
+            list[i].append(list_of_price_list[i][j])
+    return list
 
 def best_basket(list_of_price_list):
     """
@@ -205,32 +220,10 @@ def best_basket(list_of_price_list):
     missing item has a price of its maximal price in the other stores *1.25
 
     """
-    item_price_list = EMPTY_LIST
-    # Builds a list of lists, where each sub-list is a list of the
-    # i-th items prices in all stores, so that the max() method
-    # can then be used
-    for i, store in enumerate(list_of_price_list):
-        for j, price in enumerate(store):
-            if price is None:
-                price = max()
+    zeroed_list = nun_to_zero(list_of_price_list)
+    compare_list = price_compare_list(zeroed_list)
+    return compare_list
+# =====================================================================
 
-
-''' ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++
-x = read_prices_file('/cs/usr/jherskow/safe/intro2cs/ex5/Store_1.xml')
-print(string_store_items(x[1]))
-create_basket_from_txt(basket_txt):
-
-basket_txt = "[66196] {לירג ילסיב} [30794] {היוס הקשמ} [556"
-x= create_basket_from_txt(basket_txt)
-print(x)
-
-
-
-b = '907]	{תיתחפשמ הציפ}[66196]	{לירג ילסיב}[84316]	'
-c = '96]	{לירג ילסיב}[84316]	{רטיל 5.1 קובקב הלוק הקוק}[59907]	{תיתחפשמ הציפ}[13520]	{סקלפנרוק קילק}'
-
-print(create_basket_from_txt(b))
-print(create_basket_from_txt(c))
-
-
-'''
+x = [[1,4,7,None,13],[2,None,8,11,14],[3,None,9,12,15]]
+print(best_basket(x))
