@@ -62,13 +62,13 @@ def read_prices_file(filename):
     tree = Et.parse(filename)
     root = tree.getroot()
     store_name = EMPTY_STRING
-    store_db = {}
+    store_db = dict()
     for child in root:
         if child.tag == 'StoreId':
             store_name = child.text
     for item in root.find('Items').findall('Item'):
         item_code = item.find('ItemCode').text
-        item_dic = {}
+        item_dic = dict()
         for child in item:
             property_tag = child.tag
             property_value = child.text
@@ -86,7 +86,7 @@ def filter_store(store_db, filter_txt):
     store_db: a dictionary of dictionaries as created in read_prices_file.
     filter_txt: the filter text as given by the user.
     """
-    filtered_store = {}
+    filtered_store = dict()
     for item_code in store_db:
         if filter_txt in store_db[item_code]['ItemName']:
             filtered_store[item_code] = store_db[item_code]
@@ -205,10 +205,15 @@ def best_basket(list_of_price_list):
     missing item has a price of its maximal price in the other stores *1.25
 
     """
-    """
-    What is this bullshit
-    """
-    pass
+    item_price_list = EMPTY_LIST
+    # Builds a list of lists, where each sub-list is a list of the
+    # i-th items prices in all stores, so that the max() method
+    # can then be used
+    for i, store in enumerate(list_of_price_list):
+        for j, price in enumerate(store):
+            if price is None:
+                price = max()
+
 
 ''' ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++
 x = read_prices_file('/cs/usr/jherskow/safe/intro2cs/ex5/Store_1.xml')
