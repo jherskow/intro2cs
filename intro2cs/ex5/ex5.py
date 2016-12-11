@@ -8,6 +8,8 @@
 import xml.etree.ElementTree as Et
 
 EMPTY_STRING = ""
+EMPTY_LIST = []
+PENALTY_MODIFIER = 1.25
 # We did NOT use a constant for empty dictionary because doing so
 # interacted unexpectedly with the xml library. Sorry.
 
@@ -113,7 +115,7 @@ def create_basket_from_txt(basket_txt):
     return basket
 
 
-def get_basket_prices(store_db, basket):  # todo MISSING NONE FUNCTIONALITY! If palce exists do, else append none
+def get_basket_prices(store_db, basket):
     """
     Arguments: a store - dictionary of dictionaries and a basket -
        a list of ItemCodes
@@ -124,9 +126,12 @@ def get_basket_prices(store_db, basket):  # todo MISSING NONE FUNCTIONALITY! If 
     """
     price_list = []
     for i, item_code in enumerate(basket):
-        price = store_db[item_code]['ItemPrice']
-        price = float(price)
-        price_list.append(price)
+        if item_code in store_db:
+            price = store_db[item_code]['ItemPrice']
+            price = float(price)
+            price_list.append(price)
+        else:
+            price_list.append(None)
     return price_list
 
 
@@ -137,15 +142,14 @@ def sum_basket(price_list):
       and the number of missing items (Number of Nones)
 
     """
-    """
-    iterate over price_list
-        if none
-            nun_counter ++ #add one to the nunnery
-        else
-            sum += the price
+    nun_counter = 0
+    sum = 0
+    for price in price_list:
+        if price is None:
+            nun_counter += 1 # add one to the nunnery
+        else:
+            sum += price
     return sum, nun_counter
-    """
-    pass
 
 
 def basket_item_name(stores_db_list, ItemCode):
@@ -156,15 +160,10 @@ def basket_item_name(stores_db_list, ItemCode):
     string representation (as in string_item())
     If the item is not avaiable in any of the stores return only [ItemCode]
     """
-    """
-    iterate over stores in list
-        look for item
-        if found
-            return string like prev function
-        else
-            return string itemcode
-    """
-    pass
+    for i, store in enumerate(stores_db_list):
+        if ItemCode in stores_db_list[i]:
+            return string_item(stores_db_list[i][ItemCode])
+    return '[' + ItemCode + ']'
 
 
 def save_basket(basket, filename):
@@ -176,12 +175,10 @@ def save_basket(basket, filename):
     ...
     [ItemCodeN]
     """
-    """
-    open file
-    for every item code in basket
-    print the string from before, and newline
-    close file
-    """
+    with open(filename, 'w') as file:
+        for item_code in basket:
+            file.write('[' + item_code + ']\n')
+    file.close
     pass
 
 
@@ -194,13 +191,10 @@ def load_basket(filename):
     ...
     [ItemCodeN]
     """
-    """
-    open file
-    for every string in list
-    create basket from string (using function? use on whole file?)
-    close file
-    """
-    pass
+    with open(filename, 'r') as file:
+        file_string = file.read()
+        basket = create_basket_from_txt(file_string)
+    return basket
  
 
 def best_basket(list_of_price_list):
