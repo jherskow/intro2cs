@@ -113,6 +113,23 @@ def create_basket_from_txt(basket_txt):
     return basket
 
 
+def get_basket_prices(store_db, basket):  # todo WTF
+    """
+    Arguments: a store - dictionary of dictionaries and a basket -
+       a list of ItemCodes
+    Go over all the items in the basket and create a new list
+      that describes the prices of store items
+    In case one of the items is not part of the store,
+      its price will be None.
+    """
+    price_list = []
+    for i, item_code in enumerate(basket):
+        price = store_db[item_code]['ItemPrice']
+        price = float(price)
+        price_list.append(price)
+    return price_list
+
+
 def sum_basket(price_list):
     """
     Receives a list of prices
@@ -150,23 +167,6 @@ def basket_item_name(stores_db_list, ItemCode):
     pass
 
 
-def get_basket_prices(store_db, basket):  # todo WTF
-    """
-    Arguments: a store - dictionary of dictionaries and a basket -
-       a list of ItemCodes
-    Go over all the items in the basket and create a new list
-      that describes the prices of store items
-    In case one of the items is not part of the store,
-      its price will be None.
-    """
-    price_list = []
-    for i, item_code in enumerate(basket):
-        price = store_db[item_code]['ItemPrice']
-        price = float(price)
-        price_list.append(price)
-    return price_list
-
-
 def save_basket(basket, filename):
     """ 
     Save the basket into a file
@@ -178,8 +178,8 @@ def save_basket(basket, filename):
     """
     """
     open file
-    for every string in list
-    print the string, and newline
+    for every item code in basket
+    print the string from before, and newline
     close file
     """
     pass
@@ -212,7 +212,7 @@ def best_basket(list_of_price_list):
 
     """
     """
-    What is this
+    What is this bullshit
     """
     pass
 
