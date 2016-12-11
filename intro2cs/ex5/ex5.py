@@ -113,7 +113,7 @@ def create_basket_from_txt(basket_txt):
     return basket
 
 
-def get_basket_prices(store_db, basket):  # todo WTF
+def get_basket_prices(store_db, basket):  # todo MISSING NONE FUNCTIONALITY!
     """
     Arguments: a store - dictionary of dictionaries and a basket -
        a list of ItemCodes
