@@ -1,16 +1,38 @@
 jherskow
 321658379
 Joshua Herskowitz
+avisa
+302931613
+Avraham Sagal
 
 ====================================
-= README for ex5:         =
+= README for ex5:  Smart Shopper™  =
 ====================================
 
 ==============================
 =        Description:        =
 ==============================
+This program is a selection of functions made to provide
+useful operations on data structures representing stores.
 
-=========Functions============
+== The first few functions provide basic functionality:
+get_attribute             - Lookup
+string_item               - String Representation
+string_store_items        - Batch string representation
+
+== More complex funtionalities:
+read_prices_file          - Create DB from a compatible XML file.
+filter_store              - Batch filter and serch by text.
+
+== "basket" objects enable the user to view and compare
+== several items at once
+create_basket_from_txt    - You guessed it.
+get_basket_prices         - You guessed it again. returns a list.
+sum_basket                - Provides the sum of such a list
+basket_item_name          -
+
+
+
 
 
 
