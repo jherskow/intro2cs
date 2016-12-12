@@ -29,12 +29,12 @@ filter_store              - Batch filter and serch by text.
 create_basket_from_txt    - You guessed it.
 get_basket_prices         - You guessed it again. returns a list.
 sum_basket                - Provides the sum of such a list
-basket_item_name          -
+basket_item_name          - performs a name lookup on an item code in a basket.
+save_basket               - saves basket in format compatible with basket_from_text
+load_basket               - Loads basket using basket_from_text
 
-
-
-
-
+Finally, best_basket performs a complex analysis of the database, and recommends a
+store to the user based on a combination of lowest prices and higest product availability.
 
 ==============================
 =      Special Comments      =
@@ -44,3 +44,11 @@ basket_item_name          -
 ==============================
 =  Colleagues and Resources  =
 ==============================
+This was a joint project by Josh Herskowitz and Avi Sagal.
+
+https://www.tutorialspoint.com/python/list_max.htm
+https://docs.python.org/3.5/library/functions.html#sum
+https://docs.python.org/3/library/xml.etree.elementtree.html
+https://www.youtube.com/watch?v=c2qlCZhkwtE
+https://www.python.org/dev/peps/pep-0257/  # docstring PEP rules
+

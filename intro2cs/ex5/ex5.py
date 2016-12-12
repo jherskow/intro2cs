@@ -4,17 +4,19 @@
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex5 2016-2017
 # DESCRIPTION:
+# This file contains several functions that serve ex5.gui,
+# a program that compares supermarket items and prices. Saves
+# shopping carts, and recommends different chains based on price and
+# selection.
 ##########################################################################
 import xml.etree.ElementTree as Et
 
 EMPTY_STRING = ""
-EMPTY_LIST = []
-EMPTY_DICT = {}
 PENALTY_MODIFIER = 1.25
 
-
-# We did NOT use a constant for empty dictionary because doing so
-# interacted unexpectedly with the xml library. Sorry.
+# We did not use a constant for empty lists and dictionaries, since
+# doing so *consistently* created unexpected errors during list and
+# dictionary assignment
 
 
 def get_attribute(store_db, ItemCode, tag):
@@ -43,12 +45,12 @@ def string_store_items(store_db):
     string representation of item1
     string representation of item2
     """
-    if store_db == EMPTY_DICT:
+    if store_db == {}:
         return EMPTY_STRING
     inventory = EMPTY_STRING
     for item in store_db:
         # since item is only the key in store_db, de need to specify
-        # in order to pass the entire dictionary of the item
+        # an index in order to pass the entire dictionary of the item
         inventory += string_item(store_db[item]) + "\n"
     return inventory
 
@@ -105,7 +107,7 @@ def create_basket_from_txt(basket_txt):
     Returns a basket- list of ItemCodes that were included in basket_txt
     """
     between_delimiters = False
-    basket = EMPTY_LIST
+    basket = []
     word = EMPTY_STRING
     for letter in basket_txt:
         if letter == "[":
@@ -129,7 +131,7 @@ def get_basket_prices(store_db, basket):
     In case one of the items is not part of the store,
       its price will be None.
     """
-    price_list = EMPTY_LIST
+    price_list = []
     for i, item_code in enumerate(basket):
         if item_code in store_db:
             price = store_db[item_code]['ItemPrice']
@@ -183,7 +185,6 @@ def save_basket(basket, filename):
     with open(filename, 'w') as file:
         for item_code in basket:
             file.write('[' + item_code + ']\n')
-    file.close
     pass
 
 
@@ -209,7 +210,7 @@ def best_basket(list_of_price_list):
     Returns the cheapest store (index of the cheapest list) given that a
     missing item has a price of its maximal price in the other stores *1.25
     """
-    item_prices = EMPTY_LIST
+    item_prices = []
     copy_lopl = list_of_price_list[:]
     copy_lopl = none_to_zero(copy_lopl)
     item_prices = price_array(copy_lopl, item_prices)
@@ -230,9 +231,9 @@ def none_to_zero(list_of_price_list):
     This function swaps all "None" in a list with "0"
     and returns the modified list.
     """
-    new_list_of_price_list = EMPTY_LIST
+    new_list_of_price_list = []
     for i, store in enumerate(list_of_price_list):
-        new_store = EMPTY_LIST
+        new_store = []
         for j, num in enumerate(store):
             if num is None:
                 new_store.append(0)
@@ -248,12 +249,12 @@ def price_array(copy_lopl, item_prices):
     i-th items prices in all stores, so that the max() method
     can then be used
     """
-    new_list = EMPTY_LIST
+    new_list = []
     for i in range(len(copy_lopl[0])):
         for j, num in enumerate(copy_lopl):
             new_list.append(copy_lopl[j][i])
         item_prices.append(new_list)
-        new_list = EMPTY_LIST
+        new_list = []
     return item_prices
 
 
@@ -269,7 +270,8 @@ def penalize(copy_lopl, item_prices):
 
 
 def stores_sum(copy_lopl):
-    all_stores_sum = EMPTY_LIST
+    """ Returns a list of the sums of each store """
+    all_stores_sum = []
     for i, store in enumerate(copy_lopl):
         sum_store = sum(store)
         all_stores_sum.append(sum_store)
