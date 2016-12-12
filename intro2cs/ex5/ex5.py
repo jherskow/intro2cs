@@ -10,13 +10,15 @@ import xml.etree.ElementTree as Et
 EMPTY_STRING = ""
 EMPTY_LIST = []
 PENALTY_MODIFIER = 1.25
+
+
 # We did NOT use a constant for empty dictionary because doing so
 # interacted unexpectedly with the xml library. Sorry.
 
 
 def get_attribute(store_db, ItemCode, tag):
     """
-    Returns the attribute (tag) 
+    Returns the attribute (tag)
     of an Item with code: Itemcode in the given store
     """
     tag_value = store_db[ItemCode][tag]
@@ -31,7 +33,7 @@ def string_item(item):
     item_code = item["ItemCode"]
     item_name = item["ItemName"]
     return "[" + item_code + "]\t{" + item_name + "}"
-  
+
 
 def string_store_items(store_db):
     """
@@ -77,11 +79,11 @@ def read_prices_file(filename):
     return store_name, store_db
 
 
-def filter_store(store_db, filter_txt):  
+def filter_store(store_db, filter_txt):
     """
-    Create a new dictionary that includes only the items 
+    Create a new dictionary that includes only the items
     that were filtered by user.
-    I.e. items that text given by the user is part of their ItemName. 
+    I.e. items that text given by the user is part of their ItemName.
     Args:
     store_db: a dictionary of dictionaries as created in read_prices_file.
     filter_txt: the filter text as given by the user.
@@ -146,7 +148,7 @@ def sum_basket(price_list):
     sum = 0
     for price in price_list:
         if price is None:
-            nun_counter += 1 # add one to the nunnery
+            nun_counter += 1  # add one to the nunnery
         else:
             sum += price
     return sum, nun_counter
@@ -167,11 +169,11 @@ def basket_item_name(stores_db_list, ItemCode):
 
 
 def save_basket(basket, filename):
-    """ 
+    """
     Save the basket into a file
     The basket representation in the file will be in the following format:
-    [ItemCode1] 
-    [ItemCode2] 
+    [ItemCode1]
+    [ItemCode2]
     ...
     [ItemCodeN]
     """
@@ -183,11 +185,11 @@ def save_basket(basket, filename):
 
 
 def load_basket(filename):
-    """ 
+    """
     Create basket (list of ItemCodes) from the given file.
     The file is assumed to be in the format of:
-    [ItemCode1] 
-    [ItemCode2] 
+    [ItemCode1]
+    [ItemCode2]
     ...
     [ItemCodeN]
     """
@@ -195,42 +197,80 @@ def load_basket(filename):
         file_string = file.read()
         basket = create_basket_from_txt(file_string)
     return basket
- 
+
 
 def best_basket(list_of_price_list):
     """
     Arg: list of lists, where each inner list is list of prices as created
     by get_basket_prices.
-    Returns the cheapest store (index of the cheapest list) given that a 
+    Returns the cheapest store (index of the cheapest list) given that a
     missing item has a price of its maximal price in the other stores *1.25
-
     """
-    item_price_list = EMPTY_LIST
-    # Builds a list of lists, where each sub-list is a list of the
-    # i-th items prices in all stores, so that the max() method
-    # can then be used
+    item_prices = []
+    copy_lopl = list_of_price_list[:]
+    copy_lopl = none_to_zero(copy_lopl)
+    item_prices = price_array(copy_lopl, item_prices)
+    copy_lopl = penalize(copy_lopl, item_prices)
+    all_stores_sum = stores_sum(copy_lopl)
+    # this part of the function finds the cheapest store
+    best_store = min(all_stores_sum)
+    for i, store in enumerate(all_stores_sum):
+        if all_stores_sum[i] == best_store:
+            return i
+
+
+# ================= BEST BASKET HELPER FUNCTIONS ==========================
+
+
+def none_to_zero(list_of_price_list):
+    """
+    This function swaps all "None" in a list with "0"
+    and returns the modified list.
+    """
+    new_list_of_price_list = []
     for i, store in enumerate(list_of_price_list):
+        new_store = []
+        for j, num in enumerate(store):
+            if num is None:
+                new_store.append(0)
+            else:
+                new_store.append(num)
+        new_list_of_price_list.append(new_store)
+    return new_list_of_price_list
+
+
+def price_array(copy_lopl, item_prices):
+    """
+    Returns a list of lists, where each sub-list is a list of the
+    i-th items prices in all stores, so that the max() method
+    can then be used
+    """
+    new_list = []
+    for i in range(len(copy_lopl[0])):
+        for j, num in enumerate(copy_lopl):
+            new_list.append(copy_lopl[j][i])
+        item_prices.append(new_list)
+        new_list = []
+    return item_prices
+
+
+def penalize(copy_lopl, item_prices):
+    """
+    This function replaces all 0 prices with the penalized price.
+    """
+    for i, store in enumerate(copy_lopl):
         for j, price in enumerate(store):
-            if price is None:
-                price = max()
+            if price is 0:
+                store[j] = (max(item_prices[j])) * PENALTY_MODIFIER
+    return copy_lopl
 
 
-''' ========================DAAANGEEERRRR ZOOOONE++++++++++++++++++++++++++
-x = read_prices_file('/cs/usr/jherskow/safe/intro2cs/ex5/Store_1.xml')
-print(string_store_items(x[1]))
-create_basket_from_txt(basket_txt):
-
-basket_txt = "[66196] {לירג ילסיב} [30794] {היוס הקשמ} [556"
-x= create_basket_from_txt(basket_txt)
-print(x)
+def stores_sum(copy_lopl):
+    all_stores_sum = []
+    for i, store in enumerate(copy_lopl):
+        sum_store = sum(store)
+        all_stores_sum.append(sum_store)
+    return all_stores_sum
 
 
-
-b = '907]	{תיתחפשמ הציפ}[66196]	{לירג ילסיב}[84316]	'
-c = '96]	{לירג ילסיב}[84316]	{רטיל 5.1 קובקב הלוק הקוק}[59907]	{תיתחפשמ הציפ}[13520]	{סקלפנרוק קילק}'
-
-print(create_basket_from_txt(b))
-print(create_basket_from_txt(c))
-
-
-'''
+# ============= END BEST BASKET HELPER FUNCTIONS ==========================
