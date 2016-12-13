@@ -103,7 +103,7 @@ def preprocess_tiles(tiles):
 
 def get_best_tiles(objective, tiles, averages, num_candidates):
     """
-    Gets the best tiles, believe me, the best.
+    = "we get the best tiles, believe me, the best." - Donald J. Trump =
     Picks out and returns the tiles that most closely mathc the average
     colour of the objective image.
     :param objective: image
