@@ -127,7 +127,21 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
 
 
 def choose_tile(piece, tiles):
-    pass
+    """
+    Returns tile with lowest difference from a given piece,
+    as per compare(),
+    :param piece: piece of image
+    :param tiles: list of tile images
+    :return: tile with lowest difference
+    """
+    best_tile_diff = compare(piece, tiles[0])
+    best_tile_index = 0
+    for t, tile in enumerate(tiles):
+        tile_diff = compare(piece, tile)
+        if tile_diff < best_tile_diff:
+            best_tile_diff = tile_diff
+            best_tile_index = t
+    return tiles[best_tile_index]
 
 
 def make_mosaic(image, tiles, num_candidates):
