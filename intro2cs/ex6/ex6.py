@@ -89,11 +89,41 @@ def average(image):
 
 
 def preprocess_tiles(tiles):
-    pass
+    """
+    Returns a list of color averages of images for
+    a given list of images.
+    :param tiles: list of images
+    :return: list of color averages of images
+    """
+    color_avg_list = []
+    for tile in tiles:
+        color_avg_list.append(average(tile))
+    return color_avg_list
 
 
-def get_best_tiles(objective, tiles, averages , num_candidates):
-    pass
+def get_best_tiles(objective, tiles, averages, num_candidates):
+    """
+    Gets the best tiles, believe me, the best.
+    Picks out and returns the tiles that most closely mathc the average
+    colour of the objective image.
+    :param objective: image
+    :param tiles: list of tile images.
+    :param averages: list of averages of tile images.
+    :param num_candidates: number of tiles desired by user.
+    :return: candidate_list: list of the best tiles
+    """
+    obj_avg = average(objective)
+    candidate_list = []
+    for i in range(num_candidates):
+        best_avg = averages[0]
+        best_avg_index = 0
+        for a, avg in enumerate(averages):
+            if m.fabs(avg - obj_avg) < best_avg:
+                best_avg = avg
+                best_avg_index = a
+        candidate_list.append(tiles.pop[best_avg_index])
+        del averages[best_avg_index]
+    return candidate_list
 
 
 def choose_tile(piece, tiles):
