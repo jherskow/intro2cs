@@ -218,15 +218,18 @@ def make_mosaic(image, tiles, num_candidates):
     tile_width = len(tiles[0][0])
     tiles_across = m.ceil(image_width / tile_width)
     tiles_down = m.ceil(image_height / tile_height)
+    tile_avg_list = preprocess_tiles(tiles)
     for row in range(tiles_down):
         for tile in range(tiles_across):
             upper_left = (row * tile_height, (tile * tile_width))
             piece = get_piece(image, upper_left, (tile_height, tile_width))
-            tile_avg_list = preprocess_tiles(tiles)
             best_tiles = get_best_tiles(image, tiles,
                                         tile_avg_list, num_candidates)
             chosen_tile = choose_tile(piece, best_tiles)
             set_piece(new_mosaic, upper_left, chosen_tile)
+            # DEBUG
+            mosaic.show(new_mosaic)
+            # DEBUG
     # DEBUG
     print("end make mosaic")
     # DEBUG
