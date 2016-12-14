@@ -61,8 +61,8 @@ def get_piece(image, upper_left, size):
     # DEBUG
     print("start get pice")
     # DEBUG
-    rows = min(len(image), (upper_left[0] + size[0]))
-    cols = min(len(image[0]), (upper_left[1] + size[1]))
+    rows = min(len(image), (upper_left[0] + size[0]))  #todo
+    cols = min(len(image[0]), (upper_left[1] + size[1])) #todo
     new_image = []
     for row in range(rows):
         new_image.append([])
@@ -85,10 +85,10 @@ def set_piece(image, upper_left, piece):
     # DEBUG
     print("start set piece")
     # DEBUG
-    rows = min(len(image), len(piece))
+    rows = min(len(image), len(piece)) #todo it happens here this doesnt mean what you think it means
     cols = min(len(image[0]), len(piece[0]))
     for row in range(rows):
-        for col in range(cols):
+        for col in range(cols):  # todo fix over edge write problem
             image[upper_left[0] + row][upper_left[1] + col] \
                     = piece[row][col]
     # DEBUG
@@ -144,7 +144,6 @@ def preprocess_tiles(tiles):
 
 def get_best_tiles(objective, tiles, averages, num_candidates):
     """
-    = "I'll get the best tiles, believe me, the best." - Donald J. Trump =
     Picks out and returns the tiles that most closely matches the average
     colour of the objective image.
     :param objective: image
@@ -156,6 +155,7 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
     # DEBUG
     print("start get best tiles")
     # DEBUG
+    cur_tiles, cur_avgs = tiles, averages
     obj_avg = average(objective)
     candidate_list = []
     for i in range(num_candidates):
@@ -166,8 +166,8 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
                         < compare_pixel(best_avg, obj_avg):
                 best_avg = avg
                 best_avg_index = a
-        candidate_list.append(tiles.pop(best_avg_index)) # todo recherck
-        del averages[best_avg_index]
+        candidate_list.append(cur_tiles.pop(best_avg_index)) # todo see why not working
+        del cur_avgs[best_avg_index]
     # DEBUG
     print("end g best tiles")
     # DEBUG
@@ -223,6 +223,10 @@ def make_mosaic(image, tiles, num_candidates):
         for tile in range(tiles_across):
             upper_left = (row * tile_height, (tile * tile_width))
             piece = get_piece(image, upper_left, (tile_height, tile_width))
+            # DEBUG
+            mosaic.show(piece)
+            mosaic.show(image)
+            # DEBUG
             best_tiles = get_best_tiles(image, tiles,
                                         tile_avg_list, num_candidates)
             chosen_tile = choose_tile(piece, best_tiles)
