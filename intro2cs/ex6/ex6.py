@@ -7,11 +7,12 @@
 import mosaic
 import math as m
 import sys
-import copy
+#import copy
 
-COMMAND_LINE_ARGS = 6
+COMMAND_LINE_ARGS = 7
 USAGE_STRING = 'Usage: ex6.py image_source tiles_source ' \
                'output_name tile_height num_candidates‬‬‬'
+
 
 def compare_pixel(pixel1, pixel2):
     """
@@ -20,9 +21,15 @@ def compare_pixel(pixel1, pixel2):
     :param pixel2: another pixel
     :return: the sum of rgb value differences
     """
+    # DEBUG
+    print("star compixel")
+    # DEBUG
     distance_sum = 0
-    for i in range(pixel1):
+    for i, color in enumerate(pixel1):
         distance_sum += m.fabs(pixel1[i] - pixel2[i])
+    # DEBUG
+    print("end compixel")
+    # DEBUG
     return distance_sum
 
 
@@ -33,12 +40,18 @@ def compare(image1, image2):
     :param image2: another image
     :return: the sum of all pixel's RGB value differences
     """
+    # DEBUG
+    print("start compare")
+    # DEBUG
     rows = min(len(image1), len(image2))
     cols = min(len(image1[0]), len(image2[0]))
     pic_diff = 0
     for row in range(rows):
         for col in range(cols):
             pic_diff += compare_pixel(image1[row][col], image2[row][col])
+    # DEBUG
+    print("end compare")
+    # DEBUG
     return pic_diff
 
 
@@ -51,6 +64,9 @@ def get_piece(image, upper_left, size):
     :param size: a (height, width) tuple
     :return: a new image of size size
     """
+    # DEBUG
+    print("start get pice")
+    # DEBUG
     rows = min(len(image), (upper_left[0] + size[0]))
     cols = min(len(image[0]), (upper_left[1] + size[1]))
     new_image = []
@@ -58,6 +74,9 @@ def get_piece(image, upper_left, size):
         new_image.append([])
         for col in range(cols):
             new_image[row].append(image[row][col])
+    # DEBUG
+    print("end get pice")
+    # DEBUG
     return new_image
 
 
@@ -69,36 +88,51 @@ def set_piece(image, upper_left, piece):
     :param upper_left: pixel coordinates
     :param piece: an image
     """
+    # DEBUG
+    print("start set piece")
+    # DEBUG
     rows = min(len(image), len(piece))
     cols = min(len(image[0]), len(piece[0]))
     for row in range(rows):
         for col in range(cols):
             image[upper_left[0] + row][upper_left[1] + col] \
                     = piece[row][col]
+    # DEBUG
+    print("end set pice")
+    # DEBUG
     pass
 
 
 def average(image):
     """
-    returns tuple of average color of an image
+    returns pixel (tuple) of average color of an image
     :param image: an image
     :return: tuple of average color
     """
+    # DEBUG
+    print("start img avg")
+    # DEBUG
     rows = len(image)
     cols = len(image[0])
     pixel_count = 0
-    pic_avg = [0,0,0]
+    pic_avg = [0, 0, 0]
     for row in range(rows):
         for col in range(cols):
             pixel_count += 1
-            for p, pixel in pic_avg:
-                pixel += image[row][col][p]
-    for color in pic_avg:
-        color = color/pixel_count
+            for p, pixel in enumerate(pic_avg):
+                 pic_avg[p] += image[row][col][p]
+    for i, color in enumerate(pic_avg):
+        pic_avg[i] = int(color/pixel_count)
+    # DEBUG
+    print("end img avg")
+    # DEBUG
     return pic_avg
 
 
 def preprocess_tiles(tiles):
+    # DEBUG
+    print("start preprocess tiles")
+    # DEBUG
     """
     Returns a list of color averages of images for
     a given list of images.
@@ -108,6 +142,9 @@ def preprocess_tiles(tiles):
     color_avg_list = []
     for tile in tiles:
         color_avg_list.append(average(tile))
+    # DEBUG
+    print("end preprocess tiles")
+    # DEBUG
     return color_avg_list
 
 
@@ -122,17 +159,24 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
     :param num_candidates: number of tiles desired by user.
     :return: candidate_list: list of the best tiles
     """
+    # DEBUG
+    print("start get best tiles")
+    # DEBUG
     obj_avg = average(objective)
     candidate_list = []
     for i in range(num_candidates):
         best_avg = averages[0]
         best_avg_index = 0
         for a, avg in enumerate(averages):
-            if m.fabs(avg - obj_avg) < best_avg:
+            if compare_pixel(avg, obj_avg) \
+                        < compare_pixel(best_avg, obj_avg):
                 best_avg = avg
                 best_avg_index = a
-        candidate_list.append(tiles.pop[best_avg_index])
+        candidate_list.append(tiles.pop(best_avg_index)) # todo recherck
         del averages[best_avg_index]
+        # DEBUG
+        print("end g best tiles")
+        # DEBUG
     return candidate_list
 
 
@@ -144,6 +188,9 @@ def choose_tile(piece, tiles):
     :param tiles: list of tile images
     :return: tile with lowest difference
     """
+    # DEBUG
+    print("start choose tile")
+    # DEBUG
     best_tile_diff = compare(piece, tiles[0])
     best_tile_index = 0
     for t, tile in enumerate(tiles):
@@ -151,6 +198,9 @@ def choose_tile(piece, tiles):
         if tile_diff < best_tile_diff:
             best_tile_diff = tile_diff
             best_tile_index = t
+    # DEBUG
+    print("end choose tile")
+    # DEBUG
     return tiles[best_tile_index]
 
 
@@ -163,7 +213,11 @@ def make_mosaic(image, tiles, num_candidates):
     :return:
 
     """
-    mosaic = copy.deepcopy(image)
+    # DEBUG
+    print("start make mosaic")
+    # DEBUG
+    #new_mosaic = copy.deepcopy(image)
+    new_mosaic = image
     image_height = len(image)
     image_width = len(image[0])
     tile_height = len(tiles[0])
@@ -178,21 +232,26 @@ def make_mosaic(image, tiles, num_candidates):
             best_tiles = get_best_tiles(image, tiles,
                                         tile_avg_list, num_candidates)
             chosen_tile = choose_tile(piece, best_tiles)
-            set_piece(image, upper_left, chosen_tile)
-    return mosaic
+            set_piece(new_mosaic, upper_left, chosen_tile)
+    # DEBUG
+    print("end make mosaic")
+    # DEBUG
+    return new_mosaic
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != COMMAND_LINE_ARGS:
+    if len(sys.argv) != COMMAND_LINE_ARGS: # Ensure correct # of args
         print(USAGE_STRING)
         sys.exit(2)
     else:
-        """
-        get and make image from image source
-        get and make tiles from images dir
-        parse num candidates from argv
-        (tile height) ???
-        make mosaic with prev info
-        save mosaic to output
-        """
+        # Parse args
+        image_src, tile_src, out_path, tile_h, num_cand = sys.argv[2:]
+        tile_h = int(tile_h)
+        num_cand = int(num_cand)
+        # Load files, make mosaic, and save.
+        base_image = mosaic.load_image(image_src)
+        tiles_lst = mosaic.build_tile_base(tile_src, tile_h)
+        new_img = make_mosaic(base_image, tiles_lst, num_cand)
+        mosaic.save(new_img, out_path)
+        sys.exit(0)
 
