@@ -1,3 +1,9 @@
+##########################################################################
+# FILE : ex6.py
+# WRITER : Joshua Herskowitz , jherskow , 321658379
+# EXERCISE : intro2cs ex6 2016-2017
+# DESCRIPTION:
+##########################################################################
 import math as m
 import sys as s
 import copy as c
@@ -38,7 +44,7 @@ def get_piece(image, upper_left, size):
     starting with the pixel given by upper left
     :param image: an image
     :param upper_left: pixel coordinates
-    :param size: a height width tuple
+    :param size: a (height, width) tuple
     :return: a new image of size size
     """
     rows = min(len(image), (upper_left[0] + size[0]))
@@ -103,8 +109,8 @@ def preprocess_tiles(tiles):
 
 def get_best_tiles(objective, tiles, averages, num_candidates):
     """
-    = "we get the best tiles, believe me, the best." - Donald J. Trump =
-    Picks out and returns the tiles that most closely mathc the average
+    = "I'll get the best tiles, believe me, the best." - Donald J. Trump =
+    Picks out and returns the tiles that most closely matches the average
     colour of the objective image.
     :param objective: image
     :param tiles: list of tile images.
@@ -145,4 +151,28 @@ def choose_tile(piece, tiles):
 
 
 def make_mosaic(image, tiles, num_candidates):
-    pass
+    """
+
+    :param image:
+    :param tiles:
+    :param num_candidates:
+    :return:
+
+    """
+    mosaic = c.deepcopy(image)
+    image_height = len(image)
+    image_width = len(image[0])
+    tile_height = len(tiles[0])
+    tile_width = len(tiles[0][0])
+    tiles_across = m.ceil(image_width / tile_width)
+    tiles_down = m.ceil(image_height / tile_height)
+    for row in range(tiles_down):
+        for tile in range(tiles_across):
+            upper_left = (row * tile_height, (tile * tile_width))
+            piece = get_piece(image, upper_left, (tile_height, tile_width))
+            tile_avg_list = preprocess_tiles(tiles)
+            best_tiles = get_best_tiles(image, tiles,
+                                        tile_avg_list, num_candidates)
+            chosen_tile = choose_tile(piece, best_tiles)
+            set_piece(image, upper_left, chosen_tile)
+    return mosaic
