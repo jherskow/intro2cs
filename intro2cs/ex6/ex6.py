@@ -21,15 +21,9 @@ def compare_pixel(pixel1, pixel2):
     :param pixel2: another pixel
     :return: the sum of rgb value differences
     """
-    # DEBUG
-    print("star compixel")
-    # DEBUG
     distance_sum = 0
     for i, color in enumerate(pixel1):
         distance_sum += m.fabs(pixel1[i] - pixel2[i])
-    # DEBUG
-    print("end compixel")
-    # DEBUG
     return distance_sum
 
 
@@ -130,15 +124,15 @@ def average(image):
 
 
 def preprocess_tiles(tiles):
-    # DEBUG
-    print("start preprocess tiles")
-    # DEBUG
     """
     Returns a list of color averages of images for
     a given list of images.
     :param tiles: list of images
     :return: list of color averages of images
     """
+    # DEBUG
+    print("start preprocess tiles")
+    # DEBUG
     color_avg_list = []
     for tile in tiles:
         color_avg_list.append(average(tile))
@@ -174,9 +168,9 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
                 best_avg_index = a
         candidate_list.append(tiles.pop(best_avg_index)) # todo recherck
         del averages[best_avg_index]
-        # DEBUG
-        print("end g best tiles")
-        # DEBUG
+    # DEBUG
+    print("end g best tiles")
+    # DEBUG
     return candidate_list
 
 

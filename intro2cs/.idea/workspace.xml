@@ -18,7 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/intro2cs$ex6.coverage" NAME="ex6 default from file Coverage Results" MODIFIED="1481717984006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex6" />
+    <SUITE FILE_PATH="coverage/intro2cs$ex6.coverage" NAME="ex6 default from file Coverage Results" MODIFIED="1481718529928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex6" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,8 +34,8 @@
           <file leaf-file-name="ex6.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex6/ex6.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="232">
-                  <caret line="216" column="9" selection-start-line="216" selection-start-column="4" selection-end-line="216" selection-end-column="9" />
+                <state relative-caret-position="-493">
+                  <caret line="134" column="11" selection-start-line="134" selection-start-column="11" selection-end-line="134" selection-end-column="11" />
                   <folding>
                     <element signature="e#269#282#0" expanded="true" />
                   </folding>
@@ -92,7 +92,7 @@
           <file leaf-file-name="mosaic.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ex6/mosaic.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-307">
+                <state relative-caret-position="0">
                   <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#9#0" expanded="true" />
@@ -105,7 +105,7 @@
             <entry file="file://$PROJECT_DIR$/ex6/ex6.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1610">
-                  <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
+                  <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
                   <folding>
                     <element signature="e#269#282#0" expanded="true" />
                   </folding>
@@ -116,8 +116,8 @@
           <file leaf-file-name="README" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex6/README">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="416">
-                  <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="27" selection-end-column="7" />
+                <state relative-caret-position="520">
+                  <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -133,8 +133,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ex6/README" />
         <option value="$PROJECT_DIR$/ex6/ex6.py" />
+        <option value="$PROJECT_DIR$/ex6/README" />
       </list>
     </option>
   </component>
@@ -481,7 +481,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481712765411</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="print debug&#10;">
+      <created>1481718491378</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1481718491378</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -523,7 +530,8 @@
     <MESSAGE value="TEST" />
     <MESSAGE value="completed functions" />
     <MESSAGE value="more work on main" />
-    <option name="LAST_COMMIT_MESSAGE" value="more work on main" />
+    <MESSAGE value="print debug&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="print debug&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -566,16 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ex6/mosaic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
@@ -592,21 +590,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ex6/README">
+    <entry file="file://$PROJECT_DIR$/ex6/mosaic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="27" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ex6/ex6.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="216" column="9" selection-start-line="216" selection-start-column="4" selection-end-line="216" selection-end-column="9" />
+        <state relative-caret-position="1610">
+          <caret line="101" column="25" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
           <folding>
             <element signature="e#269#282#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ex6/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
