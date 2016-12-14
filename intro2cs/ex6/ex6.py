@@ -4,10 +4,14 @@
 # EXERCISE : intro2cs ex6 2016-2017
 # DESCRIPTION:
 ##########################################################################
+import mosaic
 import math as m
-import sys as s
-import copy as c
+import sys
+import copy
 
+COMMAND_LINE_ARGS = 6
+USAGE_STRING = 'Usage: ex6.py image_source tiles_source ' \
+               'output_name tile_height num_candidates‬‬‬'
 
 def compare_pixel(pixel1, pixel2):
     """
@@ -159,7 +163,7 @@ def make_mosaic(image, tiles, num_candidates):
     :return:
 
     """
-    mosaic = c.deepcopy(image)
+    mosaic = copy.deepcopy(image)
     image_height = len(image)
     image_width = len(image[0])
     tile_height = len(tiles[0])
@@ -176,3 +180,19 @@ def make_mosaic(image, tiles, num_candidates):
             chosen_tile = choose_tile(piece, best_tiles)
             set_piece(image, upper_left, chosen_tile)
     return mosaic
+
+
+if __name__ == '__main__':
+    if len(sys.argv) != COMMAND_LINE_ARGS:
+        print(USAGE_STRING)
+        sys.exit(2)
+    else:
+        """
+        get and make image from image source
+        get and make tiles from images dir
+        parse num candidates from argv
+        (tile height) ???
+        make mosaic with prev info
+        save mosaic to output
+        """
+
