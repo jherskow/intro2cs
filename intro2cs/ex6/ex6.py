@@ -61,13 +61,15 @@ def get_piece(image, upper_left, size):
     # DEBUG
     print("start get pice")
     # DEBUG
-    rows = min(len(image), (upper_left[0] + size[0]))  #todo
-    cols = min(len(image[0]), (upper_left[1] + size[1])) #todo
+
+    rows = min(size[0], len(image) - upper_left[0])  #todo
+    cols = min(size[1], len(image[0]) - upper_left[1]) #todo
     new_image = []
     for row in range(rows):
         new_image.append([])
         for col in range(cols):
-            new_image[row].append(image[row][col])
+            new_image[row].append(image[row + upper_left[0] ]
+                                  [col + upper_left[1] ])
     # DEBUG
     print("end get pice")
     # DEBUG
@@ -85,11 +87,11 @@ def set_piece(image, upper_left, piece):
     # DEBUG
     print("start set piece")
     # DEBUG
-    rows = min(len(image), len(piece)) #todo it happens here this doesnt mean what you think it means
-    cols = min(len(image[0]), len(piece[0]))
+    rows = min(len(piece[0]), len(image) - upper_left[0])
+    cols = min(len(piece[1]), len(image)[0] - upper_left[1])
     for row in range(rows):
-        for col in range(cols):  # todo fix over edge write problem
-            image[upper_left[0] + row][upper_left[1] + col] \
+        for col in range(cols):
+            image[row + upper_left[0] ][col + upper_left[1] ] \
                     = piece[row][col]
     # DEBUG
     print("end set pice")
@@ -116,7 +118,7 @@ def average(image):
             for p, pixel in enumerate(pic_avg):
                  pic_avg[p] += image[row][col][p]
     for i, color in enumerate(pic_avg):
-        pic_avg[i] = int(color/pixel_count)
+        pic_avg[i] = color/pixel_count
     # DEBUG
     print("end img avg")
     # DEBUG
