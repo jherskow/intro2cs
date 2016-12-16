@@ -1,0 +1,86 @@
+Shalom,
+
+This is an automated message.
+
+The submission of Joshua Herskowitz (jherskow) from Fri Dec 16 15:16:21 2016 for ex6 in Introduction to Computer Science was processed
+
+PDF created successfully, and can be downloaded from:
+http://moodle2.cs.huji.ac.il/nu16/mod/assign/view.php?course=intro2cs&name=ex6
+
+
+Running the tests gave the following output:
+Starting tests...
+Fri Dec 16 15:16:21 IST 2016
+73cec12df74613c9f6940848dee4eda9196ba6a9  -
+
+
+Archive:  /tmp/bodek.lfWqDh/intro2cs/ex6/jherskow/presubmission/submission
+  inflating: src/README
+  inflating: src/ex6.py
+
+Testing README...
+Done testing README...
+
+Running presubmit tests...
+start img avg
+end img avg
+##Wrong result, input: [[[(20, 40, 60), (20, 40, 60), (20, 40, 60)], [(20, 40, 60), (20, 40, 60), (20, 40, 60)]]]:
+##expected: (20.0, 40.0, 60.0)
+##actual:   [20, 40, 60]
+result_code     ex6_average1    wrong   1
+
+start get pice
+end get pice
+##Wrong result, input: [[[(20, 40, 60), (25, 47, 69), (10, 20, 30)], [(10, 50, 60), (30, 40, 50), (20, 30, 70)]], (0, 1), (1, 2)]:
+##expected: [[(25, 47, 69), (10, 20, 30)]]
+##actual:   [[(20, 40, 60), (25, 47, 69), (10, 20, 30)]]
+##result_code     ex6_getpiece2   wrong   1
+
+
+##Wrong result, input: [[[(20, 40, 60), (20, 40, 60), (20, 40, 60)], [(60, 41, 20), (60, 41, 20), (60, 41, 20)]]]:
+##expected: (40.0, 40.5, 40.0)
+##actual:   [40, 40, 40]
+##result_code     ex6_average2    wrong   1
+
+
+# result_code     ex6_getbesttiles        modified        1
+
+
+##Wrong result, input: [[[(20, 40, 60), (25, 47, 69), (10, 20, 30)], [(10, 50, 60), (30, 40, 50), (20, 30, 70)]], (1, 2), (2, 2)]:
+##expected: [[(20, 30, 70)]]
+##actual:   [[(20, 40, 60), (25, 47, 69), (10, 20, 30)], [(10, 50, 60), (30, 40, 50), (20, 30, 70)]]
+result_code     ex6_getpiece3   wrong   1
+
+
+##Wrong result, input: [[[(20, 40, 60), (25, 47, 69), (10, 20, 30)], [(10, 50, 60), (30, 40, 50), (20, 30, 70)]], (0, 1), (2, 1)]:
+##expected: [[(25, 47, 69)], [(30, 40, 50)]]
+##actual:   [[(20, 40, 60), (25, 47, 69)], [(10, 50, 60), (30, 40, 50)]]
+##result_code     ex6_getpiece1   wrong   1
+
+
+##Wrong result, input: [[[[(20, 40, 60), (20, 40, 60), (20, 40, 60)], [(20, 40, 60), (20, 40, 60), (20, 40, 60)]], [[(20, 40, 60), (20, 40, 60), (20, 40, 60)], [(60, 41, 20), (60, 41, 20), (60, 41, 20)]]]]:
+##expected: [(20.0, 40.0, 60.0), (40.0, 40.5, 40.0)]
+##actual:   [[20, 40, 60], [40, 40, 40]]
+##result_code     ex6_prepocess   wrong   1
+
+result_code     ex6_makemosaic  signaled        1
+
+result_code     ex6_setpiece3   signaled        1
+
+
+10 passed tests out of 19
+result_code     ex6     10      1
+Done running presubmit tests
+
+Showing execution with wrong number of parameters:
+Usage: ex6.py image_source tiles_source output_name tile_height num_candidates‬‬‬
+Done...
+
+Showing correct execution:
+Usage: ex6.py image_source tiles_source output_name tile_height num_candidates‬‬‬
+
+Tests completed
+
+Additional notes:
+
+There will be additional tests which will not be published in advance.
