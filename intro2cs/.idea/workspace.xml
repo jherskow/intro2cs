@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9ff36b6-9a1e-4893-a726-bbcc040e65e0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ex6/images.zip" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex6/README" afterPath="$PROJECT_DIR$/ex6/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex6/ex6.py" afterPath="$PROJECT_DIR$/ex6/ex6.py" />
     </list>
     <ignored path="intro2cs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -544,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481906586448</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="final bugs remaining&#10;">
+      <created>1482003698547</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1482003698547</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -597,7 +601,8 @@
     <MESSAGE value="more work on main" />
     <MESSAGE value="print debug&#10;" />
     <MESSAGE value="more work&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="more work&#10;" />
+    <MESSAGE value="final bugs remaining&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="final bugs remaining&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -960,9 +965,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2129">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#31#54#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1002,9 +1005,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
