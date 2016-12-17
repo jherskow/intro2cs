@@ -34,18 +34,12 @@ def compare(image1, image2):
     :param image2: another image
     :return: the sum of all pixel's RGB value differences
     """
-    # DEBUG
-    print("start compare")
-    # DEBUG
     rows = min(len(image1), len(image2))
     cols = min(len(image1[0]), len(image2[0]))
     pic_diff = 0
     for row in range(rows):
         for col in range(cols):
             pic_diff += compare_pixel(image1[row][col], image2[row][col])
-    # DEBUG
-    print("end compare")
-    # DEBUG
     return pic_diff
 
 
@@ -58,10 +52,6 @@ def get_piece(image, upper_left, size):
     :param size: a (height, width) tuple
     :return: a new image of size size
     """
-    # DEBUG
-    print("start get piece")
-    # DEBUG
-
     rows = min(size[0], len(image) - upper_left[0])
     cols = min(size[1], len(image[0]) - upper_left[1])
     new_image = []
@@ -70,9 +60,6 @@ def get_piece(image, upper_left, size):
         for col in range(cols):
             new_image[row].append(image[row + upper_left[0]]
                                   [col + upper_left[1]])
-    # DEBUG
-    print("end get piece")
-    # DEBUG
     return new_image
 
 
@@ -84,18 +71,12 @@ def set_piece(image, upper_left, piece):
     :param upper_left: pixel coordinates
     :param piece: an image
     """
-    # DEBUG
-    print("start set piece")
-    # DEBUG
     rows = min(len(piece), len(image) - upper_left[0])
     cols = min(len(piece[0]), len(image[0]) - upper_left[1])
     for row in range(rows):
         for col in range(cols):
             image[row + upper_left[0] ][col + upper_left[1]] \
                     = piece[row][col]
-    # DEBUG
-    print("end set pice")
-    # DEBUG
     pass
 
 
@@ -126,16 +107,10 @@ def preprocess_tiles(tiles):
     :param tiles: list of images
     :return: list of color averages of images
     """
-    # DEBUG
-    print("start preprocess tiles")
-    # DEBUG
-    color_avg_list = []
+    tiles_avg_list = []
     for tile in tiles:
-        color_avg_list.append(average(tile))
-    # DEBUG
-    print("end preprocess tiles")
-    # DEBUG
-    return color_avg_list
+        tiles_avg_list.append(average(tile))
+    return tiles_avg_list
 
 
 def get_best_tiles(objective, tiles, averages, num_candidates):
@@ -148,9 +123,6 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
     :param num_candidates: number of tiles desired by user.
     :return: candidate_list: list of the best tiles
     """
-    # DEBUG
-    print("start get best tiles")
-    # DEBUG
     #cur_tiles, cur_avgs = copy._deepcopy_list(tiles), averages
     obj_avg = average(objective)
     candidate_list = []
@@ -163,10 +135,7 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
                         and a not in candidate_list:
                 best_avg = avg
                 best_avg_index = a
-                candidate_list.append(tiles[best_avg_index]) # todo see why not working!!
-    # DEBUG
-    print("end get best tiles")
-    # DEBUG
+        candidate_list.append(tiles[best_avg_index])
     return candidate_list
 
 
@@ -178,9 +147,6 @@ def choose_tile(piece, tiles):
     :param tiles: list of tile images
     :return: tile with lowest difference
     """
-    # DEBUG
-    print("start choose tile")
-    # DEBUG
     best_tile_diff = compare(piece, tiles[0])
     best_tile_index = 0
     for t, tile in enumerate(tiles):
@@ -188,9 +154,6 @@ def choose_tile(piece, tiles):
         if tile_diff < best_tile_diff:
             best_tile_diff = tile_diff
             best_tile_index = t
-    # DEBUG
-    print("end choose tile")
-    # DEBUG
     return tiles[best_tile_index]
 
 
@@ -203,10 +166,7 @@ def make_mosaic(image, tiles, num_candidates):
     :return:
 
     """
-    # DEBUG
-    print("start make mosaic")
-    # DEBUG
-    #new_mosaic = copy.deepcopy(image)
+    #debug #new_mosaic = copy.deepcopy(image)
     new_mosaic = image
     image_height = len(image)
     image_width = len(image[0])
@@ -223,12 +183,7 @@ def make_mosaic(image, tiles, num_candidates):
                                         tile_avg_list, num_candidates)
             chosen_tile = choose_tile(piece, best_tiles)
             set_piece(new_mosaic, upper_left, chosen_tile)
-    # DEBUG
-    print("end make mosaic")
-    # DEBUG
-    # DEBUG
-    mosaic.show(new_mosaic)
-    # DEBUG
+    mosaic.show(new_mosaic) #debud
     return new_mosaic
 
 
@@ -247,4 +202,3 @@ if __name__ == '__main__':
         new_img = make_mosaic(base_image, tiles_lst, num_cand)
         mosaic.save(new_img, out_path)
         sys.exit(0)
-
