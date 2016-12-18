@@ -126,7 +126,7 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
     obj_avg = average(objective)
     candidate_list = []
     for i in range(num_candidates):
-        best_avg = averages[0]  # todo
+        best_avg = averages[0]
         best_avg_index = 0
         for a, avg in enumerate(averages):
             if compare_pixel(avg, obj_avg) \
@@ -168,15 +168,15 @@ def make_mosaic(image, tiles, num_candidates):
     new_mosaic = copy.deepcopy(image)
     image_height = len(image)
     image_width = len(image[0])
-    tile_height = len(tiles[0])
-    tile_width = len(tiles[0][0])
-    tiles_across = m.ceil(image_width / tile_width)
-    tiles_down = m.ceil(image_height / tile_height)
+    tile_h = len(tiles[0])
+    tile_w = len(tiles[0][0])
+    tiles_across = m.ceil(image_width / tile_w)
+    tiles_down = m.ceil(image_height / tile_h)
     tile_avg_list = preprocess_tiles(tiles)
     for row in range(tiles_down):
         for tile in range(tiles_across):
-            upper_left = (row * tile_height, (tile * tile_width))
-            piece = get_piece(new_mosaic, upper_left, (tile_height, tile_width))
+            upper_left = (row * tile_h, (tile * tile_w))
+            piece = get_piece(new_mosaic, upper_left, (tile_h, tile_w))
             best_tiles = get_best_tiles(piece, tiles,
                                         tile_avg_list, num_candidates)
             chosen_tile = choose_tile(piece, best_tiles)
@@ -190,12 +190,12 @@ if __name__ == '__main__':
         sys.exit(2)
     else:
         #  Parse args
-        image_src, tile_src, out_path, tile_h, num_cand = sys.argv[2:]
-        tile_h = int(tile_h)
+        image_src, tile_src, out_path, tile_height, num_cand = sys.argv[2:]
+        tile_height = int(tile_height)
         num_cand = int(num_cand)
         #  Load files, make mosaic, and save.
         base_image = mosaic.load_image(image_src)
-        tiles_lst = mosaic.build_tile_base(tile_src, tile_h)
+        tiles_lst = mosaic.build_tile_base(tile_src, tile_height)
         new_img = make_mosaic(base_image, tiles_lst, num_cand)
         mosaic.save(new_img, out_path)
         sys.exit(0)
