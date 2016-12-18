@@ -9,7 +9,7 @@ import math as m
 import sys
 import copy
 
-COMMAND_LINE_ARGS = 7
+COMMAND_LINE_ARGS = 6
 USAGE_STRING = 'Usage: ex6.py image_source tiles_source ' \
                'output_name tile_height num_candidates‬‬‬'
 
@@ -190,7 +190,7 @@ if __name__ == '__main__':
         sys.exit(2)
     else:
         #  Parse args
-        image_src, tile_src, out_path, tile_height, num_cand = sys.argv[2:]
+        image_src, tile_src, out_path, tile_height, num_cand = sys.argv[1:]
         tile_height = int(tile_height)
         num_cand = int(num_cand)
         #  Load files, make mosaic, and save.
