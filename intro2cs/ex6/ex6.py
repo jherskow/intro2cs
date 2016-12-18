@@ -185,7 +185,7 @@ def make_mosaic(image, tiles, num_candidates):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != COMMAND_LINE_ARGS: #  Ensure correct #  of args
+    if len(sys.argv) != COMMAND_LINE_ARGS:  # Ensure correct #  of args
         print(USAGE_STRING)
         sys.exit(2)
     else:
