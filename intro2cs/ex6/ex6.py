@@ -1,13 +1,13 @@
-##########################################################################
-# FILE : ex6.py
-# WRITER : Joshua Herskowitz , jherskow , 321658379
-# EXERCISE : intro2cs ex6 2016-2017
-# DESCRIPTION:
-##########################################################################
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+#  FILE : ex6.py
+#  WRITER : Joshua Herskowitz , jherskow , 321658379
+#  EXERCISE : intro2cs ex6 2016-2017
+#  DESCRIPTION:
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 import mosaic
 import math as m
 import sys
-#import copy
+import copy
 
 COMMAND_LINE_ARGS = 7
 USAGE_STRING = 'Usage: ex6.py image_source tiles_source ' \
@@ -75,7 +75,7 @@ def set_piece(image, upper_left, piece):
     cols = min(len(piece[0]), len(image[0]) - upper_left[1])
     for row in range(rows):
         for col in range(cols):
-            image[row + upper_left[0] ][col + upper_left[1]] \
+            image[row + upper_left[0]][col + upper_left[1]] \
                     = piece[row][col]
     pass
 
@@ -94,7 +94,7 @@ def average(image):
         for col in range(cols):
             pixel_count += 1
             for p, pixel in enumerate(pic_avg):
-                 pic_avg[p] += image[row][col][p]
+                pic_avg[p] += image[row][col][p]
     for i, color in enumerate(pic_avg):
         pic_avg[i] = color/pixel_count
     return tuple(pic_avg)
@@ -123,19 +123,19 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
     :param num_candidates: number of tiles desired by user.
     :return: candidate_list: list of the best tiles
     """
-    #cur_tiles, cur_avgs = copy._deepcopy_list(tiles), averages #debug
+    # cur_tiles, cur_avgs = copy._deepcopy_list(tiles), averages # debug
     obj_avg = average(objective)
     candidate_list = []
     for i in range(num_candidates):
-        print("new candidate")
+        # print("new candidate")
         best_avg = averages[0]  # todo
         best_avg_index = 0
         for a, avg in enumerate(averages):
-            print("new tile for candidate")
+            # print("new tile for candidate")
             if compare_pixel(avg, obj_avg) \
                         < compare_pixel(best_avg, obj_avg)\
-                        and tiles[a] not in candidate_list: # todo redo alll
-                print("end compare and if statement")
+                        and tiles[a] not in candidate_list: # todo redo
+                # print("end compare and if statement")
                 best_avg = avg
                 best_avg_index = a
         candidate_list.append(tiles[best_avg_index])
@@ -169,8 +169,7 @@ def make_mosaic(image, tiles, num_candidates):
     :return:
 
     """
-    #debug #new_mosaic = copy.deepcopy(image)
-    new_mosaic = image
+    new_mosaic = copy.deepcopy(image)
     image_height = len(image)
     image_width = len(image[0])
     tile_height = len(tiles[0])
@@ -181,33 +180,33 @@ def make_mosaic(image, tiles, num_candidates):
     for row in range(tiles_down):
         for tile in range(tiles_across):
             upper_left = (row * tile_height, (tile * tile_width))
-            #print("get piece")
-            piece = get_piece(image, upper_left, (tile_height, tile_width))
-            #print("END get piece")
-            #print("best tiles")
-            best_tiles = get_best_tiles(image, tiles,
+            # print("get piece")
+            piece = get_piece(new_mosaic, upper_left, (tile_height, tile_width))
+            # print("END get piece")
+            # print("best tiles")
+            best_tiles = get_best_tiles(piece, tiles,
                                         tile_avg_list, num_candidates)
-            #print("END best tiles")
-            #print("choose tile")
+            # print("END best tiles")
+            # print("choose tile")
             chosen_tile = choose_tile(piece, best_tiles)
-            #print("END choose tile")
-            #print("set piece")
+            # print("END choose tile")
+            # print("set piece")
             set_piece(new_mosaic, upper_left, chosen_tile)
-            #print("END set piece")
-    mosaic.show(new_mosaic) #debud
+            # print("END set piece")
+    mosaic.show(new_mosaic) # debug
     return new_mosaic
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != COMMAND_LINE_ARGS: # Ensure correct # of args
+    if len(sys.argv) != COMMAND_LINE_ARGS: #  Ensure correct #  of args
         print(USAGE_STRING)
         sys.exit(2)
     else:
-        # Parse args
+        #  Parse args
         image_src, tile_src, out_path, tile_h, num_cand = sys.argv[2:]
         tile_h = int(tile_h)
         num_cand = int(num_cand)
-        # Load files, make mosaic, and save.
+        #  Load files, make mosaic, and save.
         base_image = mosaic.load_image(image_src)
         tiles_lst = mosaic.build_tile_base(tile_src, tile_h)
         new_img = make_mosaic(base_image, tiles_lst, num_cand)
