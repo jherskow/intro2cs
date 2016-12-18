@@ -1,9 +1,9 @@
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-#  FILE : ex6.py
-#  WRITER : Joshua Herskowitz , jherskow , 321658379
-#  EXERCISE : intro2cs ex6 2016-2017
-#  DESCRIPTION:
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+###########################################################################
+# FILE : ex6.py
+# WRITER : Joshua Herskowitz , jherskow , 321658379
+# EXERCISE : intro2cs ex6 2016-2017
+# DESCRIPTION:
+###########################################################################
 import mosaic
 import math as m
 import sys
@@ -123,19 +123,15 @@ def get_best_tiles(objective, tiles, averages, num_candidates):
     :param num_candidates: number of tiles desired by user.
     :return: candidate_list: list of the best tiles
     """
-    # cur_tiles, cur_avgs = copy._deepcopy_list(tiles), averages # debug
     obj_avg = average(objective)
     candidate_list = []
     for i in range(num_candidates):
-        # print("new candidate")
         best_avg = averages[0]  # todo
         best_avg_index = 0
         for a, avg in enumerate(averages):
-            # print("new tile for candidate")
             if compare_pixel(avg, obj_avg) \
                         < compare_pixel(best_avg, obj_avg)\
-                        and tiles[a] not in candidate_list: # todo redo
-                # print("end compare and if statement")
+                        and tiles[a] not in candidate_list:
                 best_avg = avg
                 best_avg_index = a
         candidate_list.append(tiles[best_avg_index])
@@ -180,20 +176,11 @@ def make_mosaic(image, tiles, num_candidates):
     for row in range(tiles_down):
         for tile in range(tiles_across):
             upper_left = (row * tile_height, (tile * tile_width))
-            # print("get piece")
             piece = get_piece(new_mosaic, upper_left, (tile_height, tile_width))
-            # print("END get piece")
-            # print("best tiles")
             best_tiles = get_best_tiles(piece, tiles,
                                         tile_avg_list, num_candidates)
-            # print("END best tiles")
-            # print("choose tile")
             chosen_tile = choose_tile(piece, best_tiles)
-            # print("END choose tile")
-            # print("set piece")
             set_piece(new_mosaic, upper_left, chosen_tile)
-            # print("END set piece")
-    mosaic.show(new_mosaic) # debug
     return new_mosaic
 
 
