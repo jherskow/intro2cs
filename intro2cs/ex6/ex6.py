@@ -12,6 +12,8 @@ import copy
 COMMAND_LINE_ARGS = 6
 USAGE_STRING = 'Usage: ex6.py image_source tiles_source ' \
                'output_name tile_height num_candidates‬‬‬'
+FRST_ROW = 0
+FRST_TILE = 0
 
 
 def compare_pixel(pixel1, pixel2):
@@ -35,7 +37,7 @@ def compare(image1, image2):
     :return: the sum of all pixel's RGB value differences
     """
     rows = min(len(image1), len(image2))
-    cols = min(len(image1[0]), len(image2[0]))
+    cols = min(len(image1[FRST_ROW]), len(image2[FRST_ROW]))
     pic_diff = 0
     for row in range(rows):
         for col in range(cols):
@@ -53,7 +55,7 @@ def get_piece(image, upper_left, size):
     :return: a new image of size size
     """
     rows = min(size[0], len(image) - upper_left[0])
-    cols = min(size[1], len(image[0]) - upper_left[1])
+    cols = min(size[1], len(image[FRST_ROW]) - upper_left[FRST_ROW])
     new_image = []
     for row in range(rows):
         new_image.append([])
@@ -72,7 +74,7 @@ def set_piece(image, upper_left, piece):
     :param piece: an image
     """
     rows = min(len(piece), len(image) - upper_left[0])
-    cols = min(len(piece[0]), len(image[0]) - upper_left[1])
+    cols = min(len(piece[FRST_ROW]), len(image[FRST_ROW]) - upper_left[1])
     for row in range(rows):
         for col in range(cols):
             image[row + upper_left[0]][col + upper_left[1]] \
@@ -87,7 +89,7 @@ def average(image):
     :return: tuple of average color
     """
     rows = len(image)
-    cols = len(image[0])
+    cols = len(image[FRST_ROW])
     pixel_count = 0
     pic_avg = [0, 0, 0]
     for row in range(rows):
@@ -167,9 +169,9 @@ def make_mosaic(image, tiles, num_candidates):
     """
     new_mosaic = copy.deepcopy(image)
     image_height = len(image)
-    image_width = len(image[0])
+    image_width = len(image[FRST_ROW])
     tile_h = len(tiles[0])
-    tile_w = len(tiles[0][0])
+    tile_w = len(tiles[0][FRST_ROW])
     tiles_across = m.ceil(image_width / tile_w)
     tiles_down = m.ceil(image_height / tile_h)
     tile_avg_list = preprocess_tiles(tiles)
