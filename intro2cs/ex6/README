@@ -4,34 +4,44 @@ Joshua Herskowitz
 
 
 ====================================
-= README for ex6:  ----™  =
+= README for ex6:      Mosaic      =
 ====================================
 
 ==============================
 =        Description:        =
 ==============================
-desc
+A program that creates a mosaic using photo tiles, which
+approximates the user's image to a configurable
+quality and resolution.
+
+======== FUNCTIONS ===========
+Image analysis
+==
+compare_pixel       - gives rgb difference of 2 pixels.
+compare             - sums rgb difference of 2 images.
+average             - gives average color of an image.
+
+Image editing
+==
+get_piece           - returns a piece of an image.
+set_piece           - replaces a piece of an image with another.
+
+Helper functions for make mosaic
+==
+pre-process_tiles   - creates a list of the average colors
+                      of the tiles.
+get_best_tiles      - Returns the titles with the closest average
+                      to a given image.
+choose_tile         - Returns the title with the least difference
+                      to a given image.
 
 ==
-compare_pixel       -
-compare             -
-average             - Batch string representation
-
-==
-get_piece(          - Create DB from a compatible XML file.
-set_piece           - Batch filter and serch by text.
-
-==
-preprocess_tiles    - You guessed it.
-get_best_tiles      - You guessed it again. returns a list.
-choose_tile         - Provides the sum of such a list
-
-==
-make_mosaic         - p
+make_mosaic         - makes a mosaic from a given image, and a
+                      set of tiles.
 
 ==MAIN==
-
-
+The main are runs only if the file is called directly, and executes
+make mosaic using the given command line arguments.
 
 ==============================
 =      Special Comments      =
@@ -41,5 +51,7 @@ make_mosaic         - p
 ==============================
 =  Colleagues and Resources  =
 ==============================
+https://www.wikiwand.com/en/Photographic_mosaic
+
 
 
