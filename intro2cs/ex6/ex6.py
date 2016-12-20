@@ -2,16 +2,21 @@
 # FILE : ex6.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex6 2016-2017
-# DESCRIPTION:
+# DESCRIPTION: Creates a mosaic of an image made of many smaller different
+# Images, and saves to a file.
 ###########################################################################
 import mosaic
 import math as m
 import sys
 import copy
 
+
 COMMAND_LINE_ARGS = 6
 USAGE_STRING = 'Usage: ex6.py image_source tiles_source ' \
                'output_name tile_height num_candidates‬‬‬'
+
+# Constants used to check the width of an image,
+# which is the length of its first row.
 FRST_ROW = 0
 FRST_TILE = 0
 
@@ -160,11 +165,12 @@ def choose_tile(piece, tiles):
 
 def make_mosaic(image, tiles, num_candidates):
     """
-
-    :param image:
-    :param tiles:
-    :param num_candidates:
-    :return:
+    Creates a mosaic from a source image, and a list of tiles.
+    With a specified number of candidates for quality control.
+    :param image: source image
+    :param tiles: a list of tile images
+    :param num_candidates: number of candidates
+    :return: mosaic image
 
     """
     new_mosaic = copy.deepcopy(image)

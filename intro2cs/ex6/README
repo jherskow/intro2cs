@@ -2,14 +2,36 @@ jherskow
 321658379
 Joshua Herskowitz
 
+
 ====================================
-= README for ex6:    =
+= README for ex6:  ----™  =
 ====================================
 
 ==============================
 =        Description:        =
 ==============================
-TEST
+desc
+
+==
+compare_pixel       -
+compare             -
+average             - Batch string representation
+
+==
+get_piece(          - Create DB from a compatible XML file.
+set_piece           - Batch filter and serch by text.
+
+==
+preprocess_tiles    - You guessed it.
+get_best_tiles      - You guessed it again. returns a list.
+choose_tile         - Provides the sum of such a list
+
+==
+make_mosaic         - p
+
+==MAIN==
+
+
 
 ==============================
 =      Special Comments      =
@@ -19,13 +41,5 @@ TEST
 ==============================
 =  Colleagues and Resources  =
 ==============================
-https://www.youtube.com/watch?v=dQw4w9WgXcQ <== very helpful!
-
-++++++++++++++++progress checker==============
-
-tiles not appearing several times
-find out why.
-
-GOOD JOB!!!
 
 
