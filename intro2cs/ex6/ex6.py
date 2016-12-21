@@ -60,7 +60,7 @@ def get_piece(image, upper_left, size):
     :return: a new image of size size
     """
     rows = min(size[0], len(image) - upper_left[0])
-    cols = min(size[1], len(image[FRST_ROW]) - upper_left[FRST_ROW])
+    cols = min(size[1], len(image[FRST_ROW]) - upper_left[1])
     new_image = []
     for row in range(rows):
         new_image.append([])
