@@ -7,6 +7,7 @@
 
 # ============ LINEAR RECURSION ===========================================
 
+
 def print_to_n(n):
     """Prints integers 1 up to n including"""
     # See PEP 257 for spec of one-liner docstring
@@ -29,12 +30,11 @@ def print_reversed(n):
 def has_divisor_smaller_than(n, i):
     """returns true if n has a divisor d : d>1 """
     if i <= 2:
-        has = False
+        return False
     elif n % (i-1) == 0:
-        has = True
+        return True
     else:
-        has = has_divisor_smaller_than(n, i - 1)
-    return has
+        return has_divisor_smaller_than(n, i - 1)
 
 
 def is_prime(n):
