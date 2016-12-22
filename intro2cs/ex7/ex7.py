@@ -9,8 +9,10 @@
 
 
 def print_to_n(n):
-    """Prints integers 1 up to n including"""
-    # See PEP 257 for spec of one-liner docstring
+    """
+    Prints integers 1 up to n including
+    :param n: natural int
+    """
     if n != 1:
         print_to_n(n - 1)
     print(n)
@@ -18,7 +20,11 @@ def print_to_n(n):
 
 
 def print_reversed(n):
-    """Prints integers n down to 1 including"""
+    """
+    Prints integers n down to 1 including
+    :param n: natural int
+    """
+
     if n != 1:
         print(n)
         print_reversed(n-1)
@@ -28,7 +34,12 @@ def print_reversed(n):
 
 
 def has_divisor_smaller_than(n, i):
-    """returns true if n has a divisor d : d>1 """
+    """
+    returns true if n has a divisor d : d>1
+    :param n: natural int
+    :param i: natural int
+    :return: bool
+    """
     if i <= 2:
         return False
     elif n % (i-1) == 0:
@@ -38,13 +49,22 @@ def has_divisor_smaller_than(n, i):
 
 
 def is_prime(n):
-    """returns bool of prime-ness of int n"""
+    """
+    Returns bool of prime-ness of int n
+    :param n: natural int
+    :return: bool
+    """
     return has_divisor_smaller_than(n, n)
 
 
 def list_divisors_leq(n, x):
-    """Returns an ordered list of natural divisors of natural int n,
-    less than or equal to x, and excluding zero."""
+    """
+    Returns an ordered list of natural divisors of natural int n,
+    less than or equal to x, and excluding zero.
+    :param n: natural int
+    :param x: natural int
+    :return: list
+    """
     if x == 1:
         list = [x]
         return list
@@ -57,13 +77,21 @@ def list_divisors_leq(n, x):
 
 
 def divisors(n):
-    """Returns an ordered list of natural divisors of natural int n,
-        less than or equal to n, and excluding zero."""
+    """
+    Returns an ordered list of natural divisors of natural int n,
+    less than or equal to n, and excluding zero.
+    :param n: natural int
+    :return: list
+    """
     return list_divisors_leq(n, n)
 
 
 def fact(n):
-    """ returns factorial of natural n"""
+    """
+    returns factorial of natural n
+    :param n: natural int
+    :return: int sum
+    """
     if n == 0:
         return 1
     else:
@@ -71,7 +99,12 @@ def fact(n):
 
 
 def exp_n_x(n, x):
-    """ """
+    """
+    Returns the exponential sum of n and x
+    :param n: natural int
+    :param x: real number
+    :return: float sum
+    """
     # This function makes use of the exponential sum formula:
     # http://mathworld.wolfram.com/ExponentialSumFunction.html
     if n != 0:
