@@ -66,12 +66,10 @@ def list_divisors_leq(n, x):
     :return: list
     """
     if x == 1:
-        list = [x]
-        return list
+        return [x]
     else:
         if n % x == 0:
-            list = [x]
-            return list + list_divisors_leq(n, x - 1)
+            return [x] + list_divisors_leq(n, x - 1)
         else:
             return list_divisors_leq(n, x - 1)
 
@@ -114,3 +112,25 @@ def exp_n_x(n, x):
 
 
 # ============ NON-LINEAR RECURSION =======================================
+
+
+def play_hanoi(hanoi, n, src, dest, temp):
+    """
+    :param hanoi:
+    :param n:
+    :param src:
+    :param dest:
+    :param temp:
+    :return:
+    """
+    if n <= 1:
+        pass
+    if n > 1:
+        play_hanoi(hanoi, n-1, src, temp, dest)
+    hanoi.move(src, dest)
+    if n > 1:
+        play_hanoi(hanoi, n - 1, temp, dest, src)
+
+
+def shit():
+    pass
