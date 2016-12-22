@@ -42,8 +42,22 @@ def is_prime(n):
     return has_divisor_smaller_than(n, n)
 
 
-def divisors(n):
+def list_divisors_leq(n, x):
+    """"""
+    if x == 1:
+        list = [x]
+        return list
+    else:
+        if n%x == 0:
+            list = [x]
+            return list + list_divisors_leq(n, x - 1)
+        else:
+            return list_divisors_leq(n, x - 1)
     pass
+
+
+def divisors(n):
+    return list_divisors_leq(n, n)
 
 
 def exp_n_x(n, x):
