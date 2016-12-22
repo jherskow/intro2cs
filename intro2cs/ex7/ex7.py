@@ -132,5 +132,17 @@ def play_hanoi(hanoi, n, src, dest, temp):
         play_hanoi(hanoi, n - 1, temp, dest, src)
 
 
-def shit():
+def make_permutation_list(digit_list , n, prefix=EMPTY_STRING):
+    """
+
+    :param prefix:
+    :param n:
+    :return:
+    """
+    digit_list = ["1", "0"]
+    if n == 0:
+        for digit in digit_list:
+
+    else:
+        prefix
     pass
