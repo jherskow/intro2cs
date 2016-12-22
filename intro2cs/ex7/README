@@ -1,0 +1,51 @@
+jherskow
+321658379
+Joshua Herskowitz
+
+
+====================================
+= README for ex7:          =
+====================================
+
+==============================
+=        Description:        =
+==============================
+
+
+======== FUNCTIONS ===========
+
+
+==
+compare_pixel       -
+compare             -
+average             -
+
+
+==
+get_piece           -
+set_piece           -
+
+
+==
+pre-process_tiles   -
+get_best_tiles      -
+choose_tile         -
+
+==
+make_mosaic         - m
+
+==MAIN==
+
+
+==============================
+=      Special Comments      =
+==============================
+
+
+==============================
+=  Colleagues and Resources  =
+==============================
+
+
+
+
