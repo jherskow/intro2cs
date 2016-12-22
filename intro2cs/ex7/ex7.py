@@ -43,24 +43,41 @@ def is_prime(n):
 
 
 def list_divisors_leq(n, x):
-    """"""
+    """Returns an ordered list of natural divisors of natural int n,
+    less than or equal to x, and excluding zero."""
     if x == 1:
         list = [x]
         return list
     else:
-        if n%x == 0:
+        if n % x == 0:
             list = [x]
             return list + list_divisors_leq(n, x - 1)
         else:
             return list_divisors_leq(n, x - 1)
-    pass
 
 
 def divisors(n):
+    """Returns an ordered list of natural divisors of natural int n,
+        less than or equal to n, and excluding zero."""
     return list_divisors_leq(n, n)
 
 
+def fact(n):
+    """ returns factorial of natural n"""
+    if n == 0:
+        return 1
+    else:
+        return n * fact(n-1)
+
+
 def exp_n_x(n, x):
-    pass
+    """ """
+    # This function makes use of the exponential sum formula:
+    # http://mathworld.wolfram.com/ExponentialSumFunction.html
+    if n != 0:
+        return (x**n)/(fact(n)) + exp_n_x(n-1, x)
+    else:
+        return 1
+
 
 # ============ NON-LINEAR RECURSION =======================================
