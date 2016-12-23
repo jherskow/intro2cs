@@ -4,6 +4,7 @@
 # EXERCISE : intro2cs ex7 2016-2017
 # DESCRIPTION: C
 ###########################################################################
+EMPTY_STRING = ''
 
 # ============ LINEAR RECURSION ===========================================
 
@@ -132,17 +133,27 @@ def play_hanoi(hanoi, n, src, dest, temp):
         play_hanoi(hanoi, n - 1, temp, dest, src)
 
 
-def make_permutation_list(digit_list , n, prefix=EMPTY_STRING):
-    """
-
-    :param prefix:
-    :param n:
-    :return:
-    """
-    digit_list = ["1", "0"]
+def binary_permutations(n):
+    """a"""
+    if n != 0:
+        list = binary_permutations(n - 1)
+    new_list = []
     if n == 0:
-        for digit in digit_list:
-
+        return [EMPTY_STRING]
     else:
-        prefix
+        for str in list:
+            new_list.append(str + '0')
+            new_list.append(str + '1')
+        return new_list
+
+
+def print_binary_sequences(n):
+    """a"""
+    list = binary_permutations(n)
+    for permutation in list:
+        print(permutation)
     pass
+
+
+for thing in []:
+    print(thing)
