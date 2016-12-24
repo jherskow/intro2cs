@@ -176,7 +176,30 @@ def print_sequences(char_list, n):
         print(sequence)
     pass
 
-ls = ['a','b','c']
-print_sequences(ls, 4)
 
-def print_no_repe
+'''
+def print_no_repetition_sequence(char_list, n):
+    """a"""
+    list = make_sequences(char_list, n)
+    for sequnece in list:
+        for letter in sequence:
+            if:
+'''
+"""
+if 0
+    empty string
+else:
+    new list
+    for each thing in list given:
+        for any letter not in sequence given:
+            add string+letter to the new list
+
+""
+a,      b,      c
+ab, ac  ba, bc  ca, cb
+abc,acb bac,bca cab,cba
+
+"""
+
+
+
