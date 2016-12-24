@@ -155,5 +155,28 @@ def print_binary_sequences(n):
     pass
 
 
-for thing in []:
-    print(thing)
+def make_sequences(char_list, n):
+    """a"""
+    if n != 0:
+        list = make_sequences(char_list, n - 1)
+    new_list = []
+    if n == 0:
+        return [EMPTY_STRING]
+    else:
+        for str in list:
+            for char in char_list:
+                new_list.append(str + char)
+        return new_list
+
+
+def print_sequences(char_list, n):
+    """a"""
+    list = make_sequences(char_list, n)
+    for sequence in list:
+        print(sequence)
+    pass
+
+ls = ['a','b','c']
+print_sequences(ls, 4)
+
+def print_no_repe
