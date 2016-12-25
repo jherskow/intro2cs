@@ -177,29 +177,34 @@ def print_sequences(char_list, n):
     pass
 
 
-'''
-def print_no_repetition_sequence(char_list, n):
+def no_repetition_sequences_list(char_list, n):
     """a"""
-    list = make_sequences(char_list, n)
-    for sequnece in list:
-        for letter in sequence:
-            if:
-'''
-"""
-if 0
-    empty string
-else:
-    new list
-    for each thing in list given:
-        for any letter not in sequence given:
-            add string+letter to the new list
-
-""
-a,      b,      c
-ab, ac  ba, bc  ca, cb
-abc,acb bac,bca cab,cba
-
-"""
+    return_list = []
+    if n != 0:
+        for letter in char_list:
+            new_char_list = []
+            # Create new list without that letter
+            for char in char_list:
+                new_char_list += char
+            new_char_list.remove(letter)
+            # Recursion: create n-1 length suffixes, without the letter
+            add_list = no_repetition_sequences_list(new_char_list, n - 1)
+            # add each combination of letter and legal suffixes
+            for word in add_list:
+                return_list.append(letter + word )
+        # return permutations
+        return return_list
+    else:
+        return [EMPTY_STRING]
 
 
+def print_no_repetition_sequences(char_list, n):
+    """a"""
+    list = no_repetition_sequences_list(char_list, n)
+    for sequence in list:
+        print(sequence)
+    pass
+
+#ls = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k']
+#print_no_repetition_sequences(ls, 2)
 
