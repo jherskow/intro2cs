@@ -4,37 +4,38 @@ Joshua Herskowitz
 
 
 ====================================
-= README for ex7:          =
+= README for ex7:    Recursion     =
 ====================================
+" To loop is human, to recurse is divine"
 
 ==============================
 =        Description:        =
 ==============================
-
+Functions making use of recursive logic.
 
 ======== FUNCTIONS ===========
 
+Linear recursion
+=====================
+print_to_n                     - Prints integers 1 up to n including.
+print_reversed                 - Prints integers n down to 1 including.
+has_divisor_smaller_than       - returns true if n has a divisor d : n>d>1.
+is_prime                       - Is n prime? T/F.
+list_divisors_leq              - List of natural divisors of n, less than or equal to x.
+divisors                       - List of natural divisors of natural n.
+factorial                      - Returns factorial of natural n.
+exp_n_x                        - Returns the exponential sum of n and x.
 
-==
-compare_pixel       -
-compare             -
-average             -
+Non - Linear recursion
+=====================
+play_hanoi                     - Plays Hanoi.
+binary_permutations            - Makes a list of binary permutations of length n.
+print_binary_sequences         - Prints it.
+make_sequences                 - Makes a list of letter permutations of length n.
+print_sequences                - Prints it.
+no_repetition_sequences_list   - Makes a list of letter permutations, without repetition,  of length n.
+print_no_repetition_sequences  - Prints it.
 
-
-==
-get_piece           -
-set_piece           -
-
-
-==
-pre-process_tiles   -
-get_best_tiles      -
-choose_tile         -
-
-==
-make_mosaic         - m
-
-==MAIN==
 
 
 ==============================
@@ -45,6 +46,8 @@ make_mosaic         - m
 ==============================
 =  Colleagues and Resources  =
 ==============================
+https://www.youtube.com/watch?v=t4MSwiqfLaY <= Zamyla FTW!
+http://cs50.wiki/Recursion
 
 
 

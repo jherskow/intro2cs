@@ -2,7 +2,7 @@
 # FILE : ex7.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex7 2016-2017
-# DESCRIPTION: C
+# DESCRIPTION: Functions making use of recursive logic.
 ########################################################################"""
 
 EMPTY_STRING = ''
@@ -20,7 +20,6 @@ def print_to_n(n):
     elif n != 1:
         print_to_n(n - 1)
     print(n)
-    return
 
 
 def print_reversed(n):
@@ -29,13 +28,12 @@ def print_reversed(n):
     :param n: natural int
     """
     if n <= 0:
-        pass
+        return None
     elif n != 1:
         print(n)
         print_reversed(n-1)
     else:
         print(n)
-    pass
 
 
 def has_divisor_smaller_than(n, i):
@@ -59,7 +57,7 @@ def is_prime(n):
     :param n: natural int
     :return: bool
     """
-    # any negative is divisble by -1
+    # any negative is divisible by -1
     # and 1 is not prime by convention
     if n <= 1:
         return False
@@ -97,7 +95,7 @@ def divisors(n):
     return list_divisors_leq(n, n)
 
 
-def fact(n):
+def factorial(n):
     """
     returns factorial of natural n
     :param n: natural int
@@ -106,7 +104,7 @@ def fact(n):
     if n == 0:
         return 1
     else:
-        return n * fact(n-1)
+        return n * factorial(n - 1)
 
 
 def exp_n_x(n, x):
@@ -119,7 +117,7 @@ def exp_n_x(n, x):
     # This function makes use of the exponential sum formula:
     # http://mathworld.wolfram.com/ExponentialSumFunction.html
     if n != 0:
-        return (x**n)/(fact(n)) + exp_n_x(n-1, x)
+        return (x**n)/(factorial(n)) + exp_n_x(n - 1, x)
     else:
         return 1
 
@@ -129,12 +127,12 @@ def exp_n_x(n, x):
 
 def play_hanoi(hanoi, n, src, dest, temp):
     """
-    :param hanoi:
-    :param n:
-    :param src:
-    :param dest:
-    :param temp:
-    :return:
+    Solves a game of the towers of Hanoi.
+    :param hanoi: a hanoi game object
+    :param n: number of disks in the game
+    :param src: source tower
+    :param dest: destination tower
+    :param temp: muddle tower
     """
     if n < 1:
         return None
@@ -146,7 +144,11 @@ def play_hanoi(hanoi, n, src, dest, temp):
 
 
 def binary_permutations(n):
-    """a"""
+    """
+    makes list of all permutations of [0,1] of length n
+    :param n: natural int
+    :return: list of all permutations
+    """
     if n != 0:
         permutation_list = binary_permutations(n - 1)
     new_list = []
@@ -160,15 +162,22 @@ def binary_permutations(n):
 
 
 def print_binary_sequences(n):
-    """a"""
+    """
+    Prints all permutations of [0,1] of length n
+    :param n: natural int
+    """
     list = binary_permutations(n)
     for permutation in list:
         print(permutation)
-    pass
 
 
 def make_sequences(char_list, n):
-    """a"""
+    """
+    makes list of all permutations of symbols in char_list of length n
+    :param n: natural int
+    :param char_list: list of chars
+    :return: list of all permutations
+    """
     if n != 0:
         sequence_list = make_sequences(char_list, n - 1)
     new_list = []
@@ -182,15 +191,24 @@ def make_sequences(char_list, n):
 
 
 def print_sequences(char_list, n):
-    """a"""
+    """
+    prints all permutations of symbols in char_list of length n
+    :param n: natural int
+    :param char_list: list of chars
+    """
     list = make_sequences(char_list, n)
     for sequence in list:
         print(sequence)
-    pass
 
 
 def no_repetition_sequences_list(char_list, n):
-    """a"""
+    """
+    Makes a list of all permutations, without repetition,
+    of symbols in char_list, of length n
+    :param n: natural int
+    :param char_list: list of chars
+    :return: list of all permutations
+    """
     return_list = []
     if n > 0:
         for letter in char_list:
@@ -213,8 +231,12 @@ def no_repetition_sequences_list(char_list, n):
 
 
 def print_no_repetition_sequences(char_list, n):
-    """a"""
+    """
+    Prints a list of all permutations, without repetition,
+    of symbols in char_list, of length n
+    :param n: natural int
+    :param char_list: list of chars
+    """
     sequence_list = no_repetition_sequences_list(char_list, n)
     for sequence in sequence_list:
         print(sequence)
-    pass
