@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9ff36b6-9a1e-4893-a726-bbcc040e65e0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/intro2cs.iml" afterPath="$PROJECT_DIR$/.idea/intro2cs.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex7/ex7.py" afterPath="$PROJECT_DIR$/ex7/ex7.py" />
     </list>
@@ -51,8 +49,8 @@
       <file leaf-file-name="ex7.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex7/ex7.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
+            <state relative-caret-position="654">
+              <caret line="205" column="8" selection-start-line="205" selection-start-column="8" selection-end-line="205" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -917,7 +915,14 @@
       <option name="project" value="LOCAL" />
       <updated>1482428955138</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Release candidate">
+      <created>1482664118272</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1482664118272</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -931,7 +936,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="960" height="1030" extended-state="4" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27242887" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -992,7 +997,6 @@
     <MESSAGE value="final bugs remaining&#10;" />
     <MESSAGE value="more work&#10;" />
     <MESSAGE value="fixes" />
-    <MESSAGE value="Release candidate" />
     <MESSAGE value="Release candidate 1.0!!!!" />
     <MESSAGE value="work on readme" />
     <MESSAGE value="1.0" />
@@ -1002,7 +1006,8 @@
     <MESSAGE value="done first half" />
     <MESSAGE value="hanoi" />
     <MESSAGE value="trying permutation" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying permutation" />
+    <MESSAGE value="Release candidate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release candidate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1322,8 +1327,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex7/ex7.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="210" column="0" selection-start-line="210" selection-start-column="0" selection-end-line="210" selection-end-column="0" />
+        <state relative-caret-position="654">
+          <caret line="205" column="8" selection-start-line="205" selection-start-column="8" selection-end-line="205" selection-end-column="8" />
           <folding />
         </state>
       </provider>

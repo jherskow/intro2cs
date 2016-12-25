@@ -205,6 +205,6 @@ def print_no_repetition_sequences(char_list, n):
         print(sequence)
     pass
 
-#ls = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k']
-#print_no_repetition_sequences(ls, 2)
+# ls = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k']
+# print_no_repetition_sequences(ls, 2)
 
