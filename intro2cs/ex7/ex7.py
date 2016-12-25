@@ -15,11 +15,11 @@ def print_to_n(n):
     :param n: natural int
     """
     if n <= 0:
-        pass
+        return
     elif n != 1:
         print_to_n(n - 1)
     print(n)
-    pass
+    return
 
 
 def print_reversed(n):
@@ -58,7 +58,7 @@ def is_prime(n):
     :param n: natural int
     :return: bool
     """
-    if n == 0:
+    if n <= 0:
         return False
     return not has_divisor_smaller_than(n, n)
 
@@ -224,4 +224,4 @@ print(is_prime(5))
 print_to_n(0)
 print_reversed(0)
 '''
-print(divisors(-8))
+
