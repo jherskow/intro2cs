@@ -14,7 +14,9 @@ def print_to_n(n):
     Prints integers 1 up to n including
     :param n: natural int
     """
-    if n != 1:
+    if n <= 0:
+        pass
+    elif n != 1:
         print_to_n(n - 1)
     print(n)
     pass
@@ -25,8 +27,9 @@ def print_reversed(n):
     Prints integers n down to 1 including
     :param n: natural int
     """
-
-    if n != 1:
+    if n <= 0:
+        pass
+    elif n != 1:
         print(n)
         print_reversed(n-1)
     else:
@@ -55,7 +58,9 @@ def is_prime(n):
     :param n: natural int
     :return: bool
     """
-    return has_divisor_smaller_than(n, n)
+    if n == 0:
+        return False
+    return not has_divisor_smaller_than(n, n)
 
 
 def list_divisors_leq(n, x):
@@ -66,11 +71,13 @@ def list_divisors_leq(n, x):
     :param x: natural int
     :return: list
     """
-    if x == 1:
+    if x <= 0:
+        return []
+    elif x == 1:
         return [x]
     else:
         if n % x == 0:
-            return [x] + list_divisors_leq(n, x - 1)
+            return list_divisors_leq(n, x - 1) + [x]
         else:
             return list_divisors_leq(n, x - 1)
 
@@ -82,6 +89,8 @@ def divisors(n):
     :param n: natural int
     :return: list
     """
+    if n < 0:
+        n = abs(n)
     return list_divisors_leq(n, n)
 
 
@@ -180,7 +189,7 @@ def print_sequences(char_list, n):
 def no_repetition_sequences_list(char_list, n):
     """a"""
     return_list = []
-    if n != 0:
+    if n > 0:
         for letter in char_list:
             new_char_list = []
             # Create new list without that letter
@@ -191,11 +200,13 @@ def no_repetition_sequences_list(char_list, n):
             add_list = no_repetition_sequences_list(new_char_list, n - 1)
             # add each combination of letter and legal suffixes
             for word in add_list:
-                return_list.append(letter + word )
+                return_list.append(letter + word)
         # return permutations
         return return_list
-    else:
+    elif n == 0:
         return [EMPTY_STRING]
+    else:
+        return None
 
 
 def print_no_repetition_sequences(char_list, n):
@@ -204,7 +215,13 @@ def print_no_repetition_sequences(char_list, n):
     for sequence in list:
         print(sequence)
     pass
-
-# ls = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k']
-# print_no_repetition_sequences(ls, 2)
-
+'''
+ls = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k']
+print_no_repetition_sequences(ls, 2)
+print(list_divisors_leq(24,24))
+print(has_divisor_smaller_than(6,6))
+print(is_prime(5))
+print_to_n(0)
+print_reversed(0)
+'''
+print(divisors(-8))
