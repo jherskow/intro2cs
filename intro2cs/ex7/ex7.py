@@ -1,9 +1,10 @@
-###########################################################################
+"""########################################################################
 # FILE : ex7.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex7 2016-2017
 # DESCRIPTION: C
-###########################################################################
+########################################################################"""
+
 EMPTY_STRING = ''
 
 # ============ LINEAR RECURSION ===========================================
@@ -147,14 +148,14 @@ def play_hanoi(hanoi, n, src, dest, temp):
 def binary_permutations(n):
     """a"""
     if n != 0:
-        list = binary_permutations(n - 1)
+        permutation_list = binary_permutations(n - 1)
     new_list = []
     if n == 0:
         return [EMPTY_STRING]
     else:
-        for str in list:
-            new_list.append(str + '0')
-            new_list.append(str + '1')
+        for string in permutation_list:
+            new_list.append(string + '0')
+            new_list.append(string + '1')
         return new_list
 
 
@@ -169,14 +170,14 @@ def print_binary_sequences(n):
 def make_sequences(char_list, n):
     """a"""
     if n != 0:
-        list = make_sequences(char_list, n - 1)
+        sequence_list = make_sequences(char_list, n - 1)
     new_list = []
     if n == 0:
         return [EMPTY_STRING]
     else:
-        for str in list:
+        for string in sequence_list:
             for char in char_list:
-                new_list.append(str + char)
+                new_list.append(string + char)
         return new_list
 
 
@@ -199,10 +200,10 @@ def no_repetition_sequences_list(char_list, n):
                 new_char_list += char
             new_char_list.remove(letter)
             # Recursion: create n-1 length suffixes, without the letter
-            add_list = no_repetition_sequences_list(new_char_list, n - 1)
+            suffixes = no_repetition_sequences_list(new_char_list, n - 1)
             # add each combination of letter and legal suffixes
-            for word in add_list:
-                return_list.append(letter + word)
+            for suffix in suffixes:
+                return_list.append(letter + suffix)
         # return permutations
         return return_list
     elif n == 0:
@@ -213,19 +214,7 @@ def no_repetition_sequences_list(char_list, n):
 
 def print_no_repetition_sequences(char_list, n):
     """a"""
-    list = no_repetition_sequences_list(char_list, n)
-    for sequence in list:
+    sequence_list = no_repetition_sequences_list(char_list, n)
+    for sequence in sequence_list:
         print(sequence)
     pass
-'''
-ls = ['a', 'b', 'c', 'd', 'e','f','g','h','i','j','k']
-print_no_repetition_sequences(ls, 2)
-print(list_divisors_leq(24,24))
-print(has_divisor_smaller_than(6,6))
-print(is_prime(5))
-print_to_n(0)
-print_reversed(0)
-'''
-
-print(has_divisor_smaller_than(1,1))
-print(is_prime(1))
