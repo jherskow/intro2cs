@@ -58,7 +58,9 @@ def is_prime(n):
     :param n: natural int
     :return: bool
     """
-    if n <= 0:
+    # any negative is divisble by -1
+    # and 1 is not prime by convention
+    if n <= 1:
         return False
     return not has_divisor_smaller_than(n, n)
 
@@ -225,3 +227,5 @@ print_to_n(0)
 print_reversed(0)
 '''
 
+print(has_divisor_smaller_than(1,1))
+print(is_prime(1))
