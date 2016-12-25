@@ -136,8 +136,8 @@ def play_hanoi(hanoi, n, src, dest, temp):
     :param temp:
     :return:
     """
-    if n <= 1:
-        pass
+    if n < 1:
+        return None
     if n > 1:
         play_hanoi(hanoi, n-1, src, temp, dest)
     hanoi.move(src, dest)
