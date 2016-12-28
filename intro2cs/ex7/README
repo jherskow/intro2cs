@@ -6,12 +6,12 @@ Joshua Herskowitz
 ====================================
 = README for ex7:    Recursion     =
 ====================================
-" To loop is human, to recurse is divine"
+
 
 ==============================
 =        Description:        =
 ==============================
-Functions making use of recursive logic.
+Functions making use of recursive functions.
 
 ======== FUNCTIONS ===========
 
@@ -41,12 +41,13 @@ print_no_repetition_sequences  - Prints it.
 ==============================
 =      Special Comments      =
 ==============================
-
+"Those who do not learn from recursion are destined to repeat it."
+George_Santayana - I'm paraphrasing.
 
 ==============================
 =  Colleagues and Resources  =
 ==============================
-https://www.youtube.com/watch?v=t4MSwiqfLaY <= Zamyla FTW!
+https://www.youtube.com/watch?v=t4MSwiqfLaY < hire this person!
 http://cs50.wiki/Recursion
 
 

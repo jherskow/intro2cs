@@ -16,7 +16,7 @@ def print_to_n(n):
     :param n: natural int
     """
     if n <= 0:
-        return
+        return None
     elif n != 1:
         print_to_n(n - 1)
     print(n)
@@ -132,7 +132,7 @@ def play_hanoi(hanoi, n, src, dest, temp):
     :param n: number of disks in the game
     :param src: source tower
     :param dest: destination tower
-    :param temp: muddle tower
+    :param temp: middle tower
     """
     if n < 1:
         return None
@@ -149,12 +149,11 @@ def binary_permutations(n):
     :param n: natural int
     :return: list of all permutations
     """
-    if n != 0:
-        permutation_list = binary_permutations(n - 1)
-    new_list = []
     if n == 0:
         return [EMPTY_STRING]
     else:
+        permutation_list = binary_permutations(n - 1)
+        new_list = []
         for string in permutation_list:
             new_list.append(string + '0')
             new_list.append(string + '1')
