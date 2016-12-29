@@ -115,6 +115,19 @@ class Ship:
         :return: True if the bomb generated a new hit in the ship, False
          otherwise.
         """
+        '''
+        if self.direction in Direction.HORIZONTAL:
+            for segment in range(self.length):
+                if (self.pos[0] + segment, pos[1]) == pos:
+                    self.direction = Direction.NOT_MOVING
+                    return True
+        elif self.direction in Direction.VERTICAL:
+            for segment in range(self.length):
+                if (self.pos[0] + segment, pos[1]) == pos:
+                    self.direction = Direction.NOT_MOVING
+                    return True
+        '''
+
         pass
 
     def terminated(self):
