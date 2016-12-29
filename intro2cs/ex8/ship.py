@@ -15,7 +15,7 @@ class Direction:
     LEFT = 'left'  # Choose your own value
     RIGHT = "right"  # Choose your own value
 
-    NOT_MOVING = 'still'  # Choose your own value
+    NOT_MOVING = 'static'  # Choose your own value
 
     VERTICAL = (UP, DOWN)
     HORIZONTAL = (LEFT, RIGHT)
@@ -49,24 +49,8 @@ class Ship:
         """
         self.pos = pos
         self.length = length
-        self.direction = direction  # todo
+        self.direction = direction
         self.board_size = board_size
-
-    def move(self):
-        """a"""
-        if self.direction == Direction.NOT_MOVING:
-            return
-        elif self.direction in Direction.HORIZONTAL:
-            if self.direction == Direction.RIGHT:
-                self.pos[0] += 1
-            elif self.direction == Direction.LEFT:
-                self.pos[0] -= 1
-        elif self.direction in Direction.VERTICAL:
-            if self.direction == Direction.UP:
-                self.pos[1] += 1
-            elif self.direction == Direction.DOWN:
-                self.pos[1] -= 1
-
 
     def __repr__(self):
         """
@@ -84,20 +68,49 @@ class Ship:
     def move(self):
         """
         Make the ship move one board unit.
-        Movement is in the current sailing direction, unless such movement would
-        take the ship outside of the board, in which case the ship switches
-        direction and sails one board unit in the new direction.
-        :return: A direction object representing the current movement direction.
+        Movement is in the current sailing direction, unless such movement
+        would take the ship outside of the board, in which case the ship
+        switches direction and sails one board unit in the new direction.
+        :return: A direction object of the new movement direction.
         """
-        pass
+        if self.direction == Direction.NOT_MOVING:
+            return self.direction
+        elif self.direction == Direction.RIGHT:
+            if self.length + self.pos[0] == self.board_size:
+                self.direction = Direction.LEFT
+            return self.sail
+        elif self.direction == Direction.LEFT:
+            if self.pos[0] == 0:
+                self.direction = Direction.RIGHT
+            return self.sail
+        elif self.direction == Direction.DOWN:
+            if self.length + self.pos[1] == self.board_size:
+                self.direction = Direction.UP
+            return self.sail
+        elif self.direction == Direction.UP:
+            if self.pos[1] == 0:
+                self.direction = Direction.DOWN
+            return self.sail()
+
+    def sail(self):
+        """sail one unit in given direction"""
+        if self.direction == Direction.RIGHT:
+            self.pos[0] += 1
+        elif self.direction == Direction.LEFT:
+            self.pos[0] -= 1
+        elif self.direction == Direction.DOWN:
+            self.pos[1] += 1
+        elif self.direction == Direction.UP:
+            self.pos[1] -= 1
+        return self.direction
 
     def hit(self, pos):
         """
-        Inform the ship that a bomb hit a specific coordinate. The ship updates
-         its state accordingly.
-        If one of the ship's body's coordinate is hit, the ship does not move
-         in future turns. If all ship's body's coordinate are hit, the ship is
-         terminated and removed from the board.
+        Inform the ship that a bomb hit a specific coordinate. The ship
+         updates its state accordingly.
+        If one of the ship's body's coordinate is hit, the ship does not
+         move in future turns. If all ship's body's coordinate are hit, the
+         ship is terminated and removed from the board.
         :param pos: A tuple representing the (x, y) position of the hit.
         :return: True if the bomb generated a new hit in the ship, False
          otherwise.
@@ -106,8 +119,8 @@ class Ship:
 
     def terminated(self):
         """
-        :return: True if all ship's coordinates were hit in previous turns, False
-        otherwise.
+        :return: True if all ship's coordinates were hit in previous turns,
+         False otherwise.
         """
         pass
 
@@ -115,8 +128,8 @@ class Ship:
         """
         Check whether the ship is found in a specific coordinate.
         :param pos: A tuple representing the coordinate for check.
-        :return: True if one of the ship's coordinates is found in the given
-        (x, y) coordinate, False otherwise.
+        :return: True if one of the ship's coordinates is found in the
+         given (x, y) coordinate, False otherwise.
         """
         pass
 
@@ -148,7 +161,7 @@ class Ship:
 
     def cell_status(self, pos):
         """
-        Return the status of the given coordinate (hit\not hit) in current ship.
+        Return the status of the given coordinate (hit\not) in current ship
         :param pos: A tuple representing the coordinate to query.
         :return:
             if the given coordinate is not hit : False

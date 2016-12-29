@@ -73,6 +73,6 @@ class Game:
 ############################################################
 # An example usage of the game
 ############################################################
-if __name__=="__main__":
+if __name__ == "__main__":
     game = Game(5, gh.initialize_ship_list(4, 2))
     game.play()
