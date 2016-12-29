@@ -58,14 +58,14 @@ class Ship:
             return
         elif self.direction in Direction.HORIZONTAL:
             if self.direction == Direction.RIGHT:
-                self.pos += (0, 1)
+                self.pos[0] += 1
             elif self.direction == Direction.LEFT:
-                self.pos += (0, -1)
+                self.pos[0] -= 1
         elif self.direction in Direction.VERTICAL:
             if self.direction == Direction.UP:
-                self.pos += (0, 1)
+                self.pos[1] += 1
             elif self.direction == Direction.DOWN:
-                self.pos += (0, -1)
+                self.pos[1] -= 1
 
 
     def __repr__(self):
