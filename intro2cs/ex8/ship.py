@@ -51,6 +51,8 @@ class Ship:
         self.length = length
         self.direction = direction
         self.board_size = board_size
+        self.damaged_cell_list = []
+        self.coordinate_list = []
 
     def __repr__(self):
         """
@@ -63,6 +65,10 @@ class Ship:
             3. Last sailing direction.
             4. The size of the board in which the ship is located.
         """
+        cord_list = self.coordinates()
+        hit_cord_list = self.damaged_cell_list
+        direction = self.direction
+
         pass
 
     def move(self):
@@ -115,27 +121,27 @@ class Ship:
         :return: True if the bomb generated a new hit in the ship, False
          otherwise.
         """
-        '''
-        if self.direction in Direction.HORIZONTAL:
-            for segment in range(self.length):
-                if (self.pos[0] + segment, pos[1]) == pos:
-                    self.direction = Direction.NOT_MOVING
-                    return True
-        elif self.direction in Direction.VERTICAL:
-            for segment in range(self.length):
-                if (self.pos[0] + segment, pos[1]) == pos:
-                    self.direction = Direction.NOT_MOVING
-                    return True
-        '''
+        hit = False
+        if self.__contains__(pos):
+            self.damaged_cell_list.append(pos)
+            self.coordinate_list = self.coordinates()
+            self.direction = Direction.NOT_MOVING
+            hit = True
+        if self.terminated():
+            # todo remove ship from board?
+        return hit
 
-        pass
 
     def terminated(self):
         """
         :return: True if all ship's coordinates were hit in previous turns,
          False otherwise.
         """
-        pass
+        cell_list = self.damaged_cells()
+        if len(cell_list) == self.length:
+            return True
+        else:
+            return False
 
     def __contains__(self, pos):
         """
@@ -144,7 +150,17 @@ class Ship:
         :return: True if one of the ship's coordinates is found in the
          given (x, y) coordinate, False otherwise.
         """
-        pass
+        if self.direction in Direction.HORIZONTAL:
+            if self.pos[0] == pos[0]:
+                for i in self.length:
+                    if self.pos[1]+i == pos[1]:
+                        return True
+        elif self.direction in Direction.VERTICAL:
+            if self.pos[1] == pos[1]:
+                for i in self.length:
+                    if self.pos[0] + i == pos[0]:
+                        return True
+        return False
 
     def coordinates(self):
         """
@@ -152,7 +168,14 @@ class Ship:
         :return: A list of (x, y) tuples representing the ship's current
         occupying coordinates.
         """
-        pass
+        coordinate_list =[]
+        if self.direction in Direction.HORIZONTAL:
+            for i in range(self.length):
+                coordinate_list.append((self.pos[0]+i, pos[1]))
+        elif self.direction in Direction.VERTICAL:
+            for i in range(self.length):
+                coordinate_list.append((self.pos[1]+i, pos[0]))
+        return coordinate_list
 
     def damaged_cells(self):
         """
@@ -162,6 +185,7 @@ class Ship:
          return an empty list). There is no importance to the order of the
          values in the returned list.
         """
+        return self.damaged_cell_list
 
     def direction(self):
         """
@@ -170,7 +194,7 @@ class Ship:
          [UP, DOWN, LEFT, RIGHT] according to current sailing direction or
          NOT_MOVING if the ship is hit and not moving.
         """
-        pass
+        return self.direction
 
     def cell_status(self, pos):
         """
