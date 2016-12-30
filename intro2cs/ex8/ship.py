@@ -68,8 +68,9 @@ class Ship:
         cord_list = self.coordinates()
         hit_cord_list = self.damaged_cell_list
         direction = self.direction
-
-        pass
+        board_size = self.board_size
+        repr_tuple = cord_list, hit_cord_list, direction, board_size
+        return str(repr_tuple)
 
     def move(self):
         """
@@ -128,9 +129,9 @@ class Ship:
             self.direction = Direction.NOT_MOVING
             hit = True
         if self.terminated():
+            pass
             # todo remove ship from board?
         return hit
-
 
     def terminated(self):
         """
@@ -168,13 +169,13 @@ class Ship:
         :return: A list of (x, y) tuples representing the ship's current
         occupying coordinates.
         """
-        coordinate_list =[]
+        coordinate_list = []
         if self.direction in Direction.HORIZONTAL:
             for i in range(self.length):
-                coordinate_list.append((self.pos[0]+i, pos[1]))
+                coordinate_list.append((self.pos[0]+i, self.pos[1]))
         elif self.direction in Direction.VERTICAL:
             for i in range(self.length):
-                coordinate_list.append((self.pos[1]+i, pos[0]))
+                coordinate_list.append((self.pos[1]+i, self.pos[0]))
         return coordinate_list
 
     def damaged_cells(self):
@@ -205,4 +206,10 @@ class Ship:
             if the given coordinate is hit : True
             if the coordinate is not part of the ship's body : None 
         """
-        pass
+        if self.__contains__(pos):
+            if pos in self.damaged_cell_list:
+                return True
+            else:
+                return False
+        else:
+            return None
