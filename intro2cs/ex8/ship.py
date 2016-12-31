@@ -10,12 +10,12 @@ class Direction:
      NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but all other
      implementations are for you to carry out.
     """
-    UP = 'up'  # Choose your own value
-    DOWN = 'down'  # Choose your own value
-    LEFT = 'left'  # Choose your own value
-    RIGHT = "right"  # Choose your own value
+    UP = 'UP'  # Choose your own value
+    DOWN = 'DOWN'  # Choose your own value
+    LEFT = 'LEFT'  # Choose your own value
+    RIGHT = "RIGHT"  # Choose your own value
 
-    NOT_MOVING = 'static'  # Choose your own value
+    NOT_MOVING = 'STATIC'  # Choose your own value
 
     VERTICAL = (UP, DOWN)
     HORIZONTAL = (LEFT, RIGHT)
