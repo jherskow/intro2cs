@@ -47,12 +47,12 @@ class Ship:
         :param direction: Initial direction in which the ship is sailing
         :param board_size: Board size in which the ship is sailing
         """
-        self.pos = pos
-        self.length = length
-        self.direction = direction
-        self.board_size = board_size
-        self.damaged_cell_list = []
-        self.coordinate_list = []
+        self._pos = pos
+        self._length = length
+        self._direction = direction
+        self._board_size = board_size
+        self._damaged_cell_list = []
+        self._coordinate_list = self.coordinates()
 
     def __repr__(self):
         """
@@ -65,10 +65,10 @@ class Ship:
             3. Last sailing direction.
             4. The size of the board in which the ship is located.
         """
-        cord_list = self.coordinates()
-        hit_cord_list = self.damaged_cell_list
-        direction = self.direction
-        board_size = self.board_size
+        cord_list = self._coordinate_list
+        hit_cord_list = self._damaged_cell_list
+        direction = self._direction
+        board_size = self._board_size
         repr_tuple = cord_list, hit_cord_list, direction, board_size
         return str(repr_tuple)
 
@@ -80,36 +80,37 @@ class Ship:
         switches direction and sails one board unit in the new direction.
         :return: A direction object of the new movement direction.
         """
-        if self.direction == Direction.NOT_MOVING:
-            return self.direction
-        elif self.direction == Direction.RIGHT:
-            if self.length + self.pos[0] == self.board_size:
-                self.direction = Direction.LEFT
+        if self._direction == Direction.NOT_MOVING:
+            return self._direction
+        elif self._direction == Direction.RIGHT:
+            if self._length + self._pos[0] == self._board_size:
+                self._direction = Direction.LEFT
             return self.sail
-        elif self.direction == Direction.LEFT:
-            if self.pos[0] == 0:
-                self.direction = Direction.RIGHT
+        elif self._direction == Direction.LEFT:
+            if self._pos[0] == 0:
+                self._direction = Direction.RIGHT
             return self.sail
-        elif self.direction == Direction.DOWN:
-            if self.length + self.pos[1] == self.board_size:
-                self.direction = Direction.UP
+        elif self._direction == Direction.DOWN:
+            if self._length + self._pos[1] == self._board_size:
+                self._direction = Direction.UP
             return self.sail
-        elif self.direction == Direction.UP:
-            if self.pos[1] == 0:
-                self.direction = Direction.DOWN
+        elif self._direction == Direction.UP:
+            if self._pos[1] == 0:
+                self._direction = Direction.DOWN
             return self.sail()
 
     def sail(self):
         """sail one unit in given direction"""
-        if self.direction == Direction.RIGHT:
-            self.pos[0] += 1
-        elif self.direction == Direction.LEFT:
-            self.pos[0] -= 1
-        elif self.direction == Direction.DOWN:
-            self.pos[1] += 1
-        elif self.direction == Direction.UP:
-            self.pos[1] -= 1
-        return self.direction
+        if self._direction == Direction.RIGHT:
+            self._pos[0] += 1
+        elif self._direction == Direction.LEFT:
+            self._pos[0] -= 1
+        elif self._direction == Direction.DOWN:
+            self._pos[1] += 1
+        elif self._direction == Direction.UP:
+            self._pos[1] -= 1
+        self._coordinates = self.coordinates()
+        return self._direction
 
     def hit(self, pos):
         """
@@ -124,9 +125,9 @@ class Ship:
         """
         hit = False
         if self.__contains__(pos):
-            self.damaged_cell_list.append(pos)
-            self.coordinate_list = self.coordinates()
-            self.direction = Direction.NOT_MOVING
+            self._damaged_cell_list.append(pos)
+            self._coordinate_list = self.coordinates()
+            self._direction = Direction.NOT_MOVING
             hit = True
         if self.terminated():
             pass
@@ -139,7 +140,7 @@ class Ship:
          False otherwise.
         """
         cell_list = self.damaged_cells()
-        if len(cell_list) == self.length:
+        if len(cell_list) == self._length:
             return True
         else:
             return False
@@ -151,16 +152,8 @@ class Ship:
         :return: True if one of the ship's coordinates is found in the
          given (x, y) coordinate, False otherwise.
         """
-        if self.direction in Direction.HORIZONTAL:
-            if self.pos[0] == pos[0]:
-                for i in self.length:
-                    if self.pos[1]+i == pos[1]:
-                        return True
-        elif self.direction in Direction.VERTICAL:
-            if self.pos[1] == pos[1]:
-                for i in self.length:
-                    if self.pos[0] + i == pos[0]:
-                        return True
+        if pos in self._coordinate_list:
+            return True
         return False
 
     def coordinates(self):
@@ -170,12 +163,12 @@ class Ship:
         occupying coordinates.
         """
         coordinate_list = []
-        if self.direction in Direction.HORIZONTAL:
-            for i in range(self.length):
-                coordinate_list.append((self.pos[0]+i, self.pos[1]))
-        elif self.direction in Direction.VERTICAL:
-            for i in range(self.length):
-                coordinate_list.append((self.pos[1]+i, self.pos[0]))
+        if self._direction in Direction.HORIZONTAL:
+            for i in range(self._length):
+                coordinate_list.append((self._pos[0] + i, self._pos[1]))
+        elif self._direction in Direction.VERTICAL:
+            for i in range(self._length):
+                coordinate_list.append((self._pos[1] + i, self._pos[0]))
         return coordinate_list
 
     def damaged_cells(self):
@@ -186,7 +179,7 @@ class Ship:
          return an empty list). There is no importance to the order of the
          values in the returned list.
         """
-        return self.damaged_cell_list
+        return self._damaged_cell_list
 
     def direction(self):
         """
@@ -195,7 +188,7 @@ class Ship:
          [UP, DOWN, LEFT, RIGHT] according to current sailing direction or
          NOT_MOVING if the ship is hit and not moving.
         """
-        return self.direction
+        return self._direction
 
     def cell_status(self, pos):
         """
@@ -207,7 +200,7 @@ class Ship:
             if the coordinate is not part of the ship's body : None 
         """
         if self.__contains__(pos):
-            if pos in self.damaged_cell_list:
+            if pos in self._damaged_cell_list:
                 return True
             else:
                 return False
