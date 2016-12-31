@@ -22,9 +22,9 @@ class Game:
         :param board_size: Length of the side of the game-board.
         :param ships: A list of ships (of type Ship) that participate in the
             game.
-        :return: A new Game object.
         """
-        pass
+        self._ships = ships
+        self._board_size = board_size
 
     def __play_one_round(self):
         """

@@ -53,6 +53,7 @@ class Ship:
         self._board_size = board_size
         self._damaged_cell_list = []
         self._coordinate_list = self.coordinates()
+        self._terminated = False
 
     def __repr__(self):
         """
@@ -130,8 +131,7 @@ class Ship:
             self._direction = Direction.NOT_MOVING
             hit = True
         if self.terminated():
-            pass
-            # todo remove ship from board?
+            self._terminated = True
         return hit
 
     def terminated(self):
