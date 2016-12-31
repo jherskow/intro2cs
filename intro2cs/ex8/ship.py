@@ -87,18 +87,18 @@ class Ship:
         elif self._direction == Direction.RIGHT:
             if self._length + self._pos[0] == self._board_size:
                 self._direction = Direction.LEFT
-            return self.sail
+            return self.sail()
         elif self._direction == Direction.LEFT:
             if self._pos[0] == 0:
                 self._direction = Direction.RIGHT
-            return self.sail
-        elif self._direction == Direction.UP:
-            if self._length + self._pos[1] == self._board_size:
-                self._direction = Direction.DOWN
-            return self.sail
+            return self.sail()
         elif self._direction == Direction.DOWN:
-            if self._pos[1] == 0:
+            if self._length + self._pos[1] == self._board_size:
                 self._direction = Direction.UP
+            return self.sail()
+        elif self._direction == Direction.UP:
+            if self._pos[1] == 0:
+                self._direction = Direction.DOWN
             return self.sail()
 
     def sail(self):
@@ -108,9 +108,9 @@ class Ship:
         elif self._direction == Direction.LEFT:
             self._pos[0] -= 1
         elif self._direction == Direction.DOWN:
-            self._pos[1] -= 1
-        elif self._direction == Direction.UP:
             self._pos[1] += 1
+        elif self._direction == Direction.UP:
+            self._pos[1] -= 1
         self._coordinates = self.coordinates()
         self._last_direction = self._direction
         return self._direction
@@ -140,8 +140,7 @@ class Ship:
         :return: True if all ship's coordinates were hit in previous turns,
          False otherwise.
         """
-        cell_list = self.damaged_cells()
-        if len(cell_list) == self._length:
+        if len(self._damaged_cell_list) == self._length:
             return True
         else:
             return False
