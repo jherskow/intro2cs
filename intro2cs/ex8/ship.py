@@ -1,6 +1,7 @@
 ############################################################
 # Helper class
 ############################################################
+import ship_helper as h
 
 
 class Direction:
@@ -10,7 +11,7 @@ class Direction:
      NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but all other
      implementations are for you to carry out.
     """
-    UP = 'UP'  # Choose your own value
+    UP = '1'  # Choose your own value
     DOWN = 'DOWN'  # Choose your own value
     LEFT = 'LEFT'  # Choose your own value
     RIGHT = "RIGHT"  # Choose your own value
@@ -68,7 +69,7 @@ class Ship:
         """
         cord_list = self._coordinate_list
         hit_cord_list = self._damaged_cell_list
-        direction = self._direction
+        direction = h.direction_repr_str(Direction, self._direction)
         board_size = self._board_size
         repr_tuple = cord_list, hit_cord_list, direction, board_size
         return str(repr_tuple)
@@ -91,13 +92,13 @@ class Ship:
             if self._pos[0] == 0:
                 self._direction = Direction.RIGHT
             return self.sail
-        elif self._direction == Direction.DOWN:
-            if self._length + self._pos[1] == self._board_size:
-                self._direction = Direction.UP
-            return self.sail
         elif self._direction == Direction.UP:
-            if self._pos[1] == 0:
+            if self._length + self._pos[1] == self._board_size:
                 self._direction = Direction.DOWN
+            return self.sail
+        elif self._direction == Direction.DOWN:
+            if self._pos[1] == 0:
+                self._direction = Direction.UP
             return self.sail()
 
     def sail(self):
@@ -107,9 +108,9 @@ class Ship:
         elif self._direction == Direction.LEFT:
             self._pos[0] -= 1
         elif self._direction == Direction.DOWN:
-            self._pos[1] += 1
-        elif self._direction == Direction.UP:
             self._pos[1] -= 1
+        elif self._direction == Direction.UP:
+            self._pos[1] += 1
         self._coordinates = self.coordinates()
         return self._direction
 
@@ -127,7 +128,6 @@ class Ship:
         hit = False
         if self.__contains__(pos):
             self._damaged_cell_list.append(pos)
-            self._coordinate_list = self.coordinates()
             self._direction = Direction.NOT_MOVING
             hit = True
         if self.terminated():
