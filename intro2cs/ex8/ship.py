@@ -11,7 +11,7 @@ class Direction:
      NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but all other
      implementations are for you to carry out.
     """
-    UP = '1'  # Choose your own value
+    UP = 'UP'  # Choose your own value
     DOWN = 'DOWN'  # Choose your own value
     LEFT = 'LEFT'  # Choose your own value
     RIGHT = "RIGHT"  # Choose your own value
@@ -112,6 +112,7 @@ class Ship:
         elif self._direction == Direction.UP:
             self._pos[1] += 1
         self._coordinates = self.coordinates()
+        self._last_direction = self._direction
         return self._direction
 
     def hit(self, pos):
