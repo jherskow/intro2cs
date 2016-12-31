@@ -1,7 +1,12 @@
 ############################################################
-# Helper class
+# Imports
 ############################################################
 import ship_helper as h
+
+
+############################################################
+# Helper class
+############################################################
 
 
 class Direction:
@@ -16,7 +21,7 @@ class Direction:
     LEFT = 'LEFT'  # Choose your own value
     RIGHT = "RIGHT"  # Choose your own value
 
-    NOT_MOVING = 'STATIC'  # Choose your own value
+    NOT_MOVING = 'NOT_MOVING'  # Choose your own value
 
     VERTICAL = (UP, DOWN)
     HORIZONTAL = (LEFT, RIGHT)
@@ -69,7 +74,8 @@ class Ship:
         """
         cord_list = self._coordinate_list
         hit_cord_list = self._damaged_cell_list
-        direction = h.direction_repr_str(Direction, self._direction)
+        #direction = h.direction_repr_str(Direction, self._direction)   # todo fic
+        direction = self._direction                                     # todo fix
         board_size = self._board_size
         repr_tuple = cord_list, hit_cord_list, direction, board_size
         return str(repr_tuple)
@@ -87,22 +93,19 @@ class Ship:
         elif self._direction == Direction.RIGHT:
             if self._length + self._pos[0] == self._board_size:
                 self._direction = Direction.LEFT
-            return self.sail()
         elif self._direction == Direction.LEFT:
             if self._pos[0] == 0:
                 self._direction = Direction.RIGHT
-            return self.sail()
         elif self._direction == Direction.DOWN:
             if self._length + self._pos[1] == self._board_size:
                 self._direction = Direction.UP
-            return self.sail()
         elif self._direction == Direction.UP:
             if self._pos[1] == 0:
                 self._direction = Direction.DOWN
-            return self.sail()
+        return self.sail()
 
     def sail(self):
-        """sail one unit in given direction"""
+        """sail one unit in ship's direction"""
         if self._direction == Direction.RIGHT:
             self._pos[0] += 1
         elif self._direction == Direction.LEFT:
@@ -111,7 +114,7 @@ class Ship:
             self._pos[1] += 1
         elif self._direction == Direction.UP:
             self._pos[1] -= 1
-        self._coordinates = self.coordinates()
+        self._coordinate_list = self.coordinates()
         self._last_direction = self._direction
         return self._direction
 
@@ -206,3 +209,12 @@ class Ship:
                 return False
         else:
             return None
+
+newship = Ship((0,0),2,'RIGHT',5)
+print(newship)
+newship.move()
+print(newship)
+newship.hit((2,0))
+newship.move()
+print(newship)
+
