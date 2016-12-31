@@ -47,7 +47,7 @@ class Ship:
         :param direction: Initial direction in which the ship is sailing
         :param board_size: Board size in which the ship is sailing
         """
-        self._pos = pos
+        self._pos = list(pos)
         self._length = length
         self._direction = direction
         self._board_size = board_size
