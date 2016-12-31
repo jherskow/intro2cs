@@ -91,13 +91,13 @@ class Ship:
         if self._direction == Direction.NOT_MOVING:
             return self._direction
         elif self._direction == Direction.RIGHT:
-            if self._length + self._pos[0] == self._board_size:
+            if self._length + self._pos[0] > self._board_size:
                 self._direction = Direction.LEFT
         elif self._direction == Direction.LEFT:
             if self._pos[0] == 0:
                 self._direction = Direction.RIGHT
         elif self._direction == Direction.DOWN:
-            if self._length + self._pos[1] == self._board_size:
+            if self._length + self._pos[1] > self._board_size:
                 self._direction = Direction.UP
         elif self._direction == Direction.UP:
             if self._pos[1] == 0:
@@ -209,12 +209,23 @@ class Ship:
                 return False
         else:
             return None
+if __name__ == '__main__':
 
-newship = Ship((0,0),2,'RIGHT',5)
-print(newship)
-newship.move()
-print(newship)
-newship.hit((2,0))
-newship.move()
-print(newship)
+    newship = Ship((0,0),2,'RIGHT',5)
+    print(newship)
+    newship.move()
+    print(newship)
+    newship.move()
+    print(newship)
+    newship.move()
+    print(newship)
+    newship.move()
+    print(newship)
+    newship.move()
+    print(newship)
+    newship.move()
+    print(newship)
+    newship.move()
+    print(newship)
+
 
