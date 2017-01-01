@@ -24,12 +24,12 @@ class Direction:
      NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but all other
      implementations are for you to carry out.
     """
-    UP = 'UP'  # Choose your own value
-    DOWN = 'DOWN'  # Choose your own value
-    LEFT = 'LEFT'  # Choose your own value
-    RIGHT = "RIGHT"  # Choose your own value
+    UP = 'Hapoel'  # Choose your own value
+    DOWN = 'trisomy 21'  # Choose your own value
+    LEFT = 'dov_khanin'  # Choose your own value
+    RIGHT = "naftali_bennet"  # Choose your own value
 
-    NOT_MOVING = 'NOT_MOVING'  # Choose your own value
+    NOT_MOVING = 'carrie_fisher_:('  # Choose your own value
 
     VERTICAL = (UP, DOWN)
     HORIZONTAL = (LEFT, RIGHT)
@@ -82,8 +82,7 @@ class Ship:
         """
         cord_list = self._coordinate_list
         hit_cord_list = self._damaged_cell_list
-        #direction = h.direction_repr_str(Direction, self._direction)   # todo fic
-        direction = self._direction                                     # todo fix
+        direction = h.direction_repr_str(Direction, self._direction)
         board_size = self._board_size
         repr_tuple = cord_list, hit_cord_list, direction, board_size
         return str(repr_tuple)
@@ -99,13 +98,13 @@ class Ship:
         if self._direction == Direction.NOT_MOVING:
             return self._direction
         elif self._direction == Direction.RIGHT:
-            if self._length + self._pos[0] > self._board_size:
+            if self._length + self._pos[0] >= self._board_size:
                 self._direction = Direction.LEFT
         elif self._direction == Direction.LEFT:
             if self._pos[0] == 0:
                 self._direction = Direction.RIGHT
         elif self._direction == Direction.DOWN:
-            if self._length + self._pos[1] > self._board_size:
+            if self._length + self._pos[1] >= self._board_size:
                 self._direction = Direction.UP
         elif self._direction == Direction.UP:
             if self._pos[1] == 0:
@@ -142,8 +141,8 @@ class Ship:
             self._damaged_cell_list.append(pos)
             self._direction = Direction.NOT_MOVING
             hit = True
-        if self.terminated():
-            self._terminated = True
+            if self.terminated():
+                self._terminated = True
         return hit
 
     def terminated(self):
@@ -217,23 +216,30 @@ class Ship:
                 return False
         else:
             return None
-if __name__ == '__main__':
 
-    newship = Ship((1,0),2,'DOWN',5)
+
+
+if __name__ == '__main__': # todo DEBUG
+
+    newship = Ship((1,1),1,'dov_khanin',5)
     print(newship)
+    newship.hit((3,3))
+    print(newship)
+
+    '''
+    newship.move()
+    print(newship)
+    newship.hit((1,3))
+    print(newship)
+    print(newship.terminated())
+    newship.hit((1, 2))
     newship.move()
     print(newship)
     newship.move()
     print(newship)
     newship.move()
     print(newship)
-    newship.move()
-    print(newship)
-    newship.move()
-    print(newship)
-    newship.move()
-    print(newship)
-    newship.move()
-    print(newship)
+    print(newship.terminated())
+    '''
 
 
