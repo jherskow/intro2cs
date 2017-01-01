@@ -11,12 +11,20 @@
 import game_helper as gh
 
 ############################################################
+# Constants
+############################################################
+GAME_STATUS_ONGOING = 'game on'
+GAME_STATUS_ENDED = 'game over'
+
+############################################################
 # Class definition
 ############################################################
 
+
 class Bomb:
     """
-    a
+    A class representing a bomb.
+    A bomb is composed of a location, and a timer.
     """
 
     def __init__(self, pos):
@@ -28,25 +36,17 @@ class Bomb:
         self._time_left = 3
 
     def update(self):
-        """
-
-        :return:
-        """
+        """ Lowers timer by one """
         self._time_left -= 1
 
     def pos(self):
-        """
-
-        :return:
-        """
+        """ returns position """
         return self._pos
 
     def reset(self):
-        """
-
-        :return:
-        """
+        """ resets timer to 3 """
         self._time_left = 3
+
 
 class Game:
     """
@@ -66,15 +66,6 @@ class Game:
         self._ships = ships
         self._board_size = board_size
         self._bombs = []
-
-    def set_bomb(self):
-        """
-
-        :return:
-        """
-        target = gh.get_target(self._board_size)
-
-        pass
 
     def __play_one_round(self):
         """
@@ -118,8 +109,13 @@ class Game:
         for bomb in self._bombs:
             if bomb in exploded_bombs:
                 self._bombs.remove(bomb)
+            else:
+                bomb.update()
         gh.report_turn(hit_count, kill_count)
-        pass
+        if self._ships != []:
+            return GAME_STATUS_ONGOING
+        else:
+            return GAME_STATUS_ENDED
 
     def __repr__(self):
         """
