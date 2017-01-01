@@ -191,7 +191,7 @@ class Ship:
          values in the returned list.
         """
         cell_list = c.deepcopy(self.__damaged_cell_list)
-        return self.__damaged_cell_list
+        return cell_list
 
     def direction(self):
         """
