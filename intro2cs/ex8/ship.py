@@ -221,10 +221,42 @@ class Ship:
 
 if __name__ == '__main__': # todo DEBUG
 
-    newship = Ship((1,1),1,'dov_khanin',5)
-    print(newship)
-    newship.hit((3,3))
-    print(newship)
+    newship = Ship((1, 1), 2, Direction.LEFT, 4)
+
+    print('ship: ' + str(newship))
+    print('ship dead cells: ' + str(newship.damaged_cells()))
+    print('ship TERM?: ' + str(newship.terminated()))
+
+    print("------------moving ")
+    newship.move()
+
+    print('---ship: ' + str(newship))
+    print('ship dead cells: ' + str(newship.damaged_cells()))
+    print('ship TERM?: ' + str(newship.terminated()))
+
+    loc = (3, 3)
+    print("------------hitting " + str(loc))
+    if newship.__contains__(loc):
+        print('ship contains' + str(loc))
+    else:
+        print('ship NOT contains' + str(loc))
+    newship.hit(loc)
+
+    print('---ship: ' + str(newship))
+    print('ship dead cells: ' + str(newship.damaged_cells()))
+    print('ship TERM?: ' + str(newship.terminated()))
+
+    loc = (0, 1)
+    print("--------------hitting " + str(loc))
+    if newship.__contains__(loc):
+        print('ship contains' + str(loc))
+    else:
+        print('ship NOT contains' + str(loc))
+    newship.hit(loc)
+
+    print('---ship: ' + str(newship))
+    print('ship dead cells: ' + str(newship.damaged_cells()))
+    print('ship TERM?: ' + str(newship.terminated()))
 
     '''
     newship.move()
