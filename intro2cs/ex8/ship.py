@@ -21,8 +21,8 @@ import copy as c
 class Direction:
     """
     Class representing a direction in 2D world.
-    You may not change the name of any of the constants (UP, DOWN, LEFT, RIGHT,
-     NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but all other
+    You may not change the name of any of the constants (UP, DOWN, LEFT,
+     RIGHT, NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but other
      implementations are for you to carry out.
     """
     UP = 'Hapoel'
@@ -123,7 +123,6 @@ class Ship:
         elif self.__direction == Direction.UP:
             self.__pos[1] -= 1
         self.__coordinate_list = self.coordinates()
-        self.__last_direction = self.__direction
         return self.__direction
 
     def hit(self, pos):
@@ -185,9 +184,9 @@ class Ship:
     def damaged_cells(self):
         """
         Return the ship's hit positions.
-        :return: A list of tuples representing the (x, y) coordinates of the
-         ship which were hit in past turns (If there are no hit coordinates,
-         return an empty list). There is no importance to the order of the
+        :return: A list of tuples representing the (x, y) coordinates of a
+         ship which were hit in past turns (If there are no hit coordinates
+         -return an empty list). There is no importance to the order of the
          values in the returned list.
         """
         cell_list = c.deepcopy(self.__damaged_cell_list)
@@ -218,62 +217,3 @@ class Ship:
                 return False
         else:
             return None
-
-
-
-if __name__ == '__main__': # todo DEBUG
-
-    newship = Ship((1, 1), 2, Direction.LEFT, 4)
-
-    print('ship: ' + str(newship))
-    print('ship dead cells: ' + str(newship.damaged_cells()))
-    print('ship TERM?: ' + str(newship.terminated()))
-
-    print("------------moving ")
-    newship.move()
-
-    print('---ship: ' + str(newship))
-    print('ship dead cells: ' + str(newship.damaged_cells()))
-    print('ship TERM?: ' + str(newship.terminated()))
-
-    loc = (3, 3)
-    print("------------hitting " + str(loc))
-    if newship.__contains__(loc):
-        print('ship contains' + str(loc))
-    else:
-        print('ship NOT contains' + str(loc))
-    newship.hit(loc)
-
-    print('---ship: ' + str(newship))
-    print('ship dead cells: ' + str(newship.damaged_cells()))
-    print('ship TERM?: ' + str(newship.terminated()))
-
-    loc = (0, 1)
-    print("--------------hitting " + str(loc))
-    if newship.__contains__(loc):
-        print('ship contains' + str(loc))
-    else:
-        print('ship NOT contains' + str(loc))
-    newship.hit(loc)
-
-    print('---ship: ' + str(newship))
-    print('ship dead cells: ' + str(newship.damaged_cells()))
-    print('ship TERM?: ' + str(newship.terminated()))
-
-    '''
-    newship.move()
-    print(newship)
-    newship.hit((1,3))
-    print(newship)
-    print(newship.terminated())
-    newship.hit((1, 2))
-    newship.move()
-    print(newship)
-    newship.move()
-    print(newship)
-    newship.move()
-    print(newship)
-    print(newship.terminated())
-    '''
-
-
