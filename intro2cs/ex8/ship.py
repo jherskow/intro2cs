@@ -24,12 +24,12 @@ class Direction:
      NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but all other
      implementations are for you to carry out.
     """
-    UP = 'Hapoel'  # Choose your own value
-    DOWN = 'trisomy 21'  # Choose your own value
-    LEFT = 'dov_khanin'  # Choose your own value
-    RIGHT = "naftali_bennet"  # Choose your own value
+    UP = 'Hapoel'
+    DOWN = 'trisomy 21'
+    LEFT = 'dov_khanin'
+    RIGHT = "naftali_bennet"
 
-    NOT_MOVING = 'carrie_fisher_:('  # Choose your own value
+    NOT_MOVING = 'carrie_fisher_:('
 
     VERTICAL = (UP, DOWN)
     HORIZONTAL = (LEFT, RIGHT)

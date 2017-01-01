@@ -41,8 +41,8 @@
       <file leaf-file-name="ship.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex8/ship.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-378">
-              <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
+            <state relative-caret-position="420">
+              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -448,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483270527562</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="pass 51 out of 57  - must fix damage">
+      <created>1483274878802</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1483274878802</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -508,7 +515,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit?" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit?" />
+    <MESSAGE value="pass 51 out of 57  - must fix damage" />
+    <option name="LAST_COMMIT_MESSAGE" value="pass 51 out of 57  - must fix damage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -780,8 +788,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex8/ship.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
+        <state relative-caret-position="420">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding />
         </state>
       </provider>
