@@ -1,4 +1,12 @@
-############################################################
+"""########################################################################
+# FILE : ship.py
+# WRITER : Joshua Herskowitz , jherskow , 321658379
+# EXERCISE : intro2cs ex8 2016-2017
+# DESCRIPTION: --------------------------------------------------
+########################################################################"""
+
+
+#########################################################
 # Imports
 ############################################################
 import ship_helper as h
@@ -130,7 +138,7 @@ class Ship:
          otherwise.
         """
         hit = False
-        if self.__contains__(pos):
+        if self.__contains__(pos) and pos not in self._damaged_cell_list:
             self._damaged_cell_list.append(pos)
             self._direction = Direction.NOT_MOVING
             hit = True
@@ -171,7 +179,7 @@ class Ship:
                 coordinate_list.append((self._pos[0] + i, self._pos[1]))
         elif self._direction in Direction.VERTICAL:
             for i in range(self._length):
-                coordinate_list.append((self._pos[1] + i, self._pos[0]))
+                coordinate_list.append((self._pos[0], self._pos[1] + i))
         return coordinate_list
 
     def damaged_cells(self):
@@ -211,7 +219,7 @@ class Ship:
             return None
 if __name__ == '__main__':
 
-    newship = Ship((0,0),2,'RIGHT',5)
+    newship = Ship((1,0),2,'DOWN',5)
     print(newship)
     newship.move()
     print(newship)
