@@ -14,6 +14,39 @@ import game_helper as gh
 # Class definition
 ############################################################
 
+class Bomb:
+    """
+    a
+    """
+
+    def __init__(self, pos):
+        """
+
+        :param pos:
+        """
+        self._pos = pos
+        self._time_left = 3
+
+    def update(self):
+        """
+
+        :return:
+        """
+        self._time_left -= 1
+
+    def pos(self):
+        """
+
+        :return:
+        """
+        return self._pos
+
+    def reset(self):
+        """
+
+        :return:
+        """
+        self._time_left = 3
 
 class Game:
     """
@@ -32,6 +65,16 @@ class Game:
         """
         self._ships = ships
         self._board_size = board_size
+        self._bombs = []
+
+    def set_bomb(self):
+        """
+
+        :return:
+        """
+        target = gh.get_target(self._board_size)
+
+        pass
 
     def __play_one_round(self):
         """
@@ -51,6 +94,31 @@ class Game:
             GAME_STATUS_ONGOING if there are still ships on the board or
             GAME_STATUS_ENDED otherwise.
         """
+        target = gh.get_target(self._board_size)
+        if target not in self._bombs:
+            new_bomb = Bomb(target)
+            self._bombs.append(new_bomb)
+        else:
+            for bomb in self._bombs:
+                if bomb.pos == target:
+                    bomb.reset()
+        hit_count = 0
+        kill_count = 0
+        exploded_bombs = []
+        for ship in self._ships:
+            ship.move()
+        for ship in self._ships:
+            for bomb in self._bombs:
+                if ship.hit(bomb.pos):
+                    hit_count += 1
+                    exploded_bombs.append(bomb)
+                    if ship._terminated:
+                        self._ships.remove(ship)
+                        kill_count += 1
+        for bomb in self._bombs:
+            if bomb in exploded_bombs:
+                self._bombs.remove(bomb)
+        gh.report_turn(hit_count, kill_count)
         pass
 
     def __repr__(self):
