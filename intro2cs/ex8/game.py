@@ -55,6 +55,7 @@ class Game:
     which tries to guess the locations of the ships by guessing their
     coordinates.
     """
+    BOMB_START_TIME = 3
 
     def __init__(self, board_size, ships):
         """
@@ -87,32 +88,32 @@ class Game:
         """
         target = gh.get_target(self._board_size)
         if target not in self._bombs:
-            new_bomb = Bomb(target)
-            self._bombs.append(new_bomb)
+            bomb = (target, Game.BOMB_START_TIME)
+            self._bombs += bomb
         else:
             for bomb in self._bombs:
-                if bomb.pos == target:
-                    bomb.reset()
-        hit_count = 0
-        kill_count = 0
-        exploded_bombs = []
+                if bomb == target:
+                    self._bombs[bomb][1] = Game.BOMB_START_TIME
+        turn_hit_count = 0
+        turn_kill_count = 0
+        turn_exploded_bombs = []
         for ship in self._ships:
             ship.move()
         for ship in self._ships:
             for bomb in self._bombs:
-                if ship.hit(bomb.pos):
-                    hit_count += 1
-                    exploded_bombs.append(bomb)
-                    if ship._terminated:
+                if ship.hit(bomb):
+                    turn_hit_count += 1
+                    turn_exploded_bombs.append(bomb)
+                    if ship.terminated():
                         self._ships.remove(ship)
-                        kill_count += 1
+                        turn_kill_count += 1
         for bomb in self._bombs:
-            if bomb in exploded_bombs:
+            if bomb in turn_exploded_bombs:
                 self._bombs.remove(bomb)
             else:
-                bomb.update()
-        gh.report_turn(hit_count, kill_count)
-        if self._ships != []:
+                self._bombs[bomb][1] -= 1
+        gh.report_turn(turn_hit_count, turn_kill_count)
+        if self._ships is not []:
             return GAME_STATUS_ONGOING
         else:
             return GAME_STATUS_ENDED
