@@ -41,7 +41,7 @@ class Game:
         """
         self._ships = ships
         self._board_size = board_size
-        self._bombs = []
+        self._bombs = {}
 
     def __play_one_round(self):
         """
@@ -61,20 +61,20 @@ class Game:
             GAME_STATUS_ONGOING if there are still ships on the board or
             GAME_STATUS_ENDED otherwise.
         """
-        target = gh.get_target(self._board_size)
+        target = gh.get_target(self._board_size)                             # todo place bomb func
         if target not in self._bombs:
-            bomb = [target, Game.BOMB_FUSE]
-            self._bombs += bomb
+            bomb = {target: Game.BOMB_FUSE}
+            self._bombs.update(bomb)
         else:
             for bomb in self._bombs:
                 if bomb == target:
-                    self._bombs[bomb][Game.BOMB_TIMER] = Game.BOMB_FUSE
+                    self._bombs[bomb] = Game.BOMB_FUSE
         turn_hit_count = 0
         turn_kill_count = 0
         turn_exploded_bombs = []
         for ship in self._ships:
             ship.move()
-        for ship in self._ships:
+        for ship in self._ships:                                            # todo check hits func
             for bomb in self._bombs:
                 if ship.hit(bomb):
                     turn_hit_count += 1
@@ -82,13 +82,16 @@ class Game:
                     if ship.terminated():
                         self._ships.remove(ship)
                         turn_kill_count += 1
+        for bomb in turn_exploded_bombs:                                    # todo refresh bombs func
+            self._bombs.__delitem__(bomb)
         for bomb in self._bombs:
-            if bomb in turn_exploded_bombs:
-                self._bombs.remove(bomb)
-            else:
-                self._bombs[bomb][1] -= 1
+                self._bombs[bomb] -= 1
+                if self._bombs[bomb] == 0:
+                    self._bombs.remove(bomb)
+
         gh.report_turn(turn_hit_count, turn_kill_count)
-        if self._ships is not []:
+
+        if self._ships is not []:                                           # todo game status func
             return GAME_STATUS_ONGOING
         else:
             return GAME_STATUS_ENDED
@@ -119,7 +122,11 @@ class Game:
         The main driver of the Game. Manages the game until completion.
         :return: None
         """
-        pass
+        print(self)
+        while self.__play_one_round() != GAME_STATUS_ENDED:
+            print(self)
+        return None
+
 
 ############################################################
 # An example usage of the game
