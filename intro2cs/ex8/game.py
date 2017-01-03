@@ -21,33 +21,6 @@ GAME_STATUS_ENDED = 'game over'
 ############################################################
 
 
-class Bomb:
-    """
-    A class representing a bomb.
-    A bomb is composed of a location, and a timer.
-    """
-
-    def __init__(self, pos):
-        """
-
-        :param pos:
-        """
-        self._pos = pos
-        self._time_left = 3
-
-    def update(self):
-        """ Lowers timer by one """
-        self._time_left -= 1
-
-    def pos(self):
-        """ returns position """
-        return self._pos
-
-    def reset(self):
-        """ resets timer to 3 """
-        self._time_left = 3
-
-
 class Game:
     """
     A class representing a battleship game.
@@ -55,7 +28,9 @@ class Game:
     which tries to guess the locations of the ships by guessing their
     coordinates.
     """
-    BOMB_START_TIME = 3
+    BOMB_FUSE = 3
+    BOMB_POS = 0
+    BOMB_TIMER = 1
 
     def __init__(self, board_size, ships):
         """
@@ -88,12 +63,12 @@ class Game:
         """
         target = gh.get_target(self._board_size)
         if target not in self._bombs:
-            bomb = (target, Game.BOMB_START_TIME)
+            bomb = [target, Game.BOMB_FUSE]
             self._bombs += bomb
         else:
             for bomb in self._bombs:
                 if bomb == target:
-                    self._bombs[bomb][1] = Game.BOMB_START_TIME
+                    self._bombs[bomb][Game.BOMB_TIMER] = Game.BOMB_FUSE
         turn_hit_count = 0
         turn_kill_count = 0
         turn_exploded_bombs = []
@@ -133,7 +108,11 @@ class Game:
             3. A list of the ships found on the board (each ship should be
                 represented by its __repr__ string).
         """
-        pass
+        board_size = self._board_size
+        bomb_dict = {bomb[0]: bomb[1] for bomb in self._bombs}
+        ship_list = [str(ship) for ship in self._ships]
+        repr_tuple = (board_size, bomb_dict, ship_list)
+        return str(repr_tuple)
 
     def play(self):
         """
