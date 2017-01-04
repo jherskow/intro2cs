@@ -44,6 +44,57 @@ class Game:
         self._board_size = board_size
         self._bombs = {}
         self._last_turn_hits = []
+        self._last_turn_kills = 0
+
+    def update_bombs(self):
+        "updates bomb fuses"
+        for bomb in self._bombs:
+            self._bombs[bomb] -= 1
+
+    def place_bomb(self):
+        """a"""
+        target = gh.get_target(self._board_size)  # todo place bomb func
+        if target not in self._bombs:
+            bomb = {target: Game.BOMB_FUSE}
+            self._bombs.update(bomb)
+        else:
+            for bomb in self._bombs:
+                if bomb == target:
+                    self._bombs[bomb] = Game.BOMB_FUSE
+        return None
+
+    def move_ships(self):
+        """moves ships"""
+        for ship in self._ships:
+            ship.move()
+        return None
+
+    def do_hits(self):
+        """a"""
+        for ship in self._ships:                                            # todo check hits func
+            for bomb in self._bombs:
+                if ship.hit(bomb):
+                    self._last_turn_hits.append(bomb)
+                    if ship.terminated():
+                        self._ships.remove(ship)
+                        self._last_turn_kills += 1
+        return None
+
+    def cleanup_bombs(self):
+        """remove old or exploded bombs"""
+        bombs_to_remove = []
+        for bomb in self._bombs:
+            if bomb in self._last_turn_hits or self._bombs[bomb] == 0:
+                bombs_to_remove.append(bomb)
+        for bomb in bombs_to_remove:
+            self._bombs.__delitem__(bomb)
+        return None
+
+    def print_board(self):
+        """prints current board"""
+        board_length, hits, bombs, hit_ships, ships = self.board_prep()
+        print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
+        return None
 
     def __play_one_round(self):
         """
@@ -63,38 +114,16 @@ class Game:
             GAME_STATUS_ONGOING if there are still ships on the board or
             GAME_STATUS_ENDED otherwise.
         """
-        target = gh.get_target(self._board_size)                             # todo place bomb func
-        if target not in self._bombs:
-            bomb = {target: Game.BOMB_FUSE}
-            self._bombs.update(bomb)
-        else:
-            for bomb in self._bombs:
-                if bomb == target:
-                    self._bombs[bomb] = Game.BOMB_FUSE
-        turn_hit_count = 0
-        turn_kill_count = 0
-        turn_exploded_bombs = []
-        for ship in self._ships:
-            ship.move()
-        for ship in self._ships:                                            # todo check hits func
-            for bomb in self._bombs:
-                if ship.hit(bomb):
-                    turn_hit_count += 1
-                    self._last_turn_hits.append(bomb)
-                    turn_exploded_bombs.append(bomb)
-                    if ship.terminated():
-                        self._ships.remove(ship)
-                        turn_kill_count += 1
-        for bomb in turn_exploded_bombs:                                    # todo refresh bombs func
-            self._bombs.__delitem__(bomb)
-        for bomb in self._bombs:
-                self._bombs[bomb] -= 1
-                if self._bombs[bomb] == 0:
-                    self._bombs.__delitem__(bomb)
-
-        gh.report_turn(turn_hit_count, turn_kill_count)
-
-        if self._ships is not []:                                           # todo game status func
+        self._last_turn_hits = []
+        self._last_turn_kills = 0
+        self.update_bombs()
+        self.place_bomb()
+        self.move_ships()
+        self.do_hits()
+        self.cleanup_bombs()
+        gh.report_turn(len(self._last_turn_hits), self._last_turn_kills)
+        #self.print_board()
+        if self._ships is not []:
             return GAME_STATUS_ONGOING
         else:
             return GAME_STATUS_ENDED
@@ -149,9 +178,7 @@ class Game:
         board_length, hits, bombs, hit_ships, ships = self.board_prep()
         print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
         while self.__play_one_round() != GAME_STATUS_ENDED:
-            board_length, hits, bombs, hit_ships, ships = self.board_prep()
-            print(gh.board_to_string(board_length, hits, bombs, hit_ships,
-                                     ships))
+            self.print_board()
         return None
 
 
