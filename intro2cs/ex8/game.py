@@ -47,13 +47,16 @@ class Game:
         self._last_turn_kills = 0
 
     def update_bombs(self):
-        "updates bomb fuses"
+        """updates bomb fuses"""
         for bomb in self._bombs:
             self._bombs[bomb] -= 1
 
     def place_bomb(self):
-        """a"""
-        target = gh.get_target(self._board_size)  # todo place bomb func
+        """
+        allows a user to place a bomb on the board.
+        if the bomb exists, will restart the fuse.
+        """
+        target = gh.get_target(self._board_size)
         if target not in self._bombs:
             bomb = {target: Game.BOMB_FUSE}
             self._bombs.update(bomb)
@@ -64,14 +67,14 @@ class Game:
         return None
 
     def move_ships(self):
-        """moves ships"""
+        """moves ships, if they are still moving"""
         for ship in self._ships:
             ship.move()
         return None
 
     def do_hits(self):
-        """a"""
-        for ship in self._ships:                                            # todo check hits func
+        """checks each bomb and ship for collisions, and updates as needed"""
+        for ship in self._ships:
             for bomb in self._bombs:
                 if ship.hit(bomb):
                     self._last_turn_hits.append(bomb)
@@ -81,7 +84,7 @@ class Game:
         return None
 
     def cleanup_bombs(self):
-        """remove old or exploded bombs"""
+        """remove old or exploded bombs from the game"""
         bombs_to_remove = []
         for bomb in self._bombs:
             if bomb in self._last_turn_hits or self._bombs[bomb] == 0:
@@ -91,8 +94,8 @@ class Game:
         return None
 
     def print_board(self):
-        """prints current board"""
-        board_length, hits, bombs, hit_ships, ships = self.board_prep()
+        """prints current board, using board_to_string"""
+        board_length, hits, bombs, hit_ships, ships = self.board_print_prep()
         print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
         return None
 
@@ -122,7 +125,6 @@ class Game:
         self.do_hits()
         self.cleanup_bombs()
         gh.report_turn(len(self._last_turn_hits), self._last_turn_kills)
-        #self.print_board()
         if self._ships is not []:
             return GAME_STATUS_ONGOING
         else:
@@ -149,21 +151,21 @@ class Game:
         repr_tuple = (board_size, bomb_dict, ship_list)
         return str(repr_tuple)
 
-    def board_prep(self):
-        """A"""
+    def board_print_prep(self):
+        """Prepares variables in format compatible with gh.board_to_string"""
         board_length = self._board_size
         hit_ships = []
         for ship in self._ships:
-            if ship.damaged_cells != []:
+            if ship.damaged_cells is not []:
                 hit_ships += ship.damaged_cells()
         bombs = copy.deepcopy(self._bombs)
         hits = []
-        if self._last_turn_hits != []:
+        if self._last_turn_hits is not []:
             hits = self._last_turn_hits
         ship_cords = []
         for ship in self._ships:
             ship_cords += ship.coordinates()
-        if hit_ships != []:
+        if hit_ships is not []:
             for pos in hit_ships:
                 if pos in ship_cords:
                     ship_cords.remove(pos)
@@ -175,11 +177,13 @@ class Game:
         :return: None
         """
         gh.report_legend()
-        board_length, hits, bombs, hit_ships, ships = self.board_prep()
+        board_length, hits, bombs, hit_ships, ships = self.board_print_prep()
         print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
         while self.__play_one_round() != GAME_STATUS_ENDED:
             self.print_board()
-        return None
+            print(self._ships)
+        gh.report_gameover()
+        return 0
 
 
 ############################################################
