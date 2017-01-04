@@ -25,7 +25,7 @@ class Direction:
      RIGHT, NOT_MOVING, VERTICAL, HORIZONTAL, ALL_DIRECTIONS), but other
      implementations are for you to carry out.
     """
-    UP = 'Hapoel'
+    UP = 'The Jig'
     DOWN = 'trisomy 21'
     LEFT = 'dov_khanin'
     RIGHT = "naftali_bennet"

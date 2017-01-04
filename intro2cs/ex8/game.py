@@ -14,8 +14,8 @@ import copy
 ############################################################
 # Constants
 ############################################################
-GAME_STATUS_ONGOING = 'game on'
-GAME_STATUS_ENDED = 'game over'
+GAME_STATUS_ONGOING = 'the game is on'
+GAME_STATUS_ENDED = 'the game is over'
 
 ############################################################
 # Class definition
@@ -101,19 +101,13 @@ class Game:
 
     def __play_one_round(self):
         """
-        Note - this function is here to guide you and it is *not mandatory*
-        to implement it. The logic defined by this function must be implemented
-        but if you wish to do so in another function (or some other functions)
-        it is ok.
-
-        The function runs one round of the game :
+        This function runs one round of the game :
             1. Get user coordinate choice for bombing.
             2. Move all game's ships.
             3. Update all ships and bombs.
-            4. Report to the user the result of current round (number of hits and
-             terminated ships)
+            4. Report to the user the number of hits and terminated ships
         :return:
-            (some constant you may want implement which represents) Game status :
+            Game status :
             GAME_STATUS_ONGOING if there are still ships on the board or
             GAME_STATUS_ENDED otherwise.
         """
@@ -181,9 +175,9 @@ class Game:
         print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
         while self.__play_one_round() != GAME_STATUS_ENDED:
             self.print_board()
-            print(self._ships)
+            print(self._ships)  # todo remove debug
         gh.report_gameover()
-        return 0
+        return None
 
 
 ############################################################
