@@ -9,6 +9,7 @@
 # Imports
 ############################################################
 import game_helper as gh
+import copy
 
 ############################################################
 # Constants
@@ -42,6 +43,7 @@ class Game:
         self._ships = ships
         self._board_size = board_size
         self._bombs = {}
+        self._last_turn_hits = []
 
     def __play_one_round(self):
         """
@@ -78,6 +80,7 @@ class Game:
             for bomb in self._bombs:
                 if ship.hit(bomb):
                     turn_hit_count += 1
+                    self._last_turn_hits.append(bomb)
                     turn_exploded_bombs.append(bomb)
                     if ship.terminated():
                         self._ships.remove(ship)
@@ -87,7 +90,7 @@ class Game:
         for bomb in self._bombs:
                 self._bombs[bomb] -= 1
                 if self._bombs[bomb] == 0:
-                    self._bombs.remove(bomb)
+                    self._bombs.__delitem__(bomb)
 
         gh.report_turn(turn_hit_count, turn_kill_count)
 
@@ -117,12 +120,34 @@ class Game:
         repr_tuple = (board_size, bomb_dict, ship_list)
         return str(repr_tuple)
 
+    def board_prep(self):
+        """A"""
+        board_length = self._board_size
+        hit_ships = []
+        for ship in self._ships:
+            if ship.damaged_cells != []:
+                hit_ships.append(ship.damaged_cells())
+        bombs = copy.deepcopy(self._bombs)
+        hits = []
+        if self._last_turn_hits != []:
+            hits = self._last_turn_hits
+        ships = []
+        for ship in self._ships:
+            ships.append(ship.coordinates())
+        if hit_ships != []:
+            for pos in hit_ships:
+                ships.remove(pos)
+        return board_length, hits, bombs, hit_ships, ships
+
     def play(self):
         """
         The main driver of the Game. Manages the game until completion.
         :return: None
         """
         print(self)
+        gh.report_legend()
+        thing = self.board_prep()
+        print(gh.board_to_string(thing))
         while self.__play_one_round() != GAME_STATUS_ENDED:
             print(self)
         return None
