@@ -6,7 +6,7 @@ cd safe/intro2cs/ex8
 ~intro2cs/bin/presubmit/ex8 ex8.zip
 
 ====================================
-= README for ex8:   battleship     =
+= README for ex8:   battleship™     =
 ====================================
 
 ==============================
@@ -47,32 +47,30 @@ Implements a ship, the primary object in the game.
 +++++++ class GAME +++++++++
 
     ==main functions==
-    move                     -moves the ship
-    hit                      -registers a bomb at a position and updates the ship,
-                              if necessary
-    terminated               -checks if the entire ship has been damaged
-    contains                 -position lookup on ship's body
-    coordinates              -returns a list of spaces, occupied by the ship
-    update coordinates       -exactly that
-    direction                -returns ship's direction
-    cell status              -checks if a given cell is alive and well
+    play                     - calls game loop
+    play_one_round           -main game loop
 
     ==helper functions==
-    sail                     -helps move
+    update bombs        -updates bomb fuse
+    place bomb          -lets user place bomb
+    move ships          -moves ship, if necessary
+    do hits             -does damage to ships, and reports hits
+    clean up bombs      -removes exploded bombs
+    print board         -prints board
+    board_str_prep      -prepares instance variables for printing
+
 
 ==============================
 =      Special Comments      =
 ==============================
----------                      - ---------
----------                      - ---------
----------                      - ---------
 
 
 ==============================
 =  Colleagues and Resources  =
 ==============================
----------
----------
+https://docs.python.org/3/tutorial/classes.html
+https://www.youtube.com/watch?v=EzRwP7NV0LM
+
 
 
 

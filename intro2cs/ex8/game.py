@@ -45,6 +45,7 @@ class Game:
         self._bombs = {}
         self._last_turn_hits = []
         self._last_turn_kills = 0
+        self._game_status = GAME_STATUS_ONGOING
 
     def update_bombs(self):
         """updates bomb fuses"""
@@ -73,13 +74,16 @@ class Game:
         return None
 
     def do_hits(self):
-        """checks each bomb and ship for collisions, and updates as needed"""
+        """checks each bomb and ship for collisions, updates as needed"""
         for ship in self._ships:
             for bomb in self._bombs:
                 if ship.hit(bomb):
                     self._last_turn_hits.append(bomb)
                     if ship.terminated():
-                        self._ships.remove(ship)
+                        if len(self._ships) != 1:
+                            self._ships.remove(ship)
+                        else:
+                            self._game_status = GAME_STATUS_ENDED
                         self._last_turn_kills += 1
         return None
 
@@ -95,8 +99,9 @@ class Game:
 
     def print_board(self):
         """prints current board, using board_to_string"""
-        board_length, hits, bombs, hit_ships, ships = self.board_print_prep()
-        print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
+        board_len, hits, bombs, hit_ships, ships = self.board_str_prep()
+        str = gh.board_to_string(board_len, hits, bombs, hit_ships, ships)
+        print(str)
         return None
 
     def __play_one_round(self):
@@ -111,18 +116,16 @@ class Game:
             GAME_STATUS_ONGOING if there are still ships on the board or
             GAME_STATUS_ENDED otherwise.
         """
-        self._last_turn_hits = []
-        self._last_turn_kills = 0
         self.update_bombs()
         self.place_bomb()
         self.move_ships()
+        self._last_turn_hits = []
+        self._last_turn_kills = 0
         self.do_hits()
         self.cleanup_bombs()
+        self.print_board()
         gh.report_turn(len(self._last_turn_hits), self._last_turn_kills)
-        if self._ships is not []:
-            return GAME_STATUS_ONGOING
-        else:
-            return GAME_STATUS_ENDED
+        return self._game_status
 
     def __repr__(self):
         """
@@ -140,13 +143,13 @@ class Game:
                 represented by its __repr__ string).
         """
         board_size = self._board_size
-        bomb_dict = {bomb[0]: bomb[1] for bomb in self._bombs}
-        ship_list = [str(ship) for ship in self._ships]
+        bomb_dict = {bomb: self._bombs[bomb] for bomb in self._bombs}
+        ship_list = [ship for ship in self._ships]
         repr_tuple = (board_size, bomb_dict, ship_list)
         return str(repr_tuple)
 
-    def board_print_prep(self):
-        """Prepares variables in format compatible with gh.board_to_string"""
+    def board_str_prep(self):
+        """Preps variables in format compatible with gh.board_to_string"""
         board_length = self._board_size
         hit_ships = []
         for ship in self._ships:
@@ -171,11 +174,10 @@ class Game:
         :return: None
         """
         gh.report_legend()
-        board_length, hits, bombs, hit_ships, ships = self.board_print_prep()
-        print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
-        while self.__play_one_round() != GAME_STATUS_ENDED:
-            self.print_board()
-            print(self._ships)  # todo remove debug
+        self.print_board()
+        while True:
+            if self.__play_one_round() == GAME_STATUS_ENDED:
+                break
         gh.report_gameover()
         return None
 
