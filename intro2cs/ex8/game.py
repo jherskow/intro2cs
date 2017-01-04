@@ -25,7 +25,7 @@ GAME_STATUS_ENDED = 'the game is over'
 class Game:
     """
     A class representing a battleship game.
-    A game is composed of ships that are moving on a square board and a user
+    A game is composed of ships that move on a square board and a user
     which tries to guess the locations of the ships by guessing their
     coordinates.
     """
@@ -37,8 +37,7 @@ class Game:
         """
         Initialize a new Game object.
         :param board_size: Length of the side of the game-board.
-        :param ships: A list of ships (of type Ship) that participate in the
-            game.
+        :param ships: A list of ships that participate in the game.
         """
         self._ships = ships
         self._board_size = board_size
@@ -100,8 +99,8 @@ class Game:
     def print_board(self):
         """prints current board, using board_to_string"""
         board_len, hits, bombs, hit_ships, ships = self.board_str_prep()
-        str = gh.board_to_string(board_len, hits, bombs, hit_ships, ships)
-        print(str)
+        brd = gh.board_to_string(board_len, hits, bombs, hit_ships, ships)
+        print(brd)
         return None
 
     def __play_one_round(self):
