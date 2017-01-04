@@ -126,30 +126,32 @@ class Game:
         hit_ships = []
         for ship in self._ships:
             if ship.damaged_cells != []:
-                hit_ships.append(ship.damaged_cells())
+                hit_ships += ship.damaged_cells()
         bombs = copy.deepcopy(self._bombs)
         hits = []
         if self._last_turn_hits != []:
             hits = self._last_turn_hits
-        ships = []
+        ship_cords = []
         for ship in self._ships:
-            ships.append(ship.coordinates())
+            ship_cords += ship.coordinates()
         if hit_ships != []:
             for pos in hit_ships:
-                ships.remove(pos)
-        return board_length, hits, bombs, hit_ships, ships
+                if pos in ship_cords:
+                    ship_cords.remove(pos)
+        return board_length, hits, bombs, hit_ships, ship_cords
 
     def play(self):
         """
         The main driver of the Game. Manages the game until completion.
         :return: None
         """
-        print(self)
         gh.report_legend()
-        thing = self.board_prep()
-        print(gh.board_to_string(thing))
+        board_length, hits, bombs, hit_ships, ships = self.board_prep()
+        print(gh.board_to_string(board_length, hits, bombs, hit_ships, ships))
         while self.__play_one_round() != GAME_STATUS_ENDED:
-            print(self)
+            board_length, hits, bombs, hit_ships, ships = self.board_prep()
+            print(gh.board_to_string(board_length, hits, bombs, hit_ships,
+                                     ships))
         return None
 
 
