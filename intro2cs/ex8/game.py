@@ -2,7 +2,7 @@
 # FILE : game.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex8 2016-2017
-# DESCRIPTION: --------------------------------------------------
+# DESCRIPTION: The main runner file for the game
 ########################################################################"""
 
 ############################################################

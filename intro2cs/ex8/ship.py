@@ -2,7 +2,7 @@
 # FILE : ship.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex8 2016-2017
-# DESCRIPTION: --------------------------------------------------
+# DESCRIPTION: Implements the ship class, for use in game.py
 ########################################################################"""
 
 

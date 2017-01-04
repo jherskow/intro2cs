@@ -6,35 +6,59 @@ cd safe/intro2cs/ex8
 ~intro2cs/bin/presubmit/ex8 ex8.zip
 
 ====================================
-= README for ex8:    ---------     =
+= README for ex8:   battleship     =
 ====================================
-
 
 ==============================
 =        Description:        =
 ==============================
----------
+An artisanal, retro-graphics, handmade battleship knockoff,
+guaranteed to be absolutely safe from any possible intellectual
+property claims by Hasbro.
 
-======== FUNCTIONS ===========
+Serves as an introduction to the object-oriented programming
+paradigm.
 
----------
-=====================
----------                      - ---------
----------                      - ---------
----------                      - ---------
----------                      - ---------
----------                      - ---------
----------                      - ---------
+==============================
+=        Files:        =
+==============================
 
----------
-=====================
----------                      - ---------
----------                      - ---------
----------                      - ---------
----------                      - ---------
----------                      - ---------
+======== SHIP.PY ===========
+Implements a ship, the primary object in the game.
 
++++++++ class SHIP +++++++++
 
+    ==main functions==
+    move                     -moves the ship
+    hit                      -registers a bomb at a position and updates the ship,
+                              if necessary
+    terminated               -checks if the entire ship has been damaged
+    contains                 -position lookup on ship's body
+    coordinates              -returns a list of spaces, occupied by the ship
+    update coordinates       -exactly that
+    direction                -returns ship's direction
+    cell status              -checks if a given cell is alive and well
+
+    ==helper functions==
+    sail                     -helps move
+
+======== GAME.PY ===========
+
++++++++ class GAME +++++++++
+
+    ==main functions==
+    move                     -moves the ship
+    hit                      -registers a bomb at a position and updates the ship,
+                              if necessary
+    terminated               -checks if the entire ship has been damaged
+    contains                 -position lookup on ship's body
+    coordinates              -returns a list of spaces, occupied by the ship
+    update coordinates       -exactly that
+    direction                -returns ship's direction
+    cell status              -checks if a given cell is alive and well
+
+    ==helper functions==
+    sail                     -helps move
 
 ==============================
 =      Special Comments      =
