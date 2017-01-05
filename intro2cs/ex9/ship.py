@@ -33,15 +33,15 @@ class Ship:
         self._health = Ship.DEFAULT_SHIP_LIVES
         self._speed = Ship.STARTING_SPEED
 
-    def direction_change(self):
+    def direction_change(self, dir):
         """
         changes direction of the ship by 7 degrees or -7 degrees if
         left button is pressed or the right one accordingly
         """
-        if Screen.is_left_pressed():
+        if dir == "left":
             self._heading += Ship.TURN_INCREMENT_LEFT
 
-        elif Screen.is_right_pressed():
+        elif dir == "right":
             self._heading += Ship.TURN_INCREMENT_RIGHT
 
     def radian_heading(self):

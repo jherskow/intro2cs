@@ -59,8 +59,10 @@ class GameRunner:
         """
         Your code goes here!
         """
-        if self._screen.is_left_pressed() or self._screen.is_right_pressed():
-            self.ship.direction_change()
+        if self._screen.is_left_pressed():
+            self.ship.direction_change("left")
+        if self._screen.is_right_pressed():
+            self.ship.direction_change("right")
 
         if self._screen.is_up_pressed():
             self.ship.accelerate()

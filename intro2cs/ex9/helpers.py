@@ -18,7 +18,7 @@ PI = math.pi
 
 def deg_to_radian(degs):
     """converts degrees to radians"""
-    return (deg * PI) / STRAIT_DEG
+    return (degs * PI) / STRAIT_DEG
 
 
 def get_random_pos():
