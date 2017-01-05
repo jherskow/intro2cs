@@ -7,20 +7,21 @@
 #######################################################################"""
 import helpers
 
+
 class Torpedo:
-  """
-  A class representing a n object on the board
-  """
+    """
+    A class representing a n object on the board
+    """
 
     def __init__(self, pos, speed, heading):
         """
         Initialize a new torpedo
         """
-        self._size = 3 # todo get random size
+        self._size = 3  # todo get random size
         self._pos = helpers.get_random_pos()
         self._heading = heading
         self._duration = 16   # todo =figure out
-        self._speed = [0,0] # todo get random speed
+        self._speed = [0, 0]  # todo get random speed
 
     def reduce_dur(self):
         """
@@ -28,7 +29,7 @@ class Torpedo:
         """
         self._duration -= 1
 
-    def goto(self,pos):
+    def goto(self, pos):
         """
         :param pos:
         :return:

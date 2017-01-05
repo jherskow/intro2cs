@@ -11,7 +11,7 @@ import math
 
 # ===== constants =====
 STRAIT_DEG = 180
-PI = math.pi()
+PI = math.pi
 
 
 # ===== Space_objects methods =========

@@ -5,19 +5,15 @@
 # EXERCISE : intro2cs ex9 2016-2017
 # DESCRIPTION:
 ########################################################################"""
-                                                                            """" added and starded game loop"""
-
-
 from screen import Screen
 import sys
-from ship import Ship
+import ship
 
 DEFAULT_ASTEROIDS_NUM = 5
 
 
 class GameRunner:
     """ game runner"""
-
 
     def __init__(self, asteroids_amnt):
         self._screen = Screen()
@@ -57,16 +53,16 @@ class GameRunner:
 
         # Set the timer to go off again
         self._screen.update()
-        self._screen.ontimer(self._do_loop,5)
+        self._screen.ontimer(self._do_loop, 5)
 
     def _game_loop(self):
         """
         Your code goes here!
         """
-        if Screen.is_left_pressed() or Screen.is_right_pressed():
+        if self._screen.is_left_pressed() or self._screen.is_right_pressed():
             self.ship.direction_change()
 
-        if Screen.is_up_pressed():
+        if self._screen.is_up_pressed():
             self.ship.accelerate()
 
 
@@ -77,6 +73,6 @@ def main(amnt):
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        main( int( sys.argv[1] ) )
+        main(int(sys.argv[1]))
     else:
-        main( DEFAULT_ASTEROIDS_NUM )
+        main(DEFAULT_ASTEROIDS_NUM)
