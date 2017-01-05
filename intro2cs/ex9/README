@@ -2,6 +2,10 @@ jherskow
 321658379
 Joshua Herskowitz
 
+
+!!
+!1  ‫‪~intro2cs/bin/ex9/asteroids
+
 ====================================
 = README for ex9:   ™     =
 ====================================
@@ -16,7 +20,7 @@ Joshua Herskowitz
 ==============================
 
 ======== ----.PY ===========
-Implements a ship, the primary object in the game.
+Implements a ship, the primary object in the game.?
 
 +++++++ class ---- +++++++++
 
