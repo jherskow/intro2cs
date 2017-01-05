@@ -30,4 +30,3 @@ class Asteroid:
     def goto(self, pos):
         """ docstring """
         self._pos = pos
-

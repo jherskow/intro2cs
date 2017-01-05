@@ -26,5 +26,3 @@ def deg_to_radian(degs):
 def random_heading():
     """returns a random int in given range"""
     return random.randint(1, CIRCLE)
-
-

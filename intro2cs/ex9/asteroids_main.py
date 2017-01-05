@@ -27,7 +27,7 @@ class GameRunner:
         # self.torpedoes = []
         self.asteroids = []
         self.ship = ship.Ship()
-        self.add_asteroid()
+        #self.add_asteroid()
         # self.movables = self.torpedoes + self.asteroids + [self.ship]
 
     def move(self, thing):
@@ -67,7 +67,7 @@ class GameRunner:
             self.ship.direction_change("right")
         if self._screen.is_up_pressed():
             self.ship.accelerate()
-        print(str(self.ship))
+        print(str(self.ship))       # DEBUG this prints the thingy
         self._screen.draw_ship(*self.ship.draw_prep())
         for rock in self.asteroids:
             Screen.draw_asteroid(rock, *rock._pos)
