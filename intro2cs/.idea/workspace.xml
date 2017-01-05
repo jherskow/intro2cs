@@ -2,75 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9ff36b6-9a1e-4893-a726-bbcc040e65e0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/.__sources" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/.__static" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/._objects.inv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._comment-bright.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._comment-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._down-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._file.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._up-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/comment-bright.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/comment-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/down-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/file.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/up-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/objects.inv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/SPEC SHEET" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/._genindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/._index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/._screen.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/._search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/._searchindex.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_sources/._index.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_sources/._screen.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._basic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._classic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._doctools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._jquery-1.11.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._pygments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._searchtools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._sidebar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._underscore-1.3.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._underscore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/__MACOSX/_static/._websupport.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_sources/index.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_sources/screen.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/basic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/classic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/default.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/doctools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/jquery-1.11.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/pygments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/searchtools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/sidebar.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/underscore-1.3.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/underscore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/_static/websupport.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/genindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/screen.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/api/searchindex.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ex9/ex9.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/AUTHORS" afterPath="$PROJECT_DIR$/ex9/AUTHORS" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/README" afterPath="$PROJECT_DIR$/ex9/README" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/ex9.py" afterPath="$PROJECT_DIR$/ex9/ex9.py" />
     </list>
     <list id="d69ead2b-012c-4140-9471-950164463b23" name="Failed commit: Default" comment="ex8" />
     <ignored path="intro2cs.iws" />
@@ -119,8 +52,8 @@
       <file leaf-file-name="ex9.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex9/ex9.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1722">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state relative-caret-position="2184">
+              <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -212,38 +145,7 @@
       <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intro2cs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intro2cs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intro2cs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ex9" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intro2cs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intro2cs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
     </panes>
   </component>
@@ -675,14 +577,21 @@
       <option name="project" value="LOCAL" />
       <updated>1483612697258</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added ex9">
+      <created>1483628187868</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1483628187868</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="960" height="1029" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32048458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32048458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1024,8 +933,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex9/ex9.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1722">
-          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="2184">
+          <caret line="104" column="8" selection-start-line="104" selection-start-column="8" selection-end-line="104" selection-end-column="8" />
           <folding />
         </state>
       </provider>
