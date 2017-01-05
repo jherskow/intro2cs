@@ -1,13 +1,14 @@
 """########################################################################
 # FILE : ship.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
-# WRITER : Rachel Zilberberg, rachelz , 314421876
+# WRITER : Rachel Zilberberg, rachelz , 314421876                          # FILE : ship.py
 # EXERCISE : intro2cs ex9 2016-2017
-# DESCRIPTION: Functions making use of recursive logic.
+# DESCRIPTION:
 #######################################################################"""
 
 from screen import Screen
 import helpers
+import math
 
 
 class Ship:
@@ -35,7 +36,7 @@ class Ship:
     def direction_change(self):
         """
         changes direction of the ship by 7 degrees or -7 degrees if
-        left button is pressed or the right one acordingly
+        left button is pressed or the right one accordingly
         """
         if Screen.is_left_pressed():
             self._heading += Ship.TURN_INCREMENT_LEFT
@@ -43,7 +44,25 @@ class Ship:
         elif Screen.is_right_pressed():
             self._heading += Ship.TURN_INCREMENT_RIGHT
 
+    def radian_heading(self):
+        """ docstring """
+        return helpers.deg_to_radian(self._heading)
+
     def accelerate(self):
         """
         :return:
         """
+        current_speed = self._speed
+        cur_head_rad = self.radian_heading()
+        new_x_speed = current_speed + math.cos(cur_head_rad)
+
+        new_y_speed = current_speed + math.sin(cur_head_rad)
+
+        self._speed = [new_x_speed,new_y_speed]
+
+    def goto(self,pos):
+        """
+        :param pos:
+        :return:
+        """
+        self._pos = pos
