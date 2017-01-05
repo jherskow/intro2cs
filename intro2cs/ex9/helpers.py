@@ -6,20 +6,25 @@
 # DESCRIPTION:
 #######################################################################"""
 import math
+import random
 
 # ============ helper functions ===========================================
 
 # ===== constants =====
-STRAIT_DEG = 180
+HALF_CIRCLE = 180
 PI = math.pi
+CIRCLE = 360
 
 
 # ===== Space_objects methods =========
 
 def deg_to_radian(degs):
     """converts degrees to radians"""
-    return (degs * PI) / STRAIT_DEG
+    return (degs * PI) / HALF_CIRCLE
 
 
-def get_random_pos():
-    """returns a random pos lol wut did u think """
+def random_heading():
+    """returns a random int in given range"""
+    return random.randint(1, CIRCLE)
+
+

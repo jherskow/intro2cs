@@ -28,7 +28,7 @@ class Ship:
         """
         Initialize a new ship.
         """
-        self._pos = helpers.get_random_pos()  # (x,y) tuple
+        self._pos = (0, 0)  # helpers.get_random_pos()  # (x,y) tuple
         self._heading = Ship.STARTING_HEADING  # degrees
         self._health = Ship.DEFAULT_SHIP_LIVES
         self._speed = Ship.STARTING_SPEED
@@ -43,6 +43,7 @@ class Ship:
 
         elif dir == "right":
             self._heading += Ship.TURN_INCREMENT_RIGHT
+        self._heading = self._heading % 360
 
     def radian_heading(self):
         """ docstring """
@@ -54,15 +55,27 @@ class Ship:
         """
         current_speed = self._speed
         cur_head_rad = self.radian_heading()
-        new_x_speed = current_speed + math.cos(cur_head_rad)
+        new_x_speed = current_speed[0] + math.cos(cur_head_rad)
 
-        new_y_speed = current_speed + math.sin(cur_head_rad)
+        new_y_speed = current_speed[1] + math.sin(cur_head_rad)
 
-        self._speed = [new_x_speed,new_y_speed]
+        self._speed = [new_x_speed, new_y_speed]
 
-    def goto(self,pos):
+    def __repr__(self):   # todo remove this debug shiiit
+        """aa"""
+        speed = self._speed
+        pos = self._pos
+        heading = self._heading
+        return str((int(10*(speed[0])), int(10*(speed[1])), (int(pos[0]), int(pos[1])), heading))
+
+    def goto(self, pos):
         """
         :param pos:
         :return:
         """
         self._pos = pos
+        return None
+
+    def draw_prep(self):
+        """preps info for draw ship"""
+        return self._pos[0], self._pos[1], self._heading
