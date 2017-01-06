@@ -6,6 +6,7 @@
 # DESCRIPTION:
 #######################################################################"""
 import helpers
+from screen import Screen
 
 ASTEROID_SIZE = 3
 
@@ -18,14 +19,15 @@ class Asteroid:
 
     # ===== Asteroid - class methods =======
 
-    def __init__(self, pos, speed, heading):
+    def __init__(self, pos, speed):
         """
         Initialize a new asteroid
         """
         self._size = ASTEROID_SIZE
         self._speed = speed  # [x,y] list representing speed in each axis
         self._pos = pos  # (x,y) tuple
-        self._heading = heading  # int deg
+        self._heading = helpers.random_heading()  # int deg
+
 
     def goto(self, pos):
         """ docstring """
