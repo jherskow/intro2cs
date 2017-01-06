@@ -86,7 +86,6 @@ class GameRunner:
 
     def _game_loop(self):
         """docstring"""
-
         if self._screen.is_left_pressed():
             self.ship.direction_change("left")
         if self._screen.is_right_pressed():

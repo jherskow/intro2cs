@@ -63,6 +63,9 @@ class Torpedo:
         new_y_speed = speed[1] + (AXXL_CONST * math.sin(cur_hed_rad))
         return [new_x_speed, new_y_speed]
 
+    def get_radius(self):
+        return copy.copy(self._radius)
+
     def goto(self, pos):
         """
         :param pos:

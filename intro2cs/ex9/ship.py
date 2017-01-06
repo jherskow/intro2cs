@@ -21,6 +21,7 @@ class Ship:
     TURN_INCREMENT_RIGHT = -7  # degrees
     STARTING_SPEED = [0, 0]  # no speed
     STARTING_HEADING = 0  # no speed
+    RADIUS = 1
 
     # ===== Ship - class methods =======
 
@@ -32,6 +33,7 @@ class Ship:
         self._heading = Ship.STARTING_HEADING
         self._health = Ship.DEFAULT_SHIP_LIVES
         self._speed = Ship.STARTING_SPEED
+        self._radius = Ship.RADIUS
 
     def direction_change(self, dir):
         """
@@ -65,6 +67,9 @@ class Ship:
 
     def get_y_speed(self):
         return copy.copy(self._speed[1])
+
+    def get_radius(self):
+        return copy.copy(self._radius)
     
     def radian_heading(self):
         """ docstring """
