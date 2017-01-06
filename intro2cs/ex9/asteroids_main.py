@@ -32,8 +32,8 @@ class GameRunner:
 
     def move(self, thing):
         """moves an object that can move"""
-        x_speed, y_speed = thing._speed[0], thing._speed[1]
-        old_x, old_y = thing._pos[0], thing._pos[1]
+        x_speed, y_speed = thing.get_x_speed(), thing.get_y_speed()
+        old_x, old_y = thing.get_x_pos(), thing.get_y_pos()
         min_x, min_y = self.screen_min_x, self.screen_min_y
         max_x, max_y = self.screen_max_x, self.screen_max_y
         delta_x = max_x - min_x
@@ -48,8 +48,8 @@ class GameRunner:
         """ moves all moveables on screen"""
         for rock in self.asteroids:
             self.move(rock)
-        for torpedo in self.torpedoes:
-            self.move(torpedo)
+        for missile in self.torpedoes:
+            self.move(missile)
         self.move(self.ship)
 
     def draw_all(self):
@@ -57,6 +57,11 @@ class GameRunner:
         for rock in self.asteroids:
             self._screen.draw_asteroid(rock, *rock._pos)
         self._screen.draw_ship(*self.ship.draw_prep())
+        for missile in self.torpedoes:
+            x = missile.get_x_pos()
+            y = missile.get_y_pos()
+            heading = missile.get_heading()
+            self._screen.draw_torpedo(missile, x, y, heading)
         # print(str(self.ship))  # todo DEBUG this prints the thingy
 
     def run(self):
@@ -80,15 +85,18 @@ class GameRunner:
 
     def _game_loop(self):
         """docstring"""
-        self.move_all()
-        self.draw_all()
+
         if self._screen.is_left_pressed():
             self.ship.direction_change("left")
         if self._screen.is_right_pressed():
             self.ship.direction_change("right")
         if self._screen.is_up_pressed():
             self.ship.accelerate()
-
+        if self._screen.is_space_pressed():
+            self.add_torpedo()
+        self.move_all()
+        self.draw_all()
+        self.manage_torpedoes()
     def add_asteroid(self):
         """docstring"""
         new_pos = self._random_pos()
@@ -98,6 +106,23 @@ class GameRunner:
         self.asteroids.append(new_asteroid)
         self._screen.register_asteroid(new_asteroid, new_asteroid._size)
 
+    def add_torpedo(self):
+      """ docstring """
+        pos = self.ship.get_pos()
+        heading = self.ship.get_heading()
+        speed = self.ship.get_speed()
+        if len(self.torpedoes) < 15:
+            new_torpedo = torpedo.Torpedo(pos, speed, heading)
+            self.torpedoes.append(new_torpedo)
+            self._screen.register_torpedo(new_torpedo)
+
+    def manage_torpedoes(self):
+      	"""docstring"""
+        for missile in self.torpedoes:
+            missile.reduce_dur()
+            if missile.get_dur() == 0:
+                self._screen.unregister_torpedo(missile)
+                self.torpedoes.remove(missile)                                                                """^^^^^^^^^^^^^^^^^^^^^ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"""
 
 def main(amnt):
     """ docstring """

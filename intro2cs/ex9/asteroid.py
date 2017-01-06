@@ -30,3 +30,24 @@ class Asteroid:
     def goto(self, pos):
         """ docstring """
         self._pos = pos
+
+    def get_speed(self):
+        return copy.copy(self._speed)
+
+    def get_size(self):
+        return copy.copy(self._size)
+
+    def get_pos(self):
+        return copy.copy(self._pos)
+
+    def get_x_pos(self):
+        return copy.copy(self._pos[0])
+
+    def get_y_pos(self):
+        return copy.copy(self._pos[1])
+
+    def get_x_speed(self):
+        return copy.copy(self._speed[0])
+
+    def get_y_speed(self):
+        return copy.copy(self._speed[1])

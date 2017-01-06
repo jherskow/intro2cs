@@ -5,10 +5,10 @@
 # EXERCISE : intro2cs ex9 2016-2017
 # DESCRIPTION:
 #######################################################################"""
-
 from screen import Screen
 import helpers
 import math
+import copy
 
 
 class Ship:
@@ -43,8 +43,29 @@ class Ship:
 
         elif dir == "right":
             self._heading += Ship.TURN_INCREMENT_RIGHT
-        self._heading = self._heading % 360
+        self._heading %= 360
 
+    def get_heading(self):
+        return copy.copy(self._heading)
+
+    def get_speed(self):
+        return copy.copy(self._speed)
+
+    def get_pos(self):
+        return copy.copy(self._pos)
+
+    def get_x_pos(self):
+        return copy.copy(self._pos[0])
+
+    def get_y_pos(self):
+        return copy.copy(self._pos[1])
+
+    def get_x_speed(self):
+        return copy.copy(self._speed[0])
+
+    def get_y_speed(self):
+        return copy.copy(self._speed[1])
+    
     def radian_heading(self):
         """ docstring """
         return helpers.deg_to_radian(self._heading)

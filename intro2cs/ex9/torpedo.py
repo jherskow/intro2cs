@@ -6,6 +6,11 @@
 # DESCRIPTION:
 #######################################################################"""
 import helpers
+import math
+import copy
+
+DEAFULT_DUR = 200
+AXXL_CONST = 2
 
 
 class Torpedo:
@@ -18,16 +23,45 @@ class Torpedo:
         Initialize a new torpedo
         """
         self._size = 3  # todo get random size
-        self._pos = helpers.random_int_range()
+        self._pos = pos
         self._heading = heading
-        self._duration = 16   # todo =figure out
-        self._speed = [0, 0]  # todo get random speed
+        self._duration = DEAFULT_DUR
+        self._speed = self.tor_speed(speed, helpers.deg_to_radian(heading))
 
     def reduce_dur(self):
         """
         when a loop has passed reduce from current duration
         """
         self._duration -= 1
+
+    def get_dur(self):
+        return copy.copy(self._duration)
+
+    def get_heading(self):
+        return copy.copy(self._heading)
+
+    def get_speed(self):
+        return copy.copy(self._speed)
+
+    def get_pos(self):
+        return copy.copy(self._pos)
+
+    def get_x_pos(self):
+        return copy.copy(self._pos[0])
+
+    def get_y_pos(self):
+        return copy.copy(self._pos[1])
+
+    def get_x_speed(self):
+        return copy.copy(self._speed[0])
+
+    def get_y_speed(self):
+        return copy.copy(self._speed[1])
+
+    def tor_speed(self, speed, cur_hed_rad):
+        new_x_speed = speed[0] + (AXXL_CONST * math.cos(cur_hed_rad))
+        new_y_speed = speed[1] + (AXXL_CONST * math.sin(cur_hed_rad))
+        return [new_x_speed, new_y_speed]
 
     def goto(self, pos):
         """
