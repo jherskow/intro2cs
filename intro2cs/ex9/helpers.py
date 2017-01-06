@@ -14,6 +14,8 @@ import random
 HALF_CIRCLE = 180
 PI = math.pi
 CIRCLE = 360
+MIN_SPEED = -10
+MAX_SPEED = 10
 
 
 # ===== Space_objects methods =========
@@ -24,5 +26,12 @@ def deg_to_radian(degs):
 
 
 def random_heading():
-    """returns a random int in given range"""
+    """returns a random compass heading"""
     return random.randint(1, CIRCLE)
+
+
+def random_speed():
+    """returns a random [x,y] speed"""
+    x = random.randint(MIN_SPEED, MAX_SPEED)
+    y = random.randint(MIN_SPEED, MAX_SPEED)
+    return [x, y]

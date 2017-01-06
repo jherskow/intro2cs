@@ -19,15 +19,13 @@ class Asteroid:
 
     # ===== Asteroid - class methods =======
 
-    def __init__(self, pos, speed):
+    def __init__(self, pos):
         """
         Initialize a new asteroid
         """
         self._size = ASTEROID_SIZE
-        self._speed = speed  # [x,y] list representing speed in each axis
+        self._speed = helpers.random_speed()
         self._pos = pos  # (x,y) tuple
-        self._heading = helpers.random_heading()  # int deg
-
 
     def goto(self, pos):
         """ docstring """

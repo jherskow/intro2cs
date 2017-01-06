@@ -24,12 +24,12 @@ class Ship:
 
     # ===== Ship - class methods =======
 
-    def __init__(self):
+    def __init__(self, pos):
         """
         Initialize a new ship.
         """
-        self._pos = (0, 0)  # helpers.get_random_pos()  # (x,y) tuple
-        self._heading = Ship.STARTING_HEADING  # degrees
+        self._pos = pos
+        self._heading = Ship.STARTING_HEADING
         self._health = Ship.DEFAULT_SHIP_LIVES
         self._speed = Ship.STARTING_SPEED
 

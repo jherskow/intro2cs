@@ -26,10 +26,9 @@ class GameRunner:
         self.screen_min_y = Screen.SCREEN_MIN_Y
         self.torpedoes = []
         self.asteroids = []
-        self.ship = ship.Ship()
+        self.ship = ship.Ship(pos=self._random_pos())
         for rock in range(asteroids_amnt):
             self.add_asteroid()
-        # self.movables = self.torpedoes + self.asteroids + [self.ship]
 
     def move(self, thing):
         """moves an object that can move"""
@@ -73,6 +72,12 @@ class GameRunner:
         self._screen.update()
         self._screen.ontimer(self._do_loop, 5)
 
+    def _random_pos(self):
+        """Returns a random [x,y] position on the board"""
+        x = random.randint(Screen.SCREEN_MIN_X, Screen.SCREEN_MAX_X)
+        y = random.randint(Screen.SCREEN_MIN_Y, Screen.SCREEN_MAX_Y)
+        return [x, y]
+
     def _game_loop(self):
         """docstring"""
         self.move_all()
@@ -86,10 +91,7 @@ class GameRunner:
 
     def add_asteroid(self):
         """docstring"""
-        pos = [-100, -100]
-        speed = [1, 1]
-        data = (pos, speed)
-        new_asteroid = asteroid.Asteroid(*data)
+        new_asteroid = asteroid.Asteroid(self._random_pos())
         self.asteroids.append(new_asteroid)
         self._screen.register_asteroid(new_asteroid, new_asteroid._size)
 
