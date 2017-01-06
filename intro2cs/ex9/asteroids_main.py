@@ -10,6 +10,7 @@ import sys
 import ship
 import asteroid
 import random
+import torpedo
 import helpers
 
 DEFAULT_ASTEROIDS_NUM = 5
@@ -97,6 +98,7 @@ class GameRunner:
         self.move_all()
         self.draw_all()
         self.manage_torpedoes()
+
     def add_asteroid(self):
         """docstring"""
         new_pos = self._random_pos()
@@ -107,7 +109,7 @@ class GameRunner:
         self._screen.register_asteroid(new_asteroid, new_asteroid._size)
 
     def add_torpedo(self):
-      """ docstring """
+        """ docstring """
         pos = self.ship.get_pos()
         heading = self.ship.get_heading()
         speed = self.ship.get_speed()
@@ -117,12 +119,13 @@ class GameRunner:
             self._screen.register_torpedo(new_torpedo)
 
     def manage_torpedoes(self):
-      	"""docstring"""
+        """docstring"""
         for missile in self.torpedoes:
             missile.reduce_dur()
             if missile.get_dur() == 0:
                 self._screen.unregister_torpedo(missile)
-                self.torpedoes.remove(missile)                                                                """^^^^^^^^^^^^^^^^^^^^^ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"""
+                self.torpedoes.remove(missile)
+
 
 def main(amnt):
     """ docstring """
