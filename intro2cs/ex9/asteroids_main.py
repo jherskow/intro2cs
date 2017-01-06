@@ -91,7 +91,10 @@ class GameRunner:
 
     def add_asteroid(self):
         """docstring"""
-        new_asteroid = asteroid.Asteroid(self._random_pos())
+        new_pos = self._random_pos()
+        while new_pos == self.ship._pos:
+            new_pos = self._random_pos()
+        new_asteroid = asteroid.Asteroid(new_pos)
         self.asteroids.append(new_asteroid)
         self._screen.register_asteroid(new_asteroid, new_asteroid._size)
 
