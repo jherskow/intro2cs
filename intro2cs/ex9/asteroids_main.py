@@ -12,6 +12,7 @@ import asteroid
 import random
 import torpedo
 import helpers
+import math
 
 DEFAULT_ASTEROIDS_NUM = 5
 HIT_TITLE = ' CRASSSSSHHHHHH!!!!! '
@@ -63,14 +64,14 @@ class GameRunner:
     def draw_all(self):
         """draws all objects on screen"""
         for rock in self.asteroids:
-            self._screen.draw_asteroid(rock, *rock._pos)
+            self._screen.draw_asteroid(rock, *rock.get_pos())
         self._screen.draw_ship(*self.ship.draw_prep())
         for missile in self.torpedoes:
             x = missile.get_x_pos()
             y = missile.get_y_pos()
             heading = missile.get_heading()
             self._screen.draw_torpedo(missile, x, y, heading)
-        # print(str(self.ship))  # todo DEBUG this prints the thingy
+            # print(str(self.ship))  # todo DEBUG this prints the thingy
 
     def run(self):
         """ docstring """
@@ -111,11 +112,11 @@ class GameRunner:
     def add_asteroid(self):
         """docstring"""
         new_pos = self._random_pos()
-        while new_pos == self.ship._pos:
+        while new_pos == self.ship.get_pos():
             new_pos = self._random_pos()
         new_asteroid = asteroid.Asteroid(new_pos)
         self.asteroids.append(new_asteroid)
-        self._screen.register_asteroid(new_asteroid, new_asteroid._size)
+        self._screen.register_asteroid(new_asteroid, new_asteroid.get_size())
 
     def add_torpedo(self):
         """ docstring """
@@ -142,13 +143,14 @@ class GameRunner:
 
     def check_asteroid_kills(self):
         """ docstring """
-        rock_remove_list = []
-        torp_remove_list = []
+        # rock_remove_list = []
+        # torp_remove_list = []
         for torp in self.torpedoes:
             for rock in self.asteroids:
                 if rock.has_intersection(torp):
-                    rock_remove_list.append(rock)
-                    torp_remove_list.append(torp)
+                    # rock_remove_list.append(rock)
+                    # torp_remove_list.append(torp)
+
                     if rock.get_size() == asteroid.Asteroid.SIZE_L:
                         self.split_asteroid(rock, torp)
                         self.award_points(self.POINTS_L_ROCK)
@@ -157,13 +159,17 @@ class GameRunner:
                         self.award_points(self.POINTS_M_ROCK)
                     elif rock.get_size() == asteroid.Asteroid.SIZE_S:
                         self.award_points(self.POINTS_S_ROCK)
-        for rock in rock_remove_list:
-            self._screen.unregister_asteroid(rock)
-            self.asteroids.remove(rock)
-        for torp in torp_remove_list:
-            self.torpedoes.remove(torp)
-            self._screen.unregister_torpedo(torp)
 
+                    self._screen.unregister_asteroid(rock)
+                    self.asteroids.remove(rock)
+                    self._screen.unregister_torpedo(torp)
+                    self.torpedoes.remove(torp)
+        # for rock in rock_remove_list:
+        #     self._screen.unregister_asteroid(rock)
+        #     self.asteroids.remove(rock)
+        # for torp in torp_remove_list:
+        #     self.torpedoes.remove(torp)
+        #     self._screen.unregister_torpedo(torp)
 
     def check_game_over(self):
         """ docstring """
@@ -177,18 +183,21 @@ class GameRunner:
 
     def split_asteroid(self, rock, torp):
         """ docstring """
-        new_pos = rock.get_pos()
-        new_size = rock.get_size() - 1
-        machane = (rock.get_x_speed()**2 + rock.get_y_speed()**2)**1/2
-        new_x_speed = (torp.get_x_speed() + rock.get_x_speed()) / machane
-        new_y_speed = (torp.get_y_speed() + rock.get_y_speed()) / machane
-        new_speed_i = [new_x_speed, new_y_speed]
-        new_speed_ii = [-new_x_speed, -new_y_speed]
-        rock_i = asteroid.Asteroid(new_pos, new_size, new_speed_i)
-        rock_ii = asteroid.Asteroid(new_pos, new_size, new_speed_ii)
-        self.asteroids += [rock_i, rock_ii]
-        self._screen.register_asteroid(rock_i, rock_i._size)
-        self._screen.register_asteroid(rock_ii, rock_ii._size)
+        if rock.get_size() > 1:
+            new_pos = rock.get_pos()
+            new_size = rock.get_size() - 1
+            cur_x_speed_pow = rock.get_x_speed() ** 2
+            cur_y_speed_pow = rock.get_y_speed() ** 2
+            machane = math.sqrt(cur_x_speed_pow + cur_y_speed_pow)
+            new_x_speed = (torp.get_x_speed() + rock.get_x_speed()) / machane
+            new_y_speed = (torp.get_y_speed() + rock.get_y_speed()) / machane
+            new_speed_i = [new_x_speed, new_y_speed]
+            new_speed_ii = [-new_x_speed, -new_y_speed]
+            rock_i = asteroid.Asteroid(new_pos, new_size, new_speed_i)
+            rock_ii = asteroid.Asteroid(new_pos, new_size, new_speed_ii)
+            self.asteroids += [rock_i, rock_ii]
+            self._screen.register_asteroid(rock_i, rock_i.get_size())
+            self._screen.register_asteroid(rock_ii, rock_ii.get_size())
 
     def manage_torpedoes(self):
         """docstring"""
@@ -203,6 +212,7 @@ def main(amnt):
     """ docstring """
     runner = GameRunner(amnt)
     runner.run()
+
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:

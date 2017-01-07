@@ -35,15 +35,15 @@ class Ship:
         self._speed = Ship.STARTING_SPEED
         self._radius = Ship.RADIUS
 
-    def direction_change(self, dir):
+    def direction_change(self, direction):
         """
         changes direction of the ship by 7 degrees or -7 degrees if
         left button is pressed or the right one accordingly
         """
-        if dir == "left":
+        if direction == "left":
             self._heading += Ship.TURN_INCREMENT_LEFT
 
-        elif dir == "right":
+        elif direction == "right":
             self._heading += Ship.TURN_INCREMENT_RIGHT
         self._heading %= 360
 
@@ -95,7 +95,8 @@ class Ship:
         speed = self._speed
         pos = self._pos
         heading = self._heading
-        return str((int(10*(speed[0])), int(10*(speed[1])), (int(pos[0]), int(pos[1])), heading))
+        return str((int(10*(speed[0])), int(10*(speed[1])),
+                    (int(pos[0]), int(pos[1])), heading))
 
     def goto(self, pos):
         """

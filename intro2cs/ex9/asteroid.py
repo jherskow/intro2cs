@@ -8,9 +8,9 @@
 import helpers
 import copy
 import math
-from screen import Screen
 
 DEFAULT_SIZE = 3
+DEFAULT_SPEED = helpers.random_speed()
 
 
 class Asteroid:
@@ -22,21 +22,20 @@ class Asteroid:
     SIZE_M = 2
     SIZE_S = 1
     SIZE_MODIFIER = 10
-    SIZE_NORMALIZER = 0
+    SIZE_NORMALIZER = 5
 
     # ===== Asteroid - class methods =======
 
-    def __init__(self, pos, size=DEFAULT_SIZE,
-                 speed=helpers.random_speed()):
+    def __init__(self, pos, size=DEFAULT_SIZE, speed=DEFAULT_SPEED):
         """
         Initialises a new asteroid.
         :param pos: [x,y] list representing cartesian coordinates.
         :param size: size of asteroid - default 3
         """
         self._size = size
-        self._speed = helpers.random_speed()
+        self._speed = speed
         self._pos = pos
-        radius = size*Asteroid.SIZE_MODIFIER - Asteroid.SIZE_NORMALIZER
+        radius = size * Asteroid.SIZE_MODIFIER - Asteroid.SIZE_NORMALIZER
         self._radius = radius
 
     def goto(self, pos):
@@ -46,8 +45,10 @@ class Asteroid:
     def has_intersection(self, obj):
         """ checks if asteroid has hit something"""
         x_diff = self.get_x_pos() - obj.get_x_pos()
+        x_diff_pow = x_diff ** 2
         y_diff = self.get_y_pos() - obj.get_y_pos()
-        distance = (x_diff**2 + y_diff**2)**1/2
+        y_diff_pow = y_diff ** 2
+        distance = math.sqrt(x_diff_pow + y_diff_pow)
         if distance <= self._radius + obj.get_radius():
             return True
         else:
