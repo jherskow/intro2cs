@@ -10,7 +10,7 @@ import copy
 import math
 
 DEFAULT_SIZE = 3
-DEFAULT_SPEED = helpers.random_speed()
+RAND_SPEED = 'random'
 
 
 class Asteroid:
@@ -26,13 +26,15 @@ class Asteroid:
 
     # ===== Asteroid - class methods =======
 
-    def __init__(self, pos, size=DEFAULT_SIZE, speed=DEFAULT_SPEED):
+    def __init__(self, pos, size=DEFAULT_SIZE, speed=RAND_SPEED):
         """
         Initialises a new asteroid.
         :param pos: [x,y] list representing cartesian coordinates.
         :param size: size of asteroid - default 3
         """
         self._size = size
+        if speed == RAND_SPEED:
+            speed = helpers.random_speed()
         self._speed = speed
         self._pos = pos
         radius = size * Asteroid.SIZE_MODIFIER - Asteroid.SIZE_NORMALIZER

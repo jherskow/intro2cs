@@ -130,27 +130,22 @@ class GameRunner:
 
     def check_ship_crash(self):
         """ docstring """
-        rock_remove_list = []
-        for rock in self.asteroids:
+        # copy [:] list to prevent removal during iteration
+        for rock in self.asteroids[:]:
             if rock.has_intersection(self.ship):
-                self.ship.lose_life()
-                self._screen.remove_life()
-                rock_remove_list.append(rock)
+                if self.ship.get_health() != 0:
+                    self.ship.lose_life()
+                    self._screen.remove_life()
+                self._screen.unregister_asteroid(rock)
+                self.asteroids.remove(rock)
                 self._screen.show_message(HIT_TITLE, HIT_MSG)
-        for rock in rock_remove_list:
-            self._screen.unregister_asteroid(rock)
-            self.asteroids.remove(rock)
 
     def check_asteroid_kills(self):
         """ docstring """
-        # rock_remove_list = []
-        # torp_remove_list = []
-        for torp in self.torpedoes:
-            for rock in self.asteroids:
+        # copy [:] list to prevent removal during iteration
+        for torp in self.torpedoes[:]:
+            for rock in self.asteroids[:]:
                 if rock.has_intersection(torp):
-                    # rock_remove_list.append(rock)
-                    # torp_remove_list.append(torp)
-
                     if rock.get_size() == asteroid.Asteroid.SIZE_L:
                         self.split_asteroid(rock, torp)
                         self.award_points(self.POINTS_L_ROCK)
@@ -159,17 +154,10 @@ class GameRunner:
                         self.award_points(self.POINTS_M_ROCK)
                     elif rock.get_size() == asteroid.Asteroid.SIZE_S:
                         self.award_points(self.POINTS_S_ROCK)
-
                     self._screen.unregister_asteroid(rock)
                     self.asteroids.remove(rock)
                     self._screen.unregister_torpedo(torp)
                     self.torpedoes.remove(torp)
-        # for rock in rock_remove_list:
-        #     self._screen.unregister_asteroid(rock)
-        #     self.asteroids.remove(rock)
-        # for torp in torp_remove_list:
-        #     self.torpedoes.remove(torp)
-        #     self._screen.unregister_torpedo(torp)
 
     def check_game_over(self):
         """ docstring """

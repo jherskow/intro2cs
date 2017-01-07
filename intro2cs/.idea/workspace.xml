@@ -5,8 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/asteroid.py" afterPath="$PROJECT_DIR$/ex9/asteroid.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/asteroids_main.py" afterPath="$PROJECT_DIR$/ex9/asteroids_main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/ship.py" afterPath="$PROJECT_DIR$/ex9/ship.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/torpedo.py" afterPath="$PROJECT_DIR$/ex9/torpedo.py" />
     </list>
     <list id="d69ead2b-012c-4140-9471-950164463b23" name="Failed commit: Default" comment="ex8" />
     <ignored path="intro2cs.iws" />
@@ -32,7 +30,7 @@
     <SUITE FILE_PATH="coverage/intro2cs$ex6_high_qual.coverage" NAME="ex6 high qual Coverage Results" MODIFIED="1482081152615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex6" />
     <SUITE FILE_PATH="coverage/intro2cs$ex6_default_from_file.coverage" NAME="ex6 default from file Coverage Results" MODIFIED="1482237745476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex6" />
     <SUITE FILE_PATH="coverage/intro2cs$ex7.coverage" NAME="ex7 Coverage Results" MODIFIED="1482942869617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex7" />
-    <SUITE FILE_PATH="coverage/intro2cs$asteroids_main.coverage" NAME="asteroids_main Coverage Results" MODIFIED="1483792392815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex9" />
+    <SUITE FILE_PATH="coverage/intro2cs$asteroids_main.coverage" NAME="asteroids_main Coverage Results" MODIFIED="1483805963132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex9" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -43,11 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="asteroids_main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="asteroids_main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex9/asteroids_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4620">
-              <caret line="220" column="35" selection-start-line="220" selection-start-column="35" selection-end-line="220" selection-end-column="35" />
+            <state relative-caret-position="672">
+              <caret line="143" column="25" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
               <folding>
                 <element signature="e#332#357#0" expanded="true" />
               </folding>
@@ -55,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helpers.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="helpers.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ex9/helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="751">
-              <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="-3">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
               <folding>
                 <element signature="e#369#380#0" expanded="true" />
               </folding>
@@ -70,8 +68,8 @@
       <file leaf-file-name="ship.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ex9/ship.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2394">
-              <caret line="114" column="56" selection-start-line="114" selection-start-column="56" selection-end-line="114" selection-end-column="56" />
+            <state relative-caret-position="2289">
+              <caret line="109" column="43" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
               <folding>
                 <element signature="e#363#388#0" expanded="true" />
               </folding>
@@ -94,8 +92,8 @@
       <file leaf-file-name="asteroid.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ex9/asteroid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="744">
-              <caret line="78" column="38" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
+            <state relative-caret-position="-264">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#325#339#0" expanded="true" />
               </folding>
@@ -126,11 +124,11 @@
         <option value="$PROJECT_DIR$/ex9/README" />
         <option value="$PROJECT_DIR$/ex9/SPEC SHEET" />
         <option value="$PROJECT_DIR$/ex9/ex9.py" />
-        <option value="$PROJECT_DIR$/ex9/asteroids_main.py" />
         <option value="$PROJECT_DIR$/ex9/torpedo.py" />
+        <option value="$PROJECT_DIR$/ex9/helpers.py" />
         <option value="$PROJECT_DIR$/ex9/asteroid.py" />
         <option value="$PROJECT_DIR$/ex9/ship.py" />
-        <option value="$PROJECT_DIR$/ex9/helpers.py" />
+        <option value="$PROJECT_DIR$/ex9/asteroids_main.py" />
       </list>
     </option>
   </component>
@@ -761,7 +759,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483792702583</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Rachel import 2">
+      <created>1483804699873</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1483804699873</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView">
@@ -839,7 +844,8 @@
     <MESSAGE value="import from rachel" />
     <MESSAGE value="finish friday" />
     <MESSAGE value="do and share" />
-    <option name="LAST_COMMIT_MESSAGE" value="do and share" />
+    <MESSAGE value="Rachel import 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rachel import 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1074,16 +1080,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ex9/asteroids_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4620">
-          <caret line="220" column="35" selection-start-line="220" selection-start-column="35" selection-end-line="220" selection-end-column="35" />
-          <folding>
-            <element signature="e#332#357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ex9/torpedo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="744">
@@ -1094,10 +1090,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ex9/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="e#369#380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ex9/asteroid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="744">
-          <caret line="78" column="38" selection-start-line="78" selection-start-column="38" selection-end-line="78" selection-end-column="38" />
+        <state relative-caret-position="-264">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#325#339#0" expanded="true" />
           </folding>
@@ -1106,20 +1112,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex9/ship.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2394">
-          <caret line="114" column="56" selection-start-line="114" selection-start-column="56" selection-end-line="114" selection-end-column="56" />
+        <state relative-caret-position="2289">
+          <caret line="109" column="43" selection-start-line="109" selection-start-column="43" selection-end-line="109" selection-end-column="43" />
           <folding>
             <element signature="e#363#388#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ex9/helpers.py">
+    <entry file="file://$PROJECT_DIR$/ex9/asteroids_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="672">
+          <caret line="143" column="25" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
           <folding>
-            <element signature="e#369#380#0" expanded="true" />
+            <element signature="e#332#357#0" expanded="true" />
           </folding>
         </state>
       </provider>
