@@ -15,18 +15,18 @@ AXXL_CONST = 2
 
 class Torpedo:
     """
-    A class representing a n object on the board
+    A class representing an object on the board
     """
 
     def __init__(self, pos, speed, heading):
         """
         Initialize a new torpedo
         """
-        self._size = 3  # todo get random size
         self._pos = pos
         self._heading = heading
         self._duration = DEAFULT_DUR
         self._speed = self.tor_speed(speed, helpers.deg_to_radian(heading))
+        self._radius = 4  # todo magic number
 
     def reduce_dur(self):
         """

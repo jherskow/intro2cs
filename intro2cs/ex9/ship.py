@@ -70,7 +70,10 @@ class Ship:
 
     def get_radius(self):
         return copy.copy(self._radius)
-    
+
+    def get_health(self):
+        return copy.copy(self._health)
+
     def radian_heading(self):
         """ docstring """
         return helpers.deg_to_radian(self._heading)
@@ -101,6 +104,10 @@ class Ship:
         """
         self._pos = pos
         return None
+
+    def lose_life(self):
+        """ removes a life from the ship"""
+        self._health -= 1
 
     def draw_prep(self):
         """preps info for draw ship"""

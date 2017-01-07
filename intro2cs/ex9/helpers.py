@@ -14,8 +14,8 @@ import random
 HALF_CIRCLE = 180
 PI = math.pi
 CIRCLE = 360
-MIN_SPEED = -10
-MAX_SPEED = 10
+MIN_SPEED = -5
+MAX_SPEED = 5
 
 
 # ===== Space_objects methods =========
@@ -34,4 +34,7 @@ def random_speed():
     """returns a random [x,y] speed"""
     x = random.randint(MIN_SPEED, MAX_SPEED)
     y = random.randint(MIN_SPEED, MAX_SPEED)
+    while x == 0 and y == 0:
+        x = random.randint(MIN_SPEED, MAX_SPEED)
+        y = random.randint(MIN_SPEED, MAX_SPEED)
     return [x, y]
