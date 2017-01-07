@@ -114,9 +114,9 @@ class GameRunner:
         new_pos = self._random_pos()
         while new_pos == self.ship.get_pos():
             new_pos = self._random_pos()
-        new_asteroid = asteroid.Asteroid(new_pos)
-        self.asteroids.append(new_asteroid)
-        self._screen.register_asteroid(new_asteroid, new_asteroid.get_size())
+        new_rock = asteroid.Asteroid(new_pos)
+        self.asteroids.append(new_rock)
+        self._screen.register_asteroid(new_rock, new_rock.get_size())
 
     def add_torpedo(self):
         """ docstring """
