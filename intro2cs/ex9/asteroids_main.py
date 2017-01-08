@@ -15,8 +15,14 @@ import helpers
 import math
 
 DEFAULT_ASTEROIDS_NUM = 5
-HIT_TITLE = ' CRASSSSSHHHHHH!!!!! '
-HIT_MSG = 'Please do not touch the asteroids.'
+HIT_TITLE = 'Ouch!'
+HIT_MSG = 'Please do not feed the asteroids.'
+EXIT_TITLE = 'Quitters never win!'
+EXIT_MSG = 'leaving so soon? :('
+LOSS_TITLE = 'YOU LOSE'
+LOSS_MSG = 'In Space.... No One Can Hear You Scream!'
+WIN_TITLE = 'hhrhrhrrmmmmmmmm'
+WIN_MSG = 'The Force Is Strong In This One'
 
 
 class GameRunner:
@@ -162,7 +168,17 @@ class GameRunner:
     def check_game_over(self):
         """ docstring """
         if self.ship.get_health() == 0:
-            return True
+            self._screen.show_message(LOSS_TITLE, LOSS_MSG)
+            self._screen.end_game()
+            sys.exit(0)
+        if self._screen.is_special_pressed():
+            self._screen.show_message(EXIT_TITLE, EXIT_MSG)
+            self._screen.end_game()
+            sys.exit(0)
+        if self.asteroids == []:
+            self._screen.show_message(WIN_TITLE, WIN_MSG)
+            self._screen.end_game()
+            sys.exit(0)
 
     def award_points(self, points):
         """ docstring """

@@ -1,7 +1,7 @@
 """########################################################################
 # FILE : ship.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
-# WRITER : Rachel Zilberberg, rachelz , 314421876                          # FILE : ship.py
+# WRITER : Rachel Zilberberg, rachelz , 314421876
 # EXERCISE : intro2cs ex9 2016-2017
 # DESCRIPTION:
 #######################################################################"""
@@ -11,7 +11,7 @@ import math
 import copy
 
 
-class Ship:
+class Ship(helpers.Movable):
     """
     A ship
     """
@@ -47,31 +47,8 @@ class Ship:
             self._heading += Ship.TURN_INCREMENT_RIGHT
         self._heading %= 360
 
-    def get_heading(self):
-        return copy.copy(self._heading)
-
-    def get_speed(self):
-        return copy.copy(self._speed)
-
-    def get_pos(self):
-        return copy.copy(self._pos)
-
-    def get_x_pos(self):
-        return copy.copy(self._pos[0])
-
-    def get_y_pos(self):
-        return copy.copy(self._pos[1])
-
-    def get_x_speed(self):
-        return copy.copy(self._speed[0])
-
-    def get_y_speed(self):
-        return copy.copy(self._speed[1])
-
-    def get_radius(self):
-        return copy.copy(self._radius)
-
     def get_health(self):
+        """ docstring """
         return copy.copy(self._health)
 
     def radian_heading(self):
@@ -90,14 +67,6 @@ class Ship:
 
         self._speed = [new_x_speed, new_y_speed]
 
-    def __repr__(self):   # todo remove this debug shiiit
-        """aa"""
-        speed = self._speed
-        pos = self._pos
-        heading = self._heading
-        return str((int(10*(speed[0])), int(10*(speed[1])),
-                    (int(pos[0]), int(pos[1])), heading))
-
     def goto(self, pos):
         """
         :param pos:
@@ -111,5 +80,5 @@ class Ship:
         self._health -= 1
 
     def draw_prep(self):
-        """preps info for draw ship"""
+        """preps info for the draw ship() fuction"""
         return self._pos[0], self._pos[1], self._heading

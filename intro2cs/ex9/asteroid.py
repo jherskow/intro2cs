@@ -13,7 +13,7 @@ DEFAULT_SIZE = 3
 RAND_SPEED = 'random'
 
 
-class Asteroid:
+class Asteroid(helpers.Movable):
     """
     An asteroid
     """
@@ -55,27 +55,3 @@ class Asteroid:
             return True
         else:
             return False
-
-    def get_speed(self):
-        return copy.copy(self._speed)
-
-    def get_size(self):
-        return copy.copy(self._size)
-
-    def get_pos(self):
-        return copy.copy(self._pos)
-
-    def get_x_pos(self):
-        return copy.copy(self._pos[0])
-
-    def get_y_pos(self):
-        return copy.copy(self._pos[1])
-
-    def get_x_speed(self):
-        return copy.copy(self._speed[0])
-
-    def get_y_speed(self):
-        return copy.copy(self._speed[1])
-
-    def get_radius(self):
-        return copy.copy(self._radius)

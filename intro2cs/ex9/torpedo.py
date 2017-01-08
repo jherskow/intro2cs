@@ -13,7 +13,7 @@ DEAFULT_DUR = 200
 AXXL_CONST = 2
 
 
-class Torpedo:
+class Torpedo(helpers.Movable):
     """
     A class representing an object on the board
     """
@@ -37,34 +37,10 @@ class Torpedo:
     def get_dur(self):
         return copy.copy(self._duration)
 
-    def get_heading(self):
-        return copy.copy(self._heading)
-
-    def get_speed(self):
-        return copy.copy(self._speed)
-
-    def get_pos(self):
-        return copy.copy(self._pos)
-
-    def get_x_pos(self):
-        return copy.copy(self._pos[0])
-
-    def get_y_pos(self):
-        return copy.copy(self._pos[1])
-
-    def get_x_speed(self):
-        return copy.copy(self._speed[0])
-
-    def get_y_speed(self):
-        return copy.copy(self._speed[1])
-
     def tor_speed(self, speed, cur_hed_rad):
         new_x_speed = speed[0] + (AXXL_CONST * math.cos(cur_hed_rad))
         new_y_speed = speed[1] + (AXXL_CONST * math.sin(cur_hed_rad))
         return [new_x_speed, new_y_speed]
-
-    def get_radius(self):
-        return copy.copy(self._radius)
 
     def goto(self, pos):
         """

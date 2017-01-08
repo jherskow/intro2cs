@@ -1,10 +1,11 @@
 jherskow
 321658379
 Joshua Herskowitz
-
-
-!!
-!1  ‫‪~intro2cs/bin/ex9/asteroids
+------------------
+rachelz
+314421876
+Rachel Zilberberg
+------------------
 
 ====================================
 = README for ex9:   ™     =
@@ -19,10 +20,10 @@ Joshua Herskowitz
 =        Files:        =
 ==============================
 
-======== ----.PY ===========
-Implements a ship, the primary object in the game.?
+======== helpers.PY ===========
+-description-
 
-+++++++ class ---- +++++++++
++++++++ class movable +++++++++
 
     ==main functions==
     aaaaa                    -aaaaa
