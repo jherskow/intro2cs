@@ -29,7 +29,7 @@
     <SUITE FILE_PATH="coverage/intro2cs$ex6_high_qual.coverage" NAME="ex6 high qual Coverage Results" MODIFIED="1482081152615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex6" />
     <SUITE FILE_PATH="coverage/intro2cs$ex6_default_from_file.coverage" NAME="ex6 default from file Coverage Results" MODIFIED="1482237745476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex6" />
     <SUITE FILE_PATH="coverage/intro2cs$ex7.coverage" NAME="ex7 Coverage Results" MODIFIED="1482942869617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex7" />
-    <SUITE FILE_PATH="coverage/intro2cs$asteroids_main.coverage" NAME="asteroids_main Coverage Results" MODIFIED="1483979413096" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex9" />
+    <SUITE FILE_PATH="coverage/intro2cs$asteroids_main.coverage" NAME="asteroids_main Coverage Results" MODIFIED="1483982218683" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ex9" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -43,8 +43,8 @@
       <file leaf-file-name="asteroids_main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex9/asteroids_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="2300">
+              <caret line="200" column="12" selection-start-line="200" selection-start-column="12" selection-end-line="200" selection-end-column="12" />
               <folding>
                 <element signature="e#332#357#0" expanded="true" />
               </folding>
@@ -796,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1483914320760</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Release candidate 1.1">
+      <created>1483979433377</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1483979433378</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -876,7 +883,8 @@
     <MESSAGE value="do and share" />
     <MESSAGE value="Rachel import 2" />
     <MESSAGE value="Release candidate" />
-    <option name="LAST_COMMIT_MESSAGE" value="Release candidate" />
+    <MESSAGE value="Release candidate 1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release candidate 1.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1153,8 +1161,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex9/asteroids_main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="2300">
+          <caret line="200" column="12" selection-start-line="200" selection-start-column="12" selection-end-line="200" selection-end-column="12" />
           <folding>
             <element signature="e#332#357#0" expanded="true" />
           </folding>

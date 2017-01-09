@@ -23,6 +23,9 @@ LOSS_TITLE = 'YOU LOSE'
 LOSS_MSG = 'In Space.... No One Can Hear You Scream!'
 WIN_TITLE = 'hhrhrhrrmmmmmmmm'
 WIN_MSG = 'The Force Is Strong In This One'
+PERFECT_TITLE = '!!!!! PERFECT GAME !!!!!!!!'
+PERFECT_MSG = 'Fantastic Job!\nYou cleared the asteroid field, with no ' \
+              'damage taken! \n Your\'e ready for the Kessel run!'
 
 
 class GameRunner:
@@ -176,7 +179,10 @@ class GameRunner:
             self._screen.end_game()
             sys.exit(0)
         if self.asteroids == []:
-            self._screen.show_message(WIN_TITLE, WIN_MSG)
+            if self.ship.get_health() == 3:
+                self._screen.show_message(PERFECT_TITLE, PERFECT_MSG)
+            else:
+                self._screen.show_message(WIN_TITLE, WIN_MSG)
             self._screen.end_game()
             sys.exit(0)
 
