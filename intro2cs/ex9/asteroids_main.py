@@ -171,7 +171,7 @@ class GameRunner:
             self._screen.show_message(LOSS_TITLE, LOSS_MSG)
             self._screen.end_game()
             sys.exit(0)
-        if self._screen.is_special_pressed():
+        if self._screen.should_end():
             self._screen.show_message(EXIT_TITLE, EXIT_MSG)
             self._screen.end_game()
             sys.exit(0)
