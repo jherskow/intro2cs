@@ -5,6 +5,7 @@
 # EXERCISE : intro2cs ex9 2016-2017
 # DESCRIPTION:
 ########################################################################"""
+# ============================ IMPORTS  ===================================
 from screen import Screen
 import sys
 import ship
@@ -14,6 +15,8 @@ import torpedo
 import math
 
 DEFAULT_ASTEROIDS_NUM = 5
+
+# === Message text ========================================================
 HIT_TITLE = 'Ouch!'
 HIT_MSG = 'Please do not feed the asteroids.'
 EXIT_TITLE = 'Quitters never win!'
@@ -26,9 +29,12 @@ PERFECT_TITLE = '!!!!! PERFECT GAME !!!!!!!!'
 PERFECT_MSG = 'Fantastic Job!\nYou cleared the asteroid field, with no ' \
               'damage taken! \n Your\'e ready for the Kessel run!'
 
+# ============================ Game Runner  ===============================
+
 
 class GameRunner:
-    """ game runner
+    """
+    game runner
     !!stuff
     !! stuff
     """
@@ -39,8 +45,8 @@ class GameRunner:
 
     def __init__(self, asteroids_amnt):
         """
-        !!stuff
-        !! stuff
+
+        :param asteroids_amnt:
         """
         self._screen = Screen()
         self.screen_max_x = Screen.SCREEN_MAX_X
@@ -57,7 +63,7 @@ class GameRunner:
     def move(self, thing):
         """
         Moves an object.
-        param thing: an object of parent class Moveable
+        :param thing: an object of parent class Moveable
         """
         x_speed, y_speed = thing.get_x_speed(), thing.get_y_speed()
         old_x, old_y = thing.get_x_pos(), thing.get_y_pos()
@@ -71,7 +77,9 @@ class GameRunner:
         thing.goto(new_pos)
 
     def move_all(self):
-        """ moves all moveables on screen"""
+        """
+        moves all moveables on screen
+        """
         for rock in self.asteroids:
             self.move(rock)
         for missile in self.torpedoes:
@@ -186,7 +194,7 @@ class GameRunner:
     def check_asteroid_kills(self):
         """
         Checks for torpedo hits on asteroids,
-        and updates the game acccordingly
+        and updates the game accordingly
         """
         # copy [:] list to prevent removal during iteration
         for torp in self.torpedoes[:]:
@@ -243,18 +251,23 @@ class GameRunner:
 
     def split_asteroid(self, rock, torp):
         """
-        When a larger asteroid is hit by a topredo
+        When a larger asteroid is hit by a torpedo
         the asteroid is split into 2 smaller ones.
         The new speed of each is given by a specific formula.
         And is dependant on the speed of the torpedo.
+        :param rock: an Asteroid object
+        :param torp:  a Torpedo object
+        """
+        """
+
         """
         new_pos = rock.get_pos()
         new_size = rock.get_size() - 1
         cur_x_speed_pow = rock.get_x_speed() ** 2
         cur_y_speed_pow = rock.get_y_speed() ** 2
-        machane = math.sqrt(cur_x_speed_pow + cur_y_speed_pow)
-        new_x_speed = (torp.get_x_speed() + rock.get_x_speed()) / machane
-        new_y_speed = (torp.get_y_speed() + rock.get_y_speed()) / machane
+        divisor = math.sqrt(cur_x_speed_pow + cur_y_speed_pow)
+        new_x_speed = (torp.get_x_speed() + rock.get_x_speed()) / divisor
+        new_y_speed = (torp.get_y_speed() + rock.get_y_speed()) / divisor
         new_speed_i = [new_x_speed, new_y_speed]
         new_speed_ii = [-new_x_speed, -new_y_speed]
         rock_i = asteroid.Asteroid(new_pos, new_size, new_speed_i)
@@ -276,7 +289,10 @@ class GameRunner:
 
 
 def main(amnt):
-    """ main function to start the game """
+    """
+    main function to start the game
+    :param amnt: # of asteroids
+    """
     runner = GameRunner(amnt)
     runner.run()
 
