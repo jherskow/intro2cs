@@ -12,7 +12,7 @@ import copy
 
 class Ship(helpers.Movable):
     """
-    A ship
+    A class representing a Spaceship.
     """
     # ===== Ship - class constants =====
     DEFAULT_SHIP_LIVES = 3  # figure out how to do this
@@ -21,6 +21,8 @@ class Ship(helpers.Movable):
     STARTING_SPEED = [0.0, 0.0]  # no speed
     STARTING_HEADING = 0  # no speed
     RADIUS = 1
+    LEFT = 'left'
+    RIGHT = 'right'
 
     # ===== Ship - class methods =======
 
@@ -36,12 +38,13 @@ class Ship(helpers.Movable):
 
     def direction_change(self, direction):
         """
-        changes direction of the ship by 7 degrees or -7 degrees if
+        Changes the direction of the ship by 7 degrees or -7 degrees if
         left or right keyboard arrow is pressed
+        :param direction:
         """
-        if direction == "left":
+        if direction == self.LEFT:
             self._heading += Ship.TURN_INCREMENT_LEFT
-        elif direction == "right":
+        elif direction == self.RIGHT:
             self._heading += Ship.TURN_INCREMENT_RIGHT
         self._heading %= 360
 

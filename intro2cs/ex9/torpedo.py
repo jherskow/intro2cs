@@ -9,37 +9,43 @@ import helpers
 import math
 import copy
 
-DEAFULT_DUR = 200
-AXXL_CONST = 2
-
 
 class Torpedo(helpers.Movable):
     """
-    A class representing an object on the board
+    A class representing a Torpedo on the board.
     """
+    # ===== Torpedo - class constants =====
+    DEAFULT_DUR = 200
+    ACEL_CONST = 2
+    RADIUS = 4
 
     def __init__(self, pos, speed, heading):
         """
-        Initialize a new torpedo
+        Initializes a new torpedo.
         """
         self._pos = pos
         self._heading = heading
-        self._duration = DEAFULT_DUR
+        self._duration = Torpedo.DEAFULT_DUR
         self._speed = self.tor_speed(speed, helpers.deg_to_radian(heading))
-        self._radius = 4  # todo magic number
+        self._radius = Torpedo.RADIUS
 
     def reduce_dur(self):
         """
-        when a loop has passed reduce from current duration
+        Reduces the torpedo's duration by one.
         """
         self._duration -= 1
 
     def get_dur(self):
-        """ returns the torpedo's current loop duration """
+        """ :return: the torpedo's current loop duration """
         return copy.copy(self._duration)
 
-    def tor_speed(self, speed, cur_hed_rad):
-        """ calculates torpedo's initial speed"""
-        new_x_speed = speed[0] + (AXXL_CONST * math.cos(cur_hed_rad))
-        new_y_speed = speed[1] + (AXXL_CONST * math.sin(cur_hed_rad))
+    def tor_speed(self, speed, radians):
+        """
+        Calculates a new torpedo's initial speed.
+        :param speed: an [x,y] speed, from the firing ship.
+        :param radians: A direction in radians.
+        :return: speed as [x,y] list.
+        """
+        new_x_speed = speed[0] + (Torpedo.ACEL_CONST * math.cos(radians))
+        new_y_speed = speed[1] + (Torpedo.ACEL_CONST * math.sin(radians))
         return [new_x_speed, new_y_speed]

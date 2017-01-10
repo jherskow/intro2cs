@@ -7,14 +7,20 @@ rachelz
 Rachel Zilberberg
 ------------------
 
-====================================
-= README for ex9:   ™     =
-====================================
+=========================================
+= README for ex9:   Asteroid Blaster™   =
+=========================================
 
 ==============================
 =        Description:        =
 ==============================
----
+Grab your laser guns and strap on your jet pack.
+Asteroid Blaster™ lets you jump into space and start blowing up rocks!
+Enjoy a quick gaming break or a marathon high score competition with the casual feel of a video arcade classic.
+Fly around, shoot stuff and have fun!
+
+The game is implemented using Turtle graphics, object-oriented-programming,
+and a less than ideal
 
 ==============================
 =        Files:              =
@@ -25,47 +31,58 @@ A file containing various helper functions,
 and a class to hold getters shared by all game objects.
 
 ==functions==
+
 deg_to_radian                    - Converts degrees to radians
-random_heading                   -aaaaa
-random_speed                     -aaaaa
+random_heading                   - returns a random compass heading (int)
+random_speed                     - returns a random [x,y] speed
 
 +++++++ class movable +++++++++
-description
+  A class storing the common getter functions for the different
+  movable objects in the game.
 
     ==main functions==
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
+   goto 			- changes an object's position to the given position.
+   get_heading      - returns space object's compass heading as an int.
+   get_speed        - returns speed as [x,y] list.
+   get_pos          - returns position coordinates as [x,y] list.
+   get_x_pos        - returns x position coordinate as float.
+   get_y_pos        - returns y position coordinate as float.
+   get_x_speed      - returns x speed as float.
+   get_y_speed      - returns y speed as float.
+   get_radius       - returns radius as int.
+   get_size         - returns size as sub-class constant.
 
 
 ======== SHIP.PY ===========
-description
+A class in charge of ship objects and containing basic
+functions for the ship.
 
 +++++++ class SHIP +++++++++
-description
+A class in charge of ship object.
 
     ==main functions==
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
+    __init__                 - Initialize a new ship.
+    direction_change         - changes direction of the ship acording to
+                               keyboard arrow pressed
+    get_health               - return's ship's lives, as an int
+    radian_heading           - return: the ships heading as radians
+    accelerate               - accelerates the ship's speed, according to
+                               the specified formula
+    lose_life                - removes a life from the ship
+
 
     ==helper functions==
-    draw_prep                    -aaaaa
+	draw_prep                - packages arguments for the draw ship() fuction
 
 
 ======== ASTEROID.PY ===========
 
 +++++++ class Asteroid +++++++++
-description
+class of an Asteroid object
 
     ==functions==
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
+    __init__           - Initialises a new asteroid.
+    has_intersection   - checks if asteroid has collided with something
 
 
 ======== TORPEDO.PY =============
@@ -74,36 +91,119 @@ description
 +++++++ class Torpedo +++++++++
 
     ==functions==
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
+    __init__      - Initialize a new torpedo
+    reduce_dur    - when a loop has passed reduce from current duration
+    get_dur       - return: the torpedo's current loop duration
+    tor_speed     - calculates torpedo's initial speed
 
 
 
 ======== ASTEROIDS_MAIN.PY =========
 
 +++++++ class Game_runner  +++++++++
-description
+the class is in charge of running the asteroids game.
 
     ==main functions==
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
+    __init__         		 - Initialises a game with a given number of
+                               asteroids
+    move_all 			  	 - moves all moveables on screen
+	draw_all 			     - draws all objects on screen
+    run 					 - calls the first game loop and starts the
+    						   screen
+    _do_loop 				 - runs one game loop, and updates the screen
+	_game_loop:              -The main loop that implements the gameplay.
+    check_ship_crash         - checks if there is a collision between our ship
+                               and an asteroid
+    check_asteroid_kills     - Checks for torpedo hits on asteroids
+
+    check_game_over 		 -Checks if the game is over:
+
+    award_points             - awards points to player by asteroid size
+    split_asteroid			 - splits an asteroid into 2 smaller ones after
+    							collision with a torpedo
 
     ==helper functions==
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
-    aaaaa                    -aaaaa
+    move 					 - Moves an object
+    _random_pos              - Returns a random [x,y] position on the board
+    add_asteroid  			 - creates a new asteroid and adds it to the game
+    add_torpedo 			 - creates a new torpedo and adds it to the game
+    ship_input     			 - checks for ship input from user
+    manage_torpedoes 		 - reduces torpedoes life and removes it if it is
+                               over
 
 ==============================
 =        EX9 Q & A           =
 ==============================
-----
 
-==============================
-=      Special Comments      =
-==============================
-----
+What were 3 decisions you had to make during the game design,
+And what was the reasoning behind them?
+Write an alternative, it's advantages, and why you chose your
+implementation instead.
+
+1.
+
+We chose to make a helper class called "movable" that would
+store the common getter functions for the different movable objects.
+Alternatively, we could have implemented the getters separately,
+for each object,
+
+The advantage of the alternative approach is that it would
+prevent the possibility of a user accidentally creating
+an object of class Moveable, even though
+such an object would not be functional on it's own,
+and might cause unexpected behaviour.
+
+We chose to go with our approach in order to dramatically
+improve the readability of our code, avoid code repetition.
+and reduce the number of functions necessary
+for the interpreter to store.
+
+Our approach also enabled us to make changes to said functions
+at once, preventing the possibility of forgetting to make a change in one of
+them.
+
+
+2.
+Another decision was to place move() split() and random(pos)
+inside Gamerunner.
+
+The alternative would be to have move as a function of class Moveables
+split as a function of class Asteroid, and random pos as a helper function.
+
+The advantage of the alternative approach is a clearer understanding
+of which functions apply to which type of objects, and makes for
+better readability.
+
+However, all the above functions rely on either constants from self.Screen,
+such the SCREEN_MAX_X and Y for screen size. And split needs to be able
+to register new asteroids to screen, as well as modify Gamerunner to add
+asteroids.
+
+We chose our approach to reduce import statements and helper functions that
+would be necessary for the alternative approach, since we felt it would
+cause much confusion for the user,and make it more difficult to change the
+behaviour and size of Screen, since all the related functions would also
+require double-checking.
+
+
+3.
+We made a decision to improve upon the school's solution in 2 ways:
+1 - We gave asteroids a free range of motion,
+	by allowing negative numbers in their starting speed.
+    (this required ensuring non-zero speeds to prevent division by zero)
+2 - We implemented an additional message congratulating the player
+	in case of a victory with full ship health (a perfect game).
+
+The alternative approach would be not to try and implement functionality
+when we have not been specifically instructed to do so.
+
+The advantage of the alternative approach is much more time
+left available for Calculus I and Linear Algebra I.
+
+We chose our approach because we care about video games, and believe
+in a world where better gaming is more important than any one individual's life.
+
+
 
 ==============================
 =  Colleagues and Resources  =

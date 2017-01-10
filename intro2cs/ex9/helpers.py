@@ -61,35 +61,33 @@ class Movable:
         return copy.copy(self._heading)
 
     def get_speed(self):
-        """ returns speed as [x,y] list"""
+        """ :return: speed as [x,y] list"""
         return copy.copy(self._speed)
 
     def get_pos(self):
-        """ returns position coordinates as [x,y] list"""
+        """ :return: position coordinates as [x,y] list"""
         return copy.copy(self._pos)
 
     def get_x_pos(self):
-        """ returns x position coordinate as float"""
+        """ :return: x position coordinate as float"""
         return copy.copy(self._pos[0])
 
     def get_y_pos(self):
-        """ returns y position coordinate as float"""
+        """ :return: y position coordinate as float"""
         return copy.copy(self._pos[1])
 
     def get_x_speed(self):
-        """ returns x speed as float"""
+        """  :return: x speed as float """
         return copy.copy(self._speed[0])
 
     def get_y_speed(self):
-        """ returns y speed as float"""
+        """ :return: y speed as float"""
         return copy.copy(self._speed[1])
 
     def get_radius(self):
-        """ returns radius as int"""
+        """ :return: radius as int"""
         return copy.copy(self._radius)
 
     def get_size(self):
-        """ returns size as sub-class constant"""
+        """ :return: size as sub-class constant"""
         return copy.copy(self._size)
-
-    # todo put move and other relevant functions here.
