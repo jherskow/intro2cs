@@ -88,7 +88,6 @@ class GameRunner:
             y = missile.get_y_pos()
             heading = missile.get_heading()
             self._screen.draw_torpedo(missile, x, y, heading)
-            # print(str(self.ship))  # todo DEBUG this prints the thingy
 
     def run(self):
         """ calls the first game loop and starts the screen"""
