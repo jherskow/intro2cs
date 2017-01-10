@@ -4,9 +4,6 @@
     <list default="true" id="f9ff36b6-9a1e-4893-a726-bbcc040e65e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/README" afterPath="$PROJECT_DIR$/ex9/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/asteroid.py" afterPath="$PROJECT_DIR$/ex9/asteroid.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/ship.py" afterPath="$PROJECT_DIR$/ex9/ship.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex9/torpedo.py" afterPath="$PROJECT_DIR$/ex9/torpedo.py" />
     </list>
     <list id="d69ead2b-012c-4140-9471-950164463b23" name="Failed commit: Default" comment="ex8" />
     <ignored path="intro2cs.iws" />
@@ -58,8 +55,8 @@
       <file leaf-file-name="README" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex9/README">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            <state relative-caret-position="462">
+              <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -811,7 +808,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484080193974</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Release candidate 1.0">
+      <created>1484080730806</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1484080730806</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -897,7 +901,8 @@
     <MESSAGE value="Release candidate 1.4" />
     <MESSAGE value="Release candidate 0.9.1" />
     <MESSAGE value="Release candidate 0.9.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Release candidate 0.9.2" />
+    <MESSAGE value="Release candidate 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Release candidate 1.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1174,8 +1179,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex9/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+        <state relative-caret-position="462">
+          <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
           <folding />
         </state>
       </provider>
