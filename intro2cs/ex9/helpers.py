@@ -27,7 +27,7 @@ def deg_to_radian(degs):
 
 
 def random_heading():
-    """returns a random compass heading"""
+    """returns a random compass heading (int) """
     return random.randint(1, CIRCLE)
 
 
@@ -44,33 +44,52 @@ def random_speed():
 
 
 class Movable:
-    """ docstring """
+    """
+    Parent class designed to consolidate identical getters for
+    classes: Asteroid, Ship and Torpedo.
+    """
+
+    def goto(self, pos):
+        """
+        Sends a movable object to a specified [x,y] position.
+        :param pos: [x,y] list indicating a position on the board.
+        """
+        self._pos = pos
 
     def get_heading(self):
+        """ returns space object's compass heading as an int"""
         return copy.copy(self._heading)
 
     def get_speed(self):
+        """ returns speed as [x,y] list"""
         return copy.copy(self._speed)
 
     def get_pos(self):
+        """ returns position coordinates as [x,y] list"""
         return copy.copy(self._pos)
 
     def get_x_pos(self):
+        """ returns x position coordinate as float"""
         return copy.copy(self._pos[0])
 
     def get_y_pos(self):
+        """ returns y position coordinate as float"""
         return copy.copy(self._pos[1])
 
     def get_x_speed(self):
+        """ returns x speed as float"""
         return copy.copy(self._speed[0])
 
     def get_y_speed(self):
+        """ returns y speed as float"""
         return copy.copy(self._speed[1])
 
     def get_radius(self):
+        """ returns radius as int"""
         return copy.copy(self._radius)
 
     def get_size(self):
+        """ returns size as sub-class constant"""
         return copy.copy(self._size)
 
     # todo put move and other relevant functions here.

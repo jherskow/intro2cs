@@ -5,7 +5,6 @@
 # EXERCISE : intro2cs ex9 2016-2017
 # DESCRIPTION:
 #######################################################################"""
-from screen import Screen
 import helpers
 import math
 import copy
@@ -19,7 +18,7 @@ class Ship(helpers.Movable):
     DEFAULT_SHIP_LIVES = 3  # figure out how to do this
     TURN_INCREMENT_LEFT = 7  # degrees
     TURN_INCREMENT_RIGHT = -7  # degrees
-    STARTING_SPEED = [0, 0]  # no speed
+    STARTING_SPEED = [0.0, 0.0]  # no speed
     STARTING_HEADING = 0  # no speed
     RADIUS = 1
 
@@ -38,26 +37,25 @@ class Ship(helpers.Movable):
     def direction_change(self, direction):
         """
         changes direction of the ship by 7 degrees or -7 degrees if
-        left button is pressed or the right one accordingly
+        left or right keyboard arrow is pressed
         """
         if direction == "left":
             self._heading += Ship.TURN_INCREMENT_LEFT
-
         elif direction == "right":
             self._heading += Ship.TURN_INCREMENT_RIGHT
         self._heading %= 360
 
     def get_health(self):
-        """ docstring """
+        """ return's ship's lives, as an int """
         return copy.copy(self._health)
 
     def radian_heading(self):
-        """ docstring """
+        """ returns the ships heading as radians """
         return helpers.deg_to_radian(self._heading)
 
     def accelerate(self):
         """
-        :return:
+        accelerates the ship's speed, according to the specified formula
         """
         current_speed = self._speed
         cur_head_rad = self.radian_heading()
@@ -67,18 +65,10 @@ class Ship(helpers.Movable):
 
         self._speed = [new_x_speed, new_y_speed]
 
-    def goto(self, pos):
-        """
-        :param pos:
-        :return:
-        """
-        self._pos = pos
-        return None
-
     def lose_life(self):
         """ removes a life from the ship"""
         self._health -= 1
 
     def draw_prep(self):
-        """preps info for the draw ship() fuction"""
+        """packages arguments for the draw ship() fuction"""
         return self._pos[0], self._pos[1], self._heading

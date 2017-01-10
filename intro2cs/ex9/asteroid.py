@@ -6,7 +6,6 @@
 # DESCRIPTION:
 #######################################################################"""
 import helpers
-import copy
 import math
 
 DEFAULT_SIZE = 3
@@ -40,12 +39,8 @@ class Asteroid(helpers.Movable):
         radius = size * Asteroid.SIZE_MODIFIER - Asteroid.SIZE_NORMALIZER
         self._radius = radius
 
-    def goto(self, pos):
-        """ docstring """
-        self._pos = pos
-
     def has_intersection(self, obj):
-        """ checks if asteroid has hit something"""
+        """ checks if asteroid has collided with something"""
         x_diff = self.get_x_pos() - obj.get_x_pos()
         x_diff_pow = x_diff ** 2
         y_diff = self.get_y_pos() - obj.get_y_pos()

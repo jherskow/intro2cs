@@ -35,16 +35,11 @@ class Torpedo(helpers.Movable):
         self._duration -= 1
 
     def get_dur(self):
+        """ returns the torpedo's current loop duration """
         return copy.copy(self._duration)
 
     def tor_speed(self, speed, cur_hed_rad):
+        """ calculates torpedo's initial speed"""
         new_x_speed = speed[0] + (AXXL_CONST * math.cos(cur_hed_rad))
         new_y_speed = speed[1] + (AXXL_CONST * math.sin(cur_hed_rad))
         return [new_x_speed, new_y_speed]
-
-    def goto(self, pos):
-        """
-        :param pos:
-        :return:
-        """
-        self._pos = pos

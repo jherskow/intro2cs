@@ -17,13 +17,20 @@ Rachel Zilberberg
 ---
 
 ==============================
-=        Files:        =
+=        Files:              =
 ==============================
 
 ======== helpers.PY ===========
--description-
+A file containing various helper functions,
+and a class to hold getters shared by all game objects.
+
+==functions==
+deg_to_radian                    - Converts degrees to radians
+random_heading                   -aaaaa
+random_speed                     -aaaaa
 
 +++++++ class movable +++++++++
+description
 
     ==main functions==
     aaaaa                    -aaaaa
@@ -34,14 +41,49 @@ Rachel Zilberberg
     aaaaa                    -aaaaa
     aaaaa                    -aaaaa
 
+
+======== SHIP.PY ===========
+description
+
++++++++ class SHIP +++++++++
+description
+
+    ==main functions==
+    aaaaa                    -aaaaa
+    aaaaa                    -aaaaa
+    aaaaa                    -aaaaa
+
     ==helper functions==
+    draw_prep                    -aaaaa
+
+
+======== ASTEROID.PY ===========
+
++++++++ class Asteroid +++++++++
+description
+
+    ==functions==
     aaaaa                    -aaaaa
     aaaaa                    -aaaaa
     aaaaa                    -aaaaa
 
-======== ---.PY ===========
 
-+++++++ class --- +++++++++
+======== TORPEDO.PY =============
+description
+
++++++++ class Torpedo +++++++++
+
+    ==functions==
+    aaaaa                    -aaaaa
+    aaaaa                    -aaaaa
+    aaaaa                    -aaaaa
+
+
+
+======== ASTEROIDS_MAIN.PY =========
+
++++++++ class Game_runner  +++++++++
+description
 
     ==main functions==
     aaaaa                    -aaaaa
@@ -53,6 +95,10 @@ Rachel Zilberberg
     aaaaa                    -aaaaa
     aaaaa                    -aaaaa
 
+==============================
+=        EX9 Q & A           =
+==============================
+----
 
 ==============================
 =      Special Comments      =
@@ -62,9 +108,5 @@ Rachel Zilberberg
 ==============================
 =  Colleagues and Resources  =
 ==============================
----
----
-
-
-
-
+This was a joint collaboration by:
+Joshua Herskowitz & Rachel Zilberberg
