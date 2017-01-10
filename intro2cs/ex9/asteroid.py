@@ -8,6 +8,7 @@
 import helpers
 import math
 
+# these constants need to be available before the initialization.
 DEFAULT_SIZE = 3
 RAND_SPEED = 'random'
 
@@ -29,7 +30,7 @@ class Asteroid(helpers.Movable):
         """
         Initialises a new asteroid.
         :param pos: [x,y] list representing cartesian coordinates.
-        :param size: size of asteroid - default 3
+        :param size: size of the asteroid - default 3
         """
         self._size = size
         if speed == RAND_SPEED:

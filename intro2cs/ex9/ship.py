@@ -29,6 +29,7 @@ class Ship(helpers.Movable):
     def __init__(self, pos):
         """
         Initialize a new ship.
+        :param pos: An [x,y] position on the board, in ints.
         """
         self._pos = pos
         self._heading = Ship.STARTING_HEADING
@@ -49,16 +50,16 @@ class Ship(helpers.Movable):
         self._heading %= 360
 
     def get_health(self):
-        """ return's ship's lives, as an int """
+        """ :return:  ship's lives, as an int """
         return copy.copy(self._health)
 
     def radian_heading(self):
-        """ returns the ships heading as radians """
+        """ :return: the ships heading as radians """
         return helpers.deg_to_radian(self._heading)
 
     def accelerate(self):
         """
-        accelerates the ship's speed, according to the specified formula
+        Accelerates the ship's speed, according to the specified formula.
         """
         current_speed = self._speed
         cur_head_rad = self.radian_heading()
@@ -73,5 +74,8 @@ class Ship(helpers.Movable):
         self._health -= 1
 
     def draw_prep(self):
-        """packages arguments for the draw ship() fuction"""
+        """
+        packages arguments for the draw ship() fuction
+        :return: Tuple of arguments
+        """
         return self._pos[0], self._pos[1], self._heading

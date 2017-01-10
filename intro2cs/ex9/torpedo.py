@@ -19,9 +19,14 @@ class Torpedo(helpers.Movable):
     ACEL_CONST = 2
     RADIUS = 4
 
+    # ===== Torpedo - class methods =======
+
     def __init__(self, pos, speed, heading):
         """
         Initializes a new torpedo.
+        :param pos: An [x,y] position on the board, in ints.
+        :param speed: An [x,y] of floats representing speed in each axis.
+        :param heading: a compass heading in degrees.
         """
         self._pos = pos
         self._heading = heading

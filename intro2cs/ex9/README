@@ -26,7 +26,7 @@ and a less than ideal
 =        Files:              =
 ==============================
 
-======== helpers.PY ===========
+======== helpers.PY ======================================
 A file containing various helper functions,
 and a class to hold getters shared by all game objects.
 
@@ -53,7 +53,7 @@ random_speed                     - returns a random [x,y] speed
    get_size         - returns size as sub-class constant.
 
 
-======== SHIP.PY ===========
+======== SHIP.PY =============================================
 A class in charge of ship objects and containing basic
 functions for the ship.
 
@@ -70,12 +70,10 @@ A class in charge of ship object.
                                the specified formula
     lose_life                - removes a life from the ship
 
-
     ==helper functions==
 	draw_prep                - packages arguments for the draw ship() fuction
 
-
-======== ASTEROID.PY ===========
+======== ASTEROID.PY =========================================
 
 +++++++ class Asteroid +++++++++
 class of an Asteroid object
@@ -85,7 +83,7 @@ class of an Asteroid object
     has_intersection   - checks if asteroid has collided with something
 
 
-======== TORPEDO.PY =============
+======== TORPEDO.PY ===========================================
 description
 
 +++++++ class Torpedo +++++++++
@@ -98,7 +96,7 @@ description
 
 
 
-======== ASTEROIDS_MAIN.PY =========
+======== ASTEROIDS_MAIN.PY ====================================
 
 +++++++ class Game_runner  +++++++++
 the class is in charge of running the asteroids game.
@@ -131,9 +129,9 @@ the class is in charge of running the asteroids game.
     manage_torpedoes 		 - reduces torpedoes life and removes it if it is
                                over
 
-==============================
-=        EX9 Q & A           =
-==============================
+==================================================================================
+=                                 EX9 Q & A                                      =
+==================================================================================
 
 What were 3 decisions you had to make during the game design,
 And what was the reasoning behind them?
@@ -205,8 +203,8 @@ in a world where better gaming is more important than any one individual's life.
 
 
 
-==============================
-=  Colleagues and Resources  =
-==============================
+=====================================================================================
+=                            Colleagues and Resources                               =
+=====================================================================================
 This was a joint collaboration by:
 Joshua Herskowitz & Rachel Zilberberg
