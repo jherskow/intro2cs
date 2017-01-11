@@ -3,7 +3,7 @@
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # WRITER : Rachel Zilberberg, rachelz , 314421876
 # EXERCISE : intro2cs ex9 2016-2017
-# DESCRIPTION:
+# DESCRIPTION: File containing class Ship.
 #######################################################################"""
 import helpers
 import math
@@ -15,11 +15,11 @@ class Ship(helpers.Movable):
     A class representing a Spaceship.
     """
     # ===== Ship - class constants =====
-    DEFAULT_SHIP_LIVES = 3  # figure out how to do this
-    TURN_INCREMENT_LEFT = 7  # degrees
-    TURN_INCREMENT_RIGHT = -7  # degrees
-    STARTING_SPEED = [0.0, 0.0]  # no speed
-    STARTING_HEADING = 0  # no speed
+    DEFAULT_SHIP_LIVES = 3
+    TURN_INCREMENT_LEFT = 7
+    TURN_INCREMENT_RIGHT = -7
+    STARTING_SPEED = [0.0, 0.0]
+    STARTING_HEADING = 0
     RADIUS = 1
     LEFT = 'left'
     RIGHT = 'right'

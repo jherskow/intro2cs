@@ -3,7 +3,7 @@
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # WRITER : Rachel Zilberberg, rachelz , 314421876
 # EXERCISE : intro2cs ex9 2016-2017
-# DESCRIPTION:
+# DESCRIPTION: File containing main game Class, and related constants.
 ########################################################################"""
 # ============================ IMPORTS  ===================================
 from screen import Screen
@@ -25,7 +25,7 @@ EXIT_MSG = 'leaving so soon? :('
 LOSS_TITLE = 'YOU LOSE'
 LOSS_MSG = 'In Space.... No One Can Hear You Scream!'
 WIN_TITLE = 'YOU WON'
-WIN_MSG = 'The Force Is Strong In This One'
+WIN_MSG = 'The Force Is Strong In You.'
 PERFECT_TITLE = '!!!!! PERFECT GAME !!!!!!!!'
 PERFECT_MSG = 'Fantastic Job!\nYou cleared the asteroid field, with no ' \
               'damage taken! \n Your\'e ready for the Kessel run!'
@@ -97,7 +97,7 @@ class GameRunner:
         self.manage_torpedoes()
         self.check_game_over()
 
-    # ===================   GAME LOOP FUNCTIONS  ==========================
+    # ===================   GAME LOOP SUB - FUNCTIONS  ====================
 
     def ship_input(self):
         """ checks for ship input from user"""
@@ -136,9 +136,8 @@ class GameRunner:
         Checks for torpedo hits on asteroids,
         and updates the game accordingly
         """
-        # copy [:] list to prevent removal during iteration
-        for torp in self.torpedoes[:]:
-            for rock in self.asteroids[:]:
+        for rock in self.asteroids:
+            for torp in self.torpedoes:
                 if rock.has_intersection(torp):
                     if rock.get_size() == asteroid.Asteroid.SIZE_L:
                         self.split_asteroid(rock, torp)
@@ -152,12 +151,13 @@ class GameRunner:
                     self.asteroids.remove(rock)
                     self._screen.unregister_torpedo(torp)
                     self.torpedoes.remove(torp)
+                    # make sure torpedo can hit only once
+                    break
 
     def check_ship_crash(self):
         """ checks if there is a collision between our
-        ship and an astroid on the screen """
-        # copy [:] list to prevent removal during iteration
-        for rock in self.asteroids[:]:
+        ship and an asteroid on the screen """
+        for rock in self.asteroids:
             if rock.has_intersection(self.ship):
                 if self.ship.get_health() != 0:
                     self.ship.lose_life()
@@ -205,7 +205,7 @@ class GameRunner:
             self._screen.end_game()
             sys.exit(0)
 
-    # ===================   GAME LOOP SUB-FUNCTIONS  ======================
+    # ===================   GAME LOOP SUB-SUB-FUNCTIONS  ==================
 
     def move(self, thing):
         """
@@ -225,8 +225,8 @@ class GameRunner:
 
     def add_asteroid(self):
         """
-        Creates a new astriod in a random position (not the ship's),
-        adds it to the astroid list,
+        Creates a new asteroid in a random position (not the ship's),
+        adds it to the asteroid list,
         and registers it so it would appear on the sceen
         """
         new_pos = self._random_pos()
@@ -240,7 +240,7 @@ class GameRunner:
     def add_torpedo(self):
         """
         Creates a new torpedo with the ship's position as it's initial one,
-        uses the ship's current heading and speed as it's own costants.
+        uses the ship's current heading and speed as it's own constants.
         Adds it to the torpedoes list if the list is not full
         (there are no more than 15 torpedoes in the game at the same time)
         and registers it so it would appear on the sceen
@@ -274,8 +274,13 @@ class GameRunner:
         rock_i = asteroid.Asteroid(new_pos, new_size, new_speed_i)
         rock_ii = asteroid.Asteroid(new_pos, new_size, new_speed_ii)
         self.asteroids += [rock_i, rock_ii]
+        # new asteroids need to be drawn immediately.
+        # waiting until the next draw_all() causes
+        # unexpected behaviour in Screen.
         self._screen.register_asteroid(rock_i, rock_i.get_size())
+        self._screen.draw_asteroid(rock_i, *rock_i.get_pos())
         self._screen.register_asteroid(rock_ii, rock_ii.get_size())
+        self._screen.draw_asteroid(rock_ii, *rock_ii.get_pos())
 
     def award_points(self, points):
         """
