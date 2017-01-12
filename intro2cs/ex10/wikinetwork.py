@@ -19,18 +19,21 @@ def read_article_links(filename):
     """
     pairs = []
     with open(filename, 'r') as f:
-        line = f.readline()
-        pair = line.split('\t')
-        pair_tup = tuple(pair)
-        pairs.append(pair_tup)
+        for line in f:
+            line = line.strip('\n')
+            pair = line.split('\t')
+            pair_tup = tuple(pair)
+            pairs.append(pair_tup)
     return pairs
 
-# ========== CLASS WIKINETWORK ============================================
+# ========== CLASS WIKI NETWORK ===========================================
 
 
 class WikiNetwork:
     """
-    A class representing ---.
+    A graph-like data structure,
+    representing the connectivity of a wikipedia-like
+    collection of articles.
     """
     # ===== WikiNetwork - class constants =====
 
@@ -55,9 +58,9 @@ class WikiNetwork:
             for title in link:
                 if title not in self._articles:
                     self._articles[title] = article.Article(title)
-            if self._articles[link][1] not in self._articles[link][0]:
-                self._articles[link][0].\
-                        add_neighbor(self._articles[link][1])
+            if self._articles[link[1]] not in self._articles[link[0]]:
+                self._articles[link[0]].\
+                        add_neighbor(self._articles[link[1]])
 
     def get_articles(self):
         """
@@ -71,12 +74,12 @@ class WikiNetwork:
         """
         return list(self._articles.keys())
 
-    def __contains__(self, item):
+    def __contains__(self, title):
         """
         :param item: An Article object.
         :return: True if article in network. (by title)
         """
-        return item.get_title in self._articles
+        return title in self._articles
 
     def __len__(self):
         """
@@ -88,10 +91,10 @@ class WikiNetwork:
         """
         Returns a string of a dictionary.
         The keys are the articles.
-        The values are the articles' strip representation.
+        The values are the articles' string representation.
         :return: String of dictionary.
         """
-        repr_dict = {x: str(self._articles[x]) for x in self._articles}
+        repr_dict = {x: self._articles[x] for x in self._articles}
         return str(repr_dict)
 
     def __getitem__(self, title):
