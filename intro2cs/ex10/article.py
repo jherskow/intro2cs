@@ -43,8 +43,7 @@ class Article:
         """
         :return: List of neighboring articles.
         """
-        neighbor_list = [self._neighbors[x] for x in self._neighbors]
-        return neighbor_list
+        return list(self._neighbors.values())
 
     def __repr__(self):
         """
@@ -63,6 +62,6 @@ class Article:
 
     def __contains__(self, item):
         """
-        :return: True if article is in neighbors dict.
+        :return: True if article is in neighbors dict. (by title)
         """
         return item.get_title in self._neighbors
