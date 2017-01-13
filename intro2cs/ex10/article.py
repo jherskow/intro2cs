@@ -24,6 +24,7 @@ class Article:
         """
         self._title = article_title
         self._neighbors = dict()
+        self._neighbors_list = []
 
     def get_title(self):
         """
@@ -37,20 +38,22 @@ class Article:
         Adds an Article to neighbors dict.
         :param neighbor: Obj of type Article
         """
-        self._neighbors[neighbor.get_title()] = neighbor
+        if neighbor not in self:
+            self._neighbors[neighbor.get_title()] = neighbor
+            self._neighbors_list.append(neighbor.get_title())
 
     def get_neighbors(self):
         """
         :return: List of neighboring articles.
         """
-        return list(self._neighbors.values())
+        return self._neighbors_list
 
     def __repr__(self):
         """
         :return: String of tuple (title, neighbor_list)
         """
         title = self._title
-        neighbor_list = self.get_neighbors()
+        neighbor_list = self._neighbors_list
         repr_tup = (title, neighbor_list)
         return str(repr_tup)
 
