@@ -107,3 +107,28 @@ class WikiNetwork:
             return self._articles[title]
         else:
             raise KeyError(title)
+
+    def page_rank(self, iters, d=0.9):
+        """
+
+        :param iters:
+        :param d:
+        :return:
+        """
+        rank_dict = {x: 1 for x in self.get_titles()}
+        adder_dict = {x: 0 for x in self.get_titles()}
+        for x in range(iters):
+            for title in rank_dict:
+                neighbor_num = len(self._articles[title])
+                give_amount = 0
+                if neighbor_num != 0:
+                    give_amount = d * (rank_dict[title] / neighbor_num)
+                rank_dict[title] = 0
+                for x in self._articles[title].get_neighbors():
+                    adder_dict[title] += give_amount
+            for title in adder_dict:
+                rank_dict[title] = adder_dict[title] + (1-d)
+        # todo sort rank dict
+        ranking = sorted(rank_dict.items(), key=lambda x: (x[1], x[0]), reverse=True)
+        ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(x[1]) for x in ranking]
+        return ranking
