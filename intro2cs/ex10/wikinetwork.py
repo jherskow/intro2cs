@@ -135,3 +135,11 @@ class WikiNetwork:
         # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
         ranking = [x[0] for x in ranking]
         return ranking
+
+    def jaccard_index(self, article_title):
+        """
+
+        :param article_title:
+        :return:
+        """
+        pass
