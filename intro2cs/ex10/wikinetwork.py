@@ -124,11 +124,14 @@ class WikiNetwork:
                 if neighbor_num != 0:
                     give_amount = d * (rank_dict[title] / neighbor_num)
                 rank_dict[title] = 0
-                for x in self._articles[title].get_neighbors():
-                    adder_dict[title] += give_amount
+                for y in self._articles[title].get_neighbors():
+                    adder_dict[y] += give_amount
             for title in adder_dict:
                 rank_dict[title] = adder_dict[title] + (1-d)
         # todo sort rank dict
-        ranking = sorted(rank_dict.items(), key=lambda x: (x[1], x[0]), reverse=True)
-        ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(x[1]) for x in ranking]
+        # Sorting: -x[0] to sort by rank - descending, and then by abc, ascending,
+        ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
+        # todo DEBUG - THIS IS A STRING REPR OF RANKING
+        # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
+        ranking = [x[0] for x in ranking]
         return ranking

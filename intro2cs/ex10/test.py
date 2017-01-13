@@ -8,7 +8,6 @@ new_net = wikinetwork.WikiNetwork(link_list)
 ls = (new_net.get_articles())
 #for x in ls:
 #    print(x)
-lista = new_net.page_rank(10)
-for i, title in enumerate(lista):
-    print(str(i) + title)
-print(str(len(new_net)))
+lista = new_net.page_rank(50)
+for title in lista:
+    print(title)
