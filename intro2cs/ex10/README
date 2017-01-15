@@ -14,7 +14,9 @@ Joshua Herskowitz
 cd safe/intro2cs/ex10
 ~intro2cs/bin/presubmit/ex10 ex10.zip
 
-
+================================================================================================
+        # todo DEBUG - THIS IS A STRING REPR OF RANKING
+        # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 

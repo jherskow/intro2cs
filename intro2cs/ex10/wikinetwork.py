@@ -46,6 +46,7 @@ class WikiNetwork:
         """
         self._articles = dict()
         self.update_network(link_list)
+        self._entry_index = dict()
 
     def update_network(self, link_list):
         """
@@ -74,12 +75,12 @@ class WikiNetwork:
         """
         return list(self._articles.keys())
 
-    def __contains__(self, item):
+    def __contains__(self, title):
         """
         :param item: An Article object.
         :return: True if article in network. (by title)
         """
-        return item in self._articles
+        return title in self._articles.values()
 
     def __len__(self):
         """
@@ -110,13 +111,14 @@ class WikiNetwork:
 
     def page_rank(self, iters, d=0.9):
         """
-
-        :param iters:
-        :param d:
-        :return:
+        Ranks all pages using the Page Rank algorithm.
+        :param iters: number of desired iterations.
+        :param d: Amount of equally divided (communist) money
+        :return: sorted list of titles, by page rank
         """
         rank_dict = {x: 1 for x in self.get_titles()}
         adder_dict = {x: 0 for x in self.get_titles()}
+
         for x in range(iters):
             for title in rank_dict:
                 neighbor_num = len(self._articles[title])
@@ -130,30 +132,31 @@ class WikiNetwork:
                     adder_dict[y] += give_amount
             for title in adder_dict:
                 rank_dict[title] = adder_dict[title] + (1-d)
-        # todo sort rank dict
+
         # Sorting: -x[0] to sort by rank - descending,
         # and then by abc, ascending,
         ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
-        # todo DEBUG - THIS IS A STRING REPR OF RANKING
-        # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
         ranked_list = [x[0] for x in ranking]
         return ranked_list
 
     def jaccard_index(self, article_title):
         """
-
+        Ranks all articles by jaccard index to a specific given article.
         :param article_title: title of an article in network
         :return: list of article titles, sorted by jaccard index,
                   in relation to the given article.
         """
         rank_dict = {x: 0 for x in self.get_titles()}
         set_dict = dict()
-        # create a dictionary of titles and sets.
+
+        # Create a dictionary of titles and sets.
         for title in rank_dict:
             neighbor_titles = [x.get_title() for x in
                                self._articles[title].get_neighbors()]
             set_dict[title] = set(neighbor_titles)
         compare_set = set_dict[article_title]
+
+        # Calculate ranking values to each article, & save in rank_dict
         for art_set in set_dict:
             intersection = set_dict[art_set].intersection(compare_set)
             union = set_dict[art_set].union(compare_set)
@@ -161,10 +164,43 @@ class WikiNetwork:
                 rank_dict[art_set] = len(intersection) / len(union)
             else:
                 rank_dict[art_set] = len(intersection)
+
         # Sorting: -x[0] to sort by rank - descending,
         # and then by abc, ascending,
         ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
-        # todo DEBUG - THIS IS A STRING REPR OF RANKING
-        # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
         ranked_list = [x[0] for x in ranking]
         return ranked_list
+
+    def _update_entry_index(self):
+        """
+
+        :return:
+        """
+        entry_dict = {x: 0 for x in self.get_titles()}
+        for page in self._articles:
+            for neighbor in page.get_neighbors():
+                entry_dict[neighbor.get_title] += 1
+        self._entry_index = entry_dict
+
+    def travel_path_iterator(self, article_title):
+        """
+
+        :param article_title:
+        :return:
+        """
+        if article_title not in self:
+            return None
+
+        self._update_entry_index()
+        curr_article = self._articles[article_title]
+        neighbor_list = curr_article.get_neighbors()
+        while neighbor_list:
+            max_title = neighbor_list[0].get_title()
+            max_value = self._entry_index[max_title]
+            for neighbor in neighbor_list:
+                if self._entry_index[neighbor.get_title] > max_value:
+                    max_title = self._entry_index[neighbor.get_title]
+                    max_value = self._entry_index[max_title]
+            yield max_title
+            curr_article = self._articles[max_title]
+            neighbor_list = curr_article.get_neighbors()
