@@ -193,15 +193,15 @@ class WikiNetwork:
         yield article_title
         self._update_entry_index()
         curr_art = self._articles[article_title]
-        neighbor_list = [x.get_title() for x in curr_art.get_neighbors()]
-        while neighbor_list:
+        nghbor_list = [x.get_title() for x in curr_art.get_neighbors()]
+        while nghbor_list:
             entry_dict = copy.copy(self._entry_index)
             filtered = {k: v for k, v in entry_dict.items()
-                        if k in neighbor_list}
+                        if k in nghbor_list}
             ranked = sorted(filtered.items(),
                             key=lambda x: (-x[1], x[0]), )
             ranked_list = [x[0] for x in ranked]
             max_title = ranked_list[0]
             yield max_title
             curr_art = self._articles[max_title]
-            neighbor_list = [x.get_title() for x in curr_art.get_neighbors()]
+            nghbor_list = [x.get_title() for x in curr_art.get_neighbors()]
