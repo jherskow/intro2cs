@@ -76,13 +76,21 @@ cd safe/intro2cs/ex10
 =                                 EX10 Q & A                                      =
 ==================================================================================
 
-----TOP 3 PAGES BY PAGE RANK - (d=0.9, iter=50)-----------------------
+---  TOP 3 PAGES BY PAGERANK™ - (d=0.9, iter=50)-------------------------
 # 1 United_States
 # 2 France
 # 3 Europe
 (My guess is this is mostly because of World War II, and the wealth
  of american sources on the subject)
 -----------------------------------------------------------------------
+
+--- HIGHEST JACCARD INDEX - (other than self)--------------------------
+The_Simpsons          -> Tuvalu                  (confusing)
+The_Godfather         -> Citizen_Kane
+Louis_XIV_of_France   -> William_III_of_England
+The_Lord_of_the_Rings -> J._R._R._Tolkien        (less confusing)
+-----------------------------------------------------------------------
+
 
 
 =====================================================================================

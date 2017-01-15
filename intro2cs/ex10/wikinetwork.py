@@ -131,12 +131,13 @@ class WikiNetwork:
             for title in adder_dict:
                 rank_dict[title] = adder_dict[title] + (1-d)
         # todo sort rank dict
-        # Sorting: -x[0] to sort by rank - descending, and then by abc, ascending,
+        # Sorting: -x[0] to sort by rank - descending,
+        # and then by abc, ascending,
         ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
         # todo DEBUG - THIS IS A STRING REPR OF RANKING
         # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
-        ranking = [x[0] for x in ranking]
-        return ranking
+        ranked_list = [x[0] for x in ranking]
+        return ranked_list
 
     def jaccard_index(self, article_title):
         """
@@ -145,4 +146,25 @@ class WikiNetwork:
         :return: list of article titles, sorted by jaccard index,
                   in relation to the given article.
         """
-        pass
+        rank_dict = {x: 0 for x in self.get_titles()}
+        set_dict = dict()
+        # create a dictionary of titles and sets.
+        for title in rank_dict:
+            neighbor_titles = [x.get_title() for x in
+                               self._articles[title].get_neighbors()]
+            set_dict[title] = set(neighbor_titles)
+        compare_set = set_dict[article_title]
+        for art_set in set_dict:
+            intersection = set_dict[art_set].intersection(compare_set)
+            union = set_dict[art_set].union(compare_set)
+            if len(union) != 0:
+                rank_dict[art_set] = len(intersection) / len(union)
+            else:
+                rank_dict[art_set] = len(intersection)
+        # Sorting: -x[0] to sort by rank - descending,
+        # and then by abc, ascending,
+        ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
+        # todo DEBUG - THIS IS A STRING REPR OF RANKING
+        # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
+        ranked_list = [x[0] for x in ranking]
+        return ranked_list
