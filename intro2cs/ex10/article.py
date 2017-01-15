@@ -30,7 +30,7 @@ class Article:
         Returns the Article's own title.
         :return: String of title.
         """
-        return self._title
+        return c.copy(self._title)
 
     def add_neighbor(self, neighbor):
         """
@@ -44,14 +44,14 @@ class Article:
         """
         :return: List of neighboring articles.
         """
-        return [x for x in self._neighbors.values()]
+        return [art_obj for art_obj in self._neighbors.values()]
 
     def __repr__(self):
         """
         :return: String of tuple (title, neighbor_list)
         """
         title = self._title
-        neighbor_list = [x for x in self._neighbors]
+        neighbor_list = [art_title for art_title in self._neighbors]
         repr_tup = (title, neighbor_list)
         return str(repr_tup)
 
@@ -63,6 +63,6 @@ class Article:
 
     def __contains__(self, item):
         """
-        :return: True if article is in neighbors dict. (by title)
+        :return: True if article is in neighbors dict. (by object)
         """
         return item in self._neighbors.values()
