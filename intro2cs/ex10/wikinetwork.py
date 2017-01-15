@@ -124,7 +124,9 @@ class WikiNetwork:
                 if neighbor_num != 0:
                     give_amount = d * (rank_dict[title] / neighbor_num)
                 rank_dict[title] = 0
-                for y in self._articles[title].get_neighbors():
+                neighbor_titles = [x.get_title() for x in
+                                   self._articles[title].get_neighbors()]
+                for y in neighbor_titles:
                     adder_dict[y] += give_amount
             for title in adder_dict:
                 rank_dict[title] = adder_dict[title] + (1-d)

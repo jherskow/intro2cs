@@ -24,7 +24,6 @@ class Article:
         """
         self._title = article_title
         self._neighbors = dict()
-        self._neighbors_list = []
 
     def get_title(self):
         """
@@ -40,20 +39,19 @@ class Article:
         """
         if neighbor not in self:
             self._neighbors[neighbor.get_title()] = neighbor
-            self._neighbors_list.append(neighbor.get_title())
 
     def get_neighbors(self):
         """
         :return: List of neighboring articles.
         """
-        return self._neighbors_list
+        return [x for x in self._neighbors.values()]
 
     def __repr__(self):
         """
         :return: String of tuple (title, neighbor_list)
         """
         title = self._title
-        neighbor_list = self._neighbors_list
+        neighbor_list = [x for x in self._neighbors]
         repr_tup = (title, neighbor_list)
         return str(repr_tup)
 
@@ -67,4 +65,4 @@ class Article:
         """
         :return: True if article is in neighbors dict. (by title)
         """
-        return item.get_title in self._neighbors
+        return item in self._neighbors.values()
