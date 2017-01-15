@@ -77,10 +77,10 @@ class WikiNetwork:
 
     def __contains__(self, title):
         """
-        :param item: An Article object.
+        :param title: An Article title..
         :return: True if article in network. (by title)
         """
-        return title in self._articles.values()
+        return title in self._articles
 
     def __len__(self):
         """
@@ -178,8 +178,8 @@ class WikiNetwork:
         """
         entry_dict = {x: 0 for x in self.get_titles()}
         for page in self._articles:
-            for neighbor in page.get_neighbors():
-                entry_dict[neighbor.get_title] += 1
+            for neighbor in self._articles[page].get_neighbors():
+                entry_dict[neighbor.get_title()] += 1
         self._entry_index = entry_dict
 
     def travel_path_iterator(self, article_title):
@@ -190,7 +190,6 @@ class WikiNetwork:
         """
         if article_title not in self:
             return None
-
         self._update_entry_index()
         curr_article = self._articles[article_title]
         neighbor_list = curr_article.get_neighbors()
@@ -198,8 +197,8 @@ class WikiNetwork:
             max_title = neighbor_list[0].get_title()
             max_value = self._entry_index[max_title]
             for neighbor in neighbor_list:
-                if self._entry_index[neighbor.get_title] > max_value:
-                    max_title = self._entry_index[neighbor.get_title]
+                if self._entry_index[neighbor.get_title()] > max_value:
+                    max_title = neighbor.get_title()
                     max_value = self._entry_index[max_title]
             yield max_title
             curr_article = self._articles[max_title]
