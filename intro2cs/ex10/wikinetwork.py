@@ -6,6 +6,7 @@
 ########################################################################"""
 # ========== IMPORTS ======================================================
 import article
+import copy
 
 # ========== FUNCTIONS ============================================
 
@@ -118,7 +119,6 @@ class WikiNetwork:
         """
         rank_dict = {x: 1 for x in self.get_titles()}
         adder_dict = {x: 0 for x in self.get_titles()}
-
         for x in range(iters):
             for title in rank_dict:
                 neighbor_num = len(self._articles[title])
@@ -132,7 +132,6 @@ class WikiNetwork:
                     adder_dict[y] += give_amount
             for title in adder_dict:
                 rank_dict[title] = adder_dict[title] + (1-d)
-
         # Sorting: -x[0] to sort by rank - descending,
         # and then by abc, ascending,
         ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
@@ -146,16 +145,18 @@ class WikiNetwork:
         :return: list of article titles, sorted by jaccard index,
                   in relation to the given article.
         """
+        if article_title not in self:
+            return None
+        if len(self._articles[article_title].get_neighbors()) == 0:
+            return None
         rank_dict = {x: 0 for x in self.get_titles()}
         set_dict = dict()
-
         # Create a dictionary of titles and sets.
         for title in rank_dict:
             neighbor_titles = [x.get_title() for x in
                                self._articles[title].get_neighbors()]
             set_dict[title] = set(neighbor_titles)
         compare_set = set_dict[article_title]
-
         # Calculate ranking values to each article, & save in rank_dict
         for art_set in set_dict:
             intersection = set_dict[art_set].intersection(compare_set)
@@ -164,7 +165,6 @@ class WikiNetwork:
                 rank_dict[art_set] = len(intersection) / len(union)
             else:
                 rank_dict[art_set] = len(intersection)
-
         # Sorting: -x[0] to sort by rank - descending,
         # and then by abc, ascending,
         ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
@@ -190,16 +190,19 @@ class WikiNetwork:
         """
         if article_title not in self:
             return None
+        yield article_title
         self._update_entry_index()
-        curr_article = self._articles[article_title]
-        neighbor_list = curr_article.get_neighbors()
+        entry_dict = copy.copy(self._entry_index)
+        curr_art = self._articles[article_title]
+        neighbor_list = [x.get_title() for x in curr_art.get_neighbors()]
         while neighbor_list:
-            max_title = neighbor_list[0].get_title()
-            max_value = self._entry_index[max_title]
-            for neighbor in neighbor_list:
-                if self._entry_index[neighbor.get_title()] > max_value:
-                    max_title = neighbor.get_title()
-                    max_value = self._entry_index[max_title]
+            entry_dict = copy.copy(self._entry_index)
+            filtered = {k: v for k, v in entry_dict.items()
+                        if k in neighbor_list}
+            ranked = sorted(filtered.items(),
+                            key=lambda x: (-x[1], x[0]), )
+            ranked_list = [x[0] for x in ranked]
+            max_title = ranked_list[0]
             yield max_title
-            curr_article = self._articles[max_title]
-            neighbor_list = curr_article.get_neighbors()
+            curr_art = self._articles[max_title]
+            neighbor_list = [x.get_title() for x in curr_art.get_neighbors()]
