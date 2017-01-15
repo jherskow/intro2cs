@@ -74,12 +74,12 @@ class WikiNetwork:
         """
         return list(self._articles.keys())
 
-    def __contains__(self, title):
+    def __contains__(self, item):
         """
         :param item: An Article object.
         :return: True if article in network. (by title)
         """
-        return title in self._articles
+        return item in self._articles
 
     def __len__(self):
         """
@@ -139,7 +139,8 @@ class WikiNetwork:
     def jaccard_index(self, article_title):
         """
 
-        :param article_title:
-        :return:
+        :param article_title: title of an article in network
+        :return: list of article titles, sorted by jaccard index,
+                  in relation to the given article.
         """
         pass
