@@ -45,8 +45,8 @@
       <file leaf-file-name="wikinetwork.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2">
-              <caret line="174" column="11" selection-start-line="174" selection-start-column="11" selection-end-line="174" selection-end-column="11" />
+            <state relative-caret-position="716">
+              <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
               <folding>
                 <element signature="e#361#375#0" expanded="true" />
               </folding>
@@ -621,13 +621,6 @@
       <option name="presentableId" value="Default" />
       <updated>1483213546792</updated>
     </task>
-    <task id="LOCAL-00011" summary="Finished ship!">
-      <created>1483288381114</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1483288381114</updated>
-    </task>
     <task id="LOCAL-00012" summary="Finished ship!">
       <created>1483292748379</created>
       <option name="number" value="00012" />
@@ -964,7 +957,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484511626015</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="All but friends by depth">
+      <created>1484515222250</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1484515222250</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1032,7 +1032,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="started game" />
     <MESSAGE value="Done" />
     <MESSAGE value="Added ex9" />
     <MESSAGE value="More work" />
@@ -1057,7 +1056,8 @@
     <MESSAGE value="Finished jaccard" />
     <MESSAGE value="iterator try" />
     <MESSAGE value="work on iterator" />
-    <option name="LAST_COMMIT_MESSAGE" value="work on iterator" />
+    <MESSAGE value="All but friends by depth" />
+    <option name="LAST_COMMIT_MESSAGE" value="All but friends by depth" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1343,8 +1343,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="174" column="11" selection-start-line="174" selection-start-column="11" selection-end-line="174" selection-end-column="11" />
+        <state relative-caret-position="716">
+          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
           <folding>
             <element signature="e#361#375#0" expanded="true" />
           </folding>

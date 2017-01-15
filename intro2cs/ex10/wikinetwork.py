@@ -192,7 +192,6 @@ class WikiNetwork:
             return None
         yield article_title
         self._update_entry_index()
-        entry_dict = copy.copy(self._entry_index)
         curr_art = self._articles[article_title]
         neighbor_list = [x.get_title() for x in curr_art.get_neighbors()]
         while neighbor_list:
