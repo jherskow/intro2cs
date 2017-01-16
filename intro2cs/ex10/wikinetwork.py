@@ -126,17 +126,13 @@ class WikiNetwork:
                 if neighbor_num != 0:
                     give_amount = d * (rank_dict[title] / neighbor_num)
                 rank_dict[title] = 0
-                neighbor_titles = [x.get_title() for x in
-                                   self._articles[title].get_neighbors()]
+                neighbor_list = self._articles[title].get_neighbors()
+                neighbor_titles = title_list(neighbor_list)
                 for y in neighbor_titles:
                     adder_dict[y] += give_amount
             for title in adder_dict:
                 rank_dict[title] = adder_dict[title] + (1-d)
-        # Sorting: -x[0] to sort by rank - descending,
-        # and then by abc, ascending,
-        ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
-        ranked_list = [x[0] for x in ranking]
-        return ranked_list
+        return sort_dict_by_rank(rank_dict, return_list=True)
 
     def jaccard_index(self, article_title):
         """
@@ -153,8 +149,8 @@ class WikiNetwork:
         set_dict = dict()
         # Create a dictionary of titles and sets.
         for title in rank_dict:
-            neighbor_titles = [x.get_title() for x in
-                               self._articles[title].get_neighbors()]
+            neighbor_list = self._articles[title].get_neighbors()
+            neighbor_titles = title_list(neighbor_list)
             set_dict[title] = set(neighbor_titles)
         compare_set = set_dict[article_title]
         # Calculate ranking values to each article, & save in rank_dict
@@ -165,11 +161,7 @@ class WikiNetwork:
                 rank_dict[art_set] = len(intersection) / len(union)
             else:
                 rank_dict[art_set] = len(intersection)
-        # Sorting: -x[0] to sort by rank - descending,
-        # and then by abc, ascending,
-        ranking = sorted(rank_dict.items(), key=lambda x: (-x[1], x[0]),)
-        ranked_list = [x[0] for x in ranking]
-        return ranked_list
+        return sort_dict_by_rank(rank_dict, return_list=True)
 
     def _update_entry_index(self):
         """
@@ -193,15 +185,70 @@ class WikiNetwork:
         yield article_title
         self._update_entry_index()
         curr_art = self._articles[article_title]
-        nghbor_list = [x.get_title() for x in curr_art.get_neighbors()]
-        while nghbor_list:
+        nieghbor_lst = title_list(curr_art.get_neighbors())
+        while nieghbor_lst:
             entry_dict = copy.copy(self._entry_index)
             filtered = {k: v for k, v in entry_dict.items()
-                        if k in nghbor_list}
-            ranked = sorted(filtered.items(),
-                            key=lambda x: (-x[1], x[0]), )
-            ranked_list = [x[0] for x in ranked]
-            max_title = ranked_list[0]
+                        if k in nieghbor_lst}
+            max_title = sort_dict_by_rank(filtered, return_top=True)
             yield max_title
             curr_art = self._articles[max_title]
-            nghbor_list = [x.get_title() for x in curr_art.get_neighbors()]
+            nieghbor_lst = title_list(curr_art.get_neighbors())
+
+    def friends_by_depth(self, article_title, depth):
+        """
+
+        :param article_title:
+        :param depth:
+        :return:
+        """
+        if article_title not in self:
+            return None
+        article_list = [self._articles[article_title]]
+        friends = self._recursive_friends_set(article_list, depth)
+        friends.add(self._articles[article_title])
+        friend_titles = title_list(friends)
+        #print(friend_titles)
+        return friend_titles
+
+    def _recursive_friends_set(self, article_list, depth):
+        """
+
+        :param article_list:
+        :param depth:
+        :return:
+        """
+        #print('recursive call with depth' + str(depth) +'\n')
+        if depth == 0:
+            return set()
+        friends = set()
+        for art in article_list:
+            friends.update(art.get_neighbors())
+        friends.update(self._recursive_friends_set(friends, depth - 1))
+        return friends
+
+# ======================== helper functions ===============================
+
+
+def sort_dict_by_rank(dict, return_top=False, return_list=False):
+    """
+    Sorts a dictionary by rank, descending
+    and then by abc, ascending.
+    :param return_top: bool
+    :param return_list: bool
+    :return: first value, or list, depending on user's choice of param.
+    """
+    ranked = sorted(dict.items(), key=lambda x: (-x[1], x[0]), )
+    ranked_list = [x[0] for x in ranked]
+    if return_top:
+        return ranked_list[0]
+    if return_list:
+        return ranked_list
+
+
+def title_list(article_list):
+    """
+    :param: article list:  list of articles.
+    :return: list of titles of articles in list.
+    """
+    return [x.get_title() for x in article_list]

@@ -8,6 +8,5 @@ new_net = wikinetwork.WikiNetwork(link_list)
 ls = (new_net.get_articles())
 #for x in ls:
 #    print(x)
-lista = new_net.travel_path_iterator('The_Lord_of_the_Rings')
-for title in lista:
-    print(title)
+lista = new_net.friends_by_depth('The_Lord_of_the_Rings', 1)
+
