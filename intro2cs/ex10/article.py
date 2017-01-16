@@ -5,7 +5,7 @@
 # DESCRIPTION: ----
 ########################################################################"""
 # ========== IMPORTS ======================================================
-import copy as c
+import copy
 
 # ========== CLASS ARTICLE ================================================
 
@@ -30,7 +30,7 @@ class Article:
         Returns the Article's own title.
         :return: String of title.
         """
-        return c.copy(self._title)
+        return copy.copy(self._title)
 
     def add_neighbor(self, neighbor):
         """

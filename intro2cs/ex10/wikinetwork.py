@@ -101,9 +101,9 @@ class WikiNetwork:
 
     def __getitem__(self, title):
         """
-
-        :param title:
-        :return:
+        Returns an article with a given title, if it exists.
+        :param title: Article title.
+        :return: Article object
         """
         if title in self._articles:
             return self._articles[title]
@@ -165,8 +165,8 @@ class WikiNetwork:
 
     def _update_entry_index(self):
         """
-
-        :return:
+        updates the entry index of all articles on the network.
+        Stored as a title: entry_index dictionary.
         """
         entry_dict = {x: 0 for x in self.get_titles()}
         for page in self._articles:
@@ -176,9 +176,10 @@ class WikiNetwork:
 
     def travel_path_iterator(self, article_title):
         """
-
-        :param article_title:
-        :return:
+        Generates the title of the neighboring article
+        with the highest entry index.
+        :param article_title: title of an article
+        :return: title of article.
         """
         if article_title not in self:
             return None
@@ -208,17 +209,15 @@ class WikiNetwork:
         friends = self._recursive_friends_set(article_list, depth)
         friends.add(self._articles[article_title])
         friend_titles = title_list(friends)
-        #print(friend_titles)
         return friend_titles
 
     def _recursive_friends_set(self, article_list, depth):
         """
-
-        :param article_list:
-        :param depth:
-        :return:
+        Returns all articles (except self) that are within a maximum depth.
+        :param article_list: liso of article objects.
+        :param depth: desired depth
+        :return: set of articles of depth <= depth
         """
-        #print('recursive call with depth' + str(depth) +'\n')
         if depth == 0:
             return set()
         friends = set()
@@ -248,7 +247,8 @@ def sort_dict_by_rank(dict, return_top=False, return_list=False):
 
 def title_list(article_list):
     """
-    :param: article list:  list of articles.
+    Returns a list of titles from a list of articles.
+    :param: article list:  list of article objects.
     :return: list of titles of articles in list.
     """
     return [x.get_title() for x in article_list]
