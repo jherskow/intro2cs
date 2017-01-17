@@ -2,7 +2,7 @@
 # FILE : article.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex10 2016-2017
-# DESCRIPTION: ----
+# DESCRIPTION: Implements article object and functionality.
 ########################################################################"""
 # ========== IMPORTS ======================================================
 import copy
@@ -12,9 +12,9 @@ import copy
 
 class Article:
     """
-    A class representing ---.
+    A class representing an article, with a title and a list of
+    neighboring articles that are linked to by the article.
     """
-    # ===== Article - class constants =====
 
     # ===== Article - class methods =======
 

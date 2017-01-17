@@ -3,7 +3,7 @@ jherskow
 Joshua Herskowitz
 
 =========================================
-= README for ex10:   ™   =
+= README for ex10:   Wikipedia™         =
 =========================================
 
 ==============================
@@ -20,59 +20,78 @@ cd safe/intro2cs/ex10
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-==============================
-=        Files:              =
-==============================
+======================================================
+=                    Files:                          =
+======================================================
 
-======== ----.PY ======================================
+======== ARITCLE.PY ====
 
-==functions==
+++++ class ARTICLE ++++++
+A class representing an article.
+An article has a title,
+and a list of neighboring article objects.
 
-    aa                  -aa
-    aa                  -aa
-    aa                  -aa
+==main functions==
+init                  -Constructor.
+get_title             -You guessed it.
+add_neighbor          -You guessed it.
+get_neighbors         -Returns a list of neighbors' *titles*
 
-+++++++ class --- +++++++++
-  ------
+repr, len and contains are defined
+in accordance with python guidelines.
 
-    ==main functions==
-        aa                  -aa
-        aa                  -aa
-        aa                  -aa
+Note that containment of another article
+is checked by article object, not title.
 
-
-======== ----.PY ======================================
-
-==functions==
-
-    aa                  -aa
-    aa                  -aa
-    aa                  -aa
-
-+++++++ class --- +++++++++
-  ------
-
-    ==main functions==
-        aa                  -aa
-        aa                  -aa
-        aa                  -aa
-
-======== ----.PY ======================================
+======== WIKINETWOK.PY ====
 
 ==functions==
 
-    aa                  -aa
-    aa                  -aa
-    aa                  -aa
+read_article_links       -Converts text file of compatible format into
+                          a list of article-pair tuples, compatible with
+                          the wikinetwork constructor.
+sort_dict_by_rank        -Sorts a dictionary of titles and ranks, first by rank
+                          then by title alphabetically.
+                          Can return a list or the top element, based on input.
+title_list               -Returns a list of titles from a list of articles.
 
-+++++++ class --- +++++++++
-  ------
 
-    ==main functions==
-        aa                  -aa
-        aa                  -aa
-        aa                  -aa
+++++ class WIKINETWORK ++++++
+A graph-like data structure,
+representing the connectivity of a wikipedia-like
+collection of articles.
+(articles are stored as a dictionary of
+titles and article objects.)
 
+==main functions==
+init                    -Constructor.
+update_network          -Updates the network with new connections given by
+                         article neighbor pairs in a similar
+get_articles            -Returns a list of neighbors' objects
+get_titles              -Returns a list of neighbors' *titles*
+
+page_rank -             -Ranks all pages using the Page Rank algorithm.
+jaccard_index           -Returns a list of article titles, sorted by
+                         descending jaccard index in relation to the given article.
+travel_path_iterator    -Generates a path from a given title than runs along the
+                         articles with the highest entry index.
+                        -The generator returns the title of the highest entry index
+                         with each iteration.
+
+friends_by_depth        -Returns a list of titles of all articles within x 'jumps'
+                         from a given article.
+
+
+_update_entry_index     -Updates the private variable dictionary that evaluates the
+                         entry index of all articles.
+_recursive_friends_set
+
+
+repr, len, get_item, and contains are defined
+in accordance with python guidelines.
+
+Note that containment of another article
+is checked by article title, unlike class article.
 
 ==================================================================================
 =                                 EX10 Q & A                                      =

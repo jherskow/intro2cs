@@ -2,13 +2,13 @@
 # FILE : wikinetwork.py
 # WRITER : Joshua Herskowitz , jherskow , 321658379
 # EXERCISE : intro2cs ex10 2016-2017
-# DESCRIPTION: ----
+# DESCRIPTION: Implements wikinetwork object and functionality.
 ########################################################################"""
 # ========== IMPORTS ======================================================
 import article
 import copy
 
-# ========== FUNCTIONS ============================================
+# ======================== required functions =============================
 
 
 def read_article_links(filename):
@@ -27,7 +27,37 @@ def read_article_links(filename):
             pairs.append(pair_tup)
     return pairs
 
-# ========== CLASS WIKI NETWORK ===========================================
+
+# ======================== helper functions ===============================
+
+
+def sort_dict_by_rank(dictionary, return_top=False, return_list=False):
+    """
+    Sorts a dictionary by rank, descending
+    and then by abc, ascending.
+    :param dictionary: a title: rank dictionary.
+    :param return_top: bool
+    :param return_list: bool
+    :return: first value, or list, depending on user's choice of param.
+    """
+    ranked = sorted(dictionary.items(), key=lambda x: (-x[1], x[0]), )
+    ranked_list = [x[0] for x in ranked]
+    if return_top:
+        return ranked_list[0]
+    if return_list:
+        return ranked_list
+
+
+def title_list(article_list):
+    """
+    Returns a list of titles from a list of articles.
+    :param: article list:  list of article objects.
+    :return: list of titles of articles in list.
+    """
+    return [x.get_title() for x in article_list]
+
+
+# ============================ CLASS WIKI NETWORK =========================
 
 
 class WikiNetwork:
@@ -198,10 +228,11 @@ class WikiNetwork:
 
     def friends_by_depth(self, article_title, depth):
         """
-
-        :param article_title:
-        :param depth:
-        :return:
+        Returns a list of titles of all articles within x 'jumps'
+        from a given article.
+        :param article_title: An article's title.
+        :param depth: integer of 'jumps'
+        :return: list of article titles.
         """
         if article_title not in self:
             return None
@@ -225,30 +256,3 @@ class WikiNetwork:
             friends.update(art.get_neighbors())
         friends.update(self._recursive_friends_set(friends, depth - 1))
         return friends
-
-# ======================== helper functions ===============================
-
-
-def sort_dict_by_rank(dict, return_top=False, return_list=False):
-    """
-    Sorts a dictionary by rank, descending
-    and then by abc, ascending.
-    :param return_top: bool
-    :param return_list: bool
-    :return: first value, or list, depending on user's choice of param.
-    """
-    ranked = sorted(dict.items(), key=lambda x: (-x[1], x[0]), )
-    ranked_list = [x[0] for x in ranked]
-    if return_top:
-        return ranked_list[0]
-    if return_list:
-        return ranked_list
-
-
-def title_list(article_list):
-    """
-    Returns a list of titles from a list of articles.
-    :param: article list:  list of article objects.
-    :return: list of titles of articles in list.
-    """
-    return [x.get_title() for x in article_list]
