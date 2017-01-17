@@ -8,6 +8,9 @@
 import article
 import copy
 
+# ========== Constants ====================================================
+PAIR_SEPARATOR = '\t'
+
 # ======================== required functions =============================
 
 
@@ -21,8 +24,8 @@ def read_article_links(filename):
     pairs = []
     with open(filename, 'r') as f:
         for line in f:
-            line = line.strip('\n')
-            pair = line.split('\t')
+            line = line.strip()
+            pair = line.split(PAIR_SEPARATOR)
             pair_tup = tuple(pair)
             pairs.append(pair_tup)
     return pairs
@@ -40,7 +43,7 @@ def sort_dict_by_rank(dictionary, return_top=False, return_list=False):
     :param return_list: bool
     :return: first value, or list, depending on user's choice of param.
     """
-    ranked = sorted(dictionary.items(), key=lambda x: (-x[1], x[0]), )
+    ranked = sorted(dictionary.items(), key=lambda x: (-x[1], x[0]))
     ranked_list = [x[0] for x in ranked]
     if return_top:
         return ranked_list[0]

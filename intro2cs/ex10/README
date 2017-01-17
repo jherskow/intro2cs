@@ -2,23 +2,20 @@ jherskow
 321658379
 Joshua Herskowitz
 
-=========================================
-= README for ex10:   Wikipedia™         =
-=========================================
+=======================================================================
+=                     README for ex10:   Wikipedia™                   =
+=======================================================================
 
-==============================
-=        Description:        =
-==============================
+======================================================
+=                   Description:                     =
+======================================================
+In this exercise, we create a network that represents
+a wiki-like linked database of articles, and store it
+in a graph-like data structure.
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-cd safe/intro2cs/ex10
-~intro2cs/bin/presubmit/ex10 ex10.zip
-
-================================================================================================
-        # todo DEBUG - THIS IS A STRING REPR OF RANKING
-        # ranking = [' title\t ' + str(x[0]) + ' \trank \t' + str(int(x[1])) for x in ranking]
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+We then implement various functions that provide us
+with different data-analysis tools with which to
+study the intricate connections of the network.
 
 ======================================================
 =                    Files:                          =

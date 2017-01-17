@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f9ff36b6-9a1e-4893-a726-bbcc040e65e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex10/article.py" afterPath="$PROJECT_DIR$/ex10/article.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex10/README" afterPath="$PROJECT_DIR$/ex10/README" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex10/wikinetwork.py" afterPath="$PROJECT_DIR$/ex10/wikinetwork.py" />
     </list>
     <list id="d69ead2b-012c-4140-9471-950164463b23" name="Failed commit: Default" comment="ex8" />
@@ -49,8 +49,8 @@
           <file leaf-file-name="wikinetwork.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                <state relative-caret-position="4452">
+                  <caret line="212" column="37" selection-start-line="212" selection-start-column="37" selection-end-line="212" selection-end-column="37" />
                   <folding>
                     <element signature="e#405#419#0" expanded="true" />
                   </folding>
@@ -87,8 +87,8 @@
           <file leaf-file-name="README" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex10/README">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="420">
-                  <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+                <state relative-caret-position="378">
+                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -126,9 +126,9 @@
         <option value="$PROJECT_DIR$/ex9/asteroids_main.py" />
         <option value="$PROJECT_DIR$/ex10/txty" />
         <option value="$PROJECT_DIR$/ex10/test.py" />
-        <option value="$PROJECT_DIR$/ex10/README" />
         <option value="$PROJECT_DIR$/ex10/article.py" />
         <option value="$PROJECT_DIR$/ex10/wikinetwork.py" />
+        <option value="$PROJECT_DIR$/ex10/README" />
       </list>
     </option>
   </component>
@@ -512,13 +512,6 @@
       <option name="presentableId" value="Default" />
       <updated>1483213546792</updated>
     </task>
-    <task id="LOCAL-00017" summary="started game">
-      <created>1483451366362</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1483451366362</updated>
-    </task>
     <task id="LOCAL-00018" summary="Done">
       <created>1483530269252</created>
       <option name="number" value="00018" />
@@ -855,7 +848,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484566829855</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="1.0 Release Candidate!!!!!">
+      <created>1484684517291</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1484684517292</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TodoView">
@@ -923,7 +923,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="More work" />
     <MESSAGE value="import from rachel" />
     <MESSAGE value="finish friday" />
     <MESSAGE value="do and share" />
@@ -948,7 +947,8 @@
     <MESSAGE value="All but friends by depth" />
     <MESSAGE value="0.9.0 working prototype" />
     <MESSAGE value="0.9.1 working prototype. Documetation done" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.9.1 working prototype. Documetation done" />
+    <MESSAGE value="1.0 Release Candidate!!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0 Release Candidate!!!!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1218,8 +1218,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="4452">
+          <caret line="212" column="37" selection-start-line="212" selection-start-column="37" selection-end-line="212" selection-end-column="37" />
           <folding>
             <element signature="e#405#419#0" expanded="true" />
           </folding>
@@ -1228,8 +1228,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex10/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="378">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
