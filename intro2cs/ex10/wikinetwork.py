@@ -8,6 +8,29 @@
 import article
 import copy
 
+# ========= constants =============
+PAIR_SEPARATOR = '\t'
+
+# ===== required functions ========
+
+
+def read_article_links(filename):
+    """
+    Converts text file of compatible format into
+    a list of article-pair tuples.
+    :param filename: text file of compatible format
+    :return: list of (article,pair) tuples
+    """
+    pairs = []
+    with open(filename, 'r') as f:
+        for line in f:
+            line = line.strip()
+            pair = line.split(PAIR_SEPARATOR)
+            pair_tup = tuple(pair)
+            pairs.append(pair_tup)
+    return pairs
+
+
 # ============================ CLASS WIKI NETWORK =========================
 
 
@@ -19,7 +42,6 @@ class WikiNetwork:
     """
 
     # ===== WikiNetwork - class constants =====
-    PAIR_SEPARATOR = '\t'
     DEFAULT_ALTRUISM = 0.9
 
     # ===== WikiNetwork - class methods =======
@@ -210,24 +232,6 @@ class WikiNetwork:
             friends.update(art.get_neighbors())
         friends.update(self._recursive_friends_set(friends, depth - 1))
         return friends
-
-    # ===== WikiNetwork - required functions ========
-
-    def read_article_links(self, filename):
-        """
-        Converts text file of compatible format into
-        a list of article-pair tuples.
-        :param filename: text file of compatible format
-        :return: list of (article,pair) tuples
-        """
-        pairs = []
-        with open(filename, 'r') as f:
-            for line in f:
-                line = line.strip()
-                pair = line.split(self.PAIR_SEPARATOR)
-                pair_tup = tuple(pair)
-                pairs.append(pair_tup)
-        return pairs
 
     # ===== WikiNetwork - helper functions ================
     @staticmethod

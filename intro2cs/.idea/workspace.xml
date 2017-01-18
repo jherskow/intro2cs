@@ -48,8 +48,8 @@
           <file leaf-file-name="wikinetwork.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="159">
-                  <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
+                <state relative-caret-position="315">
+                  <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
                   <folding>
                     <element signature="e#405#419#0" expanded="true" />
                   </folding>
@@ -511,13 +511,6 @@
       <option name="presentableId" value="Default" />
       <updated>1483213546792</updated>
     </task>
-    <task id="LOCAL-00020" summary="Added ex9">
-      <created>1483611616010</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1483611616010</updated>
-    </task>
     <task id="LOCAL-00021" summary="Added ex9">
       <created>1483612697258</created>
       <option name="number" value="00021" />
@@ -854,7 +847,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484761125296</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="1.0 Release Candidate!!!!!">
+      <created>1484766477133</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1484766477133</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1225,8 +1225,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
             <element signature="e#405#419#0" expanded="true" />
           </folding>
