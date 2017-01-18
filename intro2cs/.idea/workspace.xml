@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f9ff36b6-9a1e-4893-a726-bbcc040e65e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex10/README" afterPath="$PROJECT_DIR$/ex10/README" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ex10/wikinetwork.py" afterPath="$PROJECT_DIR$/ex10/wikinetwork.py" />
     </list>
     <list id="d69ead2b-012c-4140-9471-950164463b23" name="Failed commit: Default" comment="ex8" />
@@ -49,8 +48,8 @@
           <file leaf-file-name="wikinetwork.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="462">
-                  <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+                <state relative-caret-position="159">
+                  <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
                   <folding>
                     <element signature="e#405#419#0" expanded="true" />
                   </folding>
@@ -512,13 +511,6 @@
       <option name="presentableId" value="Default" />
       <updated>1483213546792</updated>
     </task>
-    <task id="LOCAL-00019" summary="Done">
-      <created>1483547033269</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1483547033269</updated>
-    </task>
     <task id="LOCAL-00020" summary="Added ex9">
       <created>1483611616010</created>
       <option name="number" value="00020" />
@@ -855,7 +847,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484685519388</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="1.0 Release Candidate!!!!!">
+      <created>1484761125295</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1484761125296</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1226,8 +1225,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="159">
+          <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
           <folding>
             <element signature="e#405#419#0" expanded="true" />
           </folding>

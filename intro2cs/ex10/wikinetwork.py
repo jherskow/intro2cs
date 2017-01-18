@@ -8,59 +8,6 @@
 import article
 import copy
 
-# ========== Constants ====================================================
-PAIR_SEPARATOR = '\t'
-DEFAULT_ALTRUISM = 0.9
-
-# ======================== required functions =============================
-
-
-def read_article_links(filename):
-    """
-    Converts text file of compatible format into
-    a list of article-pair tuples.
-    :param filename: text file of compatible format
-    :return: list of (article,pair) tuples
-    """
-    pairs = []
-    with open(filename, 'r') as f:
-        for line in f:
-            line = line.strip()
-            pair = line.split(PAIR_SEPARATOR)
-            pair_tup = tuple(pair)
-            pairs.append(pair_tup)
-    return pairs
-
-
-# ======================== helper functions ===============================
-
-
-def sort_dict_by_rank(dictionary, return_top=False, return_list=False):
-    """
-    Sorts a dictionary by rank, descending
-    and then by abc, ascending.
-    :param dictionary: a title: rank dictionary.
-    :param return_top: bool
-    :param return_list: bool
-    :return: first value, or list, depending on user's choice of param.
-    """
-    ranked = sorted(dictionary.items(), key=lambda x: (-x[1], x[0]))
-    ranked_list = [x[0] for x in ranked]
-    if return_top:
-        return ranked_list[0]
-    if return_list:
-        return ranked_list
-
-
-def title_list(article_list):
-    """
-    Returns a list of titles from a list of articles.
-    :param: article list:  list of article objects.
-    :return: list of titles of articles in list.
-    """
-    return [x.get_title() for x in article_list]
-
-
 # ============================ CLASS WIKI NETWORK =========================
 
 
@@ -70,6 +17,10 @@ class WikiNetwork:
     representing the connectivity of a wikipedia-like
     collection of articles.
     """
+
+    # ===== WikiNetwork - class constants =====
+    PAIR_SEPARATOR = '\t'
+    DEFAULT_ALTRUISM = 0.9
 
     # ===== WikiNetwork - class methods =======
 
@@ -160,12 +111,12 @@ class WikiNetwork:
                     give_amount = d * (rank_dict[title] / neighbor_num)
                 rank_dict[title] = 0
                 neighbor_list = self._articles[title].get_neighbors()
-                neighbor_titles = title_list(neighbor_list)
+                neighbor_titles = self.title_list(neighbor_list)
                 for y in neighbor_titles:
                     adder_dict[y] += give_amount
             for title in adder_dict:
                 rank_dict[title] = adder_dict[title] + (1-d)
-        return sort_dict_by_rank(rank_dict, return_list=True)
+        return self.sort_dict_by_rank(rank_dict, return_list=True)
 
     def jaccard_index(self, article_title):
         """
@@ -183,7 +134,7 @@ class WikiNetwork:
         # Create a dictionary of titles and sets.
         for title in rank_dict:
             neighbor_list = self._articles[title].get_neighbors()
-            neighbor_titles = title_list(neighbor_list)
+            neighbor_titles = self.title_list(neighbor_list)
             set_dict[title] = set(neighbor_titles)
         compare_set = set_dict[article_title]
         # Calculate ranking values to each article, & save in rank_dict
@@ -194,7 +145,7 @@ class WikiNetwork:
                 rank_dict[art_set] = len(intersection) / len(union)
             else:
                 rank_dict[art_set] = len(intersection)
-        return sort_dict_by_rank(rank_dict, return_list=True)
+        return self.sort_dict_by_rank(rank_dict, return_list=True)
 
     def _update_entry_index(self):
         """
@@ -219,15 +170,15 @@ class WikiNetwork:
         yield article_title
         self._update_entry_index()
         curr_art = self._articles[article_title]
-        neighbor_lst = title_list(curr_art.get_neighbors())
+        neighbor_lst = self.title_list(curr_art.get_neighbors())
         while neighbor_lst:
             entry_dict = copy.copy(self._entry_index)
             filtered = {k: v for k, v in entry_dict.items()
                         if k in neighbor_lst}
-            max_title = sort_dict_by_rank(filtered, return_top=True)
+            max_title = self.sort_dict_by_rank(filtered, return_top=True)
             yield max_title
             curr_art = self._articles[max_title]
-            neighbor_lst = title_list(curr_art.get_neighbors())
+            neighbor_lst = self.title_list(curr_art.get_neighbors())
 
     def friends_by_depth(self, article_title, depth):
         """
@@ -242,7 +193,7 @@ class WikiNetwork:
         article_list = [self._articles[article_title]]
         friends = self._recursive_friends_set(article_list, depth)
         friends.add(self._articles[article_title])
-        friend_titles = title_list(friends)
+        friend_titles = self.title_list(friends)
         return friend_titles
 
     def _recursive_friends_set(self, article_list, depth):
@@ -259,3 +210,48 @@ class WikiNetwork:
             friends.update(art.get_neighbors())
         friends.update(self._recursive_friends_set(friends, depth - 1))
         return friends
+
+    # ===== WikiNetwork - required functions ========
+
+    def read_article_links(self, filename):
+        """
+        Converts text file of compatible format into
+        a list of article-pair tuples.
+        :param filename: text file of compatible format
+        :return: list of (article,pair) tuples
+        """
+        pairs = []
+        with open(filename, 'r') as f:
+            for line in f:
+                line = line.strip()
+                pair = line.split(self.PAIR_SEPARATOR)
+                pair_tup = tuple(pair)
+                pairs.append(pair_tup)
+        return pairs
+
+    # ===== WikiNetwork - helper functions ================
+    @staticmethod
+    def sort_dict_by_rank(dictionary, return_top=False, return_list=False):
+        """
+        Sorts a dictionary by rank, descending
+        and then by abc, ascending.
+        :param dictionary: a title: rank dictionary.
+        :param return_top: bool
+        :param return_list: bool
+        :return: first value, or list, depending on user's choice of param.
+        """
+        ranked = sorted(dictionary.items(), key=lambda x: (-x[1], x[0]))
+        ranked_list = [x[0] for x in ranked]
+        if return_top:
+            return ranked_list[0]
+        if return_list:
+            return ranked_list
+
+    @staticmethod
+    def title_list(article_list):
+        """
+        Returns a list of titles from a list of articles.
+        :param: article list:  list of article objects.
+        :return: list of titles of articles in list.
+        """
+        return [x.get_title() for x in article_list]
