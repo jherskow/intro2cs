@@ -49,8 +49,8 @@
           <file leaf-file-name="wikinetwork.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="4452">
-                  <caret line="212" column="37" selection-start-line="212" selection-start-column="37" selection-end-line="212" selection-end-column="37" />
+                <state relative-caret-position="462">
+                  <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
                   <folding>
                     <element signature="e#405#419#0" expanded="true" />
                   </folding>
@@ -83,12 +83,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="README" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ex10/README">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+                <state relative-caret-position="1188">
+                  <caret line="94" column="77" selection-start-line="94" selection-start-column="77" selection-end-line="94" selection-end-column="77" />
                   <folding />
                 </state>
               </provider>
@@ -127,8 +127,8 @@
         <option value="$PROJECT_DIR$/ex10/txty" />
         <option value="$PROJECT_DIR$/ex10/test.py" />
         <option value="$PROJECT_DIR$/ex10/article.py" />
-        <option value="$PROJECT_DIR$/ex10/wikinetwork.py" />
         <option value="$PROJECT_DIR$/ex10/README" />
+        <option value="$PROJECT_DIR$/ex10/wikinetwork.py" />
       </list>
     </option>
   </component>
@@ -512,13 +512,6 @@
       <option name="presentableId" value="Default" />
       <updated>1483213546792</updated>
     </task>
-    <task id="LOCAL-00018" summary="Done">
-      <created>1483530269252</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1483530269252</updated>
-    </task>
     <task id="LOCAL-00019" summary="Done">
       <created>1483547033269</created>
       <option name="number" value="00019" />
@@ -855,7 +848,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484684517292</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="1.0 Release Candidate!!!!!">
+      <created>1484685519388</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1484685519388</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1216,21 +1216,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
+    <entry file="file://$PROJECT_DIR$/ex10/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4452">
-          <caret line="212" column="37" selection-start-line="212" selection-start-column="37" selection-end-line="212" selection-end-column="37" />
-          <folding>
-            <element signature="e#405#419#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1188">
+          <caret line="94" column="77" selection-start-line="94" selection-start-column="77" selection-end-line="94" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ex10/README">
+    <entry file="file://$PROJECT_DIR$/ex10/wikinetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="462">
+          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+          <folding>
+            <element signature="e#405#419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

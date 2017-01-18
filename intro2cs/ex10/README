@@ -21,7 +21,7 @@ study the intricate connections of the network.
 =                    Files:                          =
 ======================================================
 
-======== ARITCLE.PY ====
+======== ARITCLE.PY =======
 
 ++++ class ARTICLE ++++++
 A class representing an article.
@@ -40,7 +40,7 @@ in accordance with python guidelines.
 Note that containment of another article
 is checked by article object, not title.
 
-======== WIKINETWOK.PY ====
+======== WIKINETWOK.PY =======
 
 ==functions==
 
@@ -90,9 +90,9 @@ in accordance with python guidelines.
 Note that containment of another article
 is checked by article title, unlike class article.
 
-==================================================================================
+===================================================================================
 =                                 EX10 Q & A                                      =
-==================================================================================
+===================================================================================
 
 ---  TOP 3 PAGES BY PAGERANK™ - (d=0.9, iter=50)-------------------------
 # 1 United_States

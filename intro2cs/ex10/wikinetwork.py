@@ -10,6 +10,7 @@ import copy
 
 # ========== Constants ====================================================
 PAIR_SEPARATOR = '\t'
+DEFAULT_ALTRUISM = 0.9
 
 # ======================== required functions =============================
 
@@ -69,7 +70,6 @@ class WikiNetwork:
     representing the connectivity of a wikipedia-like
     collection of articles.
     """
-    # ===== WikiNetwork - class constants =====
 
     # ===== WikiNetwork - class methods =======
 
@@ -143,7 +143,7 @@ class WikiNetwork:
         else:
             raise KeyError(title)
 
-    def page_rank(self, iters, d=0.9):
+    def page_rank(self, iters, d=DEFAULT_ALTRUISM):
         """
         Ranks all pages using the Page Rank algorithm.
         :param iters: number of desired iterations.
@@ -152,7 +152,7 @@ class WikiNetwork:
         """
         rank_dict = {x: 1 for x in self.get_titles()}
         adder_dict = {x: 0 for x in self.get_titles()}
-        for x in range(iters):
+        for i in range(iters):
             for title in rank_dict:
                 neighbor_num = len(self._articles[title])
                 give_amount = 0
@@ -219,15 +219,15 @@ class WikiNetwork:
         yield article_title
         self._update_entry_index()
         curr_art = self._articles[article_title]
-        nieghbor_lst = title_list(curr_art.get_neighbors())
-        while nieghbor_lst:
+        neighbor_lst = title_list(curr_art.get_neighbors())
+        while neighbor_lst:
             entry_dict = copy.copy(self._entry_index)
             filtered = {k: v for k, v in entry_dict.items()
-                        if k in nieghbor_lst}
+                        if k in neighbor_lst}
             max_title = sort_dict_by_rank(filtered, return_top=True)
             yield max_title
             curr_art = self._articles[max_title]
-            nieghbor_lst = title_list(curr_art.get_neighbors())
+            neighbor_lst = title_list(curr_art.get_neighbors())
 
     def friends_by_depth(self, article_title, depth):
         """
@@ -248,7 +248,7 @@ class WikiNetwork:
     def _recursive_friends_set(self, article_list, depth):
         """
         Returns all articles (except self) that are within a maximum depth.
-        :param article_list: liso of article objects.
+        :param article_list: list of article objects.
         :param depth: desired depth
         :return: set of articles of depth <= depth
         """
